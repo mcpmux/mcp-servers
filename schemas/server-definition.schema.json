@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcmux.dev/schemas/server-definition.json",
+  "title": "MCP Server Definition",
+  "description": "Single server definition (Format B) for MCMux Registry",
+  "type": "object",
+  "required": ["id", "name", "transport"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9.-]+$",
+      "description": "Unique identifier in reverse-domain notation (e.g., com.example.server)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable display name"
+    },
+    "alias": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Short alias for CLI usage"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of what the server does"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Emoji or URL to icon image"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version this definition conforms to"
+    },
+    "transport": {
+      "$ref": "#/$defs/transport"
+    },
+    "auth": {
+      "$ref": "#/$defs/auth"
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Array of category IDs"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Searchable tags"
+    },
+    "publisher": {
+      "$ref": "#/$defs/publisher"
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "Source code repository URL"
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri",
+          "description": "Project homepage URL"
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri",
+          "description": "Documentation URL"
+        }
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "enum": ["all", "windows", "macos", "linux"]
+      },
+      "description": "Supported platforms"
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "tools": { "type": "boolean" },
+        "resources": { "type": "boolean" },
+        "prompts": { "type": "boolean" }
+      },
+      "description": "MCP capabilities supported"
+    }
+  },
+  "$defs": {
+    "transport": {
+      "type": "object",
+      "required": ["type"],
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "stdio" },
+            "command": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Command to execute"
+            },
+            "args": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Command arguments"
+            },
+            "env": {
+              "type": "object",
+              "additionalProperties": { "type": "string" },
+              "description": "Environment variables"
+            },
+            "metadata": {
+              "$ref": "#/$defs/metadata"
+            }
+          },
+          "required": ["type", "command"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "enum": ["http", "sse"] },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "HTTP endpoint URL"
+            },
+            "metadata": {
+              "$ref": "#/$defs/metadata"
+            }
+          },
+          "required": ["type", "url"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/input" },
+          "description": "User inputs required for this server"
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["id", "label"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9_]+$",
+          "description": "Uppercase identifier (e.g., API_KEY)"
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable label"
+        },
+        "type": {
+          "enum": ["text", "password", "number", "boolean", "url"],
+          "default": "text",
+          "description": "Input field type"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this input is required"
+        },
+        "secret": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this input contains sensitive data"
+        },
+        "description": {
+          "type": "string",
+          "description": "Help text for this input"
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text"
+        },
+        "obtain": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "URL where user can obtain this value"
+            },
+            "instructions": {
+              "type": "string",
+              "description": "Step-by-step instructions"
+            },
+            "button_label": {
+              "type": "string",
+              "description": "Button label for obtain link"
+            }
+          },
+          "description": "Instructions for obtaining this input value"
+        }
+      },
+      "additionalProperties": false
+    },
+    "auth": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["none", "api_key", "oauth", "basic"],
+          "description": "Authentication type"
+        },
+        "instructions": {
+          "type": "string",
+          "description": "Human-readable authentication instructions"
+        }
+      }
+    },
+    "publisher": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Publisher display name"
+        },
+        "domain": {
+          "type": "string",
+          "format": "hostname",
+          "description": "Publisher domain"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Publisher website"
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "Whether publisher is verified by MCMux"
+        },
+        "domain_verified": {
+          "type": "boolean",
+          "description": "Whether domain ownership is verified"
+        },
+        "official": {
+          "type": "boolean",
+          "description": "Whether this is an official server by the publisher"
+        }
+      }
+    }
+  }
+}
