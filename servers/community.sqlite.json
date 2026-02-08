@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.sqlite",
+  "name": "SQLite",
+  "alias": "sqlite",
+  "description": "Query and manage SQLite databases. Execute SQL statements, inspect schemas, and explore data in local SQLite files.",
+  "icon": "\ud83d\uddc4\ufe0f",
+  "schema_version": "2.1",
+  "categories": ["database"],
+  "tags": ["sqlite", "database", "sql", "query", "local", "data"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/sqlite-mcp-server", "/path/to/db.sqlite"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Anthropic",
+    "github": "anthropics",
+    "url": "https://anthropic.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://www.sqlite.org",
+    "documentation": "https://modelcontextprotocol.io/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

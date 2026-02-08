@@ -3,11 +3,11 @@
   "id": "com.notion-mcp",
   "name": "Notion",
   "alias": "notion",
-  "description": "Read and write Notion pages, databases, and blocks",
-  "icon": "📝",
+  "description": "Read and write Notion pages, databases, and blocks. Search, create, and update content in your Notion workspace.",
+  "icon": "\ud83d\udcdd",
   "schema_version": "2.1",
   "categories": ["productivity", "documentation"],
-  "tags": ["notion", "notes", "wiki", "database"],
+  "tags": ["notion", "notes", "wiki", "database", "knowledge-base", "documentation"],
 
   "transport": {
     "type": "stdio",
@@ -28,7 +28,7 @@
           "placeholder": "secret_...",
           "obtain": {
             "url": "https://www.notion.so/my-integrations",
-            "instructions": "1. Go to notion.so/my-integrations\n2. Create a new integration\n3. Copy the Internal Integration Token",
+            "instructions": "1. Go to notion.so/my-integrations\n2. Click 'New integration'\n3. Give it a name and select your workspace\n4. Copy the Internal Integration Token\n5. Share desired pages/databases with the integration",
             "button_label": "Create Integration"
           }
         }
@@ -38,7 +38,7 @@
 
   "auth": {
     "type": "api_key",
-    "instructions": "Create an integration at notion.so/my-integrations"
+    "instructions": "Create an integration at notion.so/my-integrations and copy the Internal Integration Token"
   },
 
   "contributor": {
@@ -49,6 +49,7 @@
 
   "links": {
     "repository": "https://github.com/makenotion/notion-mcp-server",
+    "homepage": "https://notion.so",
     "documentation": "https://developers.notion.com"
   },
 

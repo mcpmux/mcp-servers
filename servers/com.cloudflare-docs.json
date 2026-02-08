@@ -2,16 +2,16 @@
   "$schema": "../schemas/server-definition.schema.json",
   "id": "com.cloudflare-docs",
   "name": "Cloudflare Docs",
-  "alias": "cfdocs",
-  "description": "Search and browse Cloudflare documentation",
-  "icon": "📚",
+  "alias": "cf-docs",
+  "description": "Search and browse Cloudflare documentation, including Workers, Pages, R2, D1, and all Cloudflare products.",
+  "icon": "\ud83d\udcda",
   "schema_version": "2.1",
   "categories": ["documentation", "cloud"],
-  "tags": ["cloudflare", "docs", "documentation", "search"],
+  "tags": ["cloudflare", "docs", "documentation", "workers", "pages", "cdn", "cloud"],
 
   "transport": {
     "type": "http",
-    "url": "https://docs.mcp.cloudflare.com/mcp",
+    "url": "https://docs.cloudflare.com/mcp",
     "metadata": {
       "inputs": []
     }
@@ -24,12 +24,13 @@
   "contributor": {
     "name": "Cloudflare",
     "github": "cloudflare",
-    "url": "https://developers.cloudflare.com"
+    "url": "https://cloudflare.com"
   },
 
   "links": {
     "repository": "https://github.com/cloudflare/mcp-server-cloudflare",
-    "documentation": "https://developers.cloudflare.com/mcp"
+    "homepage": "https://cloudflare.com",
+    "documentation": "https://developers.cloudflare.com"
   },
 
   "platforms": ["all"],

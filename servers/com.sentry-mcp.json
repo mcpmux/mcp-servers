@@ -1,0 +1,44 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.sentry-mcp",
+  "name": "Sentry",
+  "alias": "sentry",
+  "description": "Query and manage Sentry issues, errors, performance data, and project settings through the Sentry API.",
+  "icon": "\ud83d\udc1b",
+  "schema_version": "2.1",
+  "categories": ["monitoring", "developer-tools"],
+  "tags": ["sentry", "errors", "monitoring", "debugging", "performance", "observability"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.sentry.dev/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Authenticate via the Sentry MCP endpoint using your Sentry account"
+  },
+
+  "contributor": {
+    "name": "Sentry",
+    "github": "getsentry",
+    "url": "https://sentry.io"
+  },
+
+  "links": {
+    "homepage": "https://sentry.io",
+    "documentation": "https://docs.sentry.io"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

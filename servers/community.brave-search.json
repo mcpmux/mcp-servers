@@ -1,0 +1,63 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.brave-search",
+  "name": "Brave Search",
+  "alias": "brave",
+  "description": "Perform web searches and retrieve results using the Brave Search API. Supports web, news, and image search.",
+  "icon": "\ud83d\udd0d",
+  "schema_version": "2.1",
+  "categories": ["search"],
+  "tags": ["brave", "search", "web-search", "news", "images"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/brave-search-mcp-server"],
+    "env": {
+      "BRAVE_API_KEY": "${input:BRAVE_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BRAVE_API_KEY",
+          "label": "Brave Search API Key",
+          "description": "API key for the Brave Search API",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "BSA...",
+          "obtain": {
+            "url": "https://brave.com/search/api/",
+            "instructions": "1. Go to brave.com/search/api\n2. Sign up or log in\n3. Subscribe to a plan (free tier available)\n4. Copy your API key from the dashboard",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a Brave Search API key at https://brave.com/search/api/"
+  },
+
+  "contributor": {
+    "name": "Anthropic",
+    "github": "anthropics",
+    "url": "https://anthropic.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://brave.com/search/api/",
+    "documentation": "https://api.search.brave.com/app/documentation"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

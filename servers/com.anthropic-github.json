@@ -4,10 +4,10 @@
   "name": "GitHub",
   "alias": "gh",
   "description": "Interact with GitHub repositories, issues, pull requests, and more through the GitHub API.",
-  "icon": "🐙",
+  "icon": "\ud83d\udc19",
   "schema_version": "2.1",
   "categories": ["developer-tools", "version-control"],
-  "tags": ["git", "code", "issues", "pr", "repos"],
+  "tags": ["git", "github", "code", "issues", "pull-requests", "repos", "version-control"],
 
   "transport": {
     "type": "stdio",
@@ -25,14 +25,14 @@
         {
           "id": "GITHUB_TOKEN",
           "label": "GitHub Personal Access Token",
-          "description": "Token used to authenticate with GitHub API",
+          "description": "Token used to authenticate with the GitHub API",
           "type": "password",
           "required": true,
           "secret": true,
           "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
           "obtain": {
             "url": "https://github.com/settings/tokens/new",
-            "instructions": "1. Click 'Generate new token (classic)'\n2. Give it a name like 'McpMux'\n3. Select scopes: repo, read:org\n4. Click 'Generate token'\n5. Copy the token (starts with ghp_)",
+            "instructions": "1. Click 'Generate new token (classic)'\n2. Give it a name like 'MCP Server'\n3. Select scopes: repo, read:org\n4. Click 'Generate token'\n5. Copy the token (starts with ghp_)",
             "button_label": "Create Token"
           }
         }
@@ -42,18 +42,19 @@
 
   "auth": {
     "type": "api_key",
-    "instructions": "Create a token at https://github.com/settings/tokens with repo scope"
+    "instructions": "Create a personal access token at https://github.com/settings/tokens with repo scope"
   },
 
   "contributor": {
-    "name": "Model Context Protocol",
-    "github": "modelcontextprotocol",
-    "url": "https://modelcontextprotocol.io"
+    "name": "GitHub",
+    "github": "github",
+    "url": "https://github.com"
   },
 
   "links": {
-    "repository": "https://github.com/modelcontextprotocol/servers",
-    "documentation": "https://modelcontextprotocol.io/docs"
+    "repository": "https://github.com/github/github-mcp-server",
+    "homepage": "https://github.com",
+    "documentation": "https://docs.github.com/en/rest"
   },
 
   "platforms": ["all"],

@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.puppeteer",
+  "name": "Puppeteer",
+  "alias": "puppeteer",
+  "description": "Automate browser interactions, take screenshots, scrape web pages, and run JavaScript in a headless Chrome browser.",
+  "icon": "\ud83c\udfad",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "search"],
+  "tags": ["puppeteer", "browser", "automation", "scraping", "screenshots", "headless", "chrome"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/puppeteer-mcp-server"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Anthropic",
+    "github": "anthropics",
+    "url": "https://anthropic.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://pptr.dev",
+    "documentation": "https://modelcontextprotocol.io/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

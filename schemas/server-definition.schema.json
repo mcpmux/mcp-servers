@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mcpmux.com/schemas/server-definition.json",
-  "title": "MCP Server Definition",
-  "description": "Single server definition (Format B) for McpMux Registry",
+  "title": "MCP Server Definition (Contributor Schema)",
+  "description": "Contributor-provided server definition for McpMux Registry. Platform-managed fields (badges, hosting_type, verification, sponsored) are computed by the bundler and stored separately in _platform.",
   "type": "object",
   "required": ["id", "name", "transport"],
   "properties": {
@@ -49,8 +49,8 @@
       "items": { "type": "string" },
       "description": "Searchable tags"
     },
-    "publisher": {
-      "$ref": "#/$defs/publisher"
+    "contributor": {
+      "$ref": "#/$defs/contributor"
     },
     "links": {
       "type": "object",
@@ -92,83 +92,6 @@
         }
       },
       "description": "MCP capabilities supported"
-    },
-    "badges": {
-      "type": "array",
-      "items": {
-        "enum": ["official", "verified", "featured", "sponsored", "popular"]
-      },
-      "uniqueItems": true,
-      "default": [],
-      "description": "Visual badges displayed on server listing for trust and discovery"
-    },
-    "hosting_type": {
-      "type": "string",
-      "enum": ["local", "remote", "hybrid"],
-      "default": "local",
-      "description": "Where the server runs: local (user's machine), remote (cloud), or hybrid (both)"
-    },
-    "license": {
-      "type": "string",
-      "description": "SPDX license identifier (e.g., MIT, Apache-2.0, GPL-3.0)",
-      "examples": ["MIT", "Apache-2.0", "GPL-3.0", "BSD-3-Clause"]
-    },
-    "license_url": {
-      "type": "string",
-      "format": "uri",
-      "description": "URL to full license text"
-    },
-    "installation": {
-      "type": "object",
-      "properties": {
-        "difficulty": {
-          "type": "string",
-          "enum": ["easy", "moderate", "advanced"],
-          "default": "moderate",
-          "description": "Installation complexity level"
-        },
-        "prerequisites": {
-          "type": "array",
-          "items": { "type": "string" },
-          "default": [],
-          "description": "Required software/tools (e.g., 'Node.js 18+', 'Docker', 'Python 3.9+')"
-        },
-        "estimated_time": {
-          "type": "string",
-          "description": "Estimated installation time (e.g., '5 minutes', '10 minutes')",
-          "examples": ["5 minutes", "10 minutes", "30 minutes"]
-        }
-      },
-      "description": "Installation metadata to help users understand requirements"
-    },
-    "sponsored": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "type": "boolean",
-          "default": false,
-          "description": "Whether this is a sponsored listing"
-        },
-        "sponsor_name": {
-          "type": "string",
-          "description": "Name of sponsoring company or individual"
-        },
-        "sponsor_url": {
-          "type": "string",
-          "format": "uri",
-          "description": "Sponsor website URL"
-        },
-        "sponsor_logo": {
-          "type": "string",
-          "format": "uri",
-          "description": "Sponsor logo image URL"
-        },
-        "campaign_id": {
-          "type": "string",
-          "description": "Internal campaign tracking ID"
-        }
-      },
-      "description": "Sponsorship information for supported server listings"
     },
     "media": {
       "type": "object",
@@ -335,39 +258,24 @@
         }
       }
     },
-    "publisher": {
+    "contributor": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "description": "Publisher display name"
+          "description": "Contributor display name or GitHub username"
         },
-        "domain": {
+        "github": {
           "type": "string",
-          "format": "hostname",
-          "description": "Publisher domain"
+          "description": "GitHub username (without @)"
         },
         "url": {
           "type": "string",
           "format": "uri",
-          "description": "Publisher website"
-        },
-        "verified": {
-          "type": "boolean",
-          "default": false,
-          "description": "Whether publisher is verified by McpMux (maintainer-only field)"
-        },
-        "domain_verified": {
-          "type": "boolean",
-          "default": false,
-          "description": "Whether domain ownership is verified (maintainer-only field)"
-        },
-        "official": {
-          "type": "boolean",
-          "default": false,
-          "description": "Whether this is an official server by the publisher (maintainer-only field — requires proof of authorization from trademark holder)"
+          "description": "Contributor website or profile URL"
         }
-      }
+      },
+      "description": "Person or org who contributed this server definition to the registry"
     }
   }
 }

@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.filesystem",
+  "name": "Filesystem",
+  "alias": "fs",
+  "description": "Read, write, and manage files and directories on the local filesystem. Provides secure, scoped access to a specified directory.",
+  "icon": "\ud83d\udcc1",
+  "schema_version": "2.1",
+  "categories": ["file-system"],
+  "tags": ["filesystem", "files", "directories", "local", "read", "write"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/filesystem-mcp-server", "/path/to/dir"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Anthropic",
+    "github": "anthropics",
+    "url": "https://anthropic.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://modelcontextprotocol.io/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

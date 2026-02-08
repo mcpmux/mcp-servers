@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.supabase-mcp",
+  "name": "Supabase",
+  "alias": "supabase",
+  "description": "Manage Supabase projects, databases, edge functions, storage, and authentication through the Supabase Management API.",
+  "icon": "\u26a1",
+  "schema_version": "2.1",
+  "categories": ["database", "cloud"],
+  "tags": ["supabase", "postgres", "database", "auth", "storage", "edge-functions", "backend"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@supabase/mcp-server"],
+    "env": {
+      "SUPABASE_ACCESS_TOKEN": "${input:SUPABASE_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SUPABASE_ACCESS_TOKEN",
+          "label": "Supabase Access Token",
+          "description": "Personal access token for the Supabase Management API",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "sbp_...",
+          "obtain": {
+            "url": "https://supabase.com/dashboard/account/tokens",
+            "instructions": "1. Go to the Supabase Dashboard\n2. Navigate to Account > Access Tokens\n3. Click 'Generate new token'\n4. Give it a name and copy the token",
+            "button_label": "Generate Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a personal access token at https://supabase.com/dashboard/account/tokens"
+  },
+
+  "contributor": {
+    "name": "Supabase",
+    "github": "supabase",
+    "url": "https://supabase.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/supabase/mcp-server",
+    "homepage": "https://supabase.com",
+    "documentation": "https://supabase.com/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

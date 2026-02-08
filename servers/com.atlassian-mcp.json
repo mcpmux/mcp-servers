@@ -1,13 +1,13 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
   "id": "com.atlassian-mcp",
-  "name": "Atlassian (Jira & Confluence)",
+  "name": "Atlassian",
   "alias": "atlassian",
-  "description": "Interact with Jira issues and Confluence pages",
-  "icon": "🔷",
+  "description": "Interact with Jira issues, projects, and Confluence pages and spaces through the Atlassian API.",
+  "icon": "\ud83d\udd37",
   "schema_version": "2.1",
   "categories": ["productivity", "developer-tools"],
-  "tags": ["jira", "confluence", "atlassian", "issues", "wiki"],
+  "tags": ["jira", "confluence", "atlassian", "issues", "wiki", "project-management"],
 
   "transport": {
     "type": "http",
@@ -24,11 +24,11 @@
   "contributor": {
     "name": "Atlassian",
     "github": "atlassian",
-    "url": "https://developer.atlassian.com"
+    "url": "https://atlassian.com"
   },
 
   "links": {
-    "homepage": "https://developer.atlassian.com/cloud/mcp",
+    "homepage": "https://atlassian.com",
     "documentation": "https://developer.atlassian.com/cloud/mcp/docs"
   },
 
@@ -36,8 +36,8 @@
 
   "capabilities": {
     "tools": true,
-    "prompts": true,
-    "resources": false,
+    "resources": true,
+    "prompts": false,
     "read_only_mode": false
   }
 }
