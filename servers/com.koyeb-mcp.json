@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.koyeb-mcp",
+  "name": "Koyeb",
+  "alias": "koyeb",
+  "description": "Manage Koyeb serverless applications and services. Deploy apps, manage domains, view logs, and configure autoscaling.",
+  "icon": "https://avatars.githubusercontent.com/u/50234573?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["koyeb", "serverless", "deployment", "hosting", "paas"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@koyeb/mcp-server"],
+    "env": {
+      "KOYEB_TOKEN": "${input:KOYEB_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "KOYEB_TOKEN",
+          "label": "Koyeb API Token",
+          "description": "API token for the Koyeb platform.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.koyeb.com/settings/api",
+            "instructions": "1. Go to app.koyeb.com > Account > API\n2. Click 'Generate API Token'\n3. Copy the generated token",
+            "button_label": "Generate Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API token at https://app.koyeb.com/settings/api"
+  },
+
+  "contributor": {
+    "name": "Koyeb",
+    "github": "koyeb",
+    "url": "https://www.koyeb.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/koyeb/mcp-server-koyeb",
+    "homepage": "https://www.koyeb.com",
+    "documentation": "https://www.koyeb.com/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
