@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.square-mcp-http",
+  "name": "Square (Remote)",
+  "alias": "square-remote",
+  "description": "Interact with Square APIs via the hosted remote MCP server. Connects with OAuth for secure access to payments, orders, and more.",
+  "icon": "https://avatars.githubusercontent.com/u/82592?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "cloud"],
+  "tags": ["square", "payments", "commerce", "orders", "catalog", "pos", "remote"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.squareup.com/sse",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Square OAuth flow to authorize access to your seller account."
+  },
+
+  "contributor": {
+    "name": "Square",
+    "github": "square",
+    "url": "https://squareup.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/square/square-mcp-server",
+    "homepage": "https://squareup.com",
+    "documentation": "https://developer.squareup.com/docs/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
