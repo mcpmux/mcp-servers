@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.todoist-mcp",
+  "name": "Todoist",
+  "alias": "todoist",
+  "description": "Manage Todoist tasks, projects, and labels through Doist's official remote MCP server with OAuth authentication.",
+  "icon": "https://avatars.githubusercontent.com/u/2565372?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity"],
+  "tags": ["todoist", "tasks", "todo", "project-management", "productivity", "doist"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://ai.todoist.net/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted by your MCP client. You will be redirected to Todoist to authorize access via browser."
+  },
+
+  "contributor": {
+    "name": "Doist",
+    "github": "Doist",
+    "url": "https://todoist.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/Doist/todoist-ai",
+    "homepage": "https://todoist.com",
+    "documentation": "https://github.com/Doist/todoist-ai#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
