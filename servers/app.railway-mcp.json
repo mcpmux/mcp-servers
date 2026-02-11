@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "app.railway-mcp",
+  "name": "Railway",
+  "alias": "railway",
+  "description": "Manage Railway projects, services, and deployments. Create services, view logs, manage environment variables, and trigger deployments.",
+  "icon": "https://avatars.githubusercontent.com/u/66716858?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["railway", "deployment", "hosting", "infrastructure", "paas"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@railway/mcp-server"],
+    "env": {
+      "RAILWAY_API_TOKEN": "${input:RAILWAY_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "RAILWAY_API_TOKEN",
+          "label": "Railway API Token",
+          "description": "API token for Railway. Can also authenticate via Railway CLI.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://railway.com/account/tokens",
+            "instructions": "1. Go to railway.com/account/tokens\n2. Click 'Create Token'\n3. Name your token and click 'Create'\n4. Copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide a Railway API token from https://railway.com/account/tokens or authenticate via Railway CLI."
+  },
+
+  "contributor": {
+    "name": "Railway",
+    "github": "railwayapp",
+    "url": "https://railway.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/railwayapp/railway-mcp-server",
+    "homepage": "https://railway.com",
+    "documentation": "https://docs.railway.com/reference/mcp-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
