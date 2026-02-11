@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.figma-mcp",
+  "name": "Figma (Official Remote)",
+  "alias": "figma-remote",
+  "description": "Generate code from Figma designs, extract design context, variables, and components through Figma's official hosted remote MCP server with OAuth authentication.",
+  "icon": "https://avatars.githubusercontent.com/u/5155369?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools"],
+  "tags": ["figma", "design", "ui", "code-generation", "components", "design-system", "remote"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.figma.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted by your MCP client. You will be redirected to Figma to authorize access. Requires a Figma account with Dev or Full seat on Professional/Organization/Enterprise plan for full rate limits."
+  },
+
+  "contributor": {
+    "name": "Figma",
+    "github": "figma",
+    "url": "https://www.figma.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/figma/mcp-server-guide",
+    "homepage": "https://www.figma.com",
+    "documentation": "https://developers.figma.com/docs/figma-mcp-server/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
