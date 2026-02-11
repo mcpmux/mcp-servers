@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.liveblocks-mcp",
+  "name": "Liveblocks",
+  "alias": "liveblocks",
+  "description": "Manage Liveblocks real-time collaboration rooms, threads, comments, and notifications. Configure presence, storage, and permissions.",
+  "icon": "https://avatars.githubusercontent.com/u/76756571?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication", "developer-tools"],
+  "tags": ["liveblocks", "real-time", "collaboration", "comments", "threads", "presence"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@liveblocks/liveblocks-mcp-server"],
+    "env": {
+      "LIVEBLOCKS_SECRET_KEY": "${input:LIVEBLOCKS_SECRET_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "LIVEBLOCKS_SECRET_KEY",
+          "label": "Liveblocks Secret Key",
+          "description": "Secret key for the Liveblocks API.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "sk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://liveblocks.io/dashboard/apikeys",
+            "instructions": "1. Go to liveblocks.io/dashboard > API keys\n2. Copy the Secret key (starts with sk_)",
+            "button_label": "Get Secret Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your secret key from https://liveblocks.io/dashboard/apikeys"
+  },
+
+  "contributor": {
+    "name": "Liveblocks",
+    "github": "liveblocks",
+    "url": "https://liveblocks.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/liveblocks/liveblocks-mcp-server",
+    "homepage": "https://liveblocks.io",
+    "documentation": "https://liveblocks.io/docs/tools/mcp-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
