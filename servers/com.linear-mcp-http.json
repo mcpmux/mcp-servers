@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.linear-mcp-http",
+  "name": "Linear (Remote)",
+  "alias": "linear-remote",
+  "description": "Manage Linear issues, projects, cycles, and teams through the hosted remote MCP server. No local installation required. Connects via OAuth.",
+  "icon": "https://avatars.githubusercontent.com/u/46686594?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity", "developer-tools"],
+  "tags": ["linear", "issues", "project-management", "tasks", "agile", "remote"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.linear.app/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Linear OAuth flow. For hosts without OAuth support, use the local stdio version instead."
+  },
+
+  "contributor": {
+    "name": "Linear",
+    "github": "linear",
+    "url": "https://linear.app"
+  },
+
+  "links": {
+    "repository": "https://github.com/linear/linear",
+    "homepage": "https://linear.app",
+    "documentation": "https://linear.app/docs/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
