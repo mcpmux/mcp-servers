@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.intercom-mcp",
+  "name": "Intercom",
+  "alias": "intercom",
+  "description": "Manage Intercom conversations, contacts, articles, and tickets through the hosted remote MCP server. Search help center content and manage customer data.",
+  "icon": "https://avatars.githubusercontent.com/u/6585?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication", "productivity"],
+  "tags": ["intercom", "customer-support", "messaging", "help-center", "tickets"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.intercom.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Intercom OAuth flow to authorize access to your workspace."
+  },
+
+  "contributor": {
+    "name": "Intercom",
+    "github": "intercom",
+    "url": "https://www.intercom.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/intercom/intercom-mcp-server",
+    "homepage": "https://www.intercom.com",
+    "documentation": "https://developers.intercom.com/docs/guides/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
