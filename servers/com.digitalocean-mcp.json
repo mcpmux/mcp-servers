@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.digitalocean-mcp",
+  "name": "DigitalOcean",
+  "alias": "digitalocean",
+  "description": "Manage DigitalOcean infrastructure including Droplets, App Platform, databases, Kubernetes clusters, networking, and Spaces object storage.",
+  "icon": "https://avatars.githubusercontent.com/u/4650108?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["digitalocean", "cloud", "droplets", "kubernetes", "databases", "hosting", "infrastructure"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@digitalocean/mcp"],
+    "env": {
+      "DIGITALOCEAN_API_TOKEN": "${input:DIGITALOCEAN_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DIGITALOCEAN_API_TOKEN",
+          "label": "DigitalOcean API Token",
+          "description": "Personal access token for the DigitalOcean API.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "dop_v1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://cloud.digitalocean.com/account/api/tokens",
+            "instructions": "1. Go to cloud.digitalocean.com > API\n2. Click 'Generate New Token'\n3. Name the token and select scopes\n4. Copy the generated token",
+            "button_label": "Generate Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a personal access token at https://cloud.digitalocean.com/account/api/tokens"
+  },
+
+  "contributor": {
+    "name": "DigitalOcean",
+    "github": "digitalocean",
+    "url": "https://www.digitalocean.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/digitalocean-labs/mcp-digitalocean",
+    "homepage": "https://www.digitalocean.com",
+    "documentation": "https://docs.digitalocean.com/products/app-platform/how-to/use-mcp/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
