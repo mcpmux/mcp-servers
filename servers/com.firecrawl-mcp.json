@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.firecrawl-mcp",
+  "name": "Firecrawl",
+  "alias": "firecrawl",
+  "description": "Scrape, crawl, search, and extract structured data from websites. Converts web pages to clean markdown with JavaScript rendering support.",
+  "icon": "https://avatars.githubusercontent.com/u/135057108?v=4",
+  "schema_version": "2.1",
+  "categories": ["search", "developer-tools"],
+  "tags": ["firecrawl", "web-scraping", "crawling", "markdown", "extraction", "search"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "firecrawl-mcp"],
+    "env": {
+      "FIRECRAWL_API_KEY": "${input:FIRECRAWL_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "FIRECRAWL_API_KEY",
+          "label": "Firecrawl API Key",
+          "description": "API key for the Firecrawl web scraping API. Free tier includes 500 credits.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "fc-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://www.firecrawl.dev/app/api-keys",
+            "instructions": "1. Go to firecrawl.dev and create an account\n2. Navigate to the API Keys page\n3. Click 'Create API Key'\n4. Copy the generated key (starts with fc-)",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a Firecrawl API key at https://www.firecrawl.dev/app/api-keys"
+  },
+
+  "contributor": {
+    "name": "Firecrawl",
+    "github": "firecrawl",
+    "url": "https://www.firecrawl.dev"
+  },
+
+  "links": {
+    "repository": "https://github.com/firecrawl/firecrawl-mcp-server",
+    "homepage": "https://www.firecrawl.dev",
+    "documentation": "https://docs.firecrawl.dev/mcp-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
