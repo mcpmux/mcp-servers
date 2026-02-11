@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.stytch-mcp",
+  "name": "Stytch",
+  "alias": "stytch",
+  "description": "Manage Stytch authentication projects through the hosted remote MCP server. Configure auth methods, manage users, and set up SSO.",
+  "icon": "https://avatars.githubusercontent.com/u/69983493?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools"],
+  "tags": ["stytch", "authentication", "sso", "identity", "users", "auth"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.stytch.dev/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth 2.1. Your MCP host will initiate the Stytch OAuth flow to authorize access."
+  },
+
+  "contributor": {
+    "name": "Stytch",
+    "github": "stytchauth",
+    "url": "https://stytch.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/stytchauth",
+    "homepage": "https://stytch.com",
+    "documentation": "https://stytch.com/docs/workspace-management/stytch-mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
