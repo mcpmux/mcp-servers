@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.netlify-mcp",
+  "name": "Netlify",
+  "alias": "netlify",
+  "description": "Deploy sites, manage DNS, check build status, and configure Netlify projects. Supports site creation, environment variables, and serverless functions.",
+  "icon": "https://avatars.githubusercontent.com/u/7892489?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["netlify", "deployment", "hosting", "ci-cd", "serverless", "jamstack"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@netlify/mcp"],
+    "env": {
+      "NETLIFY_PERSONAL_ACCESS_TOKEN": "${input:NETLIFY_PERSONAL_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NETLIFY_PERSONAL_ACCESS_TOKEN",
+          "label": "Netlify Personal Access Token",
+          "description": "Personal access token for the Netlify API. Optional if using browser-based auth.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "nfp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.netlify.com/user/applications#personal-access-tokens",
+            "instructions": "1. Go to app.netlify.com > User Settings > Applications\n2. Scroll to Personal Access Tokens\n3. Click 'New access token'\n4. Name your token and click 'Generate token'\n5. Copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Optionally provide a Personal Access Token from https://app.netlify.com/user/applications. Without one, browser-based auth may be used."
+  },
+
+  "contributor": {
+    "name": "Netlify",
+    "github": "netlify",
+    "url": "https://www.netlify.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/netlify/netlify-mcp",
+    "homepage": "https://www.netlify.com",
+    "documentation": "https://docs.netlify.com"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
