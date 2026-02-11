@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.render-mcp",
+  "name": "Render",
+  "alias": "render",
+  "description": "Manage Render services, deployments, and databases. Create and update web services, view logs, manage environment groups, and trigger deploys.",
+  "icon": "https://avatars.githubusercontent.com/u/114033652?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["render", "deployment", "hosting", "infrastructure", "paas", "databases"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "-e", "RENDER_API_KEY", "ghcr.io/render-oss/render-mcp-server"],
+    "env": {
+      "RENDER_API_KEY": "${input:RENDER_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "RENDER_API_KEY",
+          "label": "Render API Key",
+          "description": "API key for the Render platform.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "rnd_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://dashboard.render.com/settings#api-key",
+            "instructions": "1. Go to dashboard.render.com > Account Settings\n2. Scroll to API Keys section\n3. Click 'Create API Key'\n4. Copy the key",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key at https://dashboard.render.com/settings#api-key"
+  },
+
+  "contributor": {
+    "name": "Render",
+    "github": "render-oss",
+    "url": "https://render.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/render-oss/render-mcp-server",
+    "homepage": "https://render.com",
+    "documentation": "https://render.com/docs/mcp-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
