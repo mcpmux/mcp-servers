@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.e2b-mcp",
+  "name": "E2B Code Sandbox",
+  "alias": "e2b",
+  "description": "Execute Python and JavaScript code in secure cloud sandboxes. Create files, install packages, and manage sandbox environments.",
+  "icon": "https://avatars.githubusercontent.com/u/129434473?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "cloud"],
+  "tags": ["e2b", "sandbox", "code-execution", "python", "javascript", "cloud"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@e2b/mcp-server"],
+    "env": {
+      "E2B_API_KEY": "${input:E2B_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "E2B_API_KEY",
+          "label": "E2B API Key",
+          "description": "API key for the E2B sandbox service.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "e2b_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://e2b.dev/",
+            "instructions": "1. Go to e2b.dev and sign up\n2. Open your dashboard\n3. Copy your API key from the dashboard",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get an E2B API key at https://e2b.dev/"
+  },
+
+  "contributor": {
+    "name": "E2B",
+    "github": "e2b-dev",
+    "url": "https://e2b.dev"
+  },
+
+  "links": {
+    "repository": "https://github.com/e2b-dev/mcp-server",
+    "homepage": "https://e2b.dev",
+    "documentation": "https://e2b.dev/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
