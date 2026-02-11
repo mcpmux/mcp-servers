@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.mapbox-mcp",
+  "name": "Mapbox",
+  "alias": "mapbox",
+  "description": "Search for places, geocode addresses, get directions, and generate map visualizations using the Mapbox APIs.",
+  "icon": "https://avatars.githubusercontent.com/u/600935?v=4",
+  "schema_version": "2.1",
+  "categories": ["search"],
+  "tags": ["mapbox", "maps", "geocoding", "directions", "places", "navigation", "location"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@mapbox/mcp-server"],
+    "env": {
+      "MAPBOX_ACCESS_TOKEN": "${input:MAPBOX_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MAPBOX_ACCESS_TOKEN",
+          "label": "Mapbox Access Token",
+          "description": "Access token for the Mapbox API.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "pk.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://account.mapbox.com/access-tokens/",
+            "instructions": "1. Go to account.mapbox.com/access-tokens\n2. Click 'Create a token'\n3. Configure scopes and copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an access token at https://account.mapbox.com/access-tokens/"
+  },
+
+  "contributor": {
+    "name": "Mapbox",
+    "github": "mapbox",
+    "url": "https://www.mapbox.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/mapbox/mcp-server",
+    "homepage": "https://www.mapbox.com",
+    "documentation": "https://docs.mapbox.com/api/guides/mcp-server/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
