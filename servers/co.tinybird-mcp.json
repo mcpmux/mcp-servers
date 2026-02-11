@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.tinybird-mcp",
+  "name": "Tinybird",
+  "alias": "tinybird",
+  "description": "Query and manage Tinybird analytics data sources and endpoints. Run SQL queries, explore schemas, and publish API endpoints.",
+  "icon": "https://avatars.githubusercontent.com/u/53208553?v=4",
+  "schema_version": "2.1",
+  "categories": ["database", "monitoring"],
+  "tags": ["tinybird", "analytics", "sql", "real-time", "data-pipelines", "clickhouse"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-tinybird", "stdio"],
+    "env": {
+      "TB_API_URL": "${input:TB_API_URL}",
+      "TB_ADMIN_TOKEN": "${input:TB_ADMIN_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TB_API_URL",
+          "label": "Tinybird API URL",
+          "description": "Your Tinybird workspace API URL.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://api.us-east.tinybird.co",
+          "obtain": {
+            "url": "https://www.tinybird.co/docs/api-reference/overview",
+            "instructions": "1. Go to your Tinybird workspace\n2. Find your region-specific API URL (e.g., https://api.us-east.tinybird.co)\n3. Copy the URL",
+            "button_label": "Get API URL"
+          }
+        },
+        {
+          "id": "TB_ADMIN_TOKEN",
+          "label": "Tinybird Admin Token",
+          "description": "Admin token for your Tinybird workspace.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "p.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.tinybird.co/tokens",
+            "instructions": "1. Go to app.tinybird.co > Tokens\n2. Copy your admin token or create a new one\n3. The token starts with p.",
+            "button_label": "Get Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API URL and admin token from your Tinybird workspace at https://app.tinybird.co"
+  },
+
+  "contributor": {
+    "name": "Tinybird",
+    "github": "tinybirdco",
+    "url": "https://www.tinybird.co"
+  },
+
+  "links": {
+    "repository": "https://github.com/tinybirdco/mcp-tinybird",
+    "homepage": "https://www.tinybird.co",
+    "documentation": "https://www.tinybird.co/docs/forward/analytics-agents/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
