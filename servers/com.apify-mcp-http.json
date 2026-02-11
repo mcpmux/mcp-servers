@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.apify-mcp-http",
+  "name": "Apify (Remote)",
+  "alias": "apify-remote",
+  "description": "Run web scraping actors and access datasets on the Apify platform through the hosted remote MCP server. No local installation required.",
+  "icon": "https://avatars.githubusercontent.com/u/24586296?v=4",
+  "schema_version": "2.1",
+  "categories": ["search", "developer-tools"],
+  "tags": ["apify", "web-scraping", "actors", "crawling", "datasets", "automation", "remote"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.apify.com/",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Apify OAuth flow. Alternatively, pass a Bearer token via the Authorization header."
+  },
+
+  "contributor": {
+    "name": "Apify",
+    "github": "apify",
+    "url": "https://apify.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/apify/apify-mcp-server",
+    "homepage": "https://apify.com",
+    "documentation": "https://docs.apify.com/platform/integrations/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
