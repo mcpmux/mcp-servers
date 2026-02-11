@@ -1,0 +1,61 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.twilio-mcp",
+  "name": "Twilio",
+  "alias": "twilio",
+  "description": "Access Twilio's communication APIs including SMS, Voice, Video, and more through the official Twilio Alpha MCP server covering 1,400+ API endpoints.",
+  "icon": "https://avatars.githubusercontent.com/u/109142?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication", "cloud"],
+  "tags": ["twilio", "sms", "voice", "messaging", "communication", "api", "telephony"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@twilio-alpha/mcp", "${input:TWILIO_CREDENTIALS}"],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TWILIO_CREDENTIALS",
+          "label": "Twilio Credentials",
+          "description": "Twilio credentials in the format ACCOUNT_SID/API_KEY:API_SECRET. Requires your Account SID, an API Key, and its corresponding API Secret.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/SKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://www.twilio.com/console/project/api-keys",
+            "instructions": "1. Go to the Twilio Console\n2. Copy your Account SID from the dashboard\n3. Navigate to Account > API keys & tokens\n4. Click 'Create API key'\n5. Copy the SID and Secret\n6. Combine as: ACCOUNT_SID/API_KEY_SID:API_SECRET",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key at https://www.twilio.com/console/project/api-keys and combine with your Account SID as ACCOUNT_SID/API_KEY:API_SECRET"
+  },
+
+  "contributor": {
+    "name": "Twilio",
+    "github": "twilio-labs",
+    "url": "https://www.twilio.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/twilio-labs/mcp",
+    "homepage": "https://www.twilio.com",
+    "documentation": "https://github.com/twilio-labs/mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
