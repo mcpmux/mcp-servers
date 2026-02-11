@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.memory",
+  "name": "Memory",
+  "alias": "memory",
+  "description": "Persistent memory using a local knowledge graph. Store entities, relations, and observations that persist across conversations.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml"],
+  "tags": ["memory", "knowledge-graph", "entities", "persistence", "context"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-memory"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Memory is stored locally in a JSON file."
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
