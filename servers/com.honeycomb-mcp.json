@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.honeycomb-mcp",
+  "name": "Honeycomb",
+  "alias": "honeycomb",
+  "description": "Query and analyze observability data in Honeycomb. Run queries, manage datasets, analyze traces, and create SLOs.",
+  "icon": "https://avatars.githubusercontent.com/u/15988027?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools"],
+  "tags": ["honeycomb", "observability", "traces", "monitoring", "apm", "slo"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "honeycomb-mcp"],
+    "env": {
+      "HONEYCOMB_API_KEY": "${input:HONEYCOMB_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HONEYCOMB_API_KEY",
+          "label": "Honeycomb API Key",
+          "description": "API key for the Honeycomb platform.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://ui.honeycomb.io/account",
+            "instructions": "1. Go to ui.honeycomb.io > Account\n2. Navigate to API Keys\n3. Create or copy an existing key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API key from https://ui.honeycomb.io/account"
+  },
+
+  "contributor": {
+    "name": "Honeycomb",
+    "github": "honeycombio",
+    "url": "https://www.honeycomb.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/honeycombio/honeycomb-mcp",
+    "homepage": "https://www.honeycomb.io",
+    "documentation": "https://docs.honeycomb.io/integrations/mcp/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
