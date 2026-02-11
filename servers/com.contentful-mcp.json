@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.contentful-mcp",
+  "name": "Contentful",
+  "alias": "contentful",
+  "description": "Manage Contentful spaces, content types, entries, and assets. Create and update structured content through the Content Management API.",
+  "icon": "https://avatars.githubusercontent.com/u/472182?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "productivity"],
+  "tags": ["contentful", "cms", "headless-cms", "content", "api"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@contentful/mcp-server"],
+    "env": {
+      "CONTENTFUL_MANAGEMENT_ACCESS_TOKEN": "${input:CONTENTFUL_MANAGEMENT_ACCESS_TOKEN}",
+      "SPACE_ID": "${input:SPACE_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CONTENTFUL_MANAGEMENT_ACCESS_TOKEN",
+          "label": "Contentful Management Token",
+          "description": "Content Management API token for your Contentful space.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "CFPAT-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.contentful.com/account/profile/cma_tokens",
+            "instructions": "1. Go to app.contentful.com > Settings > CMA Tokens\n2. Click 'Generate personal token'\n3. Name your token and click 'Generate'\n4. Copy the token (starts with CFPAT-)",
+            "button_label": "Generate Token"
+          }
+        },
+        {
+          "id": "SPACE_ID",
+          "label": "Contentful Space ID",
+          "description": "The ID of the Contentful space to work with.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.contentful.com/",
+            "instructions": "1. Go to app.contentful.com\n2. Open your space\n3. Go to Settings > General settings\n4. Copy the Space ID",
+            "button_label": "Get Space ID"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a CMA token at https://app.contentful.com/account/profile/cma_tokens"
+  },
+
+  "contributor": {
+    "name": "Contentful",
+    "github": "contentful",
+    "url": "https://www.contentful.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/contentful/contentful-mcp-server",
+    "homepage": "https://www.contentful.com",
+    "documentation": "https://www.contentful.com/developers/docs/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
