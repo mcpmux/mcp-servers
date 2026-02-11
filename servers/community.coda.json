@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.coda",
+  "name": "Coda",
+  "alias": "coda",
+  "description": "Manage Coda docs, pages, tables, and rows. List documents, read and write table data, and create new pages.",
+  "icon": "https://avatars.githubusercontent.com/u/32670283?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity", "database"],
+  "tags": ["coda", "docs", "tables", "spreadsheet", "collaboration"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "coda-mcp@latest"],
+    "env": {
+      "API_KEY": "${input:API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "API_KEY",
+          "label": "Coda API Key",
+          "description": "API token for the Coda platform.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://coda.io/account",
+            "instructions": "1. Go to coda.io/account\n2. Scroll to 'API settings'\n3. Click 'Generate API token'\n4. Copy the token",
+            "button_label": "Generate Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API token at https://coda.io/account"
+  },
+
+  "contributor": {
+    "name": "orellazri",
+    "github": "orellazri",
+    "url": "https://github.com/orellazri"
+  },
+
+  "links": {
+    "repository": "https://github.com/orellazri/coda-mcp",
+    "homepage": "https://coda.io",
+    "documentation": "https://github.com/orellazri/coda-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
