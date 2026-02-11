@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.prisma-mcp",
+  "name": "Prisma",
+  "alias": "prisma",
+  "description": "Manage Prisma databases with migrations, schema introspection, and Prisma Studio. Create Prisma Postgres databases and check migration status.",
+  "icon": "https://avatars.githubusercontent.com/u/17219288?v=4",
+  "schema_version": "2.1",
+  "categories": ["database", "developer-tools"],
+  "tags": ["prisma", "database", "orm", "migrations", "postgres", "schema"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "prisma", "mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "No API key required for local use. The server reads database credentials from your project's .env file. Some tools may prompt for Prisma CLI login."
+  },
+
+  "contributor": {
+    "name": "Prisma",
+    "github": "prisma",
+    "url": "https://www.prisma.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/prisma/mcp",
+    "homepage": "https://www.prisma.io",
+    "documentation": "https://www.prisma.io/docs/postgres/integrations/mcp-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
