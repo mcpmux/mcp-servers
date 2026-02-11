@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.notion-mcp-http",
+  "name": "Notion (Remote)",
+  "alias": "notion-remote",
+  "description": "Read and write Notion pages, databases, and blocks through the hosted remote MCP server. No local installation required. Connects via OAuth.",
+  "icon": "https://avatars.githubusercontent.com/u/4792552?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity", "documentation"],
+  "tags": ["notion", "notes", "wiki", "database", "pages", "blocks", "remote"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.notion.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Notion OAuth flow. For hosts without OAuth support, use the local stdio version instead."
+  },
+
+  "contributor": {
+    "name": "Notion",
+    "github": "makenotion",
+    "url": "https://notion.so"
+  },
+
+  "links": {
+    "repository": "https://github.com/makenotion/notion-mcp-server",
+    "homepage": "https://notion.so",
+    "documentation": "https://developers.notion.com/docs/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/makenotion/notion-mcp-server/releases"
+}
