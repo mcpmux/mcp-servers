@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.upstash-context7",
+  "name": "Context7",
+  "alias": "context7",
+  "description": "Fetch up-to-date, version-specific documentation and code examples for libraries and frameworks directly into your prompt. Powered by Upstash.",
+  "icon": "https://avatars.githubusercontent.com/u/74989412?v=4",
+  "schema_version": "2.1",
+  "categories": ["documentation", "search"],
+  "tags": ["context7", "documentation", "docs", "code-examples", "libraries", "upstash", "reference"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@upstash/context7-mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Upstash",
+    "github": "upstash",
+    "url": "https://upstash.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/upstash/context7",
+    "homepage": "https://context7.com",
+    "documentation": "https://github.com/upstash/context7#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
