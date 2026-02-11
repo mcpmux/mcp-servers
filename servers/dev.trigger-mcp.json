@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.trigger-mcp",
+  "name": "Trigger.dev",
+  "alias": "trigger",
+  "description": "Manage Trigger.dev background jobs and workflows. List tasks, trigger runs, monitor execution, and deploy projects to different environments.",
+  "icon": "https://avatars.githubusercontent.com/u/95297378?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "cloud"],
+  "tags": ["trigger", "background-jobs", "workflows", "tasks", "deployment", "automation"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "trigger.dev@latest", "mcp"],
+    "env": {
+      "TRIGGER_SECRET_KEY": "${input:TRIGGER_SECRET_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TRIGGER_SECRET_KEY",
+          "label": "Trigger.dev Secret Key",
+          "description": "Secret key for your Trigger.dev project. Optional if using CLI login instead.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "tr_dev_xxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://cloud.trigger.dev/",
+            "instructions": "1. Log in to cloud.trigger.dev\n2. Open your project\n3. Go to the API keys page\n4. Copy your secret key (starts with tr_dev_ or tr_prod_)",
+            "button_label": "Get Secret Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Authenticate via Trigger.dev CLI login or provide a TRIGGER_SECRET_KEY. The search_docs tool works without authentication."
+  },
+
+  "contributor": {
+    "name": "Trigger.dev",
+    "github": "triggerdotdev",
+    "url": "https://trigger.dev"
+  },
+
+  "links": {
+    "repository": "https://github.com/triggerdotdev/trigger.dev",
+    "homepage": "https://trigger.dev",
+    "documentation": "https://trigger.dev/docs/mcp-introduction"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
