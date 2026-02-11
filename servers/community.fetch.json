@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.fetch",
+  "name": "Fetch",
+  "alias": "fetch",
+  "description": "Fetch web content and convert it to markdown. Retrieve web pages, extract text content, and access robots.txt files for any URL.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["search"],
+  "tags": ["fetch", "web", "scraping", "markdown", "http", "url"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-server-fetch"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Fetches public web content."
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
