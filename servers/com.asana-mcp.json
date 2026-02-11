@@ -1,0 +1,44 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.asana-mcp",
+  "name": "Asana",
+  "alias": "asana",
+  "description": "Manage Asana tasks, projects, workspaces, and comments. Create and update tasks, search projects, manage dependencies and subtasks.",
+  "icon": "https://avatars.githubusercontent.com/u/1472111?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity"],
+  "tags": ["asana", "tasks", "project-management", "productivity", "collaboration"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.asana.com/sse",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth 2.0. Your MCP host will initiate the Asana OAuth flow to authorize access to your workspace."
+  },
+
+  "contributor": {
+    "name": "Asana",
+    "github": "Asana",
+    "url": "https://asana.com"
+  },
+
+  "links": {
+    "homepage": "https://asana.com",
+    "documentation": "https://developers.asana.com"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
