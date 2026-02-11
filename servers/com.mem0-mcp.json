@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.mem0-mcp",
+  "name": "Mem0",
+  "alias": "mem0",
+  "description": "Add persistent long-term memory to AI agents. Store, search, update, and delete memories across sessions using the official Mem0 Memory API.",
+  "icon": "https://avatars.githubusercontent.com/u/137054526?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml"],
+  "tags": ["mem0", "memory", "long-term-memory", "ai-agents", "personalization", "context"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@mem0/mcp"],
+    "env": {
+      "MEM0_API_KEY": "${input:MEM0_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MEM0_API_KEY",
+          "label": "Mem0 API Key",
+          "description": "API key for the Mem0 Memory API. Required to store and retrieve memories.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "m0-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.mem0.ai/dashboard/api-keys",
+            "instructions": "1. Go to app.mem0.ai and create an account\n2. Navigate to the API Keys page\n3. Click 'Create New API Key'\n4. Copy the generated key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a Mem0 API key at https://app.mem0.ai/dashboard/api-keys"
+  },
+
+  "contributor": {
+    "name": "Mem0",
+    "github": "mem0ai",
+    "url": "https://mem0.ai"
+  },
+
+  "links": {
+    "repository": "https://github.com/mem0ai/mem0-mcp",
+    "homepage": "https://mem0.ai",
+    "documentation": "https://docs.mem0.ai/platform/mem0-mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
