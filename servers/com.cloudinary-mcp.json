@@ -1,0 +1,94 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cloudinary-mcp",
+  "name": "Cloudinary",
+  "alias": "cloudinary",
+  "description": "Upload, search, transform, and manage media assets in Cloudinary. Supports images and videos with powerful transformation capabilities.",
+  "icon": "https://avatars.githubusercontent.com/u/1460763?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["cloudinary", "media", "images", "video", "upload", "cdn", "transformation"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "--package", "@cloudinary/asset-management-mcp", "--", "mcp", "start"],
+    "env": {
+      "CLOUDINARY_CLOUD_NAME": "${input:CLOUDINARY_CLOUD_NAME}",
+      "CLOUDINARY_API_KEY": "${input:CLOUDINARY_API_KEY}",
+      "CLOUDINARY_API_SECRET": "${input:CLOUDINARY_API_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CLOUDINARY_CLOUD_NAME",
+          "label": "Cloudinary Cloud Name",
+          "description": "Your Cloudinary cloud name, found in the dashboard.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "my-cloud-name",
+          "obtain": {
+            "url": "https://console.cloudinary.com/settings/api-keys",
+            "instructions": "1. Log in to console.cloudinary.com\n2. Go to Settings > API Keys\n3. Copy your Cloud Name",
+            "button_label": "Get Cloud Name"
+          }
+        },
+        {
+          "id": "CLOUDINARY_API_KEY",
+          "label": "Cloudinary API Key",
+          "description": "API key for the Cloudinary API.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "123456789012345",
+          "obtain": {
+            "url": "https://console.cloudinary.com/settings/api-keys",
+            "instructions": "1. Log in to console.cloudinary.com\n2. Go to Settings > API Keys\n3. Copy your API Key",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "CLOUDINARY_API_SECRET",
+          "label": "Cloudinary API Secret",
+          "description": "API secret for the Cloudinary API. Keep this private.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://console.cloudinary.com/settings/api-keys",
+            "instructions": "1. Log in to console.cloudinary.com\n2. Go to Settings > API Keys\n3. Click the eye icon to reveal and copy your API Secret",
+            "button_label": "Get API Secret"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your Cloud Name, API Key, and API Secret from https://console.cloudinary.com/settings/api-keys"
+  },
+
+  "contributor": {
+    "name": "Cloudinary",
+    "github": "cloudinary",
+    "url": "https://cloudinary.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/cloudinary/mcp-servers",
+    "homepage": "https://cloudinary.com",
+    "documentation": "https://cloudinary.com/documentation/cloudinary_llm_mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
