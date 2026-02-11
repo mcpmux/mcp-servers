@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.sanity-mcp",
+  "name": "Sanity",
+  "alias": "sanity",
+  "description": "Manage Sanity CMS content, schemas, and datasets. Query documents with GROQ, create and update content through the hosted MCP server.",
+  "icon": "https://avatars.githubusercontent.com/u/17177659?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "productivity"],
+  "tags": ["sanity", "cms", "headless-cms", "content", "groq"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.sanity.io",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Sanity OAuth flow to authorize access to your project."
+  },
+
+  "contributor": {
+    "name": "Sanity",
+    "github": "sanity-io",
+    "url": "https://www.sanity.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/sanity-io/sanity-mcp-server",
+    "homepage": "https://www.sanity.io",
+    "documentation": "https://www.sanity.io/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
