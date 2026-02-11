@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.browserbase-mcp",
+  "name": "Browserbase",
+  "alias": "browserbase",
+  "description": "Cloud browser automation using Browserbase and Stagehand. Navigate, click, extract data, and take screenshots in cloud-hosted browsers.",
+  "icon": "https://avatars.githubusercontent.com/u/158221360?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "cloud"],
+  "tags": ["browserbase", "browser", "automation", "stagehand", "scraping", "testing"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@browserbasehq/mcp-server-browserbase"],
+    "env": {
+      "BROWSERBASE_API_KEY": "${input:BROWSERBASE_API_KEY}",
+      "BROWSERBASE_PROJECT_ID": "${input:BROWSERBASE_PROJECT_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BROWSERBASE_API_KEY",
+          "label": "Browserbase API Key",
+          "description": "API key for your Browserbase account.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "bb_live_xxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://www.browserbase.com/",
+            "instructions": "1. Go to browserbase.com and create an account\n2. Navigate to Settings in the dashboard\n3. Copy your API key",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "BROWSERBASE_PROJECT_ID",
+          "label": "Browserbase Project ID",
+          "description": "Your Browserbase project ID, found in the dashboard.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://www.browserbase.com/",
+            "instructions": "1. Log in to browserbase.com\n2. Open your project in the dashboard\n3. Copy the Project ID from the project settings",
+            "button_label": "Get Project ID"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API key and Project ID at https://www.browserbase.com/"
+  },
+
+  "contributor": {
+    "name": "Browserbase",
+    "github": "browserbase",
+    "url": "https://www.browserbase.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/browserbase/mcp-server-browserbase",
+    "homepage": "https://www.browserbase.com",
+    "documentation": "https://docs.browserbase.com/integrations/mcp/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
