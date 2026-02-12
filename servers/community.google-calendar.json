@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.google-calendar",
+  "name": "Google Calendar",
+  "alias": "gcal",
+  "description": "Manage Google Calendar events, check availability, and schedule meetings. List calendars, create/update/delete events, and check free/busy status.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity"],
+  "tags": ["google", "calendar", "scheduling", "events", "meetings", "productivity"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@cocal/google-calendar-mcp"],
+    "env": {
+      "GOOGLE_OAUTH_CREDENTIALS": "${input:GOOGLE_OAUTH_CREDENTIALS}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GOOGLE_OAUTH_CREDENTIALS",
+          "label": "OAuth Credentials Path",
+          "description": "Path to your Google OAuth credentials JSON file (Desktop app type).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "/path/to/gcp-oauth.keys.json",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. Create a Google Cloud project\n2. Enable the Google Calendar API\n3. Create OAuth 2.0 credentials (Desktop app type)\n4. Download the JSON key file\n5. Run 'npx @cocal/google-calendar-mcp auth' to authenticate",
+            "button_label": "Create Credentials"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Set up OAuth 2.0 credentials from Google Cloud Console with Calendar scope. Run 'npx @cocal/google-calendar-mcp auth' for first-time setup."
+  },
+
+  "contributor": {
+    "name": "nspady",
+    "github": "nspady",
+    "url": "https://github.com/nspady"
+  },
+
+  "links": {
+    "repository": "https://github.com/nspady/google-calendar-mcp",
+    "homepage": "https://calendar.google.com",
+    "documentation": "https://github.com/nspady/google-calendar-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

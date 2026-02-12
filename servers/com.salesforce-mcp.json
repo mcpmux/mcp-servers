@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.salesforce-mcp",
+  "name": "Salesforce DX",
+  "alias": "salesforce",
+  "description": "Interact with Salesforce orgs through the official Salesforce DX MCP server. Execute Apex, run SOQL queries, manage metadata, deploy code, and run tests.",
+  "icon": "https://avatars.githubusercontent.com/u/60192002?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["salesforce", "crm", "apex", "soql", "metadata", "devops", "dx"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@salesforce/mcp", "--orgs", "DEFAULT_TARGET_ORG", "--toolsets", "all"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "Uses locally authorized Salesforce orgs via the Salesforce CLI. Run 'sf org login web' to authenticate first."
+  },
+
+  "contributor": {
+    "name": "Salesforce CLI",
+    "github": "salesforcecli",
+    "url": "https://developer.salesforce.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/salesforcecli/mcp",
+    "homepage": "https://developer.salesforce.com",
+    "documentation": "https://github.com/salesforcecli/mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

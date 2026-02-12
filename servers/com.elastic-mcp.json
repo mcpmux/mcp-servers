@@ -1,0 +1,80 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.elastic-mcp",
+  "name": "Elasticsearch",
+  "alias": "elasticsearch",
+  "description": "Query Elasticsearch clusters through the official Elastic MCP server. List indices, get mappings, execute search queries with DSL, and run ES|QL queries.",
+  "icon": "https://avatars.githubusercontent.com/u/6764390?v=4",
+  "schema_version": "2.1",
+  "categories": ["database", "search"],
+  "tags": ["elasticsearch", "elastic", "search", "indexing", "esql", "analytics"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "ES_URL",
+      "-e", "ES_API_KEY",
+      "docker.elastic.co/mcp/elasticsearch",
+      "stdio"
+    ],
+    "env": {
+      "ES_URL": "${input:ES_URL}",
+      "ES_API_KEY": "${input:ES_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ES_URL",
+          "label": "Elasticsearch URL",
+          "description": "Elasticsearch cluster URL.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://my-cluster.es.us-central1.gcp.cloud.es.io:443"
+        },
+        {
+          "id": "ES_API_KEY",
+          "label": "Elasticsearch API Key",
+          "description": "API key for Elasticsearch authentication.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-elasticsearch-api-key",
+          "obtain": {
+            "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html",
+            "instructions": "1. Go to Kibana > Stack Management > API Keys\n2. Click 'Create API key'\n3. Set appropriate permissions\n4. Copy the encoded API key",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key from Kibana > Stack Management > API Keys or via the Elasticsearch REST API."
+  },
+
+  "contributor": {
+    "name": "Elastic",
+    "github": "elastic",
+    "url": "https://www.elastic.co"
+  },
+
+  "links": {
+    "repository": "https://github.com/elastic/mcp-server-elasticsearch",
+    "homepage": "https://www.elastic.co/elasticsearch",
+    "documentation": "https://github.com/elastic/mcp-server-elasticsearch#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.turso",
+  "name": "Turso",
+  "alias": "turso",
+  "description": "Interact with Turso-hosted LibSQL databases. List tables, inspect schemas, describe columns, and execute SELECT queries against your Turso database.",
+  "icon": "https://avatars.githubusercontent.com/u/139391156?v=4",
+  "schema_version": "2.1",
+  "categories": ["database"],
+  "tags": ["turso", "libsql", "sqlite", "database", "sql", "edge-database"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "mcp-turso"],
+    "env": {
+      "TURSO_DATABASE_URL": "${input:TURSO_DATABASE_URL}",
+      "TURSO_AUTH_TOKEN": "${input:TURSO_AUTH_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TURSO_DATABASE_URL",
+          "label": "Turso Database URL",
+          "description": "Turso database connection URL. Get it via 'turso db show --url <database>'.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "libsql://your-database-your-org.turso.io",
+          "obtain": {
+            "url": "https://turso.tech/app",
+            "instructions": "1. Go to Turso Dashboard\n2. Select your database\n3. Copy the database URL\n4. Or run: turso db show --url <database-name>",
+            "button_label": "Open Dashboard"
+          }
+        },
+        {
+          "id": "TURSO_AUTH_TOKEN",
+          "label": "Turso Auth Token",
+          "description": "Authentication token for Turso database access. Generate via 'turso db tokens create <database>'.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9..."
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a database token with 'turso db tokens create <database-name>' or from the Turso Dashboard."
+  },
+
+  "contributor": {
+    "name": "Turso Database",
+    "github": "tursodatabase",
+    "url": "https://turso.tech"
+  },
+
+  "links": {
+    "repository": "https://github.com/nbbaier/mcp-turso",
+    "homepage": "https://turso.tech",
+    "documentation": "https://github.com/nbbaier/mcp-turso#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

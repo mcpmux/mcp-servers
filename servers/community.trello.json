@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.trello",
+  "name": "Trello",
+  "alias": "trello",
+  "description": "Manage Trello boards, lists, and cards. Create and update cards, manage comments, checklists, attachments, and extract comprehensive card data.",
+  "icon": "https://avatars.githubusercontent.com/u/2688942?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity"],
+  "tags": ["trello", "kanban", "boards", "cards", "project-management", "tasks"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@delorenj/mcp-server-trello"],
+    "env": {
+      "TRELLO_API_KEY": "${input:TRELLO_API_KEY}",
+      "TRELLO_TOKEN": "${input:TRELLO_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TRELLO_API_KEY",
+          "label": "Trello API Key",
+          "description": "Your Trello API key for authentication.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://trello.com/app-key",
+            "instructions": "1. Go to https://trello.com/app-key\n2. Log in to your Trello account\n3. Copy the API Key shown on the page",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "TRELLO_TOKEN",
+          "label": "Trello Token",
+          "description": "Trello authorization token granting access to your boards.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API key from https://trello.com/app-key and generate a token from the authorization link on that page."
+  },
+
+  "contributor": {
+    "name": "delorenj",
+    "github": "delorenj",
+    "url": "https://github.com/delorenj"
+  },
+
+  "links": {
+    "repository": "https://github.com/delorenj/mcp-server-trello",
+    "homepage": "https://trello.com",
+    "documentation": "https://github.com/delorenj/mcp-server-trello#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

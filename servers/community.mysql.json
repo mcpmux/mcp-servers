@@ -1,0 +1,102 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.mysql",
+  "name": "MySQL",
+  "alias": "mysql",
+  "description": "Query MySQL databases with configurable access controls. Execute SQL queries, inspect table schemas, and explore data with optional write operation support.",
+  "icon": "https://avatars.githubusercontent.com/u/2452804?v=4",
+  "schema_version": "2.1",
+  "categories": ["database"],
+  "tags": ["mysql", "database", "sql", "query", "relational"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@benborla29/mcp-server-mysql"],
+    "env": {
+      "MYSQL_HOST": "${input:MYSQL_HOST}",
+      "MYSQL_PORT": "${input:MYSQL_PORT}",
+      "MYSQL_USER": "${input:MYSQL_USER}",
+      "MYSQL_PASS": "${input:MYSQL_PASS}",
+      "MYSQL_DB": "${input:MYSQL_DB}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MYSQL_HOST",
+          "label": "MySQL Host",
+          "description": "MySQL server hostname or IP address.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "127.0.0.1",
+          "placeholder": "127.0.0.1"
+        },
+        {
+          "id": "MYSQL_PORT",
+          "label": "MySQL Port",
+          "description": "MySQL server port number.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "3306",
+          "placeholder": "3306"
+        },
+        {
+          "id": "MYSQL_USER",
+          "label": "MySQL Username",
+          "description": "MySQL user for authentication.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "root",
+          "placeholder": "root"
+        },
+        {
+          "id": "MYSQL_PASS",
+          "label": "MySQL Password",
+          "description": "Password for MySQL authentication.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-password"
+        },
+        {
+          "id": "MYSQL_DB",
+          "label": "MySQL Database",
+          "description": "Default database to connect to.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "mydb"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "basic",
+    "instructions": "Provide your MySQL host, username, password, and database name."
+  },
+
+  "contributor": {
+    "name": "Ben Borla",
+    "github": "benborla",
+    "url": "https://github.com/benborla"
+  },
+
+  "links": {
+    "repository": "https://github.com/benborla/mcp-server-mysql",
+    "homepage": "https://www.mysql.com",
+    "documentation": "https://github.com/benborla/mcp-server-mysql#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

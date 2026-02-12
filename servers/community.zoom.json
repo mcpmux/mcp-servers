@@ -1,0 +1,84 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.zoom",
+  "name": "Zoom",
+  "alias": "zoom",
+  "description": "Manage Zoom meetings through the MCP server. Create, update, delete, and list meetings using Zoom's Server-to-Server OAuth API.",
+  "icon": "https://avatars.githubusercontent.com/u/20367798?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication", "productivity"],
+  "tags": ["zoom", "meetings", "video", "conferencing", "scheduling"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@prathamesh0901/zoom-mcp-server"],
+    "env": {
+      "ZOOM_ACCOUNT_ID": "${input:ZOOM_ACCOUNT_ID}",
+      "ZOOM_CLIENT_ID": "${input:ZOOM_CLIENT_ID}",
+      "ZOOM_CLIENT_SECRET": "${input:ZOOM_CLIENT_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ZOOM_ACCOUNT_ID",
+          "label": "Zoom Account ID",
+          "description": "Your Zoom Account ID from the Server-to-Server OAuth app.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your-zoom-account-id"
+        },
+        {
+          "id": "ZOOM_CLIENT_ID",
+          "label": "Zoom Client ID",
+          "description": "Client ID from your Zoom Server-to-Server OAuth app.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your-zoom-client-id"
+        },
+        {
+          "id": "ZOOM_CLIENT_SECRET",
+          "label": "Zoom Client Secret",
+          "description": "Client Secret from your Zoom Server-to-Server OAuth app.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-zoom-client-secret",
+          "obtain": {
+            "url": "https://marketplace.zoom.us/",
+            "instructions": "1. Go to Zoom Marketplace\n2. Create a 'Server to Server OAuth' app\n3. Configure Meeting permissions (all)\n4. Activate the app\n5. Copy Account ID, Client ID, and Client Secret",
+            "button_label": "Create OAuth App"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Create a Server-to-Server OAuth app at https://marketplace.zoom.us/ with Meeting permissions."
+  },
+
+  "contributor": {
+    "name": "prathamesh0901",
+    "github": "prathamesh0901",
+    "url": "https://github.com/prathamesh0901"
+  },
+
+  "links": {
+    "repository": "https://github.com/prathamesh0901/zoom-mcp-server",
+    "homepage": "https://zoom.us",
+    "documentation": "https://github.com/prathamesh0901/zoom-mcp-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

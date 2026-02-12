@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.google-drive",
+  "name": "Google Drive",
+  "alias": "gdrive",
+  "description": "Search and access files in Google Drive. Supports automatic format conversion for Google Docs (Markdown), Sheets (CSV), and other Google Workspace formats.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["file-system", "productivity"],
+  "tags": ["google", "drive", "files", "documents", "sheets", "docs", "cloud-storage"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+    "env": {
+      "GDRIVE_CREDENTIALS_PATH": "${input:GDRIVE_CREDENTIALS_PATH}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GDRIVE_CREDENTIALS_PATH",
+          "label": "Credentials File Path",
+          "description": "Path to your Google Drive OAuth credentials JSON file.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "/path/to/.gdrive-server-credentials.json",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. Create a Google Cloud project\n2. Enable the Google Drive API\n3. Create OAuth 2.0 credentials (Desktop app type)\n4. Download the JSON key file\n5. Run authentication flow to generate credentials",
+            "button_label": "Create Credentials"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Set up OAuth 2.0 credentials in Google Cloud Console with drive.readonly scope. See repository README for detailed setup."
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://drive.google.com",
+    "documentation": "https://github.com/modelcontextprotocol/servers/blob/main/src/gdrive/README.md"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
