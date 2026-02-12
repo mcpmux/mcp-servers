@@ -50,6 +50,19 @@ describe("Server Definition Schema", () => {
   it.each([
     { id: "com.example-test", name: "Test", transport: { type: "stdio", command: "echo" } },
     { id: "com.example-remote", name: "Remote", transport: { type: "http", url: "https://example.com/mcp" } },
+    {
+      id: "com.example-defaults", name: "Defaults Test",
+      transport: {
+        type: "stdio", command: "node", args: ["server.js"],
+        env: { "LOG_LEVEL": "${input:LOG_LEVEL}" },
+        metadata: {
+          inputs: [
+            { id: "LOG_LEVEL", label: "Log Level", type: "text", required: false, default: "info" },
+            { id: "API_KEY", label: "API Key", type: "password", required: true, secret: true },
+          ],
+        },
+      },
+    },
   ])("validates valid server definition: $id", (data) => {
     expect(validate(data)).toBe(true);
   });
