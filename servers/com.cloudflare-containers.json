@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cloudflare-containers",
+  "name": "Cloudflare Containers",
+  "alias": "cf-containers",
+  "description": "Deploy and manage containers on Cloudflare's global network. Build, deploy, and monitor containerized applications at the edge.",
+  "icon": "https://avatars.githubusercontent.com/u/314135?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud"],
+  "tags": ["cloudflare", "containers", "docker", "edge", "deployment"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://containers.mcp.cloudflare.com/mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authentication is handled via OAuth when connecting to the Cloudflare MCP endpoint."
+  },
+
+  "contributor": {
+    "name": "Cloudflare",
+    "github": "cloudflare",
+    "url": "https://www.cloudflare.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "homepage": "https://www.cloudflare.com",
+    "documentation": "https://developers.cloudflare.com/containers/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

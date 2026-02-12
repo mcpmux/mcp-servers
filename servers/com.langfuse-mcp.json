@@ -1,0 +1,63 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.langfuse-mcp",
+  "name": "Langfuse",
+  "alias": "langfuse",
+  "description": "Access and manage Langfuse prompts through the official MCP server. List prompts, retrieve specific versions, and compile prompts with variables for LLM observability.",
+  "icon": "https://avatars.githubusercontent.com/u/128686189?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml", "monitoring"],
+  "tags": ["langfuse", "observability", "llm", "prompts", "tracing", "analytics"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://cloud.langfuse.com/api/public/mcp",
+    "headers": {
+      "Authorization": "Basic ${input:LANGFUSE_AUTH_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "LANGFUSE_AUTH_TOKEN",
+          "label": "Langfuse Auth Token",
+          "description": "Base64-encoded token from your Langfuse public and secret keys. Generate with: echo -n 'pk-lf-xxx:sk-lf-xxx' | base64",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "cGstbGYteHh4OnNrLWxmLXh4eA==",
+          "obtain": {
+            "url": "https://cloud.langfuse.com",
+            "instructions": "1. Go to cloud.langfuse.com\n2. Navigate to your project settings\n3. Copy your Public Key and Secret Key\n4. Generate token: echo -n 'PUBLIC_KEY:SECRET_KEY' | base64",
+            "button_label": "Get API Keys"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "basic",
+    "instructions": "Base64 encode your Langfuse public and secret keys as 'pk-lf-xxx:sk-lf-xxx' and use as Basic auth header."
+  },
+
+  "contributor": {
+    "name": "Langfuse",
+    "github": "langfuse",
+    "url": "https://langfuse.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/langfuse/mcp-server-langfuse",
+    "homepage": "https://langfuse.com",
+    "documentation": "https://langfuse.com/docs/api-and-data-platform/features/mcp-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

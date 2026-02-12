@@ -1,0 +1,61 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.novu-mcp",
+  "name": "Novu",
+  "alias": "novu",
+  "description": "Manage notifications through the Novu platform. Trigger events, manage subscribers, topics, and get notification statistics via the official Novu MCP.",
+  "icon": "https://avatars.githubusercontent.com/u/77433905?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication", "developer-tools"],
+  "tags": ["novu", "notifications", "email", "sms", "push", "inbox"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "--package", "@novu/api", "--", "mcp", "start", "--secret-key", "${input:NOVU_SECRET_KEY}"],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NOVU_SECRET_KEY",
+          "label": "Novu Secret Key",
+          "description": "Your Novu API secret key for authentication.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-novu-secret-key",
+          "obtain": {
+            "url": "https://dashboard.novu.co/api-keys",
+            "instructions": "1. Go to Novu Dashboard\n2. Navigate to Settings > API Keys\n3. Copy the Secret Key",
+            "button_label": "Get Secret Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your Novu secret key from https://dashboard.novu.co/api-keys"
+  },
+
+  "contributor": {
+    "name": "Novu",
+    "github": "novuhq",
+    "url": "https://novu.co"
+  },
+
+  "links": {
+    "repository": "https://github.com/novuhq/novu",
+    "homepage": "https://novu.co",
+    "documentation": "https://docs.novu.co"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

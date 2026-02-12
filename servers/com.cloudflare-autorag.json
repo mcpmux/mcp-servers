@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cloudflare-autorag",
+  "name": "Cloudflare AutoRAG",
+  "alias": "cf-autorag",
+  "description": "Use Cloudflare AutoRAG (AI Search) to build and query retrieval-augmented generation pipelines. Index content and run semantic search at the edge.",
+  "icon": "https://avatars.githubusercontent.com/u/314135?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml", "search"],
+  "tags": ["cloudflare", "autorag", "rag", "search", "ai", "semantic-search"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://autorag.mcp.cloudflare.com/mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authentication is handled via OAuth when connecting to the Cloudflare MCP endpoint."
+  },
+
+  "contributor": {
+    "name": "Cloudflare",
+    "github": "cloudflare",
+    "url": "https://www.cloudflare.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "homepage": "https://www.cloudflare.com",
+    "documentation": "https://developers.cloudflare.com/autorag/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cloudflare-browser",
+  "name": "Cloudflare Browser Rendering",
+  "alias": "cf-browser",
+  "description": "Use Cloudflare's Browser Rendering API for headless browser automation. Render pages, take screenshots, generate PDFs, and extract content from web pages.",
+  "icon": "https://avatars.githubusercontent.com/u/314135?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "cloud"],
+  "tags": ["cloudflare", "browser", "rendering", "screenshots", "pdf", "headless"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://browser.mcp.cloudflare.com/mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authentication is handled via OAuth when connecting to the Cloudflare MCP endpoint."
+  },
+
+  "contributor": {
+    "name": "Cloudflare",
+    "github": "cloudflare",
+    "url": "https://www.cloudflare.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "homepage": "https://www.cloudflare.com",
+    "documentation": "https://developers.cloudflare.com/browser-rendering/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

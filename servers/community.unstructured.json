@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.unstructured",
+  "name": "Unstructured",
+  "alias": "unstructured",
+  "description": "Process and transform documents with Unstructured. Extract text, tables, and metadata from PDFs, images, HTML, and more using the Unstructured platform.",
+  "icon": "https://avatars.githubusercontent.com/u/119478485?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml", "file-system"],
+  "tags": ["unstructured", "document-processing", "pdf", "extraction", "etl", "rag"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["uns_mcp"],
+    "env": {
+      "UNSTRUCTURED_API_KEY": "${input:UNSTRUCTURED_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "UNSTRUCTURED_API_KEY",
+          "label": "Unstructured API Key",
+          "description": "API key for the Unstructured platform.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-unstructured-api-key",
+          "obtain": {
+            "url": "https://platform.unstructured.io/app/account/api-keys",
+            "instructions": "1. Go to platform.unstructured.io\n2. Sign up or log in\n3. Navigate to Account > API Keys\n4. Create a new API key\n5. Copy the key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get an API key at https://platform.unstructured.io/app/account/api-keys"
+  },
+
+  "contributor": {
+    "name": "Unstructured",
+    "github": "Unstructured-IO",
+    "url": "https://unstructured.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/Unstructured-IO/UNS-MCP",
+    "homepage": "https://unstructured.io",
+    "documentation": "https://github.com/Unstructured-IO/UNS-MCP#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

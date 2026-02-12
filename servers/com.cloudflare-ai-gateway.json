@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cloudflare-ai-gateway",
+  "name": "Cloudflare AI Gateway",
+  "alias": "cf-ai-gateway",
+  "description": "Manage Cloudflare AI Gateway for monitoring, caching, and rate limiting AI API calls. View logs, manage configurations, and analyze AI API usage.",
+  "icon": "https://avatars.githubusercontent.com/u/314135?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml", "cloud"],
+  "tags": ["cloudflare", "ai-gateway", "api-management", "caching", "rate-limiting", "monitoring"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://ai-gateway.mcp.cloudflare.com/mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authentication is handled via OAuth when connecting to the Cloudflare MCP endpoint."
+  },
+
+  "contributor": {
+    "name": "Cloudflare",
+    "github": "cloudflare",
+    "url": "https://www.cloudflare.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "homepage": "https://www.cloudflare.com/products/ai-gateway/",
+    "documentation": "https://developers.cloudflare.com/ai-gateway/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

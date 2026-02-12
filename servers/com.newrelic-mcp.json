@@ -1,0 +1,63 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.newrelic-mcp",
+  "name": "New Relic",
+  "alias": "newrelic",
+  "description": "Connect AI agents to New Relic's observability data. Query entities, alerts, incidents, and run NRQL queries for performance analytics and monitoring.",
+  "icon": "https://avatars.githubusercontent.com/u/31739?v=4",
+  "schema_version": "2.1",
+  "categories": ["monitoring", "cloud"],
+  "tags": ["newrelic", "observability", "monitoring", "apm", "nrql", "alerts", "incidents"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.newrelic.com/mcp/",
+    "headers": {
+      "Api-Key": "${input:NEW_RELIC_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NEW_RELIC_API_KEY",
+          "label": "New Relic API Key",
+          "description": "New Relic User API key (starts with NRAK-).",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "NRAK-xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://one.newrelic.com/api-keys",
+            "instructions": "1. Go to one.newrelic.com\n2. Navigate to API Keys\n3. Click 'Create a key' (User type)\n4. Copy the key (starts with NRAK-)",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a User API key from https://one.newrelic.com/api-keys (starts with NRAK-)"
+  },
+
+  "contributor": {
+    "name": "New Relic",
+    "github": "newrelic",
+    "url": "https://newrelic.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/newrelic/newrelic-mcp-server",
+    "homepage": "https://newrelic.com",
+    "documentation": "https://docs.newrelic.com/docs/agentic-ai/mcp/overview"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
