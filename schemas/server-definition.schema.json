@@ -218,6 +218,10 @@
           "type": "string",
           "description": "Help text for this input"
         },
+        "default": {
+          "type": "string",
+          "description": "Default value for this input (used when user provides no value)"
+        },
         "placeholder": {
           "type": "string",
           "description": "Placeholder text"
