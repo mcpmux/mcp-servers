@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.azure-mcp",
+  "name": "Azure",
+  "alias": "azure",
+  "description": "Connect AI agents to 40+ Azure services through the official Azure MCP server. Manage resources, query data, and interact with Azure services.",
+  "icon": "https://avatars.githubusercontent.com/u/6844498?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud"],
+  "tags": ["azure", "microsoft", "cloud", "infrastructure", "devops", "storage", "compute"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@azure/mcp@latest", "server", "start"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "Authenticate to Azure before running: 'az login'. The server uses Azure Default Credentials (Azure CLI, environment variables, or managed identity)."
+  },
+
+  "contributor": {
+    "name": "Microsoft",
+    "github": "microsoft",
+    "url": "https://azure.microsoft.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/microsoft/mcp",
+    "homepage": "https://azure.microsoft.com",
+    "documentation": "https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/get-started"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

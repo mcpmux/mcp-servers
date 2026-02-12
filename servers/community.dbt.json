@@ -1,0 +1,105 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.dbt",
+  "name": "dbt",
+  "alias": "dbt",
+  "description": "Interact with dbt projects and dbt Cloud. Execute SQL, run Semantic Layer queries, manage metadata, and analyze lineage across your data transformation pipeline.",
+  "icon": "https://avatars.githubusercontent.com/u/48476273?v=4",
+  "schema_version": "2.1",
+  "categories": ["database", "developer-tools"],
+  "tags": ["dbt", "data", "sql", "analytics", "transformations", "semantic-layer", "lineage"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["dbt-mcp"],
+    "env": {
+      "DBT_HOST": "${input:DBT_HOST}",
+      "DBT_TOKEN": "${input:DBT_TOKEN}",
+      "DBT_PROD_ENV_ID": "${input:DBT_PROD_ENV_ID}",
+      "DBT_DEV_ENV_ID": "${input:DBT_DEV_ENV_ID}",
+      "DBT_USER_ID": "${input:DBT_USER_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DBT_HOST",
+          "label": "dbt Cloud Host",
+          "description": "dbt Cloud host endpoint.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "cloud.getdbt.com",
+          "placeholder": "cloud.getdbt.com"
+        },
+        {
+          "id": "DBT_TOKEN",
+          "label": "dbt Cloud Service Token",
+          "description": "Service token for dbt Cloud API access.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "dbtc_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://cloud.getdbt.com/settings/service-tokens",
+            "instructions": "1. Go to dbt Cloud\n2. Navigate to Account Settings > Service Tokens\n3. Click 'New Token'\n4. Copy the generated token",
+            "button_label": "Create Service Token"
+          }
+        },
+        {
+          "id": "DBT_PROD_ENV_ID",
+          "label": "Production Environment ID",
+          "description": "Your dbt Cloud production environment ID.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "123456"
+        },
+        {
+          "id": "DBT_DEV_ENV_ID",
+          "label": "Development Environment ID",
+          "description": "Your dbt Cloud development environment ID.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "789012"
+        },
+        {
+          "id": "DBT_USER_ID",
+          "label": "dbt Cloud User ID",
+          "description": "Your dbt Cloud user ID.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "12345"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Create a service token at https://cloud.getdbt.com/settings/service-tokens for dbt Cloud features. Local dbt Core works without a token."
+  },
+
+  "contributor": {
+    "name": "dbt Labs",
+    "github": "dbt-labs",
+    "url": "https://www.getdbt.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/dbt-labs/dbt-mcp",
+    "homepage": "https://www.getdbt.com",
+    "documentation": "https://docs.getdbt.com"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

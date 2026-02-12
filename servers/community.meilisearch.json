@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.meilisearch",
+  "name": "Meilisearch",
+  "alias": "meilisearch",
+  "description": "Manage Meilisearch indexes, documents, and search operations. Provides tools for index management, document CRUD, search, settings configuration, and API key management.",
+  "icon": "https://avatars.githubusercontent.com/u/43250847?v=4",
+  "schema_version": "2.1",
+  "categories": ["search", "database"],
+  "tags": ["meilisearch", "search", "full-text-search", "indexing", "documents"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["-n", "meilisearch-mcp"],
+    "env": {
+      "MEILI_HTTP_ADDR": "${input:MEILI_HTTP_ADDR}",
+      "MEILI_MASTER_KEY": "${input:MEILI_MASTER_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MEILI_HTTP_ADDR",
+          "label": "Meilisearch URL",
+          "description": "URL of your Meilisearch instance.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "http://localhost:7700",
+          "placeholder": "http://localhost:7700"
+        },
+        {
+          "id": "MEILI_MASTER_KEY",
+          "label": "Meilisearch Master Key",
+          "description": "Master key for Meilisearch authentication. Required if your instance has authentication enabled.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "your-master-key"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide your Meilisearch master key if your instance requires authentication."
+  },
+
+  "contributor": {
+    "name": "Meilisearch",
+    "github": "meilisearch",
+    "url": "https://www.meilisearch.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/meilisearch/meilisearch-mcp",
+    "homepage": "https://www.meilisearch.com",
+    "documentation": "https://github.com/meilisearch/meilisearch-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

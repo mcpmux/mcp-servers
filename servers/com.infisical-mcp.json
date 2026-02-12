@@ -1,0 +1,85 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.infisical-mcp",
+  "name": "Infisical",
+  "alias": "infisical",
+  "description": "Manage secrets and projects through Infisical's official MCP server. Create, read, update, and delete secrets, manage environments, and invite team members.",
+  "icon": "https://avatars.githubusercontent.com/u/107880645?v=4",
+  "schema_version": "2.1",
+  "categories": ["security", "developer-tools"],
+  "tags": ["infisical", "secrets", "security", "environment-variables", "vault", "credentials"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@infisical/mcp"],
+    "env": {
+      "INFISICAL_UNIVERSAL_AUTH_CLIENT_ID": "${input:INFISICAL_UNIVERSAL_AUTH_CLIENT_ID}",
+      "INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET": "${input:INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET}",
+      "INFISICAL_HOST_URL": "${input:INFISICAL_HOST_URL}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "INFISICAL_UNIVERSAL_AUTH_CLIENT_ID",
+          "label": "Universal Auth Client ID",
+          "description": "Machine Identity universal auth client ID from Infisical.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.infisical.com",
+            "instructions": "1. Go to Infisical dashboard\n2. Navigate to Access Control > Machine Identities\n3. Create a Machine Identity with Universal Auth\n4. Copy the Client ID",
+            "button_label": "Create Machine Identity"
+          }
+        },
+        {
+          "id": "INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET",
+          "label": "Universal Auth Client Secret",
+          "description": "Machine Identity universal auth client secret from Infisical.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "id": "INFISICAL_HOST_URL",
+          "label": "Infisical Host URL",
+          "description": "Custom Infisical host URL for self-hosted instances.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "https://app.infisical.com",
+          "placeholder": "https://app.infisical.com"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Machine Identity with Universal Auth at https://app.infisical.com and use the client ID and secret."
+  },
+
+  "contributor": {
+    "name": "Infisical",
+    "github": "Infisical",
+    "url": "https://infisical.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/Infisical/infisical-mcp-server",
+    "homepage": "https://infisical.com",
+    "documentation": "https://github.com/Infisical/infisical-mcp-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

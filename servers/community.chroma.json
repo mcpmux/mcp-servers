@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.chroma",
+  "name": "ChromaDB",
+  "alias": "chroma",
+  "description": "Interact with ChromaDB vector database for managing collections, storing embeddings, and performing semantic search. Supports ephemeral, persistent, cloud, and HTTP client modes.",
+  "icon": "https://avatars.githubusercontent.com/u/136020766?v=4",
+  "schema_version": "2.1",
+  "categories": ["database", "ai-ml"],
+  "tags": ["chroma", "chromadb", "vector", "embeddings", "semantic-search", "rag"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["chroma-mcp"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required for local ephemeral mode. For cloud mode, pass --api-key as a CLI argument."
+  },
+
+  "contributor": {
+    "name": "Chroma",
+    "github": "chroma-core",
+    "url": "https://www.trychroma.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/chroma-core/chroma-mcp",
+    "homepage": "https://www.trychroma.com",
+    "documentation": "https://github.com/chroma-core/chroma-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

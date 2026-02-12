@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.bigquery",
+  "name": "BigQuery",
+  "alias": "bigquery",
+  "description": "Query Google BigQuery datasets with read-only access. Execute SQL queries, inspect table schemas, and explore data across your BigQuery projects.",
+  "icon": "https://avatars.githubusercontent.com/u/2810941?v=4",
+  "schema_version": "2.1",
+  "categories": ["database", "cloud"],
+  "tags": ["bigquery", "google", "gcp", "sql", "data-warehouse", "analytics"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-server-bigquery"],
+    "env": {
+      "BIGQUERY_PROJECT": "${input:BIGQUERY_PROJECT}",
+      "BIGQUERY_LOCATION": "${input:BIGQUERY_LOCATION}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BIGQUERY_PROJECT",
+          "label": "GCP Project ID",
+          "description": "Google Cloud project ID containing your BigQuery datasets.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "my-gcp-project-id"
+        },
+        {
+          "id": "BIGQUERY_LOCATION",
+          "label": "BigQuery Location",
+          "description": "GCP location for your BigQuery datasets.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "us-east1"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "none",
+    "instructions": "Uses Google Application Default Credentials (ADC). Run 'gcloud auth application-default login' to authenticate."
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/ergut/mcp-bigquery-server",
+    "homepage": "https://cloud.google.com/bigquery",
+    "documentation": "https://github.com/ergut/mcp-bigquery-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

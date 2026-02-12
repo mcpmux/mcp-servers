@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.pulumi-mcp",
+  "name": "Pulumi",
+  "alias": "pulumi",
+  "description": "Access Pulumi's infrastructure-as-code platform. Get documentation, examples, and guidance for building cloud infrastructure with Pulumi.",
+  "icon": "https://avatars.githubusercontent.com/u/21992353?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["pulumi", "infrastructure", "iac", "cloud", "devops", "deployment"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.ai.pulumi.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authentication is handled via OAuth with your Pulumi Access Token when connecting."
+  },
+
+  "contributor": {
+    "name": "Pulumi",
+    "github": "pulumi",
+    "url": "https://www.pulumi.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/pulumi/pulumi",
+    "homepage": "https://www.pulumi.com",
+    "documentation": "https://www.pulumi.com/docs/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

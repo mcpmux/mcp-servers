@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.heroku-mcp",
+  "name": "Heroku",
+  "alias": "heroku",
+  "description": "Deploy, manage, and monitor Heroku applications through the official Heroku MCP server. Manage dynos, databases, config vars, and more.",
+  "icon": "https://avatars.githubusercontent.com/u/23211?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["heroku", "paas", "deployment", "cloud", "dynos", "postgres", "devops"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@heroku/mcp-server"],
+    "env": {
+      "HEROKU_API_KEY": "${input:HEROKU_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HEROKU_API_KEY",
+          "label": "Heroku API Key",
+          "description": "Heroku authorization token for API access. Generate via 'heroku authorizations:create' CLI command or from the Heroku Dashboard.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://dashboard.heroku.com/account/applications",
+            "instructions": "1. Go to Heroku Dashboard > Account Settings\n2. Navigate to Applications > Authorizations\n3. Click 'Create Authorization'\n4. Copy the generated token",
+            "button_label": "Create Authorization"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a Heroku API key via 'heroku authorizations:create' or from https://dashboard.heroku.com/account/applications"
+  },
+
+  "contributor": {
+    "name": "Heroku",
+    "github": "heroku",
+    "url": "https://www.heroku.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/heroku/heroku-mcp-server",
+    "homepage": "https://www.heroku.com",
+    "documentation": "https://github.com/heroku/heroku-mcp-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.hashicorp-terraform",
+  "name": "Terraform",
+  "alias": "terraform",
+  "description": "Manage Terraform workspaces, access the Terraform Registry, and interact with HCP Terraform through the official HashiCorp MCP server.",
+  "icon": "https://avatars.githubusercontent.com/u/761456?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["terraform", "hashicorp", "infrastructure", "iac", "hcp", "registry", "devops"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "TFE_TOKEN",
+      "-e", "TFE_ADDRESS",
+      "hashicorp/terraform-mcp-server"
+    ],
+    "env": {
+      "TFE_TOKEN": "${input:TFE_TOKEN}",
+      "TFE_ADDRESS": "${input:TFE_ADDRESS}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TFE_TOKEN",
+          "label": "Terraform API Token",
+          "description": "HCP Terraform or Terraform Enterprise API token for authentication.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "your-terraform-api-token",
+          "obtain": {
+            "url": "https://app.terraform.io/app/settings/tokens",
+            "instructions": "1. Go to HCP Terraform\n2. Navigate to User Settings > Tokens\n3. Click 'Create an API token'\n4. Copy the generated token",
+            "button_label": "Create API Token"
+          }
+        },
+        {
+          "id": "TFE_ADDRESS",
+          "label": "Terraform Address",
+          "description": "HCP Terraform or Terraform Enterprise endpoint URL. Leave empty for default HCP Terraform.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "https://app.terraform.io",
+          "placeholder": "https://app.terraform.io"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Get a Terraform API token from https://app.terraform.io/app/settings/tokens. Token is optional for public registry access."
+  },
+
+  "contributor": {
+    "name": "HashiCorp",
+    "github": "hashicorp",
+    "url": "https://www.hashicorp.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/hashicorp/terraform-mcp-server",
+    "homepage": "https://www.terraform.io",
+    "documentation": "https://github.com/hashicorp/terraform-mcp-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/hashicorp/terraform-mcp-server/releases"
+}

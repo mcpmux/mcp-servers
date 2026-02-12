@@ -1,0 +1,92 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.neo4j",
+  "name": "Neo4j",
+  "alias": "neo4j",
+  "description": "Query Neo4j graph databases using natural language to Cypher translation. Inspect schemas, execute read queries, and explore graph data.",
+  "icon": "https://avatars.githubusercontent.com/u/201120?v=4",
+  "schema_version": "2.1",
+  "categories": ["database"],
+  "tags": ["neo4j", "graph", "database", "cypher", "knowledge-graph", "query"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-neo4j-cypher"],
+    "env": {
+      "NEO4J_URI": "${input:NEO4J_URI}",
+      "NEO4J_USERNAME": "${input:NEO4J_USERNAME}",
+      "NEO4J_PASSWORD": "${input:NEO4J_PASSWORD}",
+      "NEO4J_DATABASE": "${input:NEO4J_DATABASE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NEO4J_URI",
+          "label": "Neo4j Connection URI",
+          "description": "Neo4j database connection URI.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "default": "bolt://localhost:7687",
+          "placeholder": "bolt://localhost:7687"
+        },
+        {
+          "id": "NEO4J_USERNAME",
+          "label": "Neo4j Username",
+          "description": "Username for Neo4j authentication.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "neo4j",
+          "placeholder": "neo4j"
+        },
+        {
+          "id": "NEO4J_PASSWORD",
+          "label": "Neo4j Password",
+          "description": "Password for Neo4j authentication.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-password"
+        },
+        {
+          "id": "NEO4J_DATABASE",
+          "label": "Neo4j Database",
+          "description": "Target database name.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "neo4j",
+          "placeholder": "neo4j"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "basic",
+    "instructions": "Provide your Neo4j database username and password."
+  },
+
+  "contributor": {
+    "name": "Neo4j",
+    "github": "neo4j-contrib",
+    "url": "https://neo4j.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "homepage": "https://neo4j.com",
+    "documentation": "https://github.com/neo4j-contrib/mcp-neo4j#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
