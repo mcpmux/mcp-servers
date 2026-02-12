@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.time",
+  "name": "Time",
+  "alias": "time",
+  "description": "Get current time information and perform timezone conversions using IANA timezone names with automatic system timezone detection.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools"],
+  "tags": ["time", "timezone", "clock", "utc", "conversion", "utility"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-server-time"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://github.com/modelcontextprotocol/servers/blob/main/src/time/README.md"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

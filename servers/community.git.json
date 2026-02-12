@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.git",
+  "name": "Git",
+  "alias": "git",
+  "description": "Interact with local Git repositories. Read commit history, diffs, branches, and perform git operations for repository automation.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["version-control", "developer-tools"],
+  "tags": ["git", "version-control", "repository", "commits", "branches", "diff"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-server-git", "--repository", "${input:GIT_REPOSITORY}"],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GIT_REPOSITORY",
+          "label": "Repository Path",
+          "description": "Path to the local Git repository to interact with.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "/path/to/your/git/repo"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://git-scm.com",
+    "documentation": "https://github.com/modelcontextprotocol/servers/blob/main/src/git/README.md"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

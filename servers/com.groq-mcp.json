@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.groq-mcp",
+  "name": "Groq",
+  "alias": "groq",
+  "description": "Access Groq's ultra-fast LLM inference API. Run AI models with low latency for text generation, code completion, and more through Groq Cloud.",
+  "icon": "https://avatars.githubusercontent.com/u/132372032?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml"],
+  "tags": ["groq", "llm", "inference", "ai", "fast-inference", "api"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["groq-mcp"],
+    "env": {
+      "GROQ_API_KEY": "${input:GROQ_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GROQ_API_KEY",
+          "label": "Groq API Key",
+          "description": "API key for Groq Cloud. Free tier available.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://console.groq.com/keys",
+            "instructions": "1. Go to console.groq.com\n2. Sign up or log in\n3. Navigate to API Keys\n4. Click 'Create API Key'\n5. Copy the key (starts with gsk_)",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a free API key at https://console.groq.com/keys"
+  },
+
+  "contributor": {
+    "name": "Groq",
+    "github": "groq",
+    "url": "https://groq.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/groq/groq-mcp",
+    "homepage": "https://groq.com",
+    "documentation": "https://github.com/groq/groq-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.coolify",
+  "name": "Coolify",
+  "alias": "coolify",
+  "description": "Manage Coolify self-hosted infrastructure. Deploy applications, manage servers, databases, and services with 35 token-optimized tools.",
+  "icon": "https://avatars.githubusercontent.com/u/71755829?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["coolify", "self-hosted", "deployment", "paas", "docker", "infrastructure"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@masonator/coolify-mcp"],
+    "env": {
+      "COOLIFY_ACCESS_TOKEN": "${input:COOLIFY_ACCESS_TOKEN}",
+      "COOLIFY_BASE_URL": "${input:COOLIFY_BASE_URL}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "COOLIFY_ACCESS_TOKEN",
+          "label": "Coolify API Token",
+          "description": "API token for your Coolify instance.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-coolify-api-token",
+          "obtain": {
+            "url": "https://coolify.io/docs/api-reference/authorization",
+            "instructions": "1. Open your Coolify dashboard\n2. Navigate to API settings\n3. Generate an API token\n4. Copy the token",
+            "button_label": "API Docs"
+          }
+        },
+        {
+          "id": "COOLIFY_BASE_URL",
+          "label": "Coolify Instance URL",
+          "description": "Base URL of your Coolify instance.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "http://localhost:3000",
+          "placeholder": "https://your-coolify-instance.com"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API token from your Coolify dashboard's API settings."
+  },
+
+  "contributor": {
+    "name": "masonator",
+    "github": "masonator",
+    "url": "https://github.com/masonator"
+  },
+
+  "links": {
+    "repository": "https://github.com/masonator/coolify-mcp",
+    "homepage": "https://coolify.io",
+    "documentation": "https://github.com/masonator/coolify-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.clickup",
+  "name": "ClickUp",
+  "alias": "clickup",
+  "description": "Manage ClickUp workspaces, spaces, folders, lists, and tasks. Create, update, and organize project management data through the ClickUp API.",
+  "icon": "https://avatars.githubusercontent.com/u/29898280?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity"],
+  "tags": ["clickup", "project-management", "tasks", "productivity", "workspaces"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "clickup-mcp-server"],
+    "env": {
+      "CLICKUP_API_TOKEN": "${input:CLICKUP_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CLICKUP_API_TOKEN",
+          "label": "ClickUp API Token",
+          "description": "Personal API token for ClickUp access.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "pk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.clickup.com/settings/apps",
+            "instructions": "1. Go to ClickUp Settings\n2. Navigate to Apps\n3. Click 'Generate API Token'\n4. Copy the token",
+            "button_label": "Generate Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a personal API token from ClickUp Settings > Apps."
+  },
+
+  "contributor": {
+    "name": "nsxdavid",
+    "github": "nsxdavid",
+    "url": "https://github.com/nsxdavid"
+  },
+
+  "links": {
+    "repository": "https://github.com/nsxdavid/clickup-mcp-server",
+    "homepage": "https://clickup.com",
+    "documentation": "https://github.com/nsxdavid/clickup-mcp-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.discord",
+  "name": "Discord",
+  "alias": "discord",
+  "description": "Interact with Discord servers through a bot. Send messages, manage channels, read message history, and manage server settings via the Discord Bot API.",
+  "icon": "https://avatars.githubusercontent.com/u/1965106?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication"],
+  "tags": ["discord", "chat", "bot", "messaging", "community", "communication"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "mcp-discord", "--config", "${input:DISCORD_TOKEN}"],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DISCORD_TOKEN",
+          "label": "Discord Bot Token",
+          "description": "Discord bot token for authentication. Requires Message Content, Server Members, and Presence intents enabled.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "MTxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://discord.com/developers/applications",
+            "instructions": "1. Go to Discord Developer Portal\n2. Click 'New Application' and create your app\n3. Navigate to Bot section\n4. Click 'Reset Token' to generate a new bot token\n5. Enable Message Content, Server Members, and Presence intents\n6. Copy the token",
+            "button_label": "Create Bot"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Discord bot at https://discord.com/developers/applications and copy the bot token."
+  },
+
+  "contributor": {
+    "name": "v-3",
+    "github": "v-3",
+    "url": "https://github.com/v-3"
+  },
+
+  "links": {
+    "repository": "https://github.com/v-3/mcp-discord",
+    "homepage": "https://discord.com",
+    "documentation": "https://github.com/v-3/mcp-discord#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.pandoc",
+  "name": "Pandoc",
+  "alias": "pandoc",
+  "description": "Convert documents between formats using Pandoc. Supports Markdown, HTML, PDF, DOCX, RST, LaTeX, EPUB, and many more formats.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "file-system"],
+  "tags": ["pandoc", "document", "conversion", "markdown", "pdf", "docx", "latex"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["mcp-pandoc"],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "vivekVells",
+    "github": "vivekVells",
+    "url": "https://github.com/vivekVells"
+  },
+
+  "links": {
+    "repository": "https://github.com/vivekVells/mcp-pandoc",
+    "homepage": "https://pandoc.org",
+    "documentation": "https://github.com/vivekVells/mcp-pandoc#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

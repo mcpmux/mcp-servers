@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.semgrep",
+  "name": "Semgrep",
+  "alias": "semgrep",
+  "description": "Run static analysis security scans with Semgrep. Perform security checks, scan code with custom rules, get AST representations, and query findings from Semgrep AppSec Platform.",
+  "icon": "https://avatars.githubusercontent.com/u/78890117?v=4",
+  "schema_version": "2.1",
+  "categories": ["security", "developer-tools"],
+  "tags": ["semgrep", "security", "sast", "static-analysis", "code-scanning", "vulnerabilities"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["semgrep-mcp"],
+    "env": {
+      "SEMGREP_APP_TOKEN": "${input:SEMGREP_APP_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SEMGREP_APP_TOKEN",
+          "label": "Semgrep App Token",
+          "description": "Optional API token for Semgrep AppSec Platform integration. Enables cloud findings and additional rules.",
+          "type": "password",
+          "required": false,
+          "secret": true,
+          "placeholder": "your-semgrep-app-token",
+          "obtain": {
+            "url": "https://semgrep.dev/orgs/-/settings/tokens",
+            "instructions": "1. Go to semgrep.dev\n2. Log in to your account\n3. Navigate to Settings > Tokens\n4. Generate a new API token\n5. Copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Token is optional. Without it, Semgrep runs local scans with open-source rules. With a token, you get AppSec Platform integration."
+  },
+
+  "contributor": {
+    "name": "Semgrep",
+    "github": "semgrep",
+    "url": "https://semgrep.dev"
+  },
+
+  "links": {
+    "repository": "https://github.com/semgrep/semgrep",
+    "homepage": "https://semgrep.dev",
+    "documentation": "https://semgrep.dev/docs/"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
