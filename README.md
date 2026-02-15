@@ -511,7 +511,7 @@ pnpm build                       # Generate bundle/bundle.json
 | **McpMux Desktop App** | [Download](https://mcpmux.com/download) — Windows, macOS, Linux |
 | **Discover Servers** | [mcpmux.com](https://mcpmux.com) — browse, search, and install MCP servers |
 | **Features** | [mcpmux.com/features](https://mcpmux.com/features) — Spaces, Feature Sets, encrypted credentials, and more |
-| **Source Code** | [github.com/ion-ash/mcp-mux](https://github.com/ion-ash/mcp-mux) |
+| **Source Code** | [github.com/mcpmux/mcp-mux](https://github.com/mcpmux/mcp-mux) |
 
 ---
 
