@@ -167,11 +167,6 @@
               "format": "uri",
               "description": "HTTP endpoint URL (supports Streamable HTTP)"
             },
-            "headers": {
-              "type": "object",
-              "additionalProperties": { "type": "string" },
-              "description": "HTTP headers to include with requests. Values support ${input:ID} placeholders for user-provided values."
-            },
             "metadata": {
               "$ref": "#/$defs/metadata"
             }
