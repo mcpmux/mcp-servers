@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.linear-mcp",
+  "name": "Linear",
+  "alias": "linear",
+  "description": "Search, create, and update Linear issues, projects, and comments through Linear's official remote MCP server with OAuth 2.1 and Dynamic Client Registration.",
+  "icon": "https://avatars.githubusercontent.com/u/46686594?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity", "developer-tools"],
+  "tags": ["linear", "project-management", "issues", "tasks", "agile", "sprints", "cycles"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.linear.app/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted by your MCP client. Linear supports OAuth 2.1 with Dynamic Client Registration, so any MCP-compatible host can authenticate automatically."
+  },
+
+  "contributor": {
+    "name": "Linear",
+    "github": "linear",
+    "url": "https://linear.app"
+  },
+
+  "links": {
+    "repository": "https://github.com/linear/linear-mcp-server",
+    "homepage": "https://linear.app",
+    "documentation": "https://linear.app/docs/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
