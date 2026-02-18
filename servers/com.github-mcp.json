@@ -1,29 +1,31 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
   "id": "com.github-mcp",
-  "name": "GitHub",
+  "name": "GitHub (Local)",
   "alias": "gh",
-  "description": "Interact with GitHub repositories, issues, pull requests, actions, and code security through the official GitHub MCP server.",
+  "description": "Interact with GitHub repositories, issues, pull requests, actions, and code security through the official GitHub MCP server running locally via Docker. Supports GitHub.com, GitHub Enterprise Server, and GitHub Enterprise Cloud (ghe.com).",
   "icon": "https://avatars.githubusercontent.com/u/9919?v=4",
   "schema_version": "2.1",
   "categories": ["developer-tools", "version-control"],
-  "tags": ["git", "github", "code", "issues", "pull-requests", "repos", "actions", "code-review"],
+  "tags": ["git", "github", "code", "issues", "pull-requests", "repos", "actions", "code-review", "enterprise"],
 
   "transport": {
     "type": "stdio",
     "command": "docker",
     "args": [
-      "run", "-i", "--rm", "-e",
-      "GITHUB_PERSONAL_ACCESS_TOKEN",
+      "run", "-i", "--rm",
+      "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+      "-e", "GITHUB_HOST",
       "ghcr.io/github/github-mcp-server"
     ],
     "env": {
-      "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:GITHUB_TOKEN}"
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:GITHUB_PERSONAL_ACCESS_TOKEN}",
+      "GITHUB_HOST": "${input:GITHUB_HOST}"
     },
     "metadata": {
       "inputs": [
         {
-          "id": "GITHUB_TOKEN",
+          "id": "GITHUB_PERSONAL_ACCESS_TOKEN",
           "label": "GitHub Personal Access Token",
           "description": "Token used to authenticate with the GitHub API. Requires repo and read:org scopes.",
           "type": "password",
@@ -35,6 +37,16 @@
             "instructions": "1. Click 'Generate new token (classic)'\n2. Give it a name like 'McpMux'\n3. Select scopes: repo, read:org\n4. Click 'Generate token'\n5. Copy the token (starts with ghp_)",
             "button_label": "Create Token"
           }
+        },
+        {
+          "id": "GITHUB_HOST",
+          "label": "GitHub Host",
+          "description": "GitHub hostname. Set this for GitHub Enterprise Server or GitHub Enterprise Cloud with data residency. Leave empty for github.com.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "https://api.github.com",
+          "placeholder": "https://github.example.com"
         }
       ]
     }
