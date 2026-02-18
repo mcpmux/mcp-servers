@@ -1,0 +1,63 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.stripe-mcp",
+  "name": "Stripe (Local)",
+  "alias": "stripe",
+  "description": "Interact with Stripe APIs locally through the official Stripe MCP package. Manage payments, customers, subscriptions, and more using your Stripe secret key.",
+  "icon": "https://avatars.githubusercontent.com/u/856813?v=4",
+  "schema_version": "2.1",
+  "categories": ["cloud", "developer-tools"],
+  "tags": ["stripe", "payments", "billing", "subscriptions", "fintech", "api"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@stripe/mcp", "--tools=all", "--api-key", "${input:STRIPE_SECRET_KEY}"],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "STRIPE_SECRET_KEY",
+          "label": "Stripe Secret Key",
+          "description": "Your Stripe secret API key. Use a test key (sk_test_) for development or a live key (sk_live_) for production.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://dashboard.stripe.com/apikeys",
+            "instructions": "1. Go to the Stripe Dashboard\n2. Navigate to Developers > API keys\n3. Copy your Secret key (starts with sk_test_ or sk_live_)\n4. For testing, use the test mode key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your Stripe secret key from the Stripe Dashboard at https://dashboard.stripe.com/apikeys"
+  },
+
+  "contributor": {
+    "name": "Stripe",
+    "github": "stripe",
+    "url": "https://stripe.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/stripe/agent-toolkit",
+    "homepage": "https://stripe.com",
+    "documentation": "https://docs.stripe.com/mcp"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/stripe/agent-toolkit/releases"
+}
