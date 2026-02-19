@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.paypal-mcp",
-  "name": "PayPal",
+  "id": "com.paypal-mcp-npx",
+  "name": "PayPal (npx)",
   "alias": "paypal",
   "description": "Process payments, manage orders, create invoices, handle disputes, and manage products and subscriptions through the PayPal API.",
   "icon": "https://avatars.githubusercontent.com/u/476675?v=4",
