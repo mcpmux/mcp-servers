@@ -6,13 +6,24 @@
   "description": "Manage Weaviate vector database collections and objects. Create schemas, insert data, run vector and hybrid searches with filtering.",
   "icon": "https://avatars.githubusercontent.com/u/37794290?v=4",
   "schema_version": "2.1",
-  "categories": ["database", "ai-ml"],
-  "tags": ["weaviate", "vector-database", "semantic-search", "embeddings", "rag", "hybrid-search"],
-
+  "categories": [
+    "database",
+    "ai-ml"
+  ],
+  "tags": [
+    "weaviate",
+    "vector-database",
+    "semantic-search",
+    "embeddings",
+    "rag",
+    "hybrid-search"
+  ],
   "transport": {
     "type": "stdio",
     "command": "uvx",
-    "args": ["mcp-server-weaviate"],
+    "args": [
+      "mcp-server-weaviate"
+    ],
     "env": {
       "WEAVIATE_URL": "${input:WEAVIATE_URL}",
       "WEAVIATE_API_KEY": "${input:WEAVIATE_API_KEY}"
@@ -32,7 +43,7 @@
           "id": "WEAVIATE_API_KEY",
           "label": "Weaviate API Key",
           "description": "API key for Weaviate Cloud. Not required for local instances.",
-          "type": "password",
+          "type": "text",
           "required": false,
           "secret": true,
           "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -45,26 +56,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "optional_api_key",
     "instructions": "API key required for Weaviate Cloud. Not needed for local Weaviate instances."
   },
-
   "contributor": {
     "name": "Weaviate",
     "github": "weaviate",
     "url": "https://weaviate.io"
   },
-
   "links": {
     "repository": "https://github.com/weaviate/mcp-server-weaviate",
     "homepage": "https://weaviate.io",
     "documentation": "https://weaviate.io/developers/weaviate"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
