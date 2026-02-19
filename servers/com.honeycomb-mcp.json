@@ -3,66 +3,39 @@
   "id": "com.honeycomb-mcp",
   "name": "Honeycomb",
   "alias": "honeycomb",
-  "description": "Query and analyze observability data in Honeycomb. Run queries, manage datasets, analyze traces, and create SLOs.",
+  "description": "Query and analyze observability data in Honeycomb. Run queries, manage datasets, analyze traces, and create SLOs via Honeycomb's hosted MCP server.",
   "icon": "https://avatars.githubusercontent.com/u/15988027?v=4",
   "schema_version": "2.1",
-  "categories": [
-    "developer-tools"
-  ],
-  "tags": [
-    "honeycomb",
-    "observability",
-    "traces",
-    "monitoring",
-    "apm",
-    "slo"
-  ],
+  "categories": ["monitoring", "developer-tools"],
+  "tags": ["honeycomb", "observability", "traces", "monitoring", "apm", "slo"],
+
   "transport": {
-    "type": "stdio",
-    "command": "npx",
-    "args": [
-      "-y",
-      "honeycomb-mcp"
-    ],
-    "env": {
-      "HONEYCOMB_API_KEY": "${input:HONEYCOMB_API_KEY}"
-    },
+    "type": "http",
+    "url": "https://mcp.honeycomb.io/mcp",
     "metadata": {
-      "inputs": [
-        {
-          "id": "HONEYCOMB_API_KEY",
-          "label": "Honeycomb API Key",
-          "description": "API key for the Honeycomb platform.",
-          "type": "text",
-          "required": true,
-          "secret": true,
-          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-          "obtain": {
-            "url": "https://docs.honeycomb.io/configure/environments/manage-api-keys/",
-            "instructions": "1. Log in to your Honeycomb account\n2. Click on your environment name in the top-left\n3. Go to Manage Environments\n4. Select your environment\n5. Find your API Key in the API Keys section",
-            "button_label": "View Docs"
-          }
-        }
-      ]
+      "inputs": []
     }
   },
+
   "auth": {
-    "type": "api_key",
-    "instructions": "Get your API key from https://ui.honeycomb.io/account"
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted by your MCP client. You will be redirected to Honeycomb to authorize access. Requires Honeycomb Intelligence enrollment."
   },
+
   "contributor": {
     "name": "Honeycomb",
     "github": "honeycombio",
     "url": "https://www.honeycomb.io"
   },
+
   "links": {
     "repository": "https://github.com/honeycombio/honeycomb-mcp",
     "homepage": "https://www.honeycomb.io",
     "documentation": "https://docs.honeycomb.io/integrations/mcp/"
   },
-  "platforms": [
-    "all"
-  ],
+
+  "platforms": ["all"],
+
   "capabilities": {
     "tools": true,
     "resources": false,
