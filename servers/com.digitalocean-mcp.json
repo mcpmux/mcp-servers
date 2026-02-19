@@ -60,7 +60,7 @@
   "links": {
     "repository": "https://github.com/digitalocean-labs/mcp-digitalocean",
     "homepage": "https://www.digitalocean.com",
-    "documentation": "https://docs.digitalocean.com/products/app-platform/how-to/use-mcp/"
+    "documentation": "https://docs.digitalocean.com/reference/mcp/"
   },
   "platforms": [
     "all"
