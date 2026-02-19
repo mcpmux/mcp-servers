@@ -1,0 +1,94 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.grafana-mcp-cloud",
+  "name": "Grafana Cloud",
+  "alias": "grafana-cloud",
+  "description": "Search dashboards, query Prometheus and Loki datasources, manage alerts, investigate incidents, and use Grafana Cloud features like Sift, OnCall, and Incidents.",
+  "icon": "https://avatars.githubusercontent.com/u/7195757?v=4",
+  "schema_version": "2.1",
+  "categories": ["monitoring", "developer-tools"],
+  "tags": ["grafana", "grafana-cloud", "monitoring", "dashboards", "prometheus", "loki", "alerts", "observability", "metrics", "incidents", "oncall"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "GRAFANA_URL",
+      "-e", "GRAFANA_SERVICE_ACCOUNT_TOKEN",
+      "-e", "GRAFANA_ORG_ID",
+      "grafana/mcp-grafana",
+      "-t", "stdio"
+    ],
+    "env": {
+      "GRAFANA_URL": "${input:GRAFANA_URL}",
+      "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${input:GRAFANA_TOKEN}",
+      "GRAFANA_ORG_ID": "${input:GRAFANA_ORG_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GRAFANA_URL",
+          "label": "Grafana Cloud URL",
+          "description": "URL of your Grafana Cloud instance (e.g., https://myinstance.grafana.net).",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://myinstance.grafana.net"
+        },
+        {
+          "id": "GRAFANA_TOKEN",
+          "label": "Grafana Service Account Token",
+          "description": "Service account token from your Grafana Cloud instance. Create one with the Editor role for full access.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "glsa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://grafana.com/docs/grafana-cloud/account-management/authentication-and-permissions/service-accounts/",
+            "instructions": "1. Log in to your Grafana Cloud instance\n2. Navigate to Administration > Service accounts\n3. Click 'Add service account'\n4. Assign the 'Editor' role\n5. Click 'Add service account token'\n6. Copy the generated token (starts with glsa_)",
+            "button_label": "Learn More"
+          }
+        },
+        {
+          "id": "GRAFANA_ORG_ID",
+          "label": "Grafana Organization ID",
+          "description": "Organization ID for multi-org Grafana Cloud setups. Leave empty for single-org instances.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "1",
+          "placeholder": "1"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a service account token in your Grafana Cloud instance under Administration > Service accounts"
+  },
+
+  "contributor": {
+    "name": "Grafana Labs",
+    "github": "grafana",
+    "url": "https://grafana.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/grafana/mcp-grafana",
+    "homepage": "https://grafana.com/products/cloud/",
+    "documentation": "https://github.com/grafana/mcp-grafana#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/grafana/mcp-grafana/releases"
+}

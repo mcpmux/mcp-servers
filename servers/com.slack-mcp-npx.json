@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.slack-mcp-npx",
+  "name": "Slack (npx)",
+  "alias": "slack",
+  "description": "Send and read Slack messages, manage channels, list users, add reactions, and interact with your Slack workspace via npx.",
+  "icon": "https://avatars.githubusercontent.com/u/6962987?v=4",
+  "schema_version": "2.1",
+  "categories": ["communication"],
+  "tags": ["slack", "messaging", "chat", "channels", "workspace", "collaboration"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-slack"],
+    "env": {
+      "SLACK_BOT_TOKEN": "${input:SLACK_BOT_TOKEN}",
+      "SLACK_TEAM_ID": "${input:SLACK_TEAM_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SLACK_BOT_TOKEN",
+          "label": "Slack Bot Token",
+          "description": "Bot user OAuth token for your Slack app. Requires scopes: channels:history, channels:read, chat:write, reactions:write, users:read, users.profile:read",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "xoxb-your-bot-token-here",
+          "obtain": {
+            "url": "https://api.slack.com/apps",
+            "instructions": "1. Go to api.slack.com/apps and create or select your app\n2. Navigate to OAuth & Permissions\n3. Add bot scopes: channels:history, channels:read, chat:write, reactions:write, users:read, users.profile:read\n4. Install the app to your workspace\n5. Copy the Bot User OAuth Token (starts with xoxb-)",
+            "button_label": "Create Slack App"
+          }
+        },
+        {
+          "id": "SLACK_TEAM_ID",
+          "label": "Slack Team ID",
+          "description": "Your Slack workspace team ID. Found in workspace settings or the workspace URL.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "T0123456789",
+          "obtain": {
+            "url": "https://slack.com/help/articles/221769328",
+            "instructions": "1. Open your Slack workspace in a browser\n2. The team ID is in the URL or available under Settings > Workspace Settings\n3. It starts with 'T' followed by alphanumeric characters",
+            "button_label": "Find Team ID"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Slack app at https://api.slack.com/apps and get the Bot User OAuth Token"
+  },
+
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://slack.com",
+    "documentation": "https://api.slack.com/docs"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

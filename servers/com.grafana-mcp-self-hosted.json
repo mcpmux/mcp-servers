@@ -1,9 +1,9 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.grafana-mcp",
-  "name": "Grafana",
+  "id": "com.grafana-mcp-self-hosted",
+  "name": "Grafana (Self-Hosted)",
   "alias": "grafana",
-  "description": "Search dashboards, query Prometheus and Loki datasources, manage alerts, and investigate incidents through the official Grafana MCP server.",
+  "description": "Search dashboards, query Prometheus and Loki datasources, manage alerts, and investigate incidents on your self-hosted Grafana instance via Docker.",
   "icon": "https://avatars.githubusercontent.com/u/7195757?v=4",
   "schema_version": "2.1",
   "categories": ["monitoring", "developer-tools"],

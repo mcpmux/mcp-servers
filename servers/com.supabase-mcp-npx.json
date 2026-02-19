@@ -1,9 +1,9 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.supabase-mcp",
-  "name": "Supabase",
-  "alias": "supabase",
-  "description": "Manage Supabase projects, databases, edge functions, storage, and authentication through the Supabase Management API.",
+  "id": "com.supabase-mcp-npx",
+  "name": "Supabase (npx)",
+  "alias": "supabase-npx",
+  "description": "Manage Supabase projects, databases, edge functions, storage, and authentication locally via npx. Uses a personal access token.",
   "icon": "\u26a1",
   "schema_version": "2.1",
   "categories": ["database", "cloud"],

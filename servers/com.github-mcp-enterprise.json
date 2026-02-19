@@ -1,0 +1,84 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.github-mcp-enterprise",
+  "name": "GitHub Enterprise",
+  "alias": "gh-ent",
+  "description": "Interact with GitHub Enterprise Server or GitHub Enterprise Cloud with Data Residency (ghe.com) via Docker container. For self-hosted GitHub instances.",
+  "icon": "https://avatars.githubusercontent.com/u/9919?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "version-control"],
+  "tags": ["git", "github", "enterprise", "ghes", "ghe", "self-hosted", "code", "issues", "pull-requests"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+      "-e", "GITHUB_HOST",
+      "ghcr.io/github/github-mcp-server"
+    ],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:GITHUB_TOKEN}",
+      "GITHUB_HOST": "${input:GITHUB_HOST}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GITHUB_HOST",
+          "label": "GitHub Enterprise Host URL",
+          "description": "URL of your GitHub Enterprise instance. Include https:// prefix. For GHEC Data Residency use https://subdomain.ghe.com, for GHES use https://your-ghes-hostname.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://github.mycompany.com",
+          "obtain": {
+            "instructions": "Enter the full URL of your GitHub Enterprise instance including the https:// protocol prefix.",
+            "button_label": "Learn More"
+          }
+        },
+        {
+          "id": "GITHUB_TOKEN",
+          "label": "GitHub Personal Access Token",
+          "description": "Token used to authenticate with your GitHub Enterprise API. Requires repo and read:org scopes.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "instructions": "1. Go to your GitHub Enterprise instance\n2. Navigate to Settings > Developer settings > Personal access tokens\n3. Click 'Generate new token (classic)'\n4. Select scopes: repo, read:org\n5. Click 'Generate token'\n6. Copy the token (starts with ghp_)",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a personal access token on your GitHub Enterprise instance with repo and read:org scopes"
+  },
+
+  "contributor": {
+    "name": "GitHub",
+    "github": "github",
+    "url": "https://github.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/github/github-mcp-server",
+    "homepage": "https://github.com/enterprise",
+    "documentation": "https://github.com/github/github-mcp-server#github-enterprise-server"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/github/github-mcp-server/releases"
+}

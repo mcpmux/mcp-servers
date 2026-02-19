@@ -1,9 +1,9 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.github-mcp",
-  "name": "GitHub",
-  "alias": "gh",
-  "description": "Interact with GitHub repositories, issues, pull requests, actions, and code security through the official GitHub MCP server.",
+  "id": "com.github-mcp-docker",
+  "name": "GitHub (Docker)",
+  "alias": "gh-docker",
+  "description": "Interact with GitHub repositories, issues, pull requests, and code security via Docker container. Requires Docker installed.",
   "icon": "https://avatars.githubusercontent.com/u/9919?v=4",
   "schema_version": "2.1",
   "categories": ["developer-tools", "version-control"],

@@ -1,9 +1,9 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.sentry-mcp",
-  "name": "Sentry",
+  "id": "com.sentry-mcp-http",
+  "name": "Sentry (Remote)",
   "alias": "sentry",
-  "description": "Query and manage Sentry issues, errors, performance data, and project settings through the Sentry API.",
+  "description": "Query and manage Sentry issues, errors, performance data, and project settings through Sentry's hosted remote MCP server. No local setup required.",
   "icon": "\ud83d\udc1b",
   "schema_version": "2.1",
   "categories": ["monitoring", "developer-tools"],
@@ -29,6 +29,7 @@
   },
 
   "links": {
+    "repository": "https://github.com/getsentry/sentry-mcp",
     "homepage": "https://sentry.io",
     "documentation": "https://docs.sentry.io"
   },

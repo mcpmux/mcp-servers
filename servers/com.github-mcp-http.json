@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.github-mcp-http",
+  "name": "GitHub (Remote)",
+  "alias": "gh",
+  "description": "Interact with GitHub repositories, issues, pull requests, actions, and code security through GitHub's hosted remote MCP server. No local setup required.",
+  "icon": "https://avatars.githubusercontent.com/u/9919?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "version-control"],
+  "tags": ["git", "github", "code", "issues", "pull-requests", "repos", "actions", "code-review"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://api.githubcopilot.com/mcp/",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth in your browser using your GitHub account. No token setup needed."
+  },
+
+  "contributor": {
+    "name": "GitHub",
+    "github": "github",
+    "url": "https://github.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/github/github-mcp-server",
+    "homepage": "https://github.com",
+    "documentation": "https://github.com/github/github-mcp-server#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/github/github-mcp-server/releases"
+}

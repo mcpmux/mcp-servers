@@ -1,0 +1,66 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.sentry-mcp-npx",
+  "name": "Sentry (Local)",
+  "alias": "sentry-local",
+  "description": "Query and manage Sentry issues, errors, performance data, and project settings locally via npx. Supports AI-powered search with your own LLM API key.",
+  "icon": "\ud83d\udc1b",
+  "schema_version": "2.1",
+  "categories": ["monitoring", "developer-tools"],
+  "tags": ["sentry", "errors", "monitoring", "debugging", "performance", "observability"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@sentry/mcp-server@latest"],
+    "env": {
+      "SENTRY_ACCESS_TOKEN": "${input:SENTRY_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SENTRY_ACCESS_TOKEN",
+          "label": "Sentry User Auth Token",
+          "description": "User auth token from Sentry. Requires scopes: org:read, project:read, project:write, team:read, event:write.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "sntryu_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://sentry.io/settings/account/api/auth-tokens/",
+            "instructions": "1. Go to Sentry Settings > API > Auth Tokens\n2. Click 'Create New Token'\n3. Select scopes: org:read, project:read, project:write, team:read, team:write, event:write\n4. Click 'Create Token'\n5. Copy the generated token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a User Auth Token at Sentry Settings > API > Auth Tokens with org:read, project:read, project:write scopes"
+  },
+
+  "contributor": {
+    "name": "Sentry",
+    "github": "getsentry",
+    "url": "https://sentry.io"
+  },
+
+  "links": {
+    "repository": "https://github.com/getsentry/sentry-mcp",
+    "homepage": "https://sentry.io",
+    "documentation": "https://docs.sentry.io"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/getsentry/sentry-mcp/releases"
+}
