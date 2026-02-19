@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.hubspot-mcp",
-  "name": "HubSpot",
+  "id": "com.hubspot-mcp-npx",
+  "name": "HubSpot (npx)",
   "alias": "hubspot",
   "description": "Manage HubSpot CRM data including contacts, companies, deals, and tickets. Search records, create associations, and manage pipelines.",
   "icon": "https://avatars.githubusercontent.com/u/326419?v=4",
