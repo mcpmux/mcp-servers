@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.koyeb-mcp",
-  "name": "Koyeb",
+  "id": "com.koyeb-mcp-npx",
+  "name": "Koyeb (npx)",
   "alias": "koyeb",
   "description": "Manage Koyeb serverless applications and services. Deploy apps, manage domains, view logs, and configure autoscaling.",
   "icon": "https://avatars.githubusercontent.com/u/50234573?v=4",
