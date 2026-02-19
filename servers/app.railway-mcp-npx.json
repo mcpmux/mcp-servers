@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "app.railway-mcp",
-  "name": "Railway",
+  "id": "app.railway-mcp-npx",
+  "name": "Railway (npx)",
   "alias": "railway",
   "description": "Manage Railway projects, services, and deployments. Create services, view logs, manage environment variables, and trigger deployments.",
   "icon": "https://avatars.githubusercontent.com/u/66716858?v=4",
