@@ -27,7 +27,8 @@
     ],
     "env": {
       "BROWSERBASE_API_KEY": "${input:BROWSERBASE_API_KEY}",
-      "BROWSERBASE_PROJECT_ID": "${input:BROWSERBASE_PROJECT_ID}"
+      "BROWSERBASE_PROJECT_ID": "${input:BROWSERBASE_PROJECT_ID}",
+      "GEMINI_API_KEY": "${input:GEMINI_API_KEY}"
     },
     "metadata": {
       "inputs": [
@@ -57,6 +58,20 @@
             "url": "https://www.browserbase.com/",
             "instructions": "1. Log in to browserbase.com\n2. Open your project in the dashboard\n3. Copy the Project ID from the project settings",
             "button_label": "Get Project ID"
+          }
+        },
+        {
+          "id": "GEMINI_API_KEY",
+          "label": "Gemini API Key",
+          "description": "Google Gemini API key. Required by default (Stagehand uses Gemini 2.0 Flash). Optional if using a custom model via --modelApiKey.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "AIzaSy...",
+          "obtain": {
+            "url": "https://aistudio.google.com/apikey",
+            "instructions": "1. Go to Google AI Studio\n2. Click 'Get API key'\n3. Create a new API key or select an existing one\n4. Copy the key",
+            "button_label": "Get API Key"
           }
         }
       ]
