@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.elevenlabs-mcp",
-  "name": "ElevenLabs",
+  "id": "com.elevenlabs-mcp-uvx",
+  "name": "ElevenLabs (uvx)",
   "alias": "elevenlabs",
   "description": "Generate speech, clone voices, create sound effects, and manage audio with the ElevenLabs API. Text-to-speech, voice design, and audio isolation.",
   "icon": "https://avatars.githubusercontent.com/u/94471909?v=4",
