@@ -6,13 +6,24 @@
   "description": "Query and analyze observability data in Honeycomb. Run queries, manage datasets, analyze traces, and create SLOs.",
   "icon": "https://avatars.githubusercontent.com/u/15988027?v=4",
   "schema_version": "2.1",
-  "categories": ["developer-tools"],
-  "tags": ["honeycomb", "observability", "traces", "monitoring", "apm", "slo"],
-
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "honeycomb",
+    "observability",
+    "traces",
+    "monitoring",
+    "apm",
+    "slo"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "honeycomb-mcp"],
+    "args": [
+      "-y",
+      "honeycomb-mcp"
+    ],
     "env": {
       "HONEYCOMB_API_KEY": "${input:HONEYCOMB_API_KEY}"
     },
@@ -22,7 +33,7 @@
           "id": "HONEYCOMB_API_KEY",
           "label": "Honeycomb API Key",
           "description": "API key for the Honeycomb platform.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -35,26 +46,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Get your API key from https://ui.honeycomb.io/account"
   },
-
   "contributor": {
     "name": "Honeycomb",
     "github": "honeycombio",
     "url": "https://www.honeycomb.io"
   },
-
   "links": {
     "repository": "https://github.com/honeycombio/honeycomb-mcp",
     "homepage": "https://www.honeycomb.io",
     "documentation": "https://docs.honeycomb.io/integrations/mcp/"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
