@@ -1,42 +1,53 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.snyk-mcp",
-  "name": "Snyk",
+  "id": "com.snyk-mcp-cli",
+  "name": "Snyk (CLI)",
   "alias": "snyk",
   "description": "Scan code for security vulnerabilities using Snyk. Run SAST, SCA, IaC, and container scans, and generate SBOMs directly from your editor.",
   "icon": "https://avatars.githubusercontent.com/u/12959162?v=4",
   "schema_version": "2.1",
-  "categories": ["developer-tools"],
-  "tags": ["snyk", "security", "vulnerability", "sast", "sca", "scanning", "sbom"],
-
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "snyk",
+    "security",
+    "vulnerability",
+    "sast",
+    "sca",
+    "scanning",
+    "sbom"
+  ],
   "transport": {
     "type": "stdio",
     "command": "snyk",
-    "args": ["mcp", "-t", "stdio", "--experimental"],
+    "args": [
+      "mcp",
+      "-t",
+      "stdio",
+      "--experimental"
+    ],
     "metadata": {
       "inputs": []
     }
   },
-
   "auth": {
     "type": "none",
     "instructions": "Uses your existing Snyk CLI authentication. Run 'snyk auth' to authenticate before using this server."
   },
-
   "contributor": {
     "name": "Snyk",
     "github": "snyk",
     "url": "https://snyk.io"
   },
-
   "links": {
     "repository": "https://github.com/snyk/cli",
     "homepage": "https://snyk.io",
     "documentation": "https://snyk.io/articles/snyk-mcp-cheat-sheet/"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
