@@ -69,7 +69,7 @@
   "links": {
     "repository": "https://github.com/modelcontextprotocol/servers",
     "homepage": "https://gitlab.com",
-    "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab#readme"
+    "documentation": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gitlab"
   },
   "platforms": [
     "all"
