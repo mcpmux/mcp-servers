@@ -6,13 +6,23 @@
   "description": "Interact with Redis databases. Execute commands, manage keys, and work with data structures across standalone, cluster, and Sentinel modes.",
   "icon": "https://avatars.githubusercontent.com/u/1529926?v=4",
   "schema_version": "2.1",
-  "categories": ["database"],
-  "tags": ["redis", "cache", "key-value", "database", "in-memory", "data-structures"],
-
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "redis",
+    "cache",
+    "key-value",
+    "database",
+    "in-memory",
+    "data-structures"
+  ],
   "transport": {
     "type": "stdio",
     "command": "uvx",
-    "args": ["redis-mcp-server"],
+    "args": [
+      "redis-mcp-server"
+    ],
     "env": {
       "REDIS_HOST": "${input:REDIS_HOST}",
       "REDIS_PORT": "${input:REDIS_PORT}",
@@ -42,7 +52,7 @@
           "id": "REDIS_PWD",
           "label": "Redis Password",
           "description": "Password for Redis authentication. Leave empty for local instances without auth.",
-          "type": "password",
+          "type": "text",
           "required": false,
           "secret": true,
           "placeholder": ""
@@ -50,26 +60,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "optional_api_key",
     "instructions": "Provide Redis connection details. Password is optional for local instances."
   },
-
   "contributor": {
     "name": "Redis",
     "github": "redis",
     "url": "https://redis.io"
   },
-
   "links": {
     "repository": "https://github.com/redis/mcp-redis",
     "homepage": "https://redis.io",
     "documentation": "https://github.com/redis/mcp-redis#readme"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
