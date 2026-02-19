@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.resend-mcp",
-  "name": "Resend",
+  "id": "com.resend-mcp-npx",
+  "name": "Resend (npx)",
   "alias": "resend",
   "description": "Send emails using the Resend API. Supports plain text and HTML content, attachments, scheduling, and recipient management.",
   "icon": "https://avatars.githubusercontent.com/u/109384852?v=4",
