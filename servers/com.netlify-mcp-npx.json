@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.netlify-mcp",
-  "name": "Netlify",
+  "id": "com.netlify-mcp-npx",
+  "name": "Netlify (npx)",
   "alias": "netlify",
   "description": "Deploy sites, manage DNS, check build status, and configure Netlify projects. Supports site creation, environment variables, and serverless functions.",
   "icon": "https://avatars.githubusercontent.com/u/7892489?v=4",
