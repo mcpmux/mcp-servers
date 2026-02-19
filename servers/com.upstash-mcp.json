@@ -6,13 +6,29 @@
   "description": "Create and manage Upstash Redis databases. List databases, create backups, view usage stats, and manage credentials.",
   "icon": "https://avatars.githubusercontent.com/u/74989412?v=4",
   "schema_version": "2.1",
-  "categories": ["database", "cloud"],
-  "tags": ["upstash", "redis", "serverless", "database", "cache", "cloud"],
-
+  "categories": [
+    "database",
+    "cloud"
+  ],
+  "tags": [
+    "upstash",
+    "redis",
+    "serverless",
+    "database",
+    "cache",
+    "cloud"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@upstash/mcp-server@latest", "--email", "${input:UPSTASH_EMAIL}", "--api-key", "${input:UPSTASH_API_KEY}"],
+    "args": [
+      "-y",
+      "@upstash/mcp-server@latest",
+      "--email",
+      "${input:UPSTASH_EMAIL}",
+      "--api-key",
+      "${input:UPSTASH_API_KEY}"
+    ],
     "metadata": {
       "inputs": [
         {
@@ -33,7 +49,7 @@
           "id": "UPSTASH_API_KEY",
           "label": "Upstash API Key",
           "description": "Developer API key for the Upstash management API.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -46,26 +62,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Get your email and API key from https://console.upstash.com/account/api"
   },
-
   "contributor": {
     "name": "Upstash",
     "github": "upstash",
     "url": "https://upstash.com"
   },
-
   "links": {
     "repository": "https://github.com/upstash/mcp-server",
     "homepage": "https://upstash.com",
     "documentation": "https://upstash.com/docs/redis/integrations/mcp"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
