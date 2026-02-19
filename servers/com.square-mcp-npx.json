@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.square-mcp",
-  "name": "Square",
+  "id": "com.square-mcp-npx",
+  "name": "Square (npx)",
   "alias": "square",
   "description": "Interact with Square APIs for payments, orders, catalog, inventory, customers, and bookings. Supports all Square API services.",
   "icon": "https://avatars.githubusercontent.com/u/82592?v=4",
