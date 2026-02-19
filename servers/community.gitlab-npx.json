@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.gitlab",
-  "name": "GitLab",
+  "id": "community.gitlab-npx",
+  "name": "GitLab (npx)",
   "alias": "gitlab",
   "description": "Manage GitLab repositories, issues, merge requests, and files. Search projects, create branches, push files, and manage code reviews.",
   "icon": "https://avatars.githubusercontent.com/u/1086321?v=4",
