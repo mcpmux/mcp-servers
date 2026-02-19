@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.mongodb-mcp",
-  "name": "MongoDB",
+  "id": "com.mongodb-mcp-npx",
+  "name": "MongoDB (npx)",
   "alias": "mongodb",
   "description": "Connect to MongoDB databases and Atlas clusters. Query collections, inspect schemas, manage indexes, and run aggregation pipelines through the official MongoDB MCP server.",
   "icon": "https://avatars.githubusercontent.com/u/11214950?v=4",
