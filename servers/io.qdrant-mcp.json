@@ -6,13 +6,23 @@
   "description": "Store and retrieve information from Qdrant vector database using semantic search. Supports local and cloud Qdrant instances.",
   "icon": "https://avatars.githubusercontent.com/u/73504361?v=4",
   "schema_version": "2.1",
-  "categories": ["database", "ai-ml"],
-  "tags": ["qdrant", "vector-database", "semantic-search", "embeddings", "rag"],
-
+  "categories": [
+    "database",
+    "ai-ml"
+  ],
+  "tags": [
+    "qdrant",
+    "vector-database",
+    "semantic-search",
+    "embeddings",
+    "rag"
+  ],
   "transport": {
     "type": "stdio",
     "command": "uvx",
-    "args": ["mcp-server-qdrant"],
+    "args": [
+      "mcp-server-qdrant"
+    ],
     "env": {
       "QDRANT_URL": "${input:QDRANT_URL}",
       "COLLECTION_NAME": "${input:COLLECTION_NAME}",
@@ -42,7 +52,7 @@
           "id": "QDRANT_API_KEY",
           "label": "Qdrant API Key",
           "description": "API key for Qdrant Cloud. Not required for local instances.",
-          "type": "password",
+          "type": "text",
           "required": false,
           "secret": true,
           "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -55,26 +65,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "optional_api_key",
     "instructions": "API key required for Qdrant Cloud instances. Not needed for local Qdrant."
   },
-
   "contributor": {
     "name": "Qdrant",
     "github": "qdrant",
     "url": "https://qdrant.tech"
   },
-
   "links": {
     "repository": "https://github.com/qdrant/mcp-server-qdrant",
     "homepage": "https://qdrant.tech",
     "documentation": "https://qdrant.tech/documentation/"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
