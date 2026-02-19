@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.apify-mcp",
-  "name": "Apify",
+  "id": "com.apify-mcp-npx",
+  "name": "Apify (npx)",
   "alias": "apify",
   "description": "Run web scraping actors and access datasets on the Apify platform. Search the Apify Store, execute actors, and retrieve structured data.",
   "icon": "https://avatars.githubusercontent.com/u/24586296?v=4",
