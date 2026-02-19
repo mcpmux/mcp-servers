@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.tavily-mcp",
-  "name": "Tavily",
+  "id": "com.tavily-mcp-npx",
+  "name": "Tavily (npx)",
   "alias": "tavily",
   "description": "AI-optimized search, web content extraction, site mapping, and crawling through the official Tavily MCP server. Purpose-built for LLM research workflows.",
   "icon": "https://avatars.githubusercontent.com/u/170207473?v=4",
