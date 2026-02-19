@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.postgresql",
-  "name": "PostgreSQL",
+  "id": "community.postgresql-uvx",
+  "name": "PostgreSQL (uvx)",
   "alias": "postgres",
   "description": "Query PostgreSQL databases, analyze performance, and optimize indexes. Execute SQL, inspect schemas, get EXPLAIN plans, identify slow queries, and run health checks via Postgres MCP Pro.",
   "icon": "https://www.postgresql.org/media/img/about/press/elephant.png",
