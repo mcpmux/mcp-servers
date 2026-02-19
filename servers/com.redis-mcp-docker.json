@@ -1,0 +1,89 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.redis-mcp-docker",
+  "name": "Redis (Docker)",
+  "alias": "redis-docker",
+  "description": "Interact with Redis databases via Docker. Execute commands, manage keys, and work with data structures across standalone, cluster, and Sentinel modes.",
+  "icon": "https://avatars.githubusercontent.com/u/1529926?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "redis",
+    "cache",
+    "key-value",
+    "database",
+    "in-memory",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "REDIS_HOST",
+      "-e", "REDIS_PORT",
+      "-e", "REDIS_PWD",
+      "mcp/redis"
+    ],
+    "env": {
+      "REDIS_HOST": "${input:REDIS_HOST}",
+      "REDIS_PORT": "${input:REDIS_PORT}",
+      "REDIS_PWD": "${input:REDIS_PWD}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "REDIS_HOST",
+          "label": "Redis Host",
+          "description": "Hostname or IP of your Redis instance. Use host.docker.internal for local Redis.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "host.docker.internal"
+        },
+        {
+          "id": "REDIS_PORT",
+          "label": "Redis Port",
+          "description": "Port of your Redis instance.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "6379"
+        },
+        {
+          "id": "REDIS_PWD",
+          "label": "Redis Password",
+          "description": "Password for Redis authentication. Leave empty for local instances without auth.",
+          "type": "text",
+          "required": false,
+          "secret": true
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide Redis connection details. Password is optional for local instances."
+  },
+  "contributor": {
+    "name": "Redis",
+    "github": "redis",
+    "url": "https://redis.io"
+  },
+  "links": {
+    "repository": "https://github.com/redis/mcp-redis",
+    "homepage": "https://redis.io",
+    "documentation": "https://github.com/redis/mcp-redis#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
