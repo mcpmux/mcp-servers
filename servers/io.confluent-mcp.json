@@ -6,13 +6,25 @@
   "description": "Manage Confluent Cloud and Kafka resources. Create topics, produce and consume messages, run Flink SQL queries, and manage schemas.",
   "icon": "https://avatars.githubusercontent.com/u/9439498?v=4",
   "schema_version": "2.1",
-  "categories": ["cloud", "database"],
-  "tags": ["confluent", "kafka", "streaming", "flink", "events", "schema-registry"],
-
+  "categories": [
+    "cloud",
+    "database"
+  ],
+  "tags": [
+    "confluent",
+    "kafka",
+    "streaming",
+    "flink",
+    "events",
+    "schema-registry"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@confluentinc/mcp-confluent"],
+    "args": [
+      "-y",
+      "@confluentinc/mcp-confluent"
+    ],
     "env": {
       "CONFLUENT_CLOUD_API_KEY": "${input:CONFLUENT_CLOUD_API_KEY}",
       "CONFLUENT_CLOUD_API_SECRET": "${input:CONFLUENT_CLOUD_API_SECRET}",
@@ -26,7 +38,7 @@
           "id": "CONFLUENT_CLOUD_API_KEY",
           "label": "Confluent Cloud API Key",
           "description": "Cloud API key for Confluent Cloud resource management.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "XXXXXXXXXXXXXXXX",
@@ -40,7 +52,7 @@
           "id": "CONFLUENT_CLOUD_API_SECRET",
           "label": "Confluent Cloud API Secret",
           "description": "Cloud API secret paired with the Cloud API key.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -58,7 +70,7 @@
           "id": "KAFKA_API_KEY",
           "label": "Kafka Cluster API Key",
           "description": "API key specific to your Kafka cluster.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "XXXXXXXXXXXXXXXX"
@@ -67,7 +79,7 @@
           "id": "KAFKA_API_SECRET",
           "label": "Kafka Cluster API Secret",
           "description": "API secret paired with the Kafka cluster API key.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -75,26 +87,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Create API keys at https://confluent.cloud/settings/api-keys for both Cloud and Kafka cluster access"
   },
-
   "contributor": {
     "name": "Confluent",
     "github": "confluentinc",
     "url": "https://www.confluent.io"
   },
-
   "links": {
     "repository": "https://github.com/confluentinc/mcp-confluent",
     "homepage": "https://www.confluent.io",
     "documentation": "https://docs.confluent.io"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
