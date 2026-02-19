@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "dev.e2b-mcp",
-  "name": "E2B Code Sandbox",
+  "id": "dev.e2b-mcp-npx",
+  "name": "E2B Code Sandbox (npx)",
   "alias": "e2b",
   "description": "Execute Python and JavaScript code in secure cloud sandboxes. Create files, install packages, and manage sandbox environments.",
   "icon": "https://avatars.githubusercontent.com/u/129434473?v=4",
