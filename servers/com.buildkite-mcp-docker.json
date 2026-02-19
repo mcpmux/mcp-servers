@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.buildkite-mcp",
-  "name": "Buildkite",
+  "id": "com.buildkite-mcp-docker",
+  "name": "Buildkite (Docker)",
   "alias": "buildkite",
   "description": "Manage Buildkite pipelines, builds, jobs, and agents. Trigger builds, view logs, manage clusters, and monitor CI/CD workflows.",
   "icon": "https://avatars.githubusercontent.com/u/5055988?v=4",
