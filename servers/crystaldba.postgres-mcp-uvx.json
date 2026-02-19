@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.postgresql-uvx",
+  "id": "crystaldba.postgres-mcp-uvx",
   "name": "PostgreSQL (uvx)",
   "alias": "postgres",
   "description": "Query PostgreSQL databases, analyze performance, and optimize indexes. Execute SQL, inspect schemas, get EXPLAIN plans, identify slow queries, and run health checks via Postgres MCP Pro.",
