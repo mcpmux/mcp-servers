@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "co.tinybird-mcp",
-  "name": "Tinybird",
+  "id": "co.tinybird-mcp-uvx",
+  "name": "Tinybird (uvx)",
   "alias": "tinybird",
   "description": "Query and manage Tinybird analytics data sources and endpoints. Run SQL queries, explore schemas, and publish API endpoints.",
   "icon": "https://avatars.githubusercontent.com/u/53208553?v=4",
