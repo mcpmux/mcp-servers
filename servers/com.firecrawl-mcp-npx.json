@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.firecrawl-mcp",
-  "name": "Firecrawl",
+  "id": "com.firecrawl-mcp-npx",
+  "name": "Firecrawl (npx)",
   "alias": "firecrawl",
   "description": "Scrape, crawl, search, and extract structured data from websites. Converts web pages to clean markdown with JavaScript rendering support.",
   "icon": "https://avatars.githubusercontent.com/u/135057108?v=4",
