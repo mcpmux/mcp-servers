@@ -24,7 +24,7 @@
     ],
     "env": {
       "GRAFANA_URL": "${input:GRAFANA_URL}",
-      "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${input:GRAFANA_TOKEN}",
+      "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${input:GRAFANA_SERVICE_ACCOUNT_TOKEN}",
       "GRAFANA_USERNAME": "${input:GRAFANA_USERNAME}",
       "GRAFANA_PASSWORD": "${input:GRAFANA_PASSWORD}",
       "GRAFANA_ORG_ID": "${input:GRAFANA_ORG_ID}"
@@ -41,7 +41,7 @@
           "placeholder": "http://localhost:3000"
         },
         {
-          "id": "GRAFANA_TOKEN",
+          "id": "GRAFANA_SERVICE_ACCOUNT_TOKEN",
           "label": "Grafana Service Account Token",
           "description": "Service account token with appropriate permissions. Create a service account with the Editor role for full read/write access.",
           "type": "text",
