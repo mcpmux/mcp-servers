@@ -13,13 +13,28 @@
     "type": "http",
     "url": "https://api.githubcopilot.com/mcp/",
     "metadata": {
-      "inputs": []
+      "inputs": [
+        {
+          "id": "GITHUB_TOKEN",
+          "label": "GitHub Personal Access Token",
+          "description": "Optional PAT for authentication instead of OAuth. If provided, sent as Bearer token. Leave empty to use OAuth flow.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://github.com/settings/tokens/new",
+            "instructions": "1. Click 'Generate new token (classic)'\n2. Give it a name like 'McpMux'\n3. Select scopes: repo, read:org\n4. Click 'Generate token'\n5. Copy the token (starts with ghp_)",
+            "button_label": "Create Token"
+          }
+        }
+      ]
     }
   },
 
   "auth": {
-    "type": "oauth",
-    "instructions": "Authenticates via OAuth in your browser using your GitHub account. No token setup needed."
+    "type": "optional_api_key",
+    "instructions": "Uses OAuth by default. Optionally provide a Personal Access Token (PAT) with repo and read:org scopes for token-based auth."
   },
 
   "contributor": {
