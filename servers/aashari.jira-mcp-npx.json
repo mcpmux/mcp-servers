@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.jira-npx",
+  "id": "aashari.jira-mcp-npx",
   "name": "Jira (npx)",
   "alias": "jira",
   "description": "Manage Jira issues, projects, sprints, and boards. Search issues with JQL, create and update tickets, and transition workflows.",
