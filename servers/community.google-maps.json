@@ -58,7 +58,7 @@
   "links": {
     "repository": "https://github.com/modelcontextprotocol/servers",
     "homepage": "https://developers.google.com/maps",
-    "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps#readme"
+    "documentation": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/google-maps"
   },
   "platforms": [
     "all"
