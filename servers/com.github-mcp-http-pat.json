@@ -12,6 +12,9 @@
   "transport": {
     "type": "http",
     "url": "https://api.githubcopilot.com/mcp/",
+    "headers": {
+      "Authorization": "Bearer ${input:GITHUB_TOKEN}"
+    },
     "metadata": {
       "inputs": [
         {
