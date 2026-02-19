@@ -6,13 +6,24 @@
   "description": "Manage Postman collections, workspaces, environments, and API specifications. Search APIs, generate client code, and run collections.",
   "icon": "https://avatars.githubusercontent.com/u/10251060?v=4",
   "schema_version": "2.1",
-  "categories": ["developer-tools"],
-  "tags": ["postman", "api", "testing", "collections", "api-specs", "code-generation"],
-
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "postman",
+    "api",
+    "testing",
+    "collections",
+    "api-specs",
+    "code-generation"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@postman/postman-mcp-server@latest"],
+    "args": [
+      "-y",
+      "@postman/postman-mcp-server@latest"
+    ],
     "env": {
       "POSTMAN_API_KEY": "${input:POSTMAN_API_KEY}"
     },
@@ -22,7 +33,7 @@
           "id": "POSTMAN_API_KEY",
           "label": "Postman API Key",
           "description": "API key for the Postman API. Required to access your workspaces, collections, and environments.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "PMAK-xxxxxxxxxxxxxxxxxxxxxxxx",
@@ -35,26 +46,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Generate a Postman API key at https://go.postman.co/settings/me/api-keys"
   },
-
   "contributor": {
     "name": "Postman",
     "github": "postmanlabs",
     "url": "https://www.postman.com"
   },
-
   "links": {
     "repository": "https://github.com/postmanlabs/postman-mcp-server",
     "homepage": "https://www.postman.com",
     "documentation": "https://learning.postman.com/docs/developer/postman-api/postman-mcp-server/set-up-postman-mcp-server"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
