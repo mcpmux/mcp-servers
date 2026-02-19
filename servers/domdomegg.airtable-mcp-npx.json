@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.airtable-npx",
+  "id": "domdomegg.airtable-mcp-npx",
   "name": "Airtable (npx)",
   "alias": "airtable",
   "description": "Interact with Airtable bases, tables, and records. List schemas, search records, create and update data, and manage comments.",
