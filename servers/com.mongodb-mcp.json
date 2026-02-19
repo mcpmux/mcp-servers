@@ -6,13 +6,25 @@
   "description": "Connect to MongoDB databases and Atlas clusters. Query collections, inspect schemas, manage indexes, and run aggregation pipelines through the official MongoDB MCP server.",
   "icon": "https://avatars.githubusercontent.com/u/11214950?v=4",
   "schema_version": "2.1",
-  "categories": ["database"],
-  "tags": ["mongodb", "database", "nosql", "atlas", "aggregation", "collections", "documents"],
-
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "mongodb",
+    "database",
+    "nosql",
+    "atlas",
+    "aggregation",
+    "collections",
+    "documents"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "mongodb-mcp-server@latest"],
+    "args": [
+      "-y",
+      "mongodb-mcp-server@latest"
+    ],
     "env": {
       "MDB_MCP_CONNECTION_STRING": "${input:MONGODB_URI}"
     },
@@ -22,7 +34,7 @@
           "id": "MONGODB_URI",
           "label": "MongoDB Connection String",
           "description": "MongoDB connection URI for your database. Supports local instances, Atlas clusters, and replica sets.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "mongodb+srv://username:password@cluster.mongodb.net/mydb",
@@ -35,31 +47,27 @@
       ]
     }
   },
-
   "auth": {
     "type": "none"
   },
-
   "contributor": {
     "name": "MongoDB",
     "github": "mongodb-js",
     "url": "https://www.mongodb.com"
   },
-
   "links": {
     "repository": "https://github.com/mongodb-js/mongodb-mcp-server",
     "homepage": "https://www.mongodb.com",
     "documentation": "https://www.mongodb.com/docs/mcp-server/get-started/"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
     "prompts": false,
     "read_only_mode": false
   },
-
   "changelog_url": "https://github.com/mongodb-js/mongodb-mcp-server/releases"
 }
