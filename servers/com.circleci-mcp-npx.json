@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.circleci-mcp",
-  "name": "CircleCI",
+  "id": "com.circleci-mcp-npx",
+  "name": "CircleCI (npx)",
   "alias": "circleci",
   "description": "Manage CircleCI pipelines, jobs, and workflows. Trigger builds, view job logs, analyze test results, and debug failed pipelines.",
   "icon": "https://avatars.githubusercontent.com/u/26607840?v=4",
