@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.airtable",
-  "name": "Airtable",
+  "id": "community.airtable-npx",
+  "name": "Airtable (npx)",
   "alias": "airtable",
   "description": "Interact with Airtable bases, tables, and records. List schemas, search records, create and update data, and manage comments.",
   "icon": "https://avatars.githubusercontent.com/u/4953590?v=4",
