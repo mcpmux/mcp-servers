@@ -6,13 +6,22 @@
   "description": "Send emails using the Resend API. Supports plain text and HTML content, attachments, scheduling, and recipient management.",
   "icon": "https://avatars.githubusercontent.com/u/109384852?v=4",
   "schema_version": "2.1",
-  "categories": ["communication"],
-  "tags": ["resend", "email", "messaging", "notifications"],
-
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "resend",
+    "email",
+    "messaging",
+    "notifications"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "resend-mcp"],
+    "args": [
+      "-y",
+      "resend-mcp"
+    ],
     "env": {
       "RESEND_API_KEY": "${input:RESEND_API_KEY}"
     },
@@ -22,7 +31,7 @@
           "id": "RESEND_API_KEY",
           "label": "Resend API Key",
           "description": "API key for the Resend email API.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -35,26 +44,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Create a Resend API key at https://resend.com/api-keys"
   },
-
   "contributor": {
     "name": "Resend",
     "github": "resend",
     "url": "https://resend.com"
   },
-
   "links": {
-    "repository": "https://github.com/resend/mcp-send-email",
+    "repository": "https://github.com/resend/resend-mcp",
     "homepage": "https://resend.com",
     "documentation": "https://resend.com/docs/knowledge-base/mcp-server"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
