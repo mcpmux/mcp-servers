@@ -6,13 +6,25 @@
   "description": "Run AI models on Replicate. Create predictions, search for models, manage deployments, and generate images, audio, and text.",
   "icon": "https://avatars.githubusercontent.com/u/60410876?v=4",
   "schema_version": "2.1",
-  "categories": ["ai-ml", "cloud"],
-  "tags": ["replicate", "ai", "models", "inference", "image-generation", "ml"],
-
+  "categories": [
+    "ai-ml",
+    "cloud"
+  ],
+  "tags": [
+    "replicate",
+    "ai",
+    "models",
+    "inference",
+    "image-generation",
+    "ml"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "replicate-mcp@latest"],
+    "args": [
+      "-y",
+      "replicate-mcp@latest"
+    ],
     "env": {
       "REPLICATE_API_TOKEN": "${input:REPLICATE_API_TOKEN}"
     },
@@ -22,7 +34,7 @@
           "id": "REPLICATE_API_TOKEN",
           "label": "Replicate API Token",
           "description": "API token for the Replicate platform.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "r8_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -35,26 +47,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Get a Replicate API token at https://replicate.com/account/api-tokens"
   },
-
   "contributor": {
     "name": "Replicate",
     "github": "replicate",
     "url": "https://replicate.com"
   },
-
   "links": {
     "repository": "https://github.com/replicate/replicate-mcp",
     "homepage": "https://replicate.com",
     "documentation": "https://replicate.com/docs/reference/mcp"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
