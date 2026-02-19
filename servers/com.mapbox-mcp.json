@@ -6,13 +6,25 @@
   "description": "Search for places, geocode addresses, get directions, and generate map visualizations using the Mapbox APIs.",
   "icon": "https://avatars.githubusercontent.com/u/600935?v=4",
   "schema_version": "2.1",
-  "categories": ["search"],
-  "tags": ["mapbox", "maps", "geocoding", "directions", "places", "navigation", "location"],
-
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "mapbox",
+    "maps",
+    "geocoding",
+    "directions",
+    "places",
+    "navigation",
+    "location"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@mapbox/mcp-server"],
+    "args": [
+      "-y",
+      "@mapbox/mcp-server"
+    ],
     "env": {
       "MAPBOX_ACCESS_TOKEN": "${input:MAPBOX_ACCESS_TOKEN}"
     },
@@ -22,7 +34,7 @@
           "id": "MAPBOX_ACCESS_TOKEN",
           "label": "Mapbox Access Token",
           "description": "Access token for the Mapbox API.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "pk.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -35,26 +47,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Create an access token at https://account.mapbox.com/access-tokens/"
   },
-
   "contributor": {
     "name": "Mapbox",
     "github": "mapbox",
     "url": "https://www.mapbox.com"
   },
-
   "links": {
     "repository": "https://github.com/mapbox/mcp-server",
     "homepage": "https://www.mapbox.com",
     "documentation": "https://docs.mapbox.com/api/guides/mcp-server/"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
