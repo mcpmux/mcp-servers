@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.coda-npx",
+  "id": "orellazri.coda-mcp-npx",
   "name": "Coda (npx)",
   "alias": "coda",
   "description": "Manage Coda docs, pages, tables, and rows. List documents, read and write table data, and create new pages.",
