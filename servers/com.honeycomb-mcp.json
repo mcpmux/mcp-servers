@@ -38,9 +38,9 @@
           "secret": true,
           "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
           "obtain": {
-            "url": "https://ui.honeycomb.io/account",
-            "instructions": "1. Go to ui.honeycomb.io > Account\n2. Navigate to API Keys\n3. Create or copy an existing key",
-            "button_label": "Get API Key"
+            "url": "https://docs.honeycomb.io/configure/environments/manage-api-keys/",
+            "instructions": "1. Log in to your Honeycomb account\n2. Click on your environment name in the top-left\n3. Go to Manage Environments\n4. Select your environment\n5. Find your API Key in the API Keys section",
+            "button_label": "View Docs"
           }
         }
       ]
