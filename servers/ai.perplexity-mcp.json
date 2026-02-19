@@ -6,13 +6,25 @@
   "description": "AI-powered search using Perplexity models. Provides web search, deep research, and reasoning capabilities with real-time web context.",
   "icon": "https://avatars.githubusercontent.com/u/185426709?v=4",
   "schema_version": "2.1",
-  "categories": ["search", "ai-ml"],
-  "tags": ["perplexity", "search", "web-search", "research", "ai", "reasoning"],
-
+  "categories": [
+    "search",
+    "ai-ml"
+  ],
+  "tags": [
+    "perplexity",
+    "search",
+    "web-search",
+    "research",
+    "ai",
+    "reasoning"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@perplexity-ai/mcp-server"],
+    "args": [
+      "-y",
+      "@perplexity-ai/mcp-server"
+    ],
     "env": {
       "PERPLEXITY_API_KEY": "${input:PERPLEXITY_API_KEY}"
     },
@@ -22,7 +34,7 @@
           "id": "PERPLEXITY_API_KEY",
           "label": "Perplexity API Key",
           "description": "API key for the Perplexity API. Purchase credits at perplexity.ai/settings/api.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "pplx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -35,26 +47,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Get a Perplexity API key at https://www.perplexity.ai/settings/api"
   },
-
   "contributor": {
     "name": "Perplexity AI",
     "github": "perplexityai",
     "url": "https://www.perplexity.ai"
   },
-
   "links": {
     "repository": "https://github.com/perplexityai/modelcontextprotocol",
     "homepage": "https://www.perplexity.ai",
     "documentation": "https://docs.perplexity.ai/guides/mcp-server"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
