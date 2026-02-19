@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.replicate-mcp",
-  "name": "Replicate",
+  "id": "com.replicate-mcp-npx",
+  "name": "Replicate (npx)",
   "alias": "replicate",
   "description": "Run AI models on Replicate. Create predictions, search for models, manage deployments, and generate images, audio, and text.",
   "icon": "https://avatars.githubusercontent.com/u/60410876?v=4",
