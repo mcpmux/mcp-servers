@@ -6,13 +6,25 @@
   "description": "Manage HubSpot CRM data including contacts, companies, deals, and tickets. Search records, create associations, and manage pipelines.",
   "icon": "https://avatars.githubusercontent.com/u/326419?v=4",
   "schema_version": "2.1",
-  "categories": ["productivity", "cloud"],
-  "tags": ["hubspot", "crm", "contacts", "deals", "marketing", "sales"],
-
+  "categories": [
+    "productivity",
+    "cloud"
+  ],
+  "tags": [
+    "hubspot",
+    "crm",
+    "contacts",
+    "deals",
+    "marketing",
+    "sales"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@hubspot/mcp-server"],
+    "args": [
+      "-y",
+      "@hubspot/mcp-server"
+    ],
     "env": {
       "PRIVATE_APP_ACCESS_TOKEN": "${input:PRIVATE_APP_ACCESS_TOKEN}"
     },
@@ -22,7 +34,7 @@
           "id": "PRIVATE_APP_ACCESS_TOKEN",
           "label": "HubSpot Private App Token",
           "description": "Access token from a HubSpot private app with the necessary scopes.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -35,26 +47,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Create a HubSpot private app at Settings > Integrations > Private Apps"
   },
-
   "contributor": {
     "name": "HubSpot",
     "github": "HubSpot",
     "url": "https://www.hubspot.com"
   },
-
   "links": {
-    "repository": "https://github.com/HubSpot/hubspot-mcp-server",
+    "repository": "https://github.com/HubSpot/mcp-server",
     "homepage": "https://www.hubspot.com",
     "documentation": "https://developers.hubspot.com/mcp"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
