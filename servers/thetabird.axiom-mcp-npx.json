@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.axiom-npx",
+  "id": "thetabird.axiom-mcp-npx",
   "name": "Axiom (npx)",
   "alias": "axiom",
   "description": "Query and manage Axiom datasets for log analysis and observability. Execute APL queries, list datasets, and ingest events.",
