@@ -50,7 +50,7 @@
   "links": {
     "repository": "https://github.com/modelcontextprotocol/servers",
     "homepage": "https://www.postgresql.org",
-    "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres#readme"
+    "documentation": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres"
   },
   "platforms": [
     "all"
