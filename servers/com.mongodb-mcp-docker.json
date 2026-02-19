@@ -1,0 +1,99 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.mongodb-mcp-docker",
+  "name": "MongoDB (Docker)",
+  "alias": "mongodb-docker",
+  "description": "Connect to MongoDB databases and Atlas clusters via Docker. Query collections, inspect schemas, manage indexes, and run aggregation pipelines in an isolated container.",
+  "icon": "https://avatars.githubusercontent.com/u/11214950?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "mongodb",
+    "database",
+    "nosql",
+    "atlas",
+    "docker",
+    "aggregation",
+    "collections"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "--rm",
+      "-i",
+      "-e", "MDB_MCP_CONNECTION_STRING",
+      "-e", "MDB_MCP_API_CLIENT_ID",
+      "-e", "MDB_MCP_API_CLIENT_SECRET",
+      "mongodb/mongodb-mcp-server:latest"
+    ],
+    "env": {
+      "MDB_MCP_CONNECTION_STRING": "${input:MDB_MCP_CONNECTION_STRING}",
+      "MDB_MCP_API_CLIENT_ID": "${input:MDB_MCP_API_CLIENT_ID}",
+      "MDB_MCP_API_CLIENT_SECRET": "${input:MDB_MCP_API_CLIENT_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MDB_MCP_CONNECTION_STRING",
+          "label": "MongoDB Connection String",
+          "description": "MongoDB connection URI. Use host.docker.internal instead of localhost for local instances (e.g., mongodb://host.docker.internal:27017/mydb).",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "mongodb+srv://username:password@cluster.mongodb.net/mydb",
+          "obtain": {
+            "url": "https://www.mongodb.com/docs/manual/reference/connection-string/",
+            "instructions": "1. For MongoDB Atlas: Go to your cluster > Connect > Drivers\n2. Copy the connection string\n3. For local MongoDB inside Docker: use mongodb://host.docker.internal:27017/mydb",
+            "button_label": "Learn More"
+          }
+        },
+        {
+          "id": "MDB_MCP_API_CLIENT_ID",
+          "label": "Atlas API Client ID",
+          "description": "MongoDB Atlas Service Account client ID for Atlas management operations. Optional — only needed for Atlas administration.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "mdb_sa_id_..."
+        },
+        {
+          "id": "MDB_MCP_API_CLIENT_SECRET",
+          "label": "Atlas API Client Secret",
+          "description": "MongoDB Atlas Service Account client secret. Required when Atlas API Client ID is provided.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "mdb_sa_sk_..."
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Connection string provides database access. Atlas API credentials (optional) enable cluster management features."
+  },
+  "contributor": {
+    "name": "MongoDB",
+    "github": "mongodb-js",
+    "url": "https://www.mongodb.com"
+  },
+  "links": {
+    "repository": "https://github.com/mongodb-js/mongodb-mcp-server",
+    "homepage": "https://www.mongodb.com",
+    "documentation": "https://www.mongodb.com/docs/mcp-server/get-started/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/mongodb-js/mongodb-mcp-server/releases"
+}
