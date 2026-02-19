@@ -3,7 +3,7 @@
   "id": "community.postgresql",
   "name": "PostgreSQL",
   "alias": "postgres",
-  "description": "Query PostgreSQL databases with read-only access. Execute SQL queries, inspect table schemas, and explore data in any PostgreSQL database.",
+  "description": "Query PostgreSQL databases, analyze performance, and optimize indexes. Execute SQL, inspect schemas, get EXPLAIN plans, identify slow queries, and run health checks via Postgres MCP Pro.",
   "icon": "https://www.postgresql.org/media/img/about/press/elephant.png",
   "schema_version": "2.1",
   "categories": [
@@ -15,26 +15,35 @@
     "database",
     "sql",
     "query",
-    "relational"
+    "relational",
+    "index-tuning",
+    "performance"
   ],
   "transport": {
     "type": "stdio",
-    "command": "npx",
+    "command": "uvx",
     "args": [
-      "-y",
-      "@modelcontextprotocol/server-postgres",
-      "${input:POSTGRES_URL}"
+      "postgres-mcp",
+      "--access-mode=unrestricted"
     ],
+    "env": {
+      "DATABASE_URI": "${input:DATABASE_URI}"
+    },
     "metadata": {
       "inputs": [
         {
-          "id": "POSTGRES_URL",
-          "label": "PostgreSQL Connection URL",
-          "description": "PostgreSQL connection string including host, port, database name, and credentials. All queries run in read-only transactions.",
+          "id": "DATABASE_URI",
+          "label": "PostgreSQL Connection URI",
+          "description": "PostgreSQL connection string including host, port, database name, and credentials.",
           "type": "text",
           "required": true,
           "secret": true,
-          "placeholder": "postgresql://username:password@localhost:5432/mydb"
+          "placeholder": "postgresql://username:password@localhost:5432/mydb",
+          "obtain": {
+            "url": "https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS",
+            "instructions": "1. Format: postgresql://username:password@host:port/database\n2. For local PostgreSQL: postgresql://postgres:password@localhost:5432/mydb\n3. For cloud providers: check your dashboard for the connection string",
+            "button_label": "Connection Docs"
+          }
         }
       ]
     }
@@ -43,22 +52,23 @@
     "type": "none"
   },
   "contributor": {
-    "name": "Model Context Protocol",
-    "github": "modelcontextprotocol",
-    "url": "https://modelcontextprotocol.io"
+    "name": "Crystal DBA",
+    "github": "crystaldba",
+    "url": "https://github.com/crystaldba"
   },
   "links": {
-    "repository": "https://github.com/modelcontextprotocol/servers",
+    "repository": "https://github.com/crystaldba/postgres-mcp",
     "homepage": "https://www.postgresql.org",
-    "documentation": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres"
+    "documentation": "https://github.com/crystaldba/postgres-mcp#readme"
   },
   "platforms": [
     "all"
   ],
   "capabilities": {
     "tools": true,
-    "resources": true,
+    "resources": false,
     "prompts": false,
     "read_only_mode": true
-  }
+  },
+  "changelog_url": "https://github.com/crystaldba/postgres-mcp/releases"
 }
