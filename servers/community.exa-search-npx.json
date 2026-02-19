@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.exa-search-npx",
+  "name": "Exa Search (npx)",
+  "alias": "exa-npx",
+  "description": "AI-powered web search that understands meaning, not just keywords. Find similar pages, search by content type, and get clean text from any URL via npx.",
+  "icon": "https://avatars.githubusercontent.com/u/77906174?v=4",
+  "schema_version": "2.1",
+  "categories": ["search", "ai-ml"],
+  "tags": ["exa", "search", "web-search", "semantic-search", "ai-search", "research"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "exa-mcp-server"],
+    "env": {
+      "EXA_API_KEY": "${input:EXA_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "EXA_API_KEY",
+          "label": "Exa API Key",
+          "description": "API key for the Exa Search API. Free tier available with limited requests.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "exa-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://dashboard.exa.ai/api-keys",
+            "instructions": "1. Go to dashboard.exa.ai\n2. Sign up or log in to your account\n3. Navigate to API Keys section\n4. Click 'Create API Key'\n5. Copy the generated key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get an Exa API key at dashboard.exa.ai/api-keys"
+  },
+
+  "contributor": {
+    "name": "Exa",
+    "github": "exa-labs",
+    "url": "https://exa.ai"
+  },
+
+  "links": {
+    "repository": "https://github.com/exa-labs/exa-mcp-server",
+    "homepage": "https://exa.ai",
+    "documentation": "https://docs.exa.ai"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

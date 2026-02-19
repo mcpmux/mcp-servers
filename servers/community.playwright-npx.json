@@ -1,9 +1,9 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.playwright",
-  "name": "Playwright",
+  "id": "community.playwright-npx",
+  "name": "Playwright (npx)",
   "alias": "playwright",
-  "description": "Browser automation using Playwright. Navigate pages, click elements, fill forms, take screenshots, and interact with web content through structured accessibility snapshots.",
+  "description": "Browser automation using Playwright via npx. Navigate pages, click elements, fill forms, take screenshots, and interact with web content. Runs headed by default.",
   "icon": "https://avatars.githubusercontent.com/u/6154722?v=4",
   "schema_version": "2.1",
   "categories": ["developer-tools"],

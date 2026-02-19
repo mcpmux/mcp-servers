@@ -1,27 +1,23 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.exa-search",
-  "name": "Exa Search",
+  "id": "community.exa-search-http",
+  "name": "Exa Search (Remote)",
   "alias": "exa",
-  "description": "AI-powered web search that understands meaning, not just keywords. Find similar pages, search by content type, and get clean text from any URL.",
+  "description": "AI-powered web search that understands meaning, not just keywords. Hosted remote MCP server, no local setup required.",
   "icon": "https://avatars.githubusercontent.com/u/77906174?v=4",
   "schema_version": "2.1",
   "categories": ["search", "ai-ml"],
   "tags": ["exa", "search", "web-search", "semantic-search", "ai-search", "research"],
 
   "transport": {
-    "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "exa-mcp-server"],
-    "env": {
-      "EXA_API_KEY": "${input:EXA_API_KEY}"
-    },
+    "type": "http",
+    "url": "https://mcp.exa.ai/mcp",
     "metadata": {
       "inputs": [
         {
           "id": "EXA_API_KEY",
           "label": "Exa API Key",
-          "description": "API key for the Exa Search API. Free tier available with limited requests.",
+          "description": "API key for the Exa Search API. Required for authentication via the remote endpoint.",
           "type": "text",
           "required": true,
           "secret": true,

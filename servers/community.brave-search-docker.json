@@ -1,18 +1,22 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.brave-search",
-  "name": "Brave Search",
-  "alias": "brave",
-  "description": "Search the web using the Brave Search API. Supports web search, news search, and local POI search with privacy-focused results.",
+  "id": "community.brave-search-docker",
+  "name": "Brave Search (Docker)",
+  "alias": "brave-docker",
+  "description": "Search the web using the Brave Search API via Docker container. Supports web search, news search, and local POI search with privacy-focused results.",
   "icon": "https://avatars.githubusercontent.com/u/12301619?v=4",
   "schema_version": "2.1",
   "categories": ["search"],
-  "tags": ["brave", "search", "web-search", "news", "privacy", "research"],
+  "tags": ["brave", "search", "web-search", "news", "privacy", "research", "docker"],
 
   "transport": {
     "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "@brave/brave-search-mcp-server"],
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "BRAVE_API_KEY",
+      "mcp/brave-search"
+    ],
     "env": {
       "BRAVE_API_KEY": "${input:BRAVE_API_KEY}"
     },

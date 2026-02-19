@@ -1,0 +1,66 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.notion-mcp-docker",
+  "name": "Notion (Docker)",
+  "alias": "notion-docker",
+  "description": "Read and write Notion pages, databases, and blocks via Docker container. Uses a Notion integration token for authentication.",
+  "icon": "https://avatars.githubusercontent.com/u/4792552?v=4",
+  "schema_version": "2.1",
+  "categories": ["productivity", "documentation"],
+  "tags": ["notion", "notes", "wiki", "database", "pages", "blocks", "knowledge-base", "docker"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": ["run", "--rm", "-i", "-e", "NOTION_TOKEN", "mcp/notion"],
+    "env": {
+      "NOTION_TOKEN": "${input:NOTION_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NOTION_TOKEN",
+          "label": "Notion Integration Token",
+          "description": "Internal integration secret token from Notion. Share the relevant pages/databases with your integration after creating it.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "ntn_xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://www.notion.so/profile/integrations",
+            "instructions": "1. Go to notion.so/profile/integrations\n2. Click 'New integration'\n3. Give it a name and select your workspace\n4. Copy the Internal Integration Secret (starts with ntn_)\n5. Share desired pages/databases with the integration",
+            "button_label": "Create Integration"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an integration at notion.so/profile/integrations and share pages with it"
+  },
+
+  "contributor": {
+    "name": "Notion",
+    "github": "makenotion",
+    "url": "https://notion.so"
+  },
+
+  "links": {
+    "repository": "https://github.com/makenotion/notion-mcp-server",
+    "homepage": "https://notion.so",
+    "documentation": "https://developers.notion.com"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/makenotion/notion-mcp-server/releases"
+}

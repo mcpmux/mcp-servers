@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.playwright-docker",
+  "name": "Playwright (Docker)",
+  "alias": "playwright-docker",
+  "description": "Browser automation using Playwright in a Docker container. Runs headless Chromium, no local browser installation needed. Ideal for server environments.",
+  "icon": "https://avatars.githubusercontent.com/u/6154722?v=4",
+  "schema_version": "2.1",
+  "categories": ["developer-tools"],
+  "tags": ["playwright", "browser", "automation", "testing", "screenshots", "web", "scraping", "docker", "headless"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm", "--init", "--pull=always",
+      "mcr.microsoft.com/playwright/mcp"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "none"
+  },
+
+  "contributor": {
+    "name": "Microsoft",
+    "github": "microsoft",
+    "url": "https://playwright.dev"
+  },
+
+  "links": {
+    "repository": "https://github.com/microsoft/playwright-mcp",
+    "homepage": "https://playwright.dev",
+    "documentation": "https://github.com/microsoft/playwright-mcp#readme"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/microsoft/playwright-mcp/releases"
+}

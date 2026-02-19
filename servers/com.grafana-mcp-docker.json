@@ -1,13 +1,13 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.grafana-mcp",
-  "name": "Grafana",
+  "id": "com.grafana-mcp-docker",
+  "name": "Grafana (Docker)",
   "alias": "grafana",
-  "description": "Search dashboards, query Prometheus and Loki datasources, manage alerts, and investigate incidents through the official Grafana MCP server.",
+  "description": "Search dashboards, query Prometheus and Loki datasources, manage alerts, and investigate incidents on any Grafana instance (self-hosted or Grafana Cloud) via Docker.",
   "icon": "https://avatars.githubusercontent.com/u/7195757?v=4",
   "schema_version": "2.1",
   "categories": ["monitoring", "developer-tools"],
-  "tags": ["grafana", "monitoring", "dashboards", "prometheus", "loki", "alerts", "observability", "metrics"],
+  "tags": ["grafana", "grafana-cloud", "monitoring", "dashboards", "prometheus", "loki", "alerts", "observability", "metrics", "incidents", "oncall"],
 
   "transport": {
     "type": "stdio",
@@ -34,7 +34,7 @@
         {
           "id": "GRAFANA_URL",
           "label": "Grafana URL",
-          "description": "URL of your Grafana instance. Include the protocol (http:// or https://).",
+          "description": "URL of your Grafana instance. Use http://localhost:3000 for local, or https://myinstance.grafana.net for Grafana Cloud.",
           "type": "url",
           "required": true,
           "secret": false,

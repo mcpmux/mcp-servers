@@ -1,9 +1,9 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.notion-mcp",
-  "name": "Notion",
-  "alias": "notion",
-  "description": "Read and write Notion pages, databases, blocks, and data sources through the official Notion MCP server.",
+  "id": "com.notion-mcp-npx",
+  "name": "Notion (npx)",
+  "alias": "notion-npx",
+  "description": "Read and write Notion pages, databases, and blocks locally via npx. Uses a Notion integration token for authentication.",
   "icon": "https://avatars.githubusercontent.com/u/4792552?v=4",
   "schema_version": "2.1",
   "categories": ["productivity", "documentation"],

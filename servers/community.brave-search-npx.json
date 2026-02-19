@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.brave-search-npx",
+  "name": "Brave Search (npx)",
+  "alias": "brave",
+  "description": "Search the web using the Brave Search API via npx. Supports web search, news search, and local POI search with privacy-focused results.",
+  "icon": "https://avatars.githubusercontent.com/u/12301619?v=4",
+  "schema_version": "2.1",
+  "categories": ["search"],
+  "tags": ["brave", "search", "web-search", "news", "privacy", "research"],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@brave/brave-search-mcp-server"],
+    "env": {
+      "BRAVE_API_KEY": "${input:BRAVE_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BRAVE_API_KEY",
+          "label": "Brave Search API Key",
+          "description": "API key for the Brave Search API. Free tier available with 2,000 queries/month.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "BSAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://brave.com/search/api/",
+            "instructions": "1. Go to brave.com/search/api\n2. Sign up or log in\n3. Subscribe to a plan (free tier available with 2,000 queries/month)\n4. Copy your API key from the dashboard",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a Brave Search API key at https://brave.com/search/api/"
+  },
+
+  "contributor": {
+    "name": "Brave",
+    "github": "brave",
+    "url": "https://brave.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/brave/brave-search-mcp-server",
+    "homepage": "https://brave.com/search/api/",
+    "documentation": "https://api.search.brave.com/app/documentation"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

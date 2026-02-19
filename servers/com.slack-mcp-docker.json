@@ -1,18 +1,23 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.slack-mcp",
-  "name": "Slack",
-  "alias": "slack",
-  "description": "Send and read Slack messages, manage channels, list users, add reactions, and interact with your Slack workspace.",
+  "id": "com.slack-mcp-docker",
+  "name": "Slack (Docker)",
+  "alias": "slack-docker",
+  "description": "Send and read Slack messages, manage channels, list users, add reactions, and interact with your Slack workspace via Docker container.",
   "icon": "https://avatars.githubusercontent.com/u/6962987?v=4",
   "schema_version": "2.1",
   "categories": ["communication"],
-  "tags": ["slack", "messaging", "chat", "channels", "workspace", "collaboration"],
+  "tags": ["slack", "messaging", "chat", "channels", "workspace", "collaboration", "docker"],
 
   "transport": {
     "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "@modelcontextprotocol/server-slack"],
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "SLACK_BOT_TOKEN",
+      "-e", "SLACK_TEAM_ID",
+      "mcp/slack"
+    ],
     "env": {
       "SLACK_BOT_TOKEN": "${input:SLACK_BOT_TOKEN}",
       "SLACK_TEAM_ID": "${input:SLACK_TEAM_ID}"
