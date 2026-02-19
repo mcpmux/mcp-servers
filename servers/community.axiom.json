@@ -6,13 +6,25 @@
   "description": "Query and manage Axiom datasets for log analysis and observability. Execute APL queries, list datasets, and ingest events.",
   "icon": "https://avatars.githubusercontent.com/u/21122348?v=4",
   "schema_version": "2.1",
-  "categories": ["monitoring", "database"],
-  "tags": ["axiom", "logs", "observability", "analytics", "apl", "datasets"],
-
+  "categories": [
+    "monitoring",
+    "database"
+  ],
+  "tags": [
+    "axiom",
+    "logs",
+    "observability",
+    "analytics",
+    "apl",
+    "datasets"
+  ],
   "transport": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "mcp-server-axiom"],
+    "args": [
+      "-y",
+      "mcp-server-axiom"
+    ],
     "env": {
       "AXIOM_TOKEN": "${input:AXIOM_TOKEN}",
       "AXIOM_ORG_ID": "${input:AXIOM_ORG_ID}"
@@ -23,7 +35,7 @@
           "id": "AXIOM_TOKEN",
           "label": "Axiom API Token",
           "description": "API token for the Axiom API. Use an Advanced token for query and dataset access.",
-          "type": "password",
+          "type": "text",
           "required": true,
           "secret": true,
           "placeholder": "xapt-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -50,26 +62,23 @@
       ]
     }
   },
-
   "auth": {
     "type": "api_key",
     "instructions": "Create an API token at https://app.axiom.co/settings/api-tokens"
   },
-
   "contributor": {
     "name": "ThetaBird",
     "github": "ThetaBird",
     "url": "https://github.com/ThetaBird"
   },
-
   "links": {
     "repository": "https://github.com/ThetaBird/mcp-server-axiom-js",
     "homepage": "https://axiom.co",
     "documentation": "https://axiom.co/docs"
   },
-
-  "platforms": ["all"],
-
+  "platforms": [
+    "all"
+  ],
   "capabilities": {
     "tools": true,
     "resources": false,
