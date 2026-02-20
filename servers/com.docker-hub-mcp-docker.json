@@ -1,0 +1,83 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.docker-hub-mcp-docker",
+  "name": "Docker Hub (Docker)",
+  "alias": "docker-hub",
+  "description": "Search Docker Hub images, manage repositories and tags, discover Docker Hardened Images, and get AI-powered image recommendations. Interfaces with Docker Hub APIs for intelligent content discovery.",
+  "icon": "https://avatars.githubusercontent.com/u/5429470?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "docker",
+    "docker-hub",
+    "containers",
+    "images",
+    "registry",
+    "devops"
+  ],
+
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "HUB_PAT_TOKEN",
+      "mcp/dockerhub",
+      "--transport=stdio"
+    ],
+    "env": {
+      "HUB_PAT_TOKEN": "${input:HUB_PAT_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HUB_PAT_TOKEN",
+          "label": "Docker Hub Personal Access Token",
+          "description": "Personal Access Token for Docker Hub API. Required for authenticated access to manage repositories. Public image search works without authentication.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "dckr_pat_xxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://hub.docker.com/settings/security",
+            "instructions": "1. Go to Docker Hub > Account Settings > Security\n2. Click 'New Access Token'\n3. Give it a description and select permissions\n4. Click 'Generate' and copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Create a Personal Access Token at hub.docker.com/settings/security. Public image search works without auth; token required for repository management."
+  },
+
+  "contributor": {
+    "name": "Docker",
+    "github": "docker",
+    "url": "https://www.docker.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/docker/hub-mcp",
+    "homepage": "https://hub.docker.com/mcp",
+    "documentation": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/hub-mcp/"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/docker/hub-mcp/releases"
+}
