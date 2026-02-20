@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.circleci-mcp-npx",
+  "name": "CircleCI (npx)",
+  "alias": "circleci",
+  "description": "Manage CircleCI pipelines, jobs, and workflows. Trigger builds, view job logs, analyze test results, and debug failed pipelines.",
+  "icon": "https://avatars.githubusercontent.com/u/26607840?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "circleci",
+    "ci-cd",
+    "pipelines",
+    "builds",
+    "testing",
+    "deployment"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@circleci/mcp-server-circleci"
+    ],
+    "env": {
+      "CIRCLECI_TOKEN": "${input:CIRCLECI_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CIRCLECI_TOKEN",
+          "label": "CircleCI API Token",
+          "description": "Personal API token for CircleCI.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "CCIPAT_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.circleci.com/settings/user/tokens",
+            "instructions": "1. Go to app.circleci.com > User Settings > Personal API Tokens\n2. Click 'Create New Token'\n3. Name your token and click 'Add API Token'\n4. Copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Personal API Token at https://app.circleci.com/settings/user/tokens"
+  },
+  "contributor": {
+    "name": "CircleCI",
+    "github": "CircleCI-Public",
+    "url": "https://circleci.com"
+  },
+  "links": {
+    "repository": "https://github.com/CircleCI-Public/mcp-server-circleci",
+    "homepage": "https://circleci.com",
+    "documentation": "https://circleci.com/docs/guides/toolkit/using-the-circleci-mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
