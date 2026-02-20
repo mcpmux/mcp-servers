@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.todoist-mcp-npx",
+  "name": "Todoist (npx)",
+  "alias": "todoist",
+  "description": "Manage Todoist tasks, projects, labels, and comments. Create, update, complete, and organize tasks with full API access to your Todoist workspace.",
+  "icon": "https://avatars.githubusercontent.com/u/2565372?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "todoist",
+    "tasks",
+    "todo",
+    "project-management",
+    "productivity"
+  ],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@doist/todoist-ai"
+    ],
+    "env": {
+      "TODOIST_API_KEY": "${input:TODOIST_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TODOIST_API_KEY",
+          "label": "Todoist API Token",
+          "description": "Personal API token for Todoist. Found in Todoist Settings > Integrations > Developer.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.todoist.com/app/settings/integrations/developer",
+            "instructions": "1. Open Todoist > Settings > Integrations > Developer\n2. Copy your API token",
+            "button_label": "Get Token"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API token from Todoist Settings > Integrations > Developer"
+  },
+
+  "contributor": {
+    "name": "Doist",
+    "github": "Doist",
+    "url": "https://todoist.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/Doist/todoist-ai",
+    "homepage": "https://todoist.com",
+    "documentation": "https://developer.todoist.com"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/Doist/todoist-ai/releases"
+}
