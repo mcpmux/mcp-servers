@@ -1,0 +1,59 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.gitlab-mcp",
+  "name": "GitLab",
+  "alias": "gitlab-http",
+  "description": "GitLab's built-in MCP server for managing issues, merge requests, pipelines, and semantic code search. Requires GitLab 18.6+ with Duo enabled. Connects directly to any GitLab instance via OAuth.",
+  "icon": "https://avatars.githubusercontent.com/u/1086321?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "version-control",
+    "developer-tools"
+  ],
+  "tags": [
+    "gitlab",
+    "git",
+    "version-control",
+    "merge-requests",
+    "issues",
+    "ci-cd",
+    "pipelines",
+    "code-search"
+  ],
+
+  "transport": {
+    "type": "http",
+    "url": "https://gitlab.com/api/v4/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted. Your browser will open to authorize access to your GitLab account. Requires GitLab 18.6+ with Duo enabled."
+  },
+
+  "contributor": {
+    "name": "GitLab",
+    "github": "gitlabhq",
+    "url": "https://about.gitlab.com"
+  },
+
+  "links": {
+    "repository": "https://gitlab.com/gitlab-org/gitlab",
+    "homepage": "https://about.gitlab.com",
+    "documentation": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

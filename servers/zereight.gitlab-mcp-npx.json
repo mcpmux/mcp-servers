@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "zereight.gitlab-mcp-npx",
+  "name": "GitLab (npx)",
+  "alias": "gitlab",
+  "description": "Manage GitLab repositories, issues, merge requests, pipelines, wikis, milestones, and releases. 107+ tools with configurable toolsets, read-only mode, and project scoping.",
+  "icon": "https://avatars.githubusercontent.com/u/42544600?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "version-control",
+    "developer-tools"
+  ],
+  "tags": [
+    "gitlab",
+    "git",
+    "version-control",
+    "merge-requests",
+    "issues",
+    "ci-cd",
+    "pipelines"
+  ],
+
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@zereight/mcp-gitlab"
+    ],
+    "env": {
+      "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:GITLAB_PERSONAL_ACCESS_TOKEN}",
+      "GITLAB_API_URL": "${input:GITLAB_API_URL}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GITLAB_PERSONAL_ACCESS_TOKEN",
+          "label": "GitLab Personal Access Token",
+          "description": "Personal Access Token for the GitLab API. Requires 'api' scope for full access, or 'read_api' for read-only mode.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "glpat-xxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://gitlab.com/-/user_settings/personal_access_tokens",
+            "instructions": "1. Go to GitLab > User Settings > Access Tokens\n2. Click 'Add new token'\n3. Select the 'api' scope (or 'read_api' for read-only)\n4. Click 'Create personal access token' and copy it",
+            "button_label": "Create Token"
+          }
+        },
+        {
+          "id": "GITLAB_API_URL",
+          "label": "GitLab API URL",
+          "description": "GitLab API base URL. Defaults to https://gitlab.com/api/v4 for gitlab.com. Change for self-hosted instances.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "https://gitlab.com/api/v4",
+          "placeholder": "https://gitlab.example.com/api/v4"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Personal Access Token with 'api' scope at https://gitlab.com/-/user_settings/personal_access_tokens"
+  },
+
+  "contributor": {
+    "name": "zereight",
+    "github": "zereight",
+    "url": "https://github.com/zereight/gitlab-mcp"
+  },
+
+  "links": {
+    "repository": "https://github.com/zereight/gitlab-mcp",
+    "homepage": "https://gitlab.com",
+    "documentation": "https://github.com/zereight/gitlab-mcp#readme"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+
+  "changelog_url": "https://github.com/zereight/gitlab-mcp/releases"
+}
