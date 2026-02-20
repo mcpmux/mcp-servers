@@ -10,5 +10,6 @@
   { "id": "documentation", "name": "Documentation", "icon": "book-open", "display_order": 9 },
   { "id": "ai-ml", "name": "AI & Machine Learning", "icon": "brain", "display_order": 10 },
   { "id": "monitoring", "name": "Monitoring & Observability", "icon": "activity", "display_order": 11 },
-  { "id": "security", "name": "Security", "icon": "shield", "display_order": 12 }
+  { "id": "security", "name": "Security", "icon": "shield", "display_order": 12 },
+  { "id": "design", "name": "Design", "icon": "palette", "display_order": 13 }
 ]
