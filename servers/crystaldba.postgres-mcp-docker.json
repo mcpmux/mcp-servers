@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "crystaldba.postgres-mcp-docker",
+  "name": "PostgreSQL (Docker)",
+  "alias": "postgres-docker",
+  "description": "Query PostgreSQL databases, analyze performance, and optimize indexes via Docker. Execute SQL, inspect schemas, get EXPLAIN plans, identify slow queries, and run health checks.",
+  "icon": "https://www.postgresql.org/media/img/about/press/elephant.png",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "postgres",
+    "postgresql",
+    "database",
+    "sql",
+    "docker",
+    "index-tuning",
+    "performance"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run", "-i", "--rm",
+      "-e", "DATABASE_URI",
+      "crystaldba/postgres-mcp",
+      "--access-mode=unrestricted"
+    ],
+    "env": {
+      "DATABASE_URI": "${input:DATABASE_URI}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DATABASE_URI",
+          "label": "PostgreSQL Connection URI",
+          "description": "PostgreSQL connection string. Use host.docker.internal instead of localhost for local instances.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "postgresql://username:password@host.docker.internal:5432/mydb",
+          "obtain": {
+            "url": "https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS",
+            "instructions": "1. Format: postgresql://username:password@host:port/database\n2. For local PostgreSQL via Docker: use host.docker.internal instead of localhost\n3. For cloud providers: check your dashboard for the connection string",
+            "button_label": "Connection Docs"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Crystal DBA",
+    "github": "crystaldba",
+    "url": "https://github.com/crystaldba"
+  },
+  "links": {
+    "repository": "https://github.com/crystaldba/postgres-mcp",
+    "homepage": "https://www.postgresql.org",
+    "documentation": "https://github.com/crystaldba/postgres-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/crystaldba/postgres-mcp/releases"
+}
