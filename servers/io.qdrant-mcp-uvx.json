@@ -1,0 +1,91 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.qdrant-mcp-uvx",
+  "name": "Qdrant (uvx)",
+  "alias": "qdrant",
+  "description": "Store and retrieve information from Qdrant vector database using semantic search. Supports local and cloud Qdrant instances.",
+  "icon": "https://avatars.githubusercontent.com/u/73504361?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database",
+    "ai-ml"
+  ],
+  "tags": [
+    "qdrant",
+    "vector-database",
+    "semantic-search",
+    "embeddings",
+    "rag"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-server-qdrant"
+    ],
+    "env": {
+      "QDRANT_URL": "${input:QDRANT_URL}",
+      "COLLECTION_NAME": "${input:COLLECTION_NAME}",
+      "QDRANT_API_KEY": "${input:QDRANT_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "QDRANT_URL",
+          "label": "Qdrant URL",
+          "description": "URL of your Qdrant instance. Use http://localhost:6333 for local or your Qdrant Cloud URL.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "http://localhost:6333"
+        },
+        {
+          "id": "COLLECTION_NAME",
+          "label": "Collection Name",
+          "description": "Name of the Qdrant collection to use for storing and retrieving data.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "my-collection"
+        },
+        {
+          "id": "QDRANT_API_KEY",
+          "label": "Qdrant API Key",
+          "description": "API key for Qdrant Cloud. Not required for local instances.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://cloud.qdrant.io/",
+            "instructions": "1. Go to cloud.qdrant.io and create an account\n2. Create or select a cluster\n3. Navigate to API Keys section\n4. Click 'Create' and copy the key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "API key required for Qdrant Cloud instances. Not needed for local Qdrant."
+  },
+  "contributor": {
+    "name": "Qdrant",
+    "github": "qdrant",
+    "url": "https://qdrant.tech"
+  },
+  "links": {
+    "repository": "https://github.com/qdrant/mcp-server-qdrant",
+    "homepage": "https://qdrant.tech",
+    "documentation": "https://qdrant.tech/documentation/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
