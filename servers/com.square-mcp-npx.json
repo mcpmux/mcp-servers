@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.square-mcp-npx",
+  "name": "Square (npx)",
+  "alias": "square",
+  "description": "Interact with Square APIs for payments, orders, catalog, inventory, customers, and bookings. Supports all Square API services.",
+  "icon": "https://avatars.githubusercontent.com/u/82592?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "square",
+    "payments",
+    "commerce",
+    "orders",
+    "catalog",
+    "pos"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "square-mcp-server",
+      "start"
+    ],
+    "env": {
+      "ACCESS_TOKEN": "${input:ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ACCESS_TOKEN",
+          "label": "Square Access Token",
+          "description": "Square API personal access token or sandbox access token.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "EAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://developer.squareup.com/console/en/apps",
+            "instructions": "1. Go to developer.squareup.com and log in\n2. Navigate to Apps in the developer console\n3. Select or create an application\n4. Go to Credentials\n5. Copy your access token",
+            "button_label": "Get Access Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get a Square access token at https://developer.squareup.com/apps"
+  },
+  "contributor": {
+    "name": "Square",
+    "github": "square",
+    "url": "https://squareup.com"
+  },
+  "links": {
+    "repository": "https://github.com/square/square-mcp-server",
+    "homepage": "https://squareup.com",
+    "documentation": "https://developer.squareup.com/docs/devtools/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
