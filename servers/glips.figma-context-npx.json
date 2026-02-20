@@ -1,12 +1,12 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "community.figma-context",
-  "name": "Figma",
+  "id": "glips.figma-context-npx",
+  "name": "Figma (npx)",
   "alias": "figma",
-  "description": "Read and inspect Figma designs, components, and styles. Extract layout details, design tokens, and asset metadata from any Figma file via the Framelink MCP server.",
+  "description": "Read and inspect Figma designs, components, and styles. Extract layout details, design tokens, and asset metadata from any Figma file. Translates auto-layout to CSS flexbox. Supports image downloads.",
   "icon": "https://avatars.githubusercontent.com/u/5155369?v=4",
   "schema_version": "2.1",
-  "categories": ["developer-tools", "productivity"],
+  "categories": ["developer-tools", "design"],
   "tags": ["figma", "design", "ui", "components", "design-tokens", "frontend", "framelink"],
 
   "transport": {
@@ -21,11 +21,11 @@
         {
           "id": "FIGMA_API_KEY",
           "label": "Figma Personal Access Token",
-          "description": "Personal access token for the Figma API. Generated from your Figma account settings.",
+          "description": "Personal access token for the Figma API. Generated from your Figma account settings under Settings > Account > Personal access tokens.",
           "type": "text",
           "required": true,
           "secret": true,
-          "placeholder": "figd_your_personal_access_token_here",
+          "placeholder": "figd_xxxxxxxxxxxxxxxxxxxx",
           "obtain": {
             "url": "https://www.figma.com/developers/api#access-tokens",
             "instructions": "1. Go to figma.com and log in\n2. Open Settings > Account\n3. Scroll to Personal access tokens\n4. Click 'Generate new token'\n5. Give it a description and copy the token",
@@ -50,15 +50,17 @@
   "links": {
     "repository": "https://github.com/GLips/Figma-Context-MCP",
     "homepage": "https://figma.com",
-    "documentation": "https://www.figma.com/developers/api"
+    "documentation": "https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server"
   },
 
   "platforms": ["all"],
 
   "capabilities": {
     "tools": true,
-    "resources": true,
+    "resources": false,
     "prompts": false,
     "read_only_mode": true
-  }
+  },
+
+  "changelog_url": "https://github.com/GLips/Figma-Context-MCP/releases"
 }
