@@ -1,0 +1,102 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "markuspfundstein.obsidian-mcp-uvx",
+  "name": "Obsidian (uvx)",
+  "alias": "obsidian",
+  "description": "Read, write, search, and manage notes in your Obsidian vault. List files, get contents, patch or append content, and delete files. Requires the Obsidian Local REST API community plugin.",
+  "icon": "https://avatars.githubusercontent.com/u/1137867?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "documentation"
+  ],
+  "tags": [
+    "obsidian",
+    "notes",
+    "knowledge-base",
+    "markdown",
+    "vault",
+    "pkm"
+  ],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-obsidian"
+    ],
+    "env": {
+      "OBSIDIAN_API_KEY": "${input:OBSIDIAN_API_KEY}",
+      "OBSIDIAN_HOST": "${input:OBSIDIAN_HOST}",
+      "OBSIDIAN_PORT": "${input:OBSIDIAN_PORT}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "OBSIDIAN_API_KEY",
+          "label": "Obsidian Local REST API Key",
+          "description": "API key from the Obsidian Local REST API community plugin. Found in the plugin settings after installation.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+            "instructions": "1. Open Obsidian > Settings > Community Plugins\n2. Search for 'Local REST API' and install it\n3. Enable the plugin\n4. Go to the plugin settings and copy the API key",
+            "button_label": "Install Plugin"
+          }
+        },
+        {
+          "id": "OBSIDIAN_HOST",
+          "label": "Obsidian Host",
+          "description": "Host where Obsidian Local REST API is running. Usually localhost.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "127.0.0.1",
+          "placeholder": "127.0.0.1"
+        },
+        {
+          "id": "OBSIDIAN_PORT",
+          "label": "Obsidian Port",
+          "description": "Port where Obsidian Local REST API is running.",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": "27124",
+          "placeholder": "27124"
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Install the 'Local REST API' community plugin in Obsidian and copy the API key from its settings."
+  },
+
+  "contributor": {
+    "name": "Markus Pfundstein",
+    "github": "MarkusPfundstein",
+    "url": "https://github.com/MarkusPfundstein/mcp-obsidian"
+  },
+
+  "links": {
+    "repository": "https://github.com/MarkusPfundstein/mcp-obsidian",
+    "homepage": "https://obsidian.md",
+    "documentation": "https://github.com/MarkusPfundstein/mcp-obsidian#readme"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+
+  "changelog_url": "https://github.com/MarkusPfundstein/mcp-obsidian/releases"
+}
