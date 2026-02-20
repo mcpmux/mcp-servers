@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.context7-mcp-http",
+  "name": "Context7 (HTTP)",
+  "alias": "context7-http",
+  "description": "Fetch up-to-date, version-specific documentation and code examples for any library via Context7's hosted MCP endpoint. No local install needed.",
+  "icon": "https://avatars.githubusercontent.com/u/1529926?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "documentation"
+  ],
+  "tags": [
+    "context7",
+    "documentation",
+    "code-examples",
+    "upstash"
+  ],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.context7.com/mcp",
+    "headers": {
+      "CONTEXT7_API_KEY": "${input:CONTEXT7_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CONTEXT7_API_KEY",
+          "label": "Context7 API Key",
+          "description": "API key for higher rate limits. Free tier works without a key. Get one at context7.com/dashboard.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "ctx7_xxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://context7.com/dashboard",
+            "instructions": "1. Go to context7.com/dashboard\n2. Sign up or log in\n3. Generate an API key\n4. Copy the key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without a key (free tier with rate limits). Get an API key at context7.com/dashboard for higher limits."
+  },
+
+  "contributor": {
+    "name": "Upstash",
+    "github": "upstash",
+    "url": "https://context7.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/upstash/context7",
+    "homepage": "https://context7.com",
+    "documentation": "https://context7.com/docs/resources/developer"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
