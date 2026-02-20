@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.vercel-mcp",
+  "name": "Vercel",
+  "alias": "vercel",
+  "description": "Access Vercel project deployments, runtime logs, and configuration through Vercel's official hosted remote MCP server with OAuth. Currently read-only.",
+  "icon": "https://avatars.githubusercontent.com/u/14985020?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud",
+    "developer-tools"
+  ],
+  "tags": [
+    "vercel",
+    "deployment",
+    "hosting",
+    "nextjs",
+    "serverless",
+    "logs",
+    "devops"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.vercel.com",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted by your MCP client. You will be redirected to Vercel to authorize access and select which projects to expose."
+  },
+  "contributor": {
+    "name": "Vercel",
+    "github": "vercel",
+    "url": "https://vercel.com"
+  },
+  "links": {
+    "repository": "https://github.com/vercel/mcp-handler",
+    "homepage": "https://vercel.com",
+    "documentation": "https://vercel.com/docs/mcp/vercel-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
