@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.todoist-mcp-http",
+  "name": "Todoist (HTTP)",
+  "alias": "todoist-http",
+  "description": "Manage Todoist tasks, projects, labels, and comments via Todoist's hosted MCP endpoint. No local install needed.",
+  "icon": "https://avatars.githubusercontent.com/u/2565372?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "todoist",
+    "tasks",
+    "todo",
+    "project-management",
+    "productivity"
+  ],
+
+  "transport": {
+    "type": "http",
+    "url": "https://ai.todoist.net/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted. Your browser will open to authorize access to your Todoist account."
+  },
+
+  "contributor": {
+    "name": "Doist",
+    "github": "Doist",
+    "url": "https://todoist.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/Doist/todoist-ai",
+    "homepage": "https://todoist.com",
+    "documentation": "https://developer.todoist.com"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
