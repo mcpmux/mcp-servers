@@ -1,0 +1,97 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "taylorwilsdon.google-workspace-mcp-uvx",
+  "name": "Google Workspace (uvx)",
+  "alias": "google-workspace",
+  "description": "Access Gmail, Google Calendar, Drive, Docs, Sheets, Slides, Forms, Tasks, Contacts, Chat, and Apps Script from a single MCP server. 100+ operations across all Google Workspace services.",
+  "icon": "https://avatars.githubusercontent.com/u/6508528?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "communication"
+  ],
+  "tags": [
+    "google",
+    "gmail",
+    "calendar",
+    "drive",
+    "docs",
+    "sheets",
+    "workspace",
+    "oauth"
+  ],
+
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "workspace-mcp"
+    ],
+    "env": {
+      "GOOGLE_OAUTH_CLIENT_ID": "${input:GOOGLE_OAUTH_CLIENT_ID}",
+      "GOOGLE_OAUTH_CLIENT_SECRET": "${input:GOOGLE_OAUTH_CLIENT_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GOOGLE_OAUTH_CLIENT_ID",
+          "label": "Google OAuth Client ID",
+          "description": "OAuth 2.0 Client ID from Google Cloud Console. Create a Desktop application type credential.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. Go to Google Cloud Console > APIs & Services > Credentials\n2. Click 'Create Credentials' > 'OAuth client ID'\n3. Select 'Desktop app' as application type\n4. Copy the Client ID",
+            "button_label": "Create Credentials"
+          }
+        },
+        {
+          "id": "GOOGLE_OAUTH_CLIENT_SECRET",
+          "label": "Google OAuth Client Secret",
+          "description": "OAuth 2.0 Client Secret from Google Cloud Console. Paired with the Client ID above.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "GOCSPX-xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. Go to Google Cloud Console > APIs & Services > Credentials\n2. Click on your OAuth 2.0 Client ID\n3. Copy the Client Secret",
+            "button_label": "View Credentials"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "oauth",
+    "instructions": "Create a Desktop OAuth 2.0 client in Google Cloud Console. Enable the Google Workspace APIs you need (Gmail, Calendar, Drive, etc.)."
+  },
+
+  "contributor": {
+    "name": "Taylor Wilsdon",
+    "github": "taylorwilsdon",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp"
+  },
+
+  "links": {
+    "repository": "https://github.com/taylorwilsdon/google_workspace_mcp",
+    "homepage": "https://workspace.google.com",
+    "documentation": "https://github.com/taylorwilsdon/google_workspace_mcp#readme"
+  },
+
+  "platforms": [
+    "all"
+  ],
+
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": true
+  },
+
+  "changelog_url": "https://github.com/taylorwilsdon/google_workspace_mcp/releases"
+}
