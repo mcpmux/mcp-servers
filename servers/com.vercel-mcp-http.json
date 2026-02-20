@@ -1,8 +1,8 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
   "id": "com.vercel-mcp-http",
-  "name": "Vercel (Remote)",
-  "alias": "vercel-remote",
+  "name": "Vercel (HTTP)",
+  "alias": "vercel-http",
   "description": "Manage Vercel deployments, projects, domains, and serverless functions through the hosted remote MCP server. No local installation required.",
   "icon": "https://avatars.githubusercontent.com/u/14985020?v=4",
   "schema_version": "2.1",
