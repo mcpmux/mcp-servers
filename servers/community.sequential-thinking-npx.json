@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.sequential-thinking-npx",
+  "name": "Sequential Thinking (npx)",
+  "alias": "think",
+  "description": "Dynamic step-by-step problem solving with branching, revision, and hypothesis validation. Helps LLMs break down complex problems through structured reasoning.",
+  "icon": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "developer-tools"
+  ],
+  "tags": [
+    "thinking",
+    "reasoning",
+    "problem-solving",
+    "chain-of-thought",
+    "planning",
+    "analysis"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-sequential-thinking"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://modelcontextprotocol.io"
+  },
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://github.com/modelcontextprotocol/servers/blob/main/src/sequentialthinking/README.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
