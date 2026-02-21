@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.apify-mcp-npx",
+  "name": "Apify (npx)",
+  "alias": "apify",
+  "description": "Run web scraping actors and access datasets on the Apify platform. Search the Apify Store, execute actors, and retrieve structured data.",
+  "icon": "https://avatars.githubusercontent.com/u/24586296?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "developer-tools"
+  ],
+  "tags": [
+    "apify",
+    "web-scraping",
+    "actors",
+    "crawling",
+    "datasets",
+    "automation"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@apify/actors-mcp-server"
+    ],
+    "env": {
+      "APIFY_TOKEN": "${input:APIFY_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "APIFY_TOKEN",
+          "label": "Apify API Token",
+          "description": "API token for the Apify platform.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "apify_api_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://console.apify.com/settings/integrations",
+            "instructions": "1. Go to console.apify.com > Settings > Integrations\n2. Find your Personal API token\n3. Copy the token",
+            "button_label": "Get API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API token at https://console.apify.com/settings/integrations"
+  },
+  "contributor": {
+    "name": "Apify",
+    "github": "apify",
+    "url": "https://apify.com"
+  },
+  "links": {
+    "repository": "https://github.com/apify/apify-mcp-server",
+    "homepage": "https://apify.com",
+    "documentation": "https://docs.apify.com/platform/integrations/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
