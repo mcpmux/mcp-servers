@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.launchdarkly-mcp-npx",
+  "name": "LaunchDarkly (npx)",
+  "alias": "launchdarkly",
+  "description": "Manage LaunchDarkly feature flags, environments, and projects. Create, toggle, and configure feature flags with targeting rules.",
+  "icon": "https://avatars.githubusercontent.com/u/8039656?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "launchdarkly",
+    "feature-flags",
+    "toggles",
+    "experimentation",
+    "rollouts"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@launchdarkly/mcp-server",
+      "mcp",
+      "start",
+      "--api-key",
+      "${input:LD_ACCESS_TOKEN}"
+    ],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "LD_ACCESS_TOKEN",
+          "label": "LaunchDarkly Access Token",
+          "description": "LaunchDarkly API access token with appropriate permissions.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.launchdarkly.com/settings/authorization",
+            "instructions": "1. Go to app.launchdarkly.com > Account settings > Authorization\n2. Click '+ Create token'\n3. Name your token and select the desired permissions\n4. Click 'Save token' and copy it",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an access token at https://app.launchdarkly.com/settings/authorization"
+  },
+  "contributor": {
+    "name": "LaunchDarkly",
+    "github": "launchdarkly",
+    "url": "https://launchdarkly.com"
+  },
+  "links": {
+    "repository": "https://github.com/launchdarkly/mcp-server",
+    "homepage": "https://launchdarkly.com",
+    "documentation": "https://docs.launchdarkly.com"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
