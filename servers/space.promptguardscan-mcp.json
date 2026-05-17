@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "space.promptguardscan-mcp",
+  "name": "PromptGuard Scan MCP",
+  "alias": "promptguardscan",
+  "description": "Remote MCP for paid LLM security checks, prompt-injection scanning, jailbreak review, leakage signals, and release-readiness reporting.",
+  "logo": "https://promptguardscan.space/favicon.svg",
+  "schema_version": "2.1",
+  "categories": [
+    "security",
+    "developer-tools"
+  ],
+  "tags": [
+    "llm-security",
+    "prompt-injection",
+    "jailbreak",
+    "remote-mcp",
+    "streamable-http"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://promptguardscan.space/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:PROMPTGUARD_SCAN_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PROMPTGUARD_SCAN_TOKEN",
+          "label": "PromptGuard Scan MCP Bearer Token",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "description": "Bearer token issued after PromptGuard Scan checkout and MCP token claim.",
+          "placeholder": "pgs_...",
+          "obtain": {
+            "url": "https://promptguardscan.space/pricing/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605",
+            "instructions": "1. Buy a PromptGuard Scan plan.\n2. Complete checkout.\n3. Claim the MCP bearer token from PromptGuard Scan.\n4. Paste the token value here without the Bearer prefix.",
+            "button_label": "Get Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Use the Bearer token issued after PromptGuard Scan checkout and MCP token claim."
+  },
+  "contributor": {
+    "name": "PromptGuard Scan",
+    "github": "clauxel",
+    "url": "https://promptguardscan.space/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605"
+  },
+  "links": {
+    "repository": "https://github.com/clauxel/prompt-injection-scanner-mcp",
+    "homepage": "https://promptguardscan.space/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605",
+    "documentation": "https://github.com/clauxel/prompt-injection-scanner-mcp/blob/main/docs/usage.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
