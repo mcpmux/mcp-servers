@@ -1,0 +1,66 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.github-manchittlab-thecrawler",
+  "name": "TheCrawler",
+  "alias": "thecrawler",
+  "description": "Crawl public web pages, extract clean markdown, and run diagnostic-first extraction contracts with required-field and missing-field evidence for agent workflows.",
+  "logo": "https://avatars.githubusercontent.com/u/275741058?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "developer-tools"
+  ],
+  "tags": [
+    "crawl",
+    "web",
+    "extraction",
+    "markdown",
+    "agents",
+    "diagnostics"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "node",
+    "args": [
+      "${input:THECRAWLER_ENGINE_DIR}/dist/mcp.js"
+    ],
+    "env": {
+      "NODE_OPTIONS": "--use-system-ca"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "THECRAWLER_ENGINE_DIR",
+          "label": "TheCrawler engine directory",
+          "description": "Path to the engine folder from a GitHub source checkout. Setup: git clone https://github.com/manchittlab/TheCrawler.git && cd TheCrawler/engine && npm install && npm run build",
+          "type": "directory_path",
+          "required": true,
+          "secret": false,
+          "placeholder": "C:\\Users\\you\\TheCrawler\\engine or /home/you/TheCrawler/engine"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "manchittlab",
+    "github": "manchittlab",
+    "url": "https://github.com/manchittlab"
+  },
+  "links": {
+    "repository": "https://github.com/manchittlab/TheCrawler",
+    "homepage": "https://www.miaibot.ai/tools/thecrawler",
+    "documentation": "https://github.com/manchittlab/TheCrawler/blob/main/llms-install.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
