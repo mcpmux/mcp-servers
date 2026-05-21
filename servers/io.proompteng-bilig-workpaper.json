@@ -25,7 +25,7 @@
     "args": [
       "-y",
       "-p",
-      "@bilig/headless",
+      "@bilig/workpaper",
       "bilig-workpaper-mcp",
       "--workpaper",
       "${input:WORKPAPER_PATH}",
