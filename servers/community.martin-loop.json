@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.martin-loop",
+  "name": "MartinLoop MCP",
+  "alias": "martin-loop",
+  "description": "Governed MCP server for AI coding agents with budgets, verifier gates, and inspectable runs.",
+  "logo": "https://avatars.githubusercontent.com/u/76763392?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "security"
+  ],
+  "tags": [
+    "mcp",
+    "governance",
+    "verification",
+    "code-agents",
+    "budget-controls",
+    "inspectable-runs"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@martinloop/mcp"
+    ]
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Vakeesan Mahalingam",
+    "github": "Keesan12",
+    "url": "https://martinloop.com/"
+  },
+  "links": {
+    "repository": "https://github.com/Keesan12/martin-loop",
+    "homepage": "https://martinloop.com/",
+    "documentation": "https://github.com/Keesan12/martin-loop/blob/main/docs/oss/MCP-FOR-AI-AGENTS.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
