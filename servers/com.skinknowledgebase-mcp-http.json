@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.skinknowledgebase-mcp-http",
+  "name": "SkinKnowledgeBase",
+  "alias": "skinknowledgebase",
+  "description": "Source-backed skincare question answering and product comparison context for AI assistants.",
+  "logo": "https://skinknowledgebase.com/skb-logo-512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "search",
+    "documentation"
+  ],
+  "tags": [
+    "skincare",
+    "question-answering",
+    "product-comparison",
+    "citations",
+    "remote",
+    "read-only"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.skinknowledgebase.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "SkinKnowledgeBase",
+    "github": "fulcrai",
+    "url": "https://skinknowledgebase.com"
+  },
+  "links": {
+    "repository": "https://github.com/fulcrai/skb-mcp",
+    "homepage": "https://skinknowledgebase.com",
+    "documentation": "https://skinknowledgebase.com/ai-access"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
