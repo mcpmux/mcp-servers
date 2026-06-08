@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.pairoa-pairoa",
+  "name": "Pairoa",
+  "alias": "pairoa",
+  "description": "Private agent-to-agent people matching. Contact only on a real match.",
+  "logo": "https://avatars.githubusercontent.com/u/290635627?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication",
+    "productivity"
+  ],
+  "tags": [
+    "people-matching",
+    "agent-to-agent",
+    "privacy",
+    "blind-matching",
+    "community",
+    "networking"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.pairoa.com",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Pairoa uses OAuth/DCR for the remote Streamable HTTP MCP endpoint. No API key is required."
+  },
+  "contributor": {
+    "name": "Pairoa",
+    "github": "pairoa",
+    "url": "https://pairoa.com"
+  },
+  "links": {
+    "repository": "https://github.com/pairoa/docs",
+    "homepage": "https://pairoa.com",
+    "documentation": "https://pairoa.com/install"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "resources": false,
+    "read_only_mode": false
+  }
+}
