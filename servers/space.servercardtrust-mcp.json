@@ -1,0 +1,67 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "space.servercardtrust-mcp",
+  "name": "ServerCard Trust MCP",
+  "alias": "servercardtrust",
+  "description": "MCP server-card validation, auth checks, trust packets, and readiness as a paid remote MCP.",
+  "logo": "https://servercardtrust.space/favicon.svg",
+  "schema_version": "2.1",
+  "categories": [
+    "security",
+    "developer-tools"
+  ],
+  "tags": [
+    "server-card",
+    "mcp-security",
+    "trust-packets",
+    "remote-mcp"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://servercardtrust.space/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:SERVERCARDTRUST_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SERVERCARDTRUST_TOKEN",
+          "label": "ServerCard Trust MCP Bearer Token",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "description": "Bearer token issued after checkout and MCP token claim.",
+          "placeholder": "mcp_token...",
+          "obtain": {
+            "url": "https://servercardtrust.space/pricing/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605",
+            "instructions": "1. Buy a plan.\n2. Complete checkout.\n3. Claim the MCP bearer token.\n4. Paste the token value here without the Bearer prefix.",
+            "button_label": "Get Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Use the Bearer token issued after checkout and MCP token claim."
+  },
+  "contributor": {
+    "name": "ServerCard Trust",
+    "github": "clauxel",
+    "url": "https://servercardtrust.space/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605"
+  },
+  "links": {
+    "repository": "https://github.com/clauxel/server-card-trust-mcp",
+    "homepage": "https://servercardtrust.space/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605",
+    "documentation": "https://github.com/clauxel/server-card-trust-mcp/blob/main/docs/usage.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}

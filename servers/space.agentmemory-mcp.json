@@ -1,0 +1,67 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "space.agentmemory-mcp",
+  "name": "Agentmemory MCP",
+  "alias": "agentmemory",
+  "description": "Persistent AI agent memory, analytics, checkout, and search-readiness as a paid remote MCP.",
+  "logo": "https://agentmemory.space/favicon.svg",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "developer-tools"
+  ],
+  "tags": [
+    "agent-memory",
+    "ai-agents",
+    "remote-mcp",
+    "paid-mcp"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://agentmemory.space/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:AGENTMEMORY_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "AGENTMEMORY_TOKEN",
+          "label": "Agentmemory MCP Bearer Token",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "description": "Bearer token issued after checkout and MCP token claim.",
+          "placeholder": "mcp_token...",
+          "obtain": {
+            "url": "https://agentmemory.space/pricing/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605",
+            "instructions": "1. Buy a plan.\n2. Complete checkout.\n3. Claim the MCP bearer token.\n4. Paste the token value here without the Bearer prefix.",
+            "button_label": "Get Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Use the Bearer token issued after checkout and MCP token claim."
+  },
+  "contributor": {
+    "name": "Agentmemory",
+    "github": "clauxel",
+    "url": "https://agentmemory.space/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605"
+  },
+  "links": {
+    "repository": "https://github.com/clauxel/agentmemory-mcp",
+    "homepage": "https://agentmemory.space/?utm_source=mcpmux&utm_medium=directory&utm_campaign=sbl202605",
+    "documentation": "https://github.com/clauxel/agentmemory-mcp/blob/main/docs/usage.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
