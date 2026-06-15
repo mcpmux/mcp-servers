@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.pdf-it",
+  "name": "pdf-it",
+  "alias": "pdfit",
+  "description": "Turn markdown into designed PDFs. Cover page, table of contents, code blocks that hold across pages. Anthropic ships a PDF skill for reading PDFs; pdf-it does the other half: composing designed output from markdown. Requires Google Chrome installed locally.",
+  "logo": "https://github.com/mrslbt.png",
+  "schema_version": "2.1",
+  "categories": [
+    "documentation",
+    "productivity"
+  ],
+  "tags": [
+    "pdf",
+    "markdown",
+    "report",
+    "claude-code",
+    "anthropic-skill",
+    "puppeteer",
+    "research"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "pdf-it-mcp"
+    ]
+  },
+  "contributor": {
+    "name": "Marsel Bait",
+    "github": "mrslbt",
+    "url": "https://marselbait.me"
+  },
+  "links": {
+    "repository": "https://github.com/mrslbt/pdf-it",
+    "documentation": "https://github.com/mrslbt/pdf-it#readme"
+  },
+  "platforms": [
+    "macos",
+    "linux",
+    "windows"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
