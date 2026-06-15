@@ -3,7 +3,7 @@
   "id": "community.pdf-it",
   "name": "pdf-it",
   "alias": "pdfit",
-  "description": "Turn markdown into designed PDFs. Cover page, table of contents, code blocks that hold across pages. Anthropic ships a PDF skill for reading PDFs; pdf-it does the other half: composing designed output from markdown. Requires Google Chrome installed locally.",
+  "description": "Turn markdown into designed PDFs. Cover page, table of contents, code blocks that hold across pages. Anthropic ships a PDF skill for reading PDFs; pdf-it does the other half: composing designed output from markdown. Native renderer, fonts embedded, nothing else to install.",
   "logo": "https://github.com/mrslbt.png",
   "schema_version": "2.1",
   "categories": [
@@ -16,7 +16,7 @@
     "report",
     "claude-code",
     "anthropic-skill",
-    "puppeteer",
+    "react-pdf",
     "research"
   ],
   "transport": {
