@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.browserless-mcp-http",
+  "name": "Browserless (Remote)",
+  "alias": "browserless-remote",
+  "description": "Hosted browser-as-an-MCP — smart scraping, web/news/image search, full-site crawling, Lighthouse audits, custom Puppeteer execution, and a persistent agentic-browsing loop with captcha solving and residential proxies. No local installation required.",
+  "logo": "https://github.com/browserless.png?size=400",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "browser-automation",
+    "web-scraping",
+    "agentic-browsing",
+    "lighthouse",
+    "screenshot",
+    "pdf",
+    "puppeteer",
+    "search",
+    "remote",
+    "hosted"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.browserless.io/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:BROWSERLESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BROWSERLESS_TOKEN",
+          "type": "text",
+          "label": "Browserless API Token",
+          "description": "Get one at https://browserless.io/account/",
+          "secret": true,
+          "required": true,
+          "obtain": {
+            "url": "https://browserless.io/account/",
+            "instructions": "Sign up at browserless.io, then copy the API token from your account dashboard.",
+            "button_label": "Get token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Sign up at https://browserless.io/account/ and copy your API token. The token is passed as a Bearer header. OAuth 2.0 is also supported for MCP hosts that prefer it (FastMCP OAuthProxy against Supabase) — use the local stdio variant or contact support for OAuth client provisioning."
+  },
+  "contributor": {
+    "name": "Browserless",
+    "github": "browserless",
+    "url": "https://browserless.io"
+  },
+  "links": {
+    "repository": "https://github.com/browserless/browserless-mcp",
+    "homepage": "https://browserless.io",
+    "documentation": "https://docs.browserless.io/mcp/overview"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
