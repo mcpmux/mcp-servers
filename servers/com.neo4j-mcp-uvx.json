@@ -1,0 +1,109 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.neo4j-mcp-uvx",
+  "name": "Neo4j (uvx)",
+  "alias": "neo4j",
+  "description": "Query and explore Neo4j graph databases through MCP. Run read and write Cypher queries and inspect the database schema.",
+  "logo": "https://avatars.githubusercontent.com/u/916372?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "neo4j",
+    "graph",
+    "cypher",
+    "database",
+    "knowledge-graph"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-neo4j-cypher@0.6.0",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "NEO4J_URI": "${input:NEO4J_URI}",
+      "NEO4J_USERNAME": "${input:NEO4J_USERNAME}",
+      "NEO4J_PASSWORD": "${input:NEO4J_PASSWORD}",
+      "NEO4J_DATABASE": "${input:NEO4J_DATABASE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NEO4J_URI",
+          "label": "Neo4j URI",
+          "description": "Connection URI for your Neo4j instance (Bolt protocol). Use neo4j+s:// for Aura, or bolt://localhost:7687 for a local instance.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "neo4j+s://xxxxxxxx.databases.neo4j.io",
+          "obtain": {
+            "url": "https://console.neo4j.io",
+            "instructions": "1. Open the Neo4j Aura console\n2. Select your instance (or create a free AuraDB instance)\n3. Copy the Connection URI shown for the instance",
+            "button_label": "Open Neo4j Aura Console"
+          }
+        },
+        {
+          "id": "NEO4J_USERNAME",
+          "label": "Neo4j Username",
+          "description": "Database username. Defaults to neo4j for most instances.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "neo4j"
+        },
+        {
+          "id": "NEO4J_PASSWORD",
+          "label": "Neo4j Password",
+          "description": "Password for the database user. For Aura, this is shown once when the instance is created (also saved in the downloaded credentials file).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "<your-neo4j-password>",
+          "obtain": {
+            "url": "https://console.neo4j.io",
+            "instructions": "1. Open the Neo4j Aura console\n2. When creating an instance, copy or download the generated password (shown only once)\n3. For self-hosted Neo4j, use the password you set on first login",
+            "button_label": "Open Neo4j Aura Console"
+          }
+        },
+        {
+          "id": "NEO4J_DATABASE",
+          "label": "Neo4j Database",
+          "description": "Name of the database to connect to. Leave as neo4j unless you use a named database.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "neo4j",
+          "placeholder": "neo4j"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide your Neo4j connection URI, username, and password. Create a free AuraDB instance at https://console.neo4j.io to obtain credentials."
+  },
+  "contributor": {
+    "name": "Neo4j",
+    "github": "neo4j-contrib",
+    "url": "https://neo4j.com"
+  },
+  "links": {
+    "repository": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "homepage": "https://neo4j.com",
+    "documentation": "https://github.com/neo4j-contrib/mcp-neo4j/tree/main/servers/mcp-neo4j-cypher#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/neo4j-contrib/mcp-neo4j/releases"
+}
