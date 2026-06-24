@@ -1,0 +1,87 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "czlonkowski.n8n-mcp-npx",
+  "name": "n8n (npx)",
+  "alias": "n8n",
+  "description": "Community n8n MCP server by czlonkowski. Gives AI assistants comprehensive n8n node documentation, search, and validation out of the box, plus optional workflow management tools (create, update, execute, validate workflows) when you connect your n8n instance's API. Works in documentation-only mode without any credentials.",
+  "logo": "https://avatars.githubusercontent.com/u/56956555?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "developer-tools"
+  ],
+  "tags": [
+    "n8n",
+    "workflow",
+    "automation",
+    "no-code",
+    "integration",
+    "documentation"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "n8n-mcp"
+    ],
+    "env": {
+      "MCP_MODE": "stdio",
+      "LOG_LEVEL": "error",
+      "DISABLE_CONSOLE_OUTPUT": "true",
+      "N8N_API_URL": "${input:N8N_API_URL}",
+      "N8N_API_KEY": "${input:N8N_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "N8N_API_URL",
+          "label": "n8n Instance URL",
+          "description": "Base URL of your n8n instance, used to enable the workflow management tools (create, update, execute, validate workflows). Optional: leave both this and the API key empty to run in documentation-only mode. Example: https://your-n8n-instance.com (for a local instance use http://localhost:5678).",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "placeholder": "https://your-n8n-instance.com"
+        },
+        {
+          "id": "N8N_API_KEY",
+          "label": "n8n API Key",
+          "description": "API key for your n8n instance, required alongside the instance URL to unlock the n8n management tools. Leave empty (together with the instance URL) for documentation-only mode.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "n8n_api_xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://docs.n8n.io/api/authentication/",
+            "instructions": "1. Open your n8n instance\n2. Go to Settings > n8n API\n3. Click 'Create an API key'\n4. (Optional) Give it a label and set an expiration\n5. Copy the generated key and paste it here",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "No credentials are needed for documentation-only mode (node docs, search, and validation tools). To enable the n8n workflow management tools, provide your n8n instance URL and an API key created at Settings > n8n API in your n8n instance."
+  },
+  "contributor": {
+    "name": "czlonkowski",
+    "github": "czlonkowski",
+    "url": "https://github.com/czlonkowski/n8n-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/czlonkowski/n8n-mcp",
+    "homepage": "https://github.com/czlonkowski/n8n-mcp",
+    "documentation": "https://github.com/czlonkowski/n8n-mcp/blob/main/docs/SELF_HOSTING.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/czlonkowski/n8n-mcp/releases"
+}
