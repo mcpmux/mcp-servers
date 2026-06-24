@@ -1,0 +1,98 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "markets.alpaca-mcp-uvx",
+  "name": "Alpaca (uvx)",
+  "alias": "alpaca",
+  "description": "Trade stocks, ETFs, options, and crypto, run market-data analysis, and manage your portfolio in plain English through Alpaca's official Trading API. Defaults to paper trading for safe testing.",
+  "logo": "https://avatars.githubusercontent.com/u/30398729?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "alpaca",
+    "trading",
+    "stocks",
+    "finance",
+    "options",
+    "crypto",
+    "market-data"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "alpaca-mcp-server"
+    ],
+    "env": {
+      "ALPACA_API_KEY": "${input:ALPACA_API_KEY}",
+      "ALPACA_SECRET_KEY": "${input:ALPACA_SECRET_KEY}",
+      "ALPACA_PAPER_TRADE": "${input:ALPACA_PAPER_TRADE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ALPACA_API_KEY",
+          "label": "Alpaca API Key",
+          "description": "Your Alpaca API key ID. Use your paper-trading key for testing or your live key for real trading.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "PK************************",
+          "obtain": {
+            "url": "https://app.alpaca.markets/paper/dashboard/overview",
+            "instructions": "1. Sign in to the Alpaca dashboard\n2. Open the Paper Trading dashboard (or switch to Live for real trading)\n3. In the right sidebar, find 'API Keys' and click 'Generate New Key'\n4. Copy the API Key ID and the Secret Key (the secret is shown only once)",
+            "button_label": "Open Alpaca Dashboard"
+          }
+        },
+        {
+          "id": "ALPACA_SECRET_KEY",
+          "label": "Alpaca Secret Key",
+          "description": "Your Alpaca secret key, generated alongside your API key. Shown only once at creation time.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************",
+          "obtain": {
+            "url": "https://app.alpaca.markets/paper/dashboard/overview",
+            "instructions": "1. Sign in to the Alpaca dashboard\n2. Open the Paper Trading dashboard (or switch to Live for real trading)\n3. Under 'API Keys', click 'Generate New Key'\n4. Copy the Secret Key immediately (it cannot be retrieved later)",
+            "button_label": "Open Alpaca Dashboard"
+          }
+        },
+        {
+          "id": "ALPACA_PAPER_TRADE",
+          "label": "Paper Trading",
+          "description": "When enabled (default), trades run against Alpaca's paper-trading account with simulated money. Disable only with live API keys to trade with real capital.",
+          "type": "boolean",
+          "required": false,
+          "secret": false,
+          "default": "true"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API Key ID and Secret Key from the Alpaca dashboard (Paper Trading for testing, Live for real money) at https://app.alpaca.markets/paper/dashboard/overview"
+  },
+  "contributor": {
+    "name": "Alpaca",
+    "github": "alpacahq",
+    "url": "https://alpaca.markets"
+  },
+  "links": {
+    "repository": "https://github.com/alpacahq/alpaca-mcp-server",
+    "homepage": "https://alpaca.markets",
+    "documentation": "https://docs.alpaca.markets/us/docs/alpaca-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/alpacahq/alpaca-mcp-server/releases"
+}
