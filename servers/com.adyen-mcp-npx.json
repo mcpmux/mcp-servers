@@ -1,0 +1,106 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.adyen-mcp-npx",
+  "name": "Adyen (npx)",
+  "alias": "adyen",
+  "description": "Integrate with Adyen's Checkout and Management APIs via natural language. Create payment sessions and payment links, issue refunds and cancellations, and manage merchant accounts, terminals, webhooks, payment methods, users, and API credentials.",
+  "logo": "https://avatars.githubusercontent.com/u/9713612?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "adyen",
+    "payments",
+    "finance",
+    "checkout",
+    "fintech",
+    "billing"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@adyen/mcp",
+      "--adyenApiKey=${input:ADYEN_API_KEY}",
+      "--env=${input:ADYEN_ENVIRONMENT}"
+    ],
+    "env": {
+      "ADYEN_API_KEY": "${input:ADYEN_API_KEY}",
+      "ADYEN_ENVIRONMENT": "${input:ADYEN_ENVIRONMENT}",
+      "ADYEN_LIVE_URL_PREFIX": "${input:ADYEN_LIVE_URL_PREFIX}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ADYEN_API_KEY",
+          "label": "Adyen API Key",
+          "description": "API key for a dedicated webservice user. Adyen recommends creating a new webservice user with only the roles needed for the tools you use (e.g. Merchant PAL webservice role, Checkout webservice role, Management API roles). Generate it in your Adyen Customer Area.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "AQE********************************",
+          "obtain": {
+            "url": "https://ca-test.adyen.com/ca/ca/config/api_credentials_new.shtml",
+            "instructions": "1. Sign in to your Adyen Customer Area\n2. Go to Developers > API credentials\n3. Create (or select) a webservice user (recommended: a dedicated one for the MCP server)\n4. Assign only the roles you need (e.g. Checkout webservice role, Merchant PAL webservice role, Management API roles)\n5. Under Authentication, generate an API key\n6. Copy the generated API key",
+            "button_label": "Open Customer Area"
+          }
+        },
+        {
+          "id": "ADYEN_ENVIRONMENT",
+          "label": "Environment",
+          "description": "Which Adyen environment to target. Use TEST while developing; switch to LIVE for production (LIVE also requires your live URL prefix).",
+          "type": "select",
+          "required": true,
+          "default": "TEST",
+          "options": [
+            {
+              "value": "TEST",
+              "label": "Test",
+              "description": "Adyen test environment"
+            },
+            {
+              "value": "LIVE",
+              "label": "Live",
+              "description": "Adyen live (production) environment - requires the live URL prefix"
+            }
+          ]
+        },
+        {
+          "id": "ADYEN_LIVE_URL_PREFIX",
+          "label": "Live URL Prefix",
+          "description": "Required only when Environment is LIVE. Your Adyen live URL prefix, found in your live Customer Area under Developers > API URLs > Prefix. Leave empty for TEST.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "1797a841fbb37ca7-AdyenDemo"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API key for a webservice user in your Adyen Customer Area under Developers > API credentials. Limit the user's roles to match the tools you plan to use."
+  },
+  "contributor": {
+    "name": "Adyen",
+    "github": "Adyen",
+    "url": "https://www.adyen.com"
+  },
+  "links": {
+    "repository": "https://github.com/Adyen/adyen-mcp",
+    "homepage": "https://www.adyen.com",
+    "documentation": "https://docs.adyen.com/development-resources/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/Adyen/adyen-mcp/releases"
+}
