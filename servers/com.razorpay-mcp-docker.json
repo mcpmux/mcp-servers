@@ -1,0 +1,95 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.razorpay-mcp-docker",
+  "name": "Razorpay (Docker)",
+  "alias": "razorpay",
+  "description": "Razorpay's official MCP server, run via Docker. Manage payments, orders, payment links, refunds, QR codes, settlements, and payouts through the Razorpay API in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/7713209?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "razorpay",
+    "payments",
+    "finance",
+    "docker",
+    "orders",
+    "refunds",
+    "payment-links"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "RAZORPAY_KEY_ID",
+      "-e",
+      "RAZORPAY_KEY_SECRET",
+      "razorpay/mcp"
+    ],
+    "env": {
+      "RAZORPAY_KEY_ID": "${input:RAZORPAY_KEY_ID}",
+      "RAZORPAY_KEY_SECRET": "${input:RAZORPAY_KEY_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "RAZORPAY_KEY_ID",
+          "label": "Razorpay Key ID",
+          "description": "Your Razorpay API key ID (public identifier). Use test-mode keys (rzp_test_...) for development and live-mode keys (rzp_live_...) for production.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "rzp_test_xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://dashboard.razorpay.com/app/website-app-settings/api-keys",
+            "instructions": "1. Log in to the Razorpay Dashboard\n2. Go to Account & Settings > API Keys\n3. Click Generate Key (or use an existing key)\n4. Copy the Key ID",
+            "button_label": "Open API Keys"
+          }
+        },
+        {
+          "id": "RAZORPAY_KEY_SECRET",
+          "label": "Razorpay Key Secret",
+          "description": "Your Razorpay API key secret. Shown only once when the key is generated — store it securely. Pairs with the Key ID for API authentication.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************************",
+          "obtain": {
+            "url": "https://dashboard.razorpay.com/app/website-app-settings/api-keys",
+            "instructions": "1. Log in to the Razorpay Dashboard\n2. Go to Account & Settings > API Keys\n3. Click Generate Key\n4. Copy the Key Secret immediately (it is shown only once)",
+            "button_label": "Open API Keys"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API key pair (Key ID + Key Secret) from the Razorpay Dashboard under Account & Settings > API Keys."
+  },
+  "contributor": {
+    "name": "Razorpay",
+    "github": "razorpay",
+    "url": "https://razorpay.com"
+  },
+  "links": {
+    "repository": "https://github.com/razorpay/razorpay-mcp-server",
+    "homepage": "https://razorpay.com",
+    "documentation": "https://github.com/razorpay/razorpay-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/razorpay/razorpay-mcp-server/releases"
+}
