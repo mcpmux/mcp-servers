@@ -1,0 +1,123 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.clickhouse-mcp-uvx",
+  "name": "ClickHouse (uvx)",
+  "alias": "clickhouse",
+  "description": "Query ClickHouse databases and chDB. List databases and tables, inspect schemas, and run SELECT queries (read-only by default) against ClickHouse Cloud or self-hosted clusters.",
+  "logo": "https://avatars.githubusercontent.com/u/54801242?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "clickhouse",
+    "database",
+    "analytics",
+    "olap",
+    "sql",
+    "data-warehouse"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-clickhouse"
+    ],
+    "env": {
+      "CLICKHOUSE_HOST": "${input:CLICKHOUSE_HOST}",
+      "CLICKHOUSE_USER": "${input:CLICKHOUSE_USER}",
+      "CLICKHOUSE_PASSWORD": "${input:CLICKHOUSE_PASSWORD}",
+      "CLICKHOUSE_PORT": "${input:CLICKHOUSE_PORT}",
+      "CLICKHOUSE_SECURE": "${input:CLICKHOUSE_SECURE}",
+      "CLICKHOUSE_VERIFY": "${input:CLICKHOUSE_VERIFY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CLICKHOUSE_HOST",
+          "label": "ClickHouse Host",
+          "description": "Hostname of your ClickHouse server. For ClickHouse Cloud, use the host shown in your service connection details (e.g. <service-id>.<region>.clickhouse.cloud).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your-instance.clickhouse.cloud",
+          "obtain": {
+            "url": "https://clickhouse.com/cloud",
+            "instructions": "1. Sign in to ClickHouse Cloud\n2. Open your service\n3. Click 'Connect'\n4. Copy the host (and create a dedicated, least-privilege user for the MCP server)",
+            "button_label": "Open ClickHouse Cloud"
+          }
+        },
+        {
+          "id": "CLICKHOUSE_USER",
+          "label": "ClickHouse User",
+          "description": "Username for authentication. Use a dedicated user with only the minimum privileges needed; avoid default or admin users.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "default"
+        },
+        {
+          "id": "CLICKHOUSE_PASSWORD",
+          "label": "ClickHouse Password",
+          "description": "Password for authentication. May be empty for some instances (e.g. the public ClickHouse SQL playground), but is required for most deployments.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": ""
+        },
+        {
+          "id": "CLICKHOUSE_PORT",
+          "label": "ClickHouse Port",
+          "description": "Port of the ClickHouse HTTP interface. Defaults to 8443 when HTTPS (secure) is enabled and 8123 when disabled. Usually only set this for a non-standard port.",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": "8443",
+          "placeholder": "8443"
+        },
+        {
+          "id": "CLICKHOUSE_SECURE",
+          "label": "Use HTTPS (Secure)",
+          "description": "Enable an HTTPS (TLS) connection. Keep true for ClickHouse Cloud; set false for non-secure local connections.",
+          "type": "boolean",
+          "required": false,
+          "secret": false,
+          "default": "true"
+        },
+        {
+          "id": "CLICKHOUSE_VERIFY",
+          "label": "Verify SSL Certificate",
+          "description": "Verify the server's SSL certificate. Keep true in production; set false only for self-signed certs in trusted environments.",
+          "type": "boolean",
+          "required": false,
+          "secret": false,
+          "default": "true"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide your ClickHouse host, user, and password. The password can be empty for passwordless instances (e.g. the public ClickHouse SQL playground), but most deployments require one. Use a dedicated, least-privilege user."
+  },
+  "contributor": {
+    "name": "ClickHouse",
+    "github": "ClickHouse",
+    "url": "https://clickhouse.com"
+  },
+  "links": {
+    "repository": "https://github.com/ClickHouse/mcp-clickhouse",
+    "homepage": "https://clickhouse.com",
+    "documentation": "https://github.com/ClickHouse/mcp-clickhouse#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/ClickHouse/mcp-clickhouse/releases"
+}
