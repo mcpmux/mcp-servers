@@ -1,0 +1,86 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.astra-mcp-npx",
+  "name": "Astra DB (npx)",
+  "alias": "astra-db",
+  "description": "Interact with DataStax Astra DB collections and documents from your AI client. Create, read, update, and delete collections and records, including vector-enabled collections, via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/573369?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "astra",
+    "datastax",
+    "cassandra",
+    "vector",
+    "database"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@datastax/astra-db-mcp"
+    ],
+    "env": {
+      "ASTRA_DB_APPLICATION_TOKEN": "${input:ASTRA_DB_APPLICATION_TOKEN}",
+      "ASTRA_DB_API_ENDPOINT": "${input:ASTRA_DB_API_ENDPOINT}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ASTRA_DB_APPLICATION_TOKEN",
+          "label": "Astra DB Application Token",
+          "description": "Application token used to authenticate with your Astra DB database. Generate it from the Astra DB console for your database (a token with Database Administrator privileges is recommended).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "AstraCS:************************",
+          "obtain": {
+            "url": "https://astra.datastax.com",
+            "instructions": "1. Sign in to the Astra DB console at https://astra.datastax.com\n2. Open your database (or create one)\n3. Go to the database's 'Connect' / token section and generate an Application Token\n4. Copy the token (it starts with 'AstraCS:')",
+            "button_label": "Open Astra Console"
+          }
+        },
+        {
+          "id": "ASTRA_DB_API_ENDPOINT",
+          "label": "Astra DB API Endpoint",
+          "description": "The Data API endpoint for your Astra DB database. Find it on the database's overview/connect page in the Astra DB console.",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://<db-id>-<region>.apps.astra.datastax.com",
+          "obtain": {
+            "url": "https://astra.datastax.com",
+            "instructions": "1. Sign in to the Astra DB console at https://astra.datastax.com\n2. Open your database\n3. On the database overview/Connect page, copy the API Endpoint URL",
+            "button_label": "Open Astra Console"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an Application Token and copy the API Endpoint from your database in the Astra DB console at https://astra.datastax.com"
+  },
+  "contributor": {
+    "name": "DataStax",
+    "github": "datastax",
+    "url": "https://www.datastax.com"
+  },
+  "links": {
+    "repository": "https://github.com/datastax/astra-db-mcp",
+    "homepage": "https://www.datastax.com",
+    "documentation": "https://docs.datastax.com/en/astra-db-serverless/index.html"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/datastax/astra-db-mcp/releases"
+}
