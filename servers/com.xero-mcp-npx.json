@@ -1,0 +1,88 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.xero-mcp-npx",
+  "name": "Xero (npx)",
+  "alias": "xero",
+  "description": "Connect to the Xero accounting platform to manage invoices, contacts, bank transactions, payments, payroll, and reports. Authenticates via a Xero custom connection using client credentials.",
+  "logo": "https://avatars.githubusercontent.com/u/242786?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "xero",
+    "accounting",
+    "finance",
+    "invoices",
+    "payroll",
+    "bookkeeping"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@xeroapi/xero-mcp-server"
+    ],
+    "env": {
+      "XERO_CLIENT_ID": "${input:XERO_CLIENT_ID}",
+      "XERO_CLIENT_SECRET": "${input:XERO_CLIENT_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "XERO_CLIENT_ID",
+          "label": "Xero Client ID",
+          "description": "The Client ID of your Xero custom connection app. Create a custom connection in the Xero Developer portal to obtain client credentials.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "00000000-0000-0000-0000-000000000000",
+          "obtain": {
+            "url": "https://developer.xero.com/app/manage",
+            "instructions": "1. Sign in to the Xero Developer portal\n2. Click 'New app' and choose 'Custom connection'\n3. Select the scopes your integration needs (e.g. accounting.transactions, accounting.contacts)\n4. Authorise the connection to an organisation\n5. Open the app's Configuration page\n6. Copy the Client ID",
+            "button_label": "Open Xero Developer Portal"
+          }
+        },
+        {
+          "id": "XERO_CLIENT_SECRET",
+          "label": "Xero Client Secret",
+          "description": "The Client Secret of your Xero custom connection app. Generated alongside the Client ID on the app's Configuration page.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************************************************",
+          "obtain": {
+            "url": "https://developer.xero.com/app/manage",
+            "instructions": "1. Open your custom connection app in the Xero Developer portal\n2. Go to the Configuration page\n3. Click 'Generate a secret'\n4. Copy the Client Secret immediately (it is shown only once)",
+            "button_label": "Open Xero Developer Portal"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a custom connection app in the Xero Developer portal (https://developer.xero.com/app/manage) and supply its Client ID and Client Secret. These are used as client credentials to authenticate with Xero."
+  },
+  "contributor": {
+    "name": "Xero",
+    "github": "XeroAPI",
+    "url": "https://www.xero.com"
+  },
+  "links": {
+    "repository": "https://github.com/XeroAPI/xero-mcp-server",
+    "homepage": "https://www.xero.com",
+    "documentation": "https://developer.xero.com/documentation/guides/oauth2/custom-connections/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/XeroAPI/xero-mcp-server/releases"
+}
