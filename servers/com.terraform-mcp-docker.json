@@ -1,0 +1,94 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.terraform-mcp-docker",
+  "name": "Terraform (Docker)",
+  "alias": "terraform",
+  "description": "Connect to the HashiCorp Terraform ecosystem via Docker. Search the public Terraform Registry for providers, modules, and policies, read documentation, and (with an optional token) interact with HCP Terraform / Terraform Enterprise workspaces and runs in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/761456?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "terraform",
+    "hashicorp",
+    "infrastructure-as-code",
+    "iac",
+    "registry",
+    "hcp-terraform",
+    "terraform-enterprise",
+    "devops",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "TFE_TOKEN",
+      "-e",
+      "TFE_ADDRESS",
+      "hashicorp/terraform-mcp-server:latest"
+    ],
+    "env": {
+      "TFE_TOKEN": "${input:TFE_TOKEN}",
+      "TFE_ADDRESS": "${input:TFE_ADDRESS}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TFE_TOKEN",
+          "label": "HCP Terraform / Terraform Enterprise API Token",
+          "description": "Optional API token for HCP Terraform or Terraform Enterprise. Leave empty to use only the public Terraform Registry. Provide a token to access private registries, workspaces, and runs.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "<your-hcp-terraform-or-tfe-api-token>",
+          "obtain": {
+            "url": "https://app.terraform.io/app/settings/tokens",
+            "instructions": "1. Sign in to HCP Terraform (or your Terraform Enterprise instance)\n2. Open User Settings > Tokens (or a Team/Organization token)\n3. Create an API token\n4. Copy the token value",
+            "button_label": "Create Token"
+          }
+        },
+        {
+          "id": "TFE_ADDRESS",
+          "label": "HCP Terraform / TFE Address",
+          "description": "Optional base URL for HCP Terraform or a self-hosted Terraform Enterprise instance. Defaults to https://app.terraform.io when left empty.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "placeholder": "https://app.terraform.io",
+          "default": "https://app.terraform.io"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "No token is required to search the public Terraform Registry. Provide a TFE_TOKEN (and optionally TFE_ADDRESS) to access HCP Terraform / Terraform Enterprise private registries, workspaces, and runs."
+  },
+  "contributor": {
+    "name": "HashiCorp",
+    "github": "hashicorp",
+    "url": "https://www.hashicorp.com"
+  },
+  "links": {
+    "repository": "https://github.com/hashicorp/terraform-mcp-server",
+    "homepage": "https://www.hashicorp.com/products/terraform",
+    "documentation": "https://developer.hashicorp.com/terraform/docs/tools/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/hashicorp/terraform-mcp-server/releases"
+}
