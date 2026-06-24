@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.stripe-mcp-npx",
+  "name": "Stripe (npx)",
+  "alias": "stripe",
+  "description": "Connect to Stripe's official MCP server locally via npx to create payment links, manage customers, invoices, subscriptions, products, refunds, disputes, and query your Stripe account using natural language. Tool permissions are controlled by your Stripe Restricted API Key.",
+  "logo": "https://avatars.githubusercontent.com/u/856813?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "stripe",
+    "payments",
+    "billing",
+    "invoicing",
+    "subscriptions",
+    "finance"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@stripe/mcp@latest"
+    ],
+    "env": {
+      "STRIPE_SECRET_KEY": "${input:STRIPE_SECRET_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "STRIPE_SECRET_KEY",
+          "label": "Stripe Secret API Key",
+          "description": "Your Stripe secret key (sk_*) or, recommended, a Restricted API Key (rk_*). Tool permissions are scoped by the key: a Restricted API Key only exposes the resources you grant it (e.g. Customers, Payment Links, Invoices, Products, Subscriptions). Use a sandbox/test key (sk_test_*) to avoid touching live data.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "sk_live_***************************",
+          "obtain": {
+            "url": "https://dashboard.stripe.com/apikeys",
+            "instructions": "1. Open the Stripe Dashboard > Developers > API keys\n2. (Recommended) Click 'Create restricted key', name it, and grant only the resource permissions you need (e.g. Read/Write on Customers, Payment Links, Invoices)\n3. Or copy your standard Secret key (reveal the sk_live_ / sk_test_ value)\n4. Copy the key and paste it here",
+            "button_label": "Open API Keys"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Stripe API key at https://dashboard.stripe.com/apikeys. A Restricted API Key (rk_*) is recommended so tool permissions are limited to the resources you grant."
+  },
+  "contributor": {
+    "name": "Stripe",
+    "github": "stripe",
+    "url": "https://stripe.com"
+  },
+  "links": {
+    "repository": "https://github.com/stripe/ai",
+    "homepage": "https://stripe.com",
+    "documentation": "https://docs.stripe.com/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/stripe/ai/releases"
+}
