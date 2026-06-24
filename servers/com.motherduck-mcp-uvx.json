@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.motherduck-mcp-uvx",
+  "name": "MotherDuck (uvx)",
+  "alias": "motherduck",
+  "description": "Query data with DuckDB's analytical SQL across local DuckDB files, in-memory databases, S3, and the MotherDuck cloud. Run SQL and browse database catalogs. Read-only by default.",
+  "logo": "https://avatars.githubusercontent.com/u/106357348?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "motherduck",
+    "duckdb",
+    "sql",
+    "database",
+    "analytics",
+    "data-warehouse"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-server-motherduck",
+      "--db-path",
+      "md:"
+    ],
+    "env": {
+      "motherduck_token": "${input:MOTHERDUCK_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MOTHERDUCK_TOKEN",
+          "label": "MotherDuck Token",
+          "description": "MotherDuck access token, used to connect to the MotherDuck cloud (md: database path). Leave empty when using a local DuckDB file or :memory: instead.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "***************************",
+          "obtain": {
+            "url": "https://app.motherduck.com/settings/tokens",
+            "instructions": "1. Sign in to MotherDuck\n2. Open Settings > Access Tokens\n3. Click Create token (Read/Write or Read Scaling)\n4. Copy the token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "A MotherDuck access token is required only for the MotherDuck cloud (--db-path md:). Local DuckDB files and :memory: need no token."
+  },
+  "contributor": {
+    "name": "MotherDuck",
+    "github": "motherduckdb",
+    "url": "https://motherduck.com"
+  },
+  "links": {
+    "repository": "https://github.com/motherduckdb/mcp-server-motherduck",
+    "homepage": "https://motherduck.com",
+    "documentation": "https://github.com/motherduckdb/mcp-server-motherduck#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/motherduckdb/mcp-server-motherduck/releases"
+}
