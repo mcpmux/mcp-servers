@@ -2,7 +2,6 @@
   "$schema": "../schemas/server-definition.schema.json",
   "id": "community.knowledge-rag-npx",
   "name": "knowledge-rag (npx)",
-  "alias": "knowledge-rag",
   "description": "Local RAG for Claude Code. Hybrid semantic + BM25 search with cross-encoder reranking, 13 MCP tools, 20 format parsers, async background reindex, file watcher, and GPU CUDA support. Zero external servers required.",
   "logo": "https://avatars.githubusercontent.com/u/48651462?v=4",
   "schema_version": "2.1",
