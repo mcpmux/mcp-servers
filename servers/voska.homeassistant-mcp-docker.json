@@ -1,0 +1,87 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "voska.homeassistant-mcp-docker",
+  "name": "Home Assistant (Docker)",
+  "alias": "home-assistant",
+  "description": "Control and query your Home Assistant smart home from AI assistants via Docker. Get device and sensor states, control entities, summarize your home, search entities, and troubleshoot automations.",
+  "logo": "https://avatars.githubusercontent.com/u/3444419?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "home-assistant",
+    "smart-home",
+    "home-automation",
+    "iot",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "HA_URL",
+      "-e",
+      "HA_TOKEN",
+      "voska/hass-mcp"
+    ],
+    "env": {
+      "HA_URL": "${input:HA_URL}",
+      "HA_TOKEN": "${input:HA_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HA_URL",
+          "label": "Home Assistant URL",
+          "description": "Base URL of your Home Assistant instance. The container reaches it over the network, so use a routable hostname or IP (e.g. http://homeassistant.local:8123), not localhost.",
+          "type": "url",
+          "required": true,
+          "placeholder": "http://homeassistant.local:8123"
+        },
+        {
+          "id": "HA_TOKEN",
+          "label": "Long-Lived Access Token",
+          "description": "A Home Assistant Long-Lived Access Token used to authenticate API requests.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************",
+          "obtain": {
+            "url": "https://www.home-assistant.io/docs/authentication/#your-account-profile",
+            "instructions": "1. Open Home Assistant in your browser\n2. Click your user profile (bottom-left)\n3. Go to the Security tab and scroll to Long-Lived Access Tokens\n4. Click Create Token, name it, and copy the value (shown only once)",
+            "button_label": "Open Profile"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Long-Lived Access Token in your Home Assistant profile (Security > Long-Lived Access Tokens) and set HA_URL to your instance address."
+  },
+  "contributor": {
+    "name": "voska",
+    "github": "voska",
+    "url": "https://github.com/voska/hass-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/voska/hass-mcp",
+    "homepage": "https://github.com/voska/hass-mcp",
+    "documentation": "https://github.com/voska/hass-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/voska/hass-mcp/releases"
+}
