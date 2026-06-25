@@ -1,0 +1,99 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.redshift-mcp-uvx",
+  "name": "Amazon Redshift (uvx)",
+  "alias": "redshift",
+  "description": "Connect to Amazon Redshift clusters and serverless workgroups to discover clusters, explore databases, schemas, tables, and columns, and run read-only SQL queries. Authenticates with standard AWS credentials.",
+  "logo": "https://avatars.githubusercontent.com/u/3299148?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "redshift",
+    "aws",
+    "database",
+    "sql",
+    "data-warehouse",
+    "amazon",
+    "analytics"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "awslabs.redshift-mcp-server@latest"
+    ],
+    "env": {
+      "AWS_ACCESS_KEY_ID": "${input:AWS_ACCESS_KEY_ID}",
+      "AWS_SECRET_ACCESS_KEY": "${input:AWS_SECRET_ACCESS_KEY}",
+      "AWS_REGION": "${input:AWS_REGION}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "AWS_ACCESS_KEY_ID",
+          "label": "AWS Access Key ID",
+          "description": "The access key ID for an AWS IAM user or role with access to your Amazon Redshift clusters. Used together with the secret access key to authenticate. Grant only the permissions you want the server to be able to use.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "<your-aws-access-key-id>",
+          "obtain": {
+            "url": "https://console.aws.amazon.com/iam/home#/security_credentials",
+            "instructions": "1. Sign in to the AWS Console and open the IAM service\n2. Go to Users and select (or create) the IAM user you want to use\n3. Open the 'Security credentials' tab\n4. Under 'Access keys', click 'Create access key'\n5. Copy the Access key ID shown",
+            "button_label": "Open IAM Console"
+          }
+        },
+        {
+          "id": "AWS_SECRET_ACCESS_KEY",
+          "label": "AWS Secret Access Key",
+          "description": "The secret access key paired with the access key ID. Shown only once when the access key is created. Keep it secret; it is stored encrypted in your OS keychain.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "<your-aws-secret-access-key>",
+          "obtain": {
+            "url": "https://console.aws.amazon.com/iam/home#/security_credentials",
+            "instructions": "1. In the IAM Console, open the user's 'Security credentials' tab\n2. Click 'Create access key' (or use an existing one)\n3. Copy the 'Secret access key' shown at creation time\n4. You cannot retrieve it again later, so store it now",
+            "button_label": "Open IAM Console"
+          }
+        },
+        {
+          "id": "AWS_REGION",
+          "label": "AWS Region",
+          "description": "The AWS region where your Amazon Redshift clusters or serverless workgroups are located (for example us-east-1, eu-west-1, ap-southeast-2).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "us-east-1",
+          "placeholder": "us-east-1"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Authenticates with standard AWS credentials. Create an access key for an IAM user or role in the AWS IAM Console (Security credentials > Access keys), then provide the Access Key ID, Secret Access Key, and the region where your Redshift clusters live."
+  },
+  "contributor": {
+    "name": "AWS Labs",
+    "github": "awslabs",
+    "url": "https://aws.amazon.com/redshift/"
+  },
+  "links": {
+    "repository": "https://github.com/awslabs/mcp",
+    "homepage": "https://awslabs.github.io/mcp/",
+    "documentation": "https://awslabs.github.io/mcp/servers/redshift-mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/awslabs/mcp/blob/main/src/redshift-mcp-server/CHANGELOG.md"
+}
