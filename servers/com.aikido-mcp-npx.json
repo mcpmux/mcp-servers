@@ -1,0 +1,71 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.aikido-mcp-npx",
+  "name": "Aikido Security (npx)",
+  "alias": "aikido",
+  "description": "Scan code and secrets with Aikido Security directly from your AI coding agent. Exposes Aikido's Code and Secrets Scan as an MCP tool returning machine-readable findings you can triage, fix, or ignore.",
+  "logo": "https://avatars.githubusercontent.com/u/110776285?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "aikido",
+    "security",
+    "code-scanning",
+    "secrets-scanning",
+    "sast",
+    "appsec"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@aikidosec/mcp"
+    ],
+    "env": {
+      "AIKIDO_API_KEY": "${input:AIKIDO_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "AIKIDO_API_KEY",
+          "label": "Aikido Personal Access Token",
+          "description": "Personal Access Token for headless/CI use. Optional: if omitted, the first tool call returns one-time browser sign-in links (EU / US / ME) instead. When set, AIKIDO_API_KEY takes precedence over the cached browser token. Generate it in the Aikido dashboard under Settings > Integrations > MCP Server.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "aik_********************************",
+          "obtain": {
+            "url": "https://app.aikido.dev",
+            "instructions": "1. Sign in to the Aikido dashboard at app.aikido.dev\n2. Go to Settings > Integrations > MCP Server\n3. Generate a Personal Access Token\n4. Copy the token\n\nAlternatively, leave this blank and run any Aikido tool: the first call returns one-time browser sign-in links (EU / US / ME) for your account region.",
+            "button_label": "Open Aikido Dashboard"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a Personal Access Token in the Aikido dashboard under Settings > Integrations > MCP Server and provide it as AIKIDO_API_KEY. Alternatively, leave it unset to use the interactive browser sign-in flow (one-time links per region returned on the first tool call)."
+  },
+  "contributor": {
+    "name": "Aikido Security",
+    "github": "AikidoSec",
+    "url": "https://www.aikido.dev"
+  },
+  "links": {
+    "homepage": "https://www.aikido.dev",
+    "documentation": "https://www.npmjs.com/package/@aikidosec/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
