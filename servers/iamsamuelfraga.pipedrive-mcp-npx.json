@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "iamsamuelfraga.pipedrive-mcp-npx",
+  "name": "Pipedrive (npx)",
+  "alias": "pipedrive",
+  "description": "Connect to Pipedrive CRM to manage deals, persons, organizations, activities, pipelines, notes, files, and custom fields. Exposes 100+ tools with optional read-only safety mode.",
+  "logo": "https://avatars.githubusercontent.com/u/15862787?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "pipedrive",
+    "crm",
+    "sales",
+    "deals",
+    "contacts",
+    "pipeline"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@iamsamuelfraga/mcp-pipedrive"
+    ],
+    "env": {
+      "PIPEDRIVE_API_TOKEN": "${input:PIPEDRIVE_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PIPEDRIVE_API_TOKEN",
+          "label": "Pipedrive API Token",
+          "description": "Your Pipedrive personal API token. Used to authenticate all CRM operations.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://app.pipedrive.com/settings/api",
+            "instructions": "1. Sign in to Pipedrive\n2. Go to Settings > Personal preferences > API\n3. Copy your personal API token",
+            "button_label": "Get API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your personal API token from Pipedrive Settings > Personal preferences > API (https://app.pipedrive.com/settings/api)."
+  },
+  "contributor": {
+    "name": "iamsamuelfraga",
+    "github": "iamsamuelfraga",
+    "url": "https://github.com/iamsamuelfraga/mcp-pipedrive"
+  },
+  "links": {
+    "repository": "https://github.com/iamsamuelfraga/mcp-pipedrive",
+    "homepage": "https://github.com/iamsamuelfraga/mcp-pipedrive",
+    "documentation": "https://github.com/iamsamuelfraga/mcp-pipedrive#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/iamsamuelfraga/mcp-pipedrive/releases"
+}
