@@ -1,0 +1,83 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.dynatrace-mcp-npx",
+  "name": "Dynatrace (npx)",
+  "alias": "dynatrace",
+  "description": "Connect to Dynatrace observability data: query problems, vulnerabilities, logs, metrics, traces and entities via DQL, and use Davis CoPilot AI from your AI client.",
+  "logo": "https://avatars.githubusercontent.com/u/6412311?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "dynatrace",
+    "observability",
+    "monitoring",
+    "logs",
+    "metrics",
+    "traces",
+    "dql"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@dynatrace-oss/dynatrace-mcp-server@latest"
+    ],
+    "env": {
+      "DT_ENVIRONMENT": "${input:DT_ENVIRONMENT}",
+      "DT_PLATFORM_TOKEN": "${input:DT_PLATFORM_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DT_ENVIRONMENT",
+          "label": "Dynatrace Environment URL",
+          "description": "URL of your Dynatrace Platform environment (the Apps URL), e.g. https://abc12345.apps.dynatrace.com",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://abc12345.apps.dynatrace.com"
+        },
+        {
+          "id": "DT_PLATFORM_TOKEN",
+          "label": "Dynatrace Platform Token",
+          "description": "Platform token used to authenticate to your Dynatrace environment. Recommended scopes: app-engine:apps:run, storage:buckets:read, storage:logs:read, storage:metrics:read, storage:spans:read, storage:entities:read, storage:events:read.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "dt0s16.********.********************************",
+          "obtain": {
+            "url": "https://docs.dynatrace.com/docs/manage/identity-access-management/access-tokens-and-oauth-clients/platform-tokens",
+            "instructions": "1. In Dynatrace, open Account Management or your environment Settings\n2. Go to Identity & access management > Platform tokens\n3. Click 'Generate new token'\n4. Add the required scopes (e.g. app-engine:apps:run, storage:*:read)\n5. Click 'Generate token' and copy the value (starts with dt0s16.)",
+            "button_label": "Create Platform Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Set DT_ENVIRONMENT to your Dynatrace Apps URL and create a Platform Token (Settings > Identity & access management > Platform tokens) with the required app-engine and storage read scopes."
+  },
+  "contributor": {
+    "name": "Dynatrace",
+    "github": "dynatrace-oss",
+    "url": "https://www.dynatrace.com"
+  },
+  "links": {
+    "repository": "https://github.com/dynatrace-oss/dynatrace-mcp",
+    "homepage": "https://www.dynatrace.com",
+    "documentation": "https://github.com/dynatrace-oss/dynatrace-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/dynatrace-oss/dynatrace-mcp/releases"
+}
