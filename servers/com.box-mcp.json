@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.box-mcp",
+  "name": "Box",
+  "alias": "box",
+  "description": "Securely connect AI agents to your enterprise content in Box. Search files and folders, run Box AI, and manage content through Box's official hosted remote MCP server. Authenticates via OAuth in your browser, no local setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/23900?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "file-system",
+    "productivity"
+  ],
+  "tags": [
+    "box",
+    "cloud-storage",
+    "content-management",
+    "files",
+    "documents",
+    "box-ai",
+    "enterprise"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.box.com",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your Box account. No token setup needed. An admin must enable MCP in the Box Admin Console for your organization."
+  },
+  "contributor": {
+    "name": "Box",
+    "github": "box",
+    "url": "https://www.box.com"
+  },
+  "links": {
+    "repository": "https://github.com/box/mcp-server-box-remote",
+    "homepage": "https://www.box.com/mcp-server",
+    "documentation": "https://developer.box.com/guides/box-mcp/remote/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
