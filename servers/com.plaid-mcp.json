@@ -1,0 +1,67 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.plaid-mcp",
+  "name": "Plaid",
+  "alias": "plaid",
+  "description": "Query your Plaid Dashboard through Plaid's official hosted MCP server: inspect Items, accounts, transactions, webhooks, logs, and account-health data without leaving your AI client.",
+  "logo": "https://avatars.githubusercontent.com/u/3579888?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "plaid",
+    "fintech",
+    "banking",
+    "payments",
+    "dashboard",
+    "finance"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://api.dashboard.plaid.com/mcp/",
+    "headers": {
+      "Authorization": "Bearer ${input:PLAID_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PLAID_ACCESS_TOKEN",
+          "label": "Plaid MCP Access Token",
+          "description": "A short-lived OAuth bearer token (scope mcp:dashboard) for the Plaid Dashboard MCP server. Plaid only issues these via the client_credentials grant, which McpMux cannot run automatically, so paste a token you mint yourself. Mint one by POSTing your Production client_id and client_secret to https://production.plaid.com/oauth/token with grant_type=client_credentials and scope=mcp:dashboard, then copy the returned access_token. Note: these tokens expire after ~15 minutes, so you must refresh this value periodically.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "<paste-your-mcp:dashboard-access_token>",
+          "obtain": {
+            "url": "https://plaid.com/docs/resources/mcp/",
+            "instructions": "1. Get your Production client_id and client_secret from the Plaid Dashboard (Developers > Keys).\n2. Request a token:\n   curl -X POST https://production.plaid.com/oauth/token \\\n     -H 'Content-Type: application/json' \\\n     -d '{\"client_id\":\"YOUR_CLIENT_ID\",\"client_secret\":\"YOUR_PRODUCTION_SECRET\",\"grant_type\":\"client_credentials\",\"scope\":\"mcp:dashboard\"}'\n3. Copy the access_token from the response and paste it here.\n4. The token expires after ~15 minutes; repeat this step (or use the returned refresh_token) to get a fresh one.",
+            "button_label": "Plaid MCP Docs"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Plaid's Dashboard MCP server authenticates with an OAuth client_credentials bearer token (scope mcp:dashboard), a server-to-server flow McpMux cannot perform automatically. Mint a token yourself by POSTing your Production client_id and client_secret to https://production.plaid.com/oauth/token (grant_type=client_credentials, scope=mcp:dashboard), then paste the returned access_token as the Plaid MCP Access Token. McpMux sends it as 'Authorization: Bearer <token>'. Tokens expire after ~15 minutes and must be refreshed."
+  },
+  "contributor": {
+    "name": "Plaid",
+    "github": "plaid",
+    "url": "https://plaid.com"
+  },
+  "links": {
+    "homepage": "https://plaid.com",
+    "documentation": "https://plaid.com/docs/resources/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
