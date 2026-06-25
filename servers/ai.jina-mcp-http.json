@@ -1,0 +1,71 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.jina-mcp-http",
+  "name": "Jina AI (Remote)",
+  "alias": "jina",
+  "description": "Official Jina AI remote MCP server: web/arXiv/image search, URL-to-markdown reading, screenshots, reranking, classification, embeddings-powered dedup, and PDF extraction via a single hosted Streamable HTTP endpoint. Works without a key; add a Jina API key for higher rate limits.",
+  "logo": "https://avatars.githubusercontent.com/u/60539444?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "ai-ml"
+  ],
+  "tags": [
+    "jina",
+    "search",
+    "web-search",
+    "reader",
+    "reranker",
+    "embeddings",
+    "ai"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.jina.ai/v1",
+    "headers": {
+      "Authorization": "Bearer ${input:JINA_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "JINA_API_KEY",
+          "label": "Jina API Key",
+          "description": "Optional. The server works without a key but applies rate limits; provide a Jina API key for higher rate limits and better performance. Starts with jina_.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "jina_************************",
+          "obtain": {
+            "url": "https://jina.ai/?sui=apikey",
+            "instructions": "1. Go to jina.ai\n2. Sign up or log in\n3. Open the API dashboard / API key page\n4. Copy your key (starts with jina_)",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Optional. Works without a key (rate-limited). For higher rate limits, get a Jina API key at jina.ai and it is sent as an Authorization: Bearer header."
+  },
+  "contributor": {
+    "name": "Jina AI",
+    "github": "jina-ai",
+    "url": "https://jina.ai"
+  },
+  "links": {
+    "repository": "https://github.com/jina-ai/MCP",
+    "homepage": "https://jina.ai",
+    "documentation": "https://github.com/jina-ai/MCP"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/jina-ai/MCP/releases"
+}
