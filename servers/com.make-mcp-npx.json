@@ -1,0 +1,91 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.make-mcp-npx",
+  "name": "Make (npx)",
+  "alias": "make",
+  "description": "Connect to Make (formerly Integromat) automation scenarios. Turn your on-demand Make scenarios into callable tools so AI assistants can trigger and parameterize your automations. Runs locally via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/8357502?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "make",
+    "integromat",
+    "automation",
+    "scenarios",
+    "workflow",
+    "no-code"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@makehq/mcp-server"
+    ],
+    "env": {
+      "MAKE_API_KEY": "${input:MAKE_API_KEY}",
+      "MAKE_ZONE": "${input:MAKE_ZONE}",
+      "MAKE_TEAM": "${input:MAKE_TEAM}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MAKE_API_KEY",
+          "label": "Make API Key",
+          "description": "API token generated in your Make profile. Grant the scopes needed for the scenarios you want to expose (e.g. scenarios:read, scenarios:run).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://www.make.com/en/help/api-key",
+            "instructions": "1. Sign in to Make and click your avatar at the bottom-left, then click Profile\n2. Open the API tab\n3. Click 'Add token'\n4. Select the scopes you need\n5. Click 'Save', then copy the generated token (it is shown only once)",
+            "button_label": "Create API Token"
+          }
+        },
+        {
+          "id": "MAKE_ZONE",
+          "label": "Make Zone",
+          "description": "The zone your Make organization is hosted in. Find it in the URL after signing in to Make.",
+          "type": "text",
+          "required": true,
+          "placeholder": "eu2.make.com"
+        },
+        {
+          "id": "MAKE_TEAM",
+          "label": "Make Team ID",
+          "description": "Your Make Team ID. You can find it in the URL of the Team page.",
+          "type": "text",
+          "required": true,
+          "placeholder": "123456"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API token in your Make profile (Profile > API > Add token) with the scopes required for the scenarios you want to use."
+  },
+  "contributor": {
+    "name": "Make",
+    "github": "integromat",
+    "url": "https://www.make.com"
+  },
+  "links": {
+    "repository": "https://github.com/integromat/make-mcp-server",
+    "homepage": "https://www.make.com",
+    "documentation": "https://developers.make.com/api-documentation"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/integromat/make-mcp-server/releases"
+}
