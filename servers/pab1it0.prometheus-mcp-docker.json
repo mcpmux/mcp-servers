@@ -1,0 +1,122 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "pab1it0.prometheus-mcp-docker",
+  "name": "Prometheus (Docker)",
+  "alias": "prometheus",
+  "description": "Query Prometheus metrics and monitoring data via Docker. Run instant and range PromQL queries, discover metrics, inspect metadata, and check scrape targets through a standardized MCP interface.",
+  "logo": "https://avatars.githubusercontent.com/u/11724759?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "prometheus",
+    "monitoring",
+    "metrics",
+    "observability",
+    "promql",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "PROMETHEUS_URL",
+      "-e",
+      "PROMETHEUS_USERNAME",
+      "-e",
+      "PROMETHEUS_PASSWORD",
+      "-e",
+      "PROMETHEUS_TOKEN",
+      "-e",
+      "ORG_ID",
+      "ghcr.io/pab1it0/prometheus-mcp-server:latest"
+    ],
+    "env": {
+      "PROMETHEUS_URL": "${input:PROMETHEUS_URL}",
+      "PROMETHEUS_USERNAME": "${input:PROMETHEUS_USERNAME}",
+      "PROMETHEUS_PASSWORD": "${input:PROMETHEUS_PASSWORD}",
+      "PROMETHEUS_TOKEN": "${input:PROMETHEUS_TOKEN}",
+      "ORG_ID": "${input:ORG_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PROMETHEUS_URL",
+          "label": "Prometheus URL",
+          "description": "Base URL of your Prometheus server. Use host.docker.internal instead of localhost to reach a Prometheus running on your host machine.",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://your-prometheus:9090",
+          "obtain": {
+            "url": "https://prometheus.io/docs/prometheus/latest/getting_started/",
+            "instructions": "1. Use the address where your Prometheus server is reachable\n2. For a local Prometheus, use http://host.docker.internal:9090\n3. Include the scheme and port (default 9090)",
+            "button_label": "Prometheus Docs"
+          }
+        },
+        {
+          "id": "PROMETHEUS_USERNAME",
+          "label": "Username (Basic Auth)",
+          "description": "Username for HTTP Basic authentication. Optional — only set this if your Prometheus is protected with basic auth. Leave blank when using a bearer token instead.",
+          "type": "text",
+          "required": false,
+          "placeholder": "admin"
+        },
+        {
+          "id": "PROMETHEUS_PASSWORD",
+          "label": "Password (Basic Auth)",
+          "description": "Password for HTTP Basic authentication. Required when a username is provided. Leave blank when using a bearer token instead.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********************"
+        },
+        {
+          "id": "PROMETHEUS_TOKEN",
+          "label": "Bearer Token",
+          "description": "Bearer token for token-based authentication (e.g. Grafana Cloud, Cortex, Thanos). Optional — use this instead of username/password.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********************"
+        },
+        {
+          "id": "ORG_ID",
+          "label": "Organization ID",
+          "description": "Organization / tenant ID for multi-tenant Prometheus setups (e.g. Cortex, Mimir, Thanos). Optional — sent as the X-Scope-OrgID header when set.",
+          "type": "text",
+          "required": false,
+          "placeholder": "tenant-1"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without credentials against an unauthenticated Prometheus. For protected servers, supply either a username + password (Basic auth) or a bearer token. Set ORG_ID for multi-tenant backends."
+  },
+  "contributor": {
+    "name": "pab1it0",
+    "github": "pab1it0",
+    "url": "https://github.com/pab1it0/prometheus-mcp-server"
+  },
+  "links": {
+    "repository": "https://github.com/pab1it0/prometheus-mcp-server",
+    "homepage": "https://github.com/pab1it0/prometheus-mcp-server",
+    "documentation": "https://github.com/pab1it0/prometheus-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/pab1it0/prometheus-mcp-server/releases"
+}
