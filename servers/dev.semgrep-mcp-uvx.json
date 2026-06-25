@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.semgrep-mcp-uvx",
+  "name": "Semgrep (uvx)",
+  "alias": "semgrep",
+  "description": "Run Semgrep static analysis through MCP. Scan code for security vulnerabilities with 5,000+ built-in rules, write and run custom rules, inspect ASTs, and fetch findings from the Semgrep AppSec Platform.",
+  "logo": "https://avatars.githubusercontent.com/u/29760937?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security",
+    "developer-tools"
+  ],
+  "tags": [
+    "semgrep",
+    "security",
+    "static-analysis",
+    "sast",
+    "code-scanning",
+    "vulnerabilities",
+    "appsec"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "semgrep-mcp"
+    ],
+    "env": {
+      "SEMGREP_APP_TOKEN": "${input:SEMGREP_APP_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SEMGREP_APP_TOKEN",
+          "label": "Semgrep App Token",
+          "description": "Optional. Connects the server to the Semgrep AppSec Platform to enable cloud features such as fetching findings (semgrep_findings). Leave empty to run local scans only.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://semgrep.dev/orgs/-/settings/tokens",
+            "instructions": "1. Sign in at https://semgrep.dev\n2. Go to Settings > Tokens\n3. Create a new token (API scope)\n4. Copy it and paste here",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "No token is required for local scanning. Provide an optional SEMGREP_APP_TOKEN to enable Semgrep AppSec Platform features. Create one at https://semgrep.dev/orgs/-/settings/tokens"
+  },
+  "contributor": {
+    "name": "Semgrep",
+    "github": "semgrep",
+    "url": "https://semgrep.dev"
+  },
+  "links": {
+    "repository": "https://github.com/semgrep/mcp",
+    "homepage": "https://semgrep.dev",
+    "documentation": "https://github.com/semgrep/mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/semgrep/mcp/blob/main/CHANGELOG.md"
+}
