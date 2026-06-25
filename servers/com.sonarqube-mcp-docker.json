@@ -1,0 +1,105 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.sonarqube-mcp-docker",
+  "name": "SonarQube (Docker)",
+  "alias": "sonarqube",
+  "description": "Official SonarQube MCP server (Docker) connecting AI agents to SonarQube Cloud and SonarQube Server for code quality and security data. Analyze code snippets, retrieve issues and security hotspots, browse projects, and inspect quality gates.",
+  "logo": "https://avatars.githubusercontent.com/u/545988?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "security"
+  ],
+  "tags": [
+    "sonarqube",
+    "sonarcloud",
+    "code-quality",
+    "security",
+    "static-analysis",
+    "code-review",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "--init",
+      "--pull=always",
+      "-i",
+      "--rm",
+      "-e",
+      "SONARQUBE_TOKEN",
+      "-e",
+      "SONARQUBE_ORG",
+      "-e",
+      "SONARQUBE_URL",
+      "sonarsource/sonarqube-mcp"
+    ],
+    "env": {
+      "SONARQUBE_TOKEN": "${input:SONARQUBE_TOKEN}",
+      "SONARQUBE_ORG": "${input:SONARQUBE_ORG}",
+      "SONARQUBE_URL": "${input:SONARQUBE_URL}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SONARQUBE_TOKEN",
+          "label": "SonarQube Token",
+          "description": "Required. Your SonarQube Cloud token, or a SonarQube Server USER token for self-hosted instances. Used to authenticate all requests.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "squ_********************************",
+          "obtain": {
+            "url": "https://docs.sonarsource.com/sonarqube-cloud/managing-your-account/managing-tokens/",
+            "instructions": "SonarQube Cloud: open your account > Security and generate a token at https://sonarcloud.io/account/security/.\nSonarQube Server (self-hosted): open My Account > Security and generate a USER token.\nCopy the token and paste it here.",
+            "button_label": "Create Token"
+          }
+        },
+        {
+          "id": "SONARQUBE_ORG",
+          "label": "SonarQube Cloud Organization Key",
+          "description": "Required for SonarQube Cloud / SonarCloud only. Your organization key (leave empty for self-hosted SonarQube Server, where you set the Server URL instead).",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "my-organization"
+        },
+        {
+          "id": "SONARQUBE_URL",
+          "label": "SonarQube Server URL",
+          "description": "Required for self-hosted SonarQube Server (your instance URL, e.g. https://sonarqube.example.com). For SonarQube Cloud leave empty to use https://sonarcloud.io, or set https://sonarqube.us for SonarQube Cloud US.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "placeholder": "https://sonarqube.example.com"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a SonarQube Cloud token (or a SonarQube Server USER token for self-hosted) and provide it as SONARQUBE_TOKEN. For SonarQube Cloud also set your organization key (SONARQUBE_ORG); for self-hosted SonarQube Server set your instance URL (SONARQUBE_URL) instead."
+  },
+  "contributor": {
+    "name": "SonarSource",
+    "github": "SonarSource",
+    "url": "https://www.sonarsource.com"
+  },
+  "links": {
+    "repository": "https://github.com/SonarSource/sonarqube-mcp-server",
+    "homepage": "https://www.sonarsource.com",
+    "documentation": "https://docs.sonarsource.com/sonarqube-mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/SonarSource/sonarqube-mcp-server/releases"
+}
