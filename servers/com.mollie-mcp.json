@@ -1,0 +1,66 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.mollie-mcp",
+  "name": "Mollie",
+  "alias": "mollie",
+  "description": "Manage Mollie payments, payment links, customers, subscriptions, settlements, invoices, and more through Mollie's official hosted MCP endpoint. Acts as a proxy for the Mollie public API.",
+  "logo": "https://avatars.githubusercontent.com/u/1327170?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "mollie",
+    "payments",
+    "fintech",
+    "billing",
+    "subscriptions"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.mollie.com/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:MOLLIE_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MOLLIE_ACCESS_TOKEN",
+          "label": "Mollie Access Token",
+          "description": "A Mollie Advanced (Organization) access token. Requires the profile.read scope (mandatory); add scopes for the APIs you want to enable (Payments, Payment Links, Customers, Mandates, Subscriptions, Settlements, Invoices, Balances, Captures, Methods, Terminals, Webhooks, Webhook Events). Sent as 'Authorization: Bearer <token>'.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************",
+          "obtain": {
+            "url": "https://my.mollie.com/dashboard/developers/api-keys",
+            "instructions": "1. Sign in to the Mollie dashboard\n2. Generate an Advanced (Organization) access token via the dashboard or the OAuth flow\n3. Assign the required profile.read scope plus any optional API scopes you need\n4. Copy the token",
+            "button_label": "Open Mollie Dashboard"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Authenticate with a Mollie Advanced (Organization) access token sent as a Bearer token in the Authorization header. The token must include the profile.read scope plus scopes for any APIs you want to use. Obtain one from the Mollie dashboard."
+  },
+  "contributor": {
+    "name": "Mollie",
+    "github": "mollie",
+    "url": "https://www.mollie.com"
+  },
+  "links": {
+    "homepage": "https://www.mollie.com",
+    "documentation": "https://docs.mollie.com/docs/mollie-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
