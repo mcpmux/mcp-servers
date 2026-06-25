@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.datadog-mcp",
+  "name": "Datadog",
+  "alias": "datadog",
+  "description": "Query Datadog observability data - logs, metrics, traces, monitors, dashboards, incidents, and security signals - through Datadog's official hosted remote MCP server. Authenticates via OAuth in your browser, no local setup or API keys required.",
+  "logo": "https://avatars.githubusercontent.com/u/365230?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "datadog",
+    "observability",
+    "monitoring",
+    "apm",
+    "logs",
+    "metrics",
+    "traces",
+    "incidents",
+    "dashboards"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.0 in your browser using your Datadog account. Complete the login flow when prompted. Your role needs the relevant MCP and product permissions for the tools you use. (Default US1 site; for other sites swap the host, e.g. mcp.datadoghq.eu.)"
+  },
+  "contributor": {
+    "name": "Datadog",
+    "github": "datadog-labs",
+    "url": "https://www.datadoghq.com"
+  },
+  "links": {
+    "repository": "https://github.com/datadog-labs/mcp-server",
+    "homepage": "https://www.datadoghq.com",
+    "documentation": "https://docs.datadoghq.com/bits_ai/mcp_server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
