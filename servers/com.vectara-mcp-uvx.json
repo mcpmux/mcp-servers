@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.vectara-mcp-uvx",
+  "name": "Vectara (uvx)",
+  "alias": "vectara",
+  "description": "Connect to Vectara's Trusted RAG platform for retrieval-augmented generation and semantic search. Run grounded RAG queries, search corpora, correct hallucinations, and evaluate factual consistency.",
+  "logo": "https://avatars.githubusercontent.com/u/108304503?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "search"
+  ],
+  "tags": [
+    "vectara",
+    "rag",
+    "semantic-search",
+    "retrieval",
+    "ai",
+    "grounded-generation"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "vectara-mcp",
+      "--stdio"
+    ],
+    "env": {
+      "VECTARA_API_KEY": "${input:VECTARA_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "VECTARA_API_KEY",
+          "label": "Vectara API Key",
+          "description": "Your Vectara API key, used by all tools to authenticate against the Vectara platform. Read-only query keys start with 'zqt_'; keys with both query and index access start with 'zwt_'.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "zwt_****************",
+          "obtain": {
+            "url": "https://console.vectara.com/console/apiKeys",
+            "instructions": "1. Sign in to the Vectara Console\n2. Open the API Keys section\n3. Create a new API key (or a Personal API key)\n4. Copy the key value",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Vectara API key in the Vectara Console at https://console.vectara.com/console/apiKeys and provide it as VECTARA_API_KEY."
+  },
+  "contributor": {
+    "name": "Vectara",
+    "github": "vectara",
+    "url": "https://www.vectara.com"
+  },
+  "links": {
+    "repository": "https://github.com/vectara/vectara-mcp",
+    "homepage": "https://www.vectara.com",
+    "documentation": "https://github.com/vectara/vectara-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/vectara/vectara-mcp/blob/main/CHANGELOG.md"
+}
