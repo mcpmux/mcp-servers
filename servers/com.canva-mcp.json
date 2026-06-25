@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.canva-mcp",
+  "name": "Canva",
+  "alias": "canva",
+  "description": "Create and edit Canva designs, search and manage assets, work with brand templates and folders, and read comments through Canva's official hosted remote MCP server. Authenticates via OAuth in your browser, no local setup or API key required.",
+  "logo": "https://avatars.githubusercontent.com/u/2562356?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "design"
+  ],
+  "tags": [
+    "canva",
+    "design",
+    "graphics",
+    "templates",
+    "brand",
+    "assets",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.canva.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your Canva account. No token or API key setup needed."
+  },
+  "contributor": {
+    "name": "Canva",
+    "github": "canva",
+    "url": "https://www.canva.com"
+  },
+  "links": {
+    "homepage": "https://www.canva.com",
+    "documentation": "https://www.canva.dev/docs/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
