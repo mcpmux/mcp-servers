@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.close-mcp",
+  "name": "Close",
+  "alias": "close",
+  "description": "Manage leads, contacts, opportunities, tasks, and your sales pipeline in Close CRM through Close's official hosted remote MCP server. Authenticates via OAuth in your browser, no local setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/437267?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "close",
+    "crm",
+    "sales",
+    "leads",
+    "pipeline",
+    "contacts"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.close.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.0 (Dynamic Client Registration) in your browser using your Close account. No token setup needed."
+  },
+  "contributor": {
+    "name": "Close",
+    "github": "closeio",
+    "url": "https://close.com"
+  },
+  "links": {
+    "homepage": "https://close.com",
+    "documentation": "https://developer.close.com/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
