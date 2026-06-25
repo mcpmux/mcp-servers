@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.langsmith-mcp-uvx",
+  "name": "LangSmith (uvx)",
+  "alias": "langsmith",
+  "description": "Connect to LangSmith to fetch conversation history, prompts, traces, runs, datasets, experiments, and billing usage data from your LangChain observability platform.",
+  "logo": "https://avatars.githubusercontent.com/u/126733545?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "monitoring"
+  ],
+  "tags": [
+    "langsmith",
+    "langchain",
+    "observability",
+    "tracing",
+    "llm",
+    "monitoring",
+    "prompts",
+    "datasets"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "langsmith-mcp-server"
+    ],
+    "env": {
+      "LANGSMITH_API_KEY": "${input:LANGSMITH_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "LANGSMITH_API_KEY",
+          "label": "LangSmith API Key",
+          "description": "Your LangSmith API key, used to authenticate against the LangSmith API for traces, runs, prompts, and datasets.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "lsv2_************************",
+          "obtain": {
+            "url": "https://smith.langchain.com/settings",
+            "instructions": "1. Sign in at smith.langchain.com\n2. Open Settings\n3. Go to API Keys\n4. Create a new API key\n5. Copy the key (it begins with lsv2_)",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a LangSmith API key under Settings > API Keys at https://smith.langchain.com/settings"
+  },
+  "contributor": {
+    "name": "LangChain",
+    "github": "langchain-ai",
+    "url": "https://www.langchain.com/langsmith"
+  },
+  "links": {
+    "repository": "https://github.com/langchain-ai/langsmith-mcp-server",
+    "homepage": "https://www.langchain.com/langsmith",
+    "documentation": "https://github.com/langchain-ai/langsmith-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/langchain-ai/langsmith-mcp-server/releases"
+}
