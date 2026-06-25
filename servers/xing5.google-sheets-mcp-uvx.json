@@ -1,0 +1,117 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "xing5.google-sheets-mcp-uvx",
+  "name": "Google Sheets (uvx)",
+  "alias": "google-sheets",
+  "description": "Read, create, and modify Google Sheets and Google Drive spreadsheets. Authenticate with a Google Cloud service account key or OAuth client to manage cells, rows, charts, sharing, and more.",
+  "logo": "https://avatars.githubusercontent.com/u/9169578?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "google-sheets",
+    "google-drive",
+    "spreadsheets",
+    "productivity",
+    "office",
+    "google"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-google-sheets@latest"
+    ],
+    "env": {
+      "SERVICE_ACCOUNT_PATH": "${input:SERVICE_ACCOUNT_PATH}",
+      "DRIVE_FOLDER_ID": "${input:DRIVE_FOLDER_ID}",
+      "CREDENTIALS_PATH": "${input:CREDENTIALS_PATH}",
+      "TOKEN_PATH": "${input:TOKEN_PATH}",
+      "CREDENTIALS_CONFIG": "${input:CREDENTIALS_CONFIG}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SERVICE_ACCOUNT_PATH",
+          "label": "Service Account Key Path",
+          "description": "Recommended (headless) auth mode. Full path to the Google Cloud service account JSON key file. Share your target spreadsheets/folder with the service account's email address.",
+          "type": "file_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "/full/path/to/service-account-key.json",
+          "obtain": {
+            "url": "https://console.cloud.google.com/iam-admin/serviceaccounts",
+            "instructions": "1. Open Google Cloud Console and select (or create) a project\n2. Enable the Google Sheets API and Google Drive API under APIs & Services > Library\n3. Go to IAM & Admin > Service Accounts and create a service account\n4. Create a JSON key for it and download the file\n5. Set this path to that file\n6. Share each spreadsheet (or a Drive folder) with the service account's email",
+            "button_label": "Open Service Accounts"
+          }
+        },
+        {
+          "id": "DRIVE_FOLDER_ID",
+          "label": "Drive Folder ID",
+          "description": "Optional. ID of a shared Google Drive folder the service account can access, used as the default context for listing and creating spreadsheets. Taken from the folder URL (the part after /folders/).",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "1A2b3C4d5E6f7G8h9I0jK..."
+        },
+        {
+          "id": "CREDENTIALS_PATH",
+          "label": "OAuth Client Credentials Path",
+          "description": "OAuth 2.0 mode (alternative to service account). Path to the OAuth Client ID JSON downloaded from Google Cloud Console (Desktop app type). A browser login runs on first use. Defaults to credentials.json if unset.",
+          "type": "file_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "/full/path/to/credentials.json",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. In Google Cloud Console, enable the Google Sheets API and Google Drive API\n2. Go to APIs & Services > Credentials\n3. Create Credentials > OAuth client ID, choosing application type 'Desktop app'\n4. Download the client JSON and set this path to it",
+            "button_label": "Open Credentials"
+          }
+        },
+        {
+          "id": "TOKEN_PATH",
+          "label": "OAuth Token Path",
+          "description": "OAuth 2.0 mode. Path where the refresh token is stored after the first browser login. Defaults to token.json if unset.",
+          "type": "file_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "/full/path/to/token.json"
+        },
+        {
+          "id": "CREDENTIALS_CONFIG",
+          "label": "Credentials Config (Base64)",
+          "description": "Optional, for Docker/CI environments. Base64-encoded contents of a service account or OAuth credentials JSON, supplied inline instead of a file path. Takes precedence over the path-based modes.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "<base64-encoded-credentials-json>"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Recommended: create a Google Cloud service account, enable the Google Sheets API and Google Drive API, download its JSON key, set SERVICE_ACCOUNT_PATH to the file, and share your spreadsheets/folder with the service account email. Alternatively use OAuth: create an OAuth client ID (Desktop app) and set CREDENTIALS_PATH (and optionally TOKEN_PATH)."
+  },
+  "contributor": {
+    "name": "xing5",
+    "github": "xing5",
+    "url": "https://github.com/xing5/mcp-google-sheets"
+  },
+  "links": {
+    "repository": "https://github.com/xing5/mcp-google-sheets",
+    "homepage": "https://github.com/xing5/mcp-google-sheets",
+    "documentation": "https://github.com/xing5/mcp-google-sheets#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/xing5/mcp-google-sheets/releases"
+}
