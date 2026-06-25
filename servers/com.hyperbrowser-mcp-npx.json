@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.hyperbrowser-mcp-npx",
+  "name": "Hyperbrowser (npx)",
+  "alias": "hyperbrowser",
+  "description": "Cloud browser automation for AI agents: scrape pages, crawl sites, extract structured data, run web search, and drive headless browsers via Browser Use, OpenAI CUA, and Claude Computer Use agents.",
+  "logo": "https://avatars.githubusercontent.com/u/189776885?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "developer-tools"
+  ],
+  "tags": [
+    "hyperbrowser",
+    "browser-automation",
+    "web-scraping",
+    "crawling",
+    "web-search",
+    "data-extraction"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "hyperbrowser-mcp"
+    ],
+    "env": {
+      "HYPERBROWSER_API_KEY": "${input:HYPERBROWSER_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HYPERBROWSER_API_KEY",
+          "label": "Hyperbrowser API Key",
+          "description": "API key used to authenticate with the Hyperbrowser cloud service for browser automation, scraping, crawling, and web search.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "hb_********************************",
+          "obtain": {
+            "url": "https://app.hyperbrowser.ai/",
+            "instructions": "1. Sign in to the Hyperbrowser Dashboard\n2. Open the API Keys section\n3. Create a new API key\n4. Copy the generated key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key in the Hyperbrowser Dashboard at https://app.hyperbrowser.ai/ and set it as HYPERBROWSER_API_KEY."
+  },
+  "contributor": {
+    "name": "Hyperbrowser",
+    "github": "hyperbrowserai",
+    "url": "https://hyperbrowser.ai"
+  },
+  "links": {
+    "repository": "https://github.com/hyperbrowserai/mcp",
+    "homepage": "https://hyperbrowser.ai",
+    "documentation": "https://docs.hyperbrowser.ai"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/hyperbrowserai/mcp/releases"
+}
