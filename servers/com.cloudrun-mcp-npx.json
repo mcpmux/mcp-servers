@@ -1,0 +1,78 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cloudrun-mcp-npx",
+  "name": "Google Cloud Run (npx)",
+  "alias": "cloud-run",
+  "description": "Deploy and manage applications on Google Cloud Run directly from your AI client. Deploy local folders or file contents, list and inspect services, read logs, and manage GCP projects. Uses your local gcloud Application Default Credentials.",
+  "logo": "https://avatars.githubusercontent.com/u/2810941?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud"
+  ],
+  "tags": [
+    "google-cloud",
+    "gcp",
+    "cloud-run",
+    "deployment",
+    "serverless",
+    "containers"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@google-cloud/cloud-run-mcp"
+    ],
+    "env": {
+      "GOOGLE_CLOUD_PROJECT": "${input:GOOGLE_CLOUD_PROJECT}",
+      "GOOGLE_CLOUD_REGION": "${input:GOOGLE_CLOUD_REGION}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GOOGLE_CLOUD_PROJECT",
+          "label": "Google Cloud Project ID",
+          "description": "Optional. Default GCP project ID to use for deployments. If omitted, the server can list projects and prompt you to pick one.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "my-gcp-project-id"
+        },
+        {
+          "id": "GOOGLE_CLOUD_REGION",
+          "label": "Google Cloud Region",
+          "description": "Optional. Default Cloud Run region for deployments (e.g. us-central1). Defaults to europe-west1 if not set.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "us-central1"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Authenticate first with `gcloud auth application-default login`; the server uses your local Google Cloud credentials."
+  },
+  "contributor": {
+    "name": "Google Cloud",
+    "github": "GoogleCloudPlatform",
+    "url": "https://cloud.google.com/run"
+  },
+  "links": {
+    "repository": "https://github.com/GoogleCloudPlatform/cloud-run-mcp",
+    "homepage": "https://cloud.google.com/run",
+    "documentation": "https://github.com/GoogleCloudPlatform/cloud-run-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/GoogleCloudPlatform/cloud-run-mcp/releases"
+}
