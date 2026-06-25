@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.git-uvx",
+  "name": "Git (uvx)",
+  "alias": "git",
+  "description": "Read, search, and manipulate local Git repositories. Provides tools for status, diff, commit, add, reset, log, branch, checkout, and show. Pass a repository path to each tool, or pin one repo with the optional --repository flag.",
+  "logo": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "version-control"
+  ],
+  "tags": [
+    "git",
+    "version-control",
+    "vcs",
+    "repository",
+    "commit",
+    "diff"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-server-git"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Operates on local Git repositories the process can access."
+  },
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://github.com/modelcontextprotocol/servers"
+  },
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://github.com/modelcontextprotocol/servers/blob/main/src/git/README.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/modelcontextprotocol/servers/releases"
+}
