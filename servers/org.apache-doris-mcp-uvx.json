@@ -1,0 +1,112 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "org.apache-doris-mcp-uvx",
+  "name": "Apache Doris (uvx)",
+  "alias": "doris",
+  "description": "Interact with Apache Doris, the real-time analytical (OLAP) database. Query data, manage metadata, run SQL, and perform schema analysis through the official Doris MCP server.",
+  "logo": "https://avatars.githubusercontent.com/u/47359?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "doris",
+    "apache",
+    "olap",
+    "analytics",
+    "sql",
+    "database",
+    "data-warehouse"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "doris-mcp-server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "DORIS_HOST": "${input:DORIS_HOST}",
+      "DORIS_PORT": "${input:DORIS_PORT}",
+      "DORIS_USER": "${input:DORIS_USER}",
+      "DORIS_PASSWORD": "${input:DORIS_PASSWORD}",
+      "DORIS_DATABASE": "${input:DORIS_DATABASE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DORIS_HOST",
+          "label": "Doris Host",
+          "description": "Hostname or IP address of your Doris FE (frontend) node.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "localhost"
+        },
+        {
+          "id": "DORIS_PORT",
+          "label": "Doris Query Port",
+          "description": "MySQL-protocol query port of the Doris FE node.",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": "9030",
+          "placeholder": "9030"
+        },
+        {
+          "id": "DORIS_USER",
+          "label": "Doris User",
+          "description": "Username used to authenticate to Doris.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "root",
+          "placeholder": "root"
+        },
+        {
+          "id": "DORIS_PASSWORD",
+          "label": "Doris Password",
+          "description": "Password for the Doris user. Leave empty for instances configured without a password.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********"
+        },
+        {
+          "id": "DORIS_DATABASE",
+          "label": "Doris Database",
+          "description": "Default database to connect to. Defaults to information_schema if not set.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "information_schema"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide Doris connection details. The password is optional for instances configured without authentication."
+  },
+  "contributor": {
+    "name": "Apache Doris",
+    "github": "apache",
+    "url": "https://doris.apache.org"
+  },
+  "links": {
+    "repository": "https://github.com/apache/doris-mcp-server",
+    "homepage": "https://doris.apache.org",
+    "documentation": "https://github.com/apache/doris-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/apache/doris-mcp-server/releases"
+}
