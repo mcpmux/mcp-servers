@@ -1,0 +1,82 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.octopus-mcp-npx",
+  "name": "Octopus Deploy (npx)",
+  "alias": "octopus",
+  "description": "Connect your AI assistant to Octopus Deploy to inspect, query, and diagnose deployments, releases, projects, and environments across your Octopus instance via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/1287123?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "octopus",
+    "octopus-deploy",
+    "deployment",
+    "ci-cd",
+    "devops",
+    "releases"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@octopusdeploy/mcp-server"
+    ],
+    "env": {
+      "OCTOPUS_SERVER_URL": "${input:OCTOPUS_SERVER_URL}",
+      "OCTOPUS_API_KEY": "${input:OCTOPUS_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "OCTOPUS_SERVER_URL",
+          "label": "Octopus Server URL",
+          "description": "The base URL of your Octopus Deploy instance (Octopus Cloud or self-hosted Octopus Server).",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://your-instance.octopus.app"
+        },
+        {
+          "id": "OCTOPUS_API_KEY",
+          "label": "Octopus API Key",
+          "description": "An Octopus Deploy API key tied to your user account. The key inherits your user's permissions in Octopus.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "API-************************",
+          "obtain": {
+            "url": "https://octopus.com/docs/octopus-rest-api/how-to-create-an-api-key",
+            "instructions": "1. Sign in to your Octopus Deploy instance\n2. Open your user profile menu (top right) and choose 'Profile'\n3. Go to the 'API Keys' tab\n4. Click 'New API Key', give it a purpose/note\n5. Click 'Generate New' and copy the key (starts with API-) — it is only shown once",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key from your Octopus Deploy user Profile > API Keys tab, then provide it along with your Octopus Server URL."
+  },
+  "contributor": {
+    "name": "Octopus Deploy",
+    "github": "OctopusDeploy",
+    "url": "https://octopus.com"
+  },
+  "links": {
+    "repository": "https://github.com/OctopusDeploy/mcp-server",
+    "homepage": "https://octopus.com",
+    "documentation": "https://octopus.com/docs"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/OctopusDeploy/mcp-server/releases"
+}
