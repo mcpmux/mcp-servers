@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.heroku-mcp-npx",
+  "name": "Heroku (npx)",
+  "alias": "heroku",
+  "description": "Manage Heroku Platform resources through natural language: create and deploy apps, manage dynos and add-ons, configure pipelines, run one-off commands, inspect logs, and administer Postgres databases via the official Heroku MCP server run locally with npx.",
+  "logo": "https://avatars.githubusercontent.com/u/23211?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud"
+  ],
+  "tags": [
+    "heroku",
+    "deployment",
+    "paas",
+    "cloud",
+    "devops",
+    "postgres"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@heroku/mcp-server"
+    ],
+    "env": {
+      "HEROKU_API_KEY": "${input:HEROKU_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HEROKU_API_KEY",
+          "label": "Heroku Auth Token",
+          "description": "A Heroku authorization token used to authenticate with the Heroku Platform API. The MCP server can act on any app and resource the associated account has access to, so treat it like a password.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "HRKU-********-****-****-****-************",
+          "obtain": {
+            "url": "https://dashboard.heroku.com/account/applications",
+            "instructions": "Generate a long-lived authorization token with the Heroku CLI:\n1. Install the Heroku CLI and log in: 'heroku login'\n2. Run 'heroku authorizations:create' to create a new token (add '-d \"McpMux\"' to label it)\n3. Copy the value shown under 'Token'\n\nAlternatively, reuse your current CLI session token with 'heroku auth:token', or create one in the dashboard at Account Settings > Applications > Authorizations > 'Create authorization'.",
+            "button_label": "Manage Authorizations"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Heroku authorization token by running 'heroku authorizations:create' with the Heroku CLI, or generate one in the dashboard under Account Settings > Applications > Authorizations. Provide it as HEROKU_API_KEY."
+  },
+  "contributor": {
+    "name": "Heroku",
+    "github": "heroku",
+    "url": "https://www.heroku.com"
+  },
+  "links": {
+    "repository": "https://github.com/heroku/heroku-mcp-server",
+    "homepage": "https://www.heroku.com",
+    "documentation": "https://github.com/heroku/heroku-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/heroku/heroku-mcp-server/releases"
+}
