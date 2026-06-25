@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.huggingface-mcp",
+  "name": "Hugging Face",
+  "alias": "huggingface",
+  "description": "Connect to Hugging Face's hosted MCP endpoint to search the Hub (models, datasets, Spaces, papers), search and fetch Hub documentation, and use Gradio AI applications. Works anonymously; add a token for higher limits and access to your own resources.",
+  "logo": "https://avatars.githubusercontent.com/u/25720743?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml"
+  ],
+  "tags": [
+    "huggingface",
+    "ai",
+    "machine-learning",
+    "models",
+    "datasets",
+    "spaces",
+    "gradio"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://huggingface.co/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:HF_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HF_TOKEN",
+          "label": "Hugging Face Token",
+          "description": "Optional. Anonymous access works, but a token unlocks higher rate limits and access to your private models, datasets, Spaces, and tools. Create a token with read access at huggingface.co/settings/tokens.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "hf_********************",
+          "obtain": {
+            "url": "https://huggingface.co/settings/tokens",
+            "instructions": "1. Open huggingface.co/settings/tokens\n2. Click 'Create new token'\n3. Choose a token type (a read token is enough for most use)\n4. Copy the token (starts with hf_)",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without a token (anonymous access). Add a Hugging Face token via the Authorization: Bearer header for higher rate limits and access to your own private resources. Create one at huggingface.co/settings/tokens."
+  },
+  "contributor": {
+    "name": "Hugging Face",
+    "github": "huggingface",
+    "url": "https://huggingface.co"
+  },
+  "links": {
+    "repository": "https://github.com/huggingface/hf-mcp-server",
+    "homepage": "https://huggingface.co/mcp",
+    "documentation": "https://huggingface.co/settings/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/huggingface/hf-mcp-server/releases"
+}
