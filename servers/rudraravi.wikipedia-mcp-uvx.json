@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "rudraravi.wikipedia-mcp-uvx",
+  "name": "Wikipedia (uvx)",
+  "alias": "wikipedia",
+  "description": "Retrieve and search Wikipedia content for LLMs through the Model Context Protocol. Search articles, fetch full text or summaries, extract sections, links, coordinates, related topics, and key facts. No API key required. Pass a different Wikipedia edition with the optional --language flag (e.g. uvx wikipedia-mcp --language ja).",
+  "logo": "https://avatars.githubusercontent.com/u/116959728?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "documentation"
+  ],
+  "tags": [
+    "wikipedia",
+    "search",
+    "encyclopedia",
+    "knowledge",
+    "reference",
+    "research"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "wikipedia-mcp"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Reads public Wikipedia content. An optional Wikipedia access token (WIKIPEDIA_ACCESS_TOKEN) can be supplied to reduce rate limiting, but it is not needed for normal use."
+  },
+  "contributor": {
+    "name": "Rudra-ravi",
+    "github": "Rudra-ravi",
+    "url": "https://github.com/Rudra-ravi/wikipedia-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/Rudra-ravi/wikipedia-mcp",
+    "homepage": "https://github.com/Rudra-ravi/wikipedia-mcp",
+    "documentation": "https://github.com/Rudra-ravi/wikipedia-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/Rudra-ravi/wikipedia-mcp/releases"
+}
