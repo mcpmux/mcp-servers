@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "flux159.kubernetes-mcp-npx",
+  "name": "Kubernetes (npx)",
+  "alias": "kubernetes",
+  "description": "Manage Kubernetes clusters through kubectl and Helm: list and inspect resources, view logs, scale workloads, port-forward, and run node operations. Connects to whatever cluster your current kube context points to.",
+  "logo": "https://avatars.githubusercontent.com/u/904070?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "kubernetes",
+    "k8s",
+    "kubectl",
+    "helm",
+    "devops",
+    "cloud"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-kubernetes"
+    ],
+    "env": {
+      "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "${input:ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS",
+          "label": "Read-only (non-destructive) mode",
+          "description": "When enabled, destructive tools are disabled (kubectl_delete, uninstall_helm_chart, cleanup, cleanup_pods, node_management, kubectl_generic). Read-only and create/update operations remain available.",
+          "type": "boolean",
+          "required": false,
+          "secret": false,
+          "default": "false"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Uses your local kubeconfig / current kube context."
+  },
+  "contributor": {
+    "name": "Flux159",
+    "github": "Flux159",
+    "url": "https://github.com/Flux159/mcp-server-kubernetes"
+  },
+  "links": {
+    "repository": "https://github.com/Flux159/mcp-server-kubernetes",
+    "homepage": "https://github.com/Flux159/mcp-server-kubernetes#readme",
+    "documentation": "https://github.com/Flux159/mcp-server-kubernetes/blob/main/README.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/Flux159/mcp-server-kubernetes/releases"
+}
