@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "org.opensearch-mcp-uvx",
+  "name": "OpenSearch (uvx)",
+  "alias": "opensearch",
+  "description": "Connect to OpenSearch and Amazon OpenSearch Service clusters to search indices, retrieve mappings, inspect shards, and run cluster operations. Supports basic auth, AWS IAM, and dynamic per-call connection parameters.",
+  "logo": "https://avatars.githubusercontent.com/u/80134844?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "database"
+  ],
+  "tags": [
+    "opensearch",
+    "search",
+    "elasticsearch",
+    "database",
+    "aws",
+    "indexing",
+    "observability"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "opensearch-mcp-server-py"
+    ],
+    "env": {
+      "OPENSEARCH_URL": "${input:OPENSEARCH_URL}",
+      "OPENSEARCH_USERNAME": "${input:OPENSEARCH_USERNAME}",
+      "OPENSEARCH_PASSWORD": "${input:OPENSEARCH_PASSWORD}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "OPENSEARCH_URL",
+          "label": "OpenSearch URL",
+          "description": "Base URL of your OpenSearch cluster endpoint, e.g. https://localhost:9200 or your Amazon OpenSearch Service domain endpoint. Can be omitted if agents supply connection details per tool call.",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://localhost:9200",
+          "obtain": {
+            "url": "https://docs.opensearch.org/latest/ai-agent-integrations/mcp-server/index/",
+            "instructions": "1. Use your self-managed OpenSearch endpoint (e.g. https://localhost:9200), or\n2. For Amazon OpenSearch Service, copy the domain endpoint from the AWS console (OpenSearch Service > Domains > your domain > Domain endpoint).",
+            "button_label": "View Docs"
+          }
+        },
+        {
+          "id": "OPENSEARCH_USERNAME",
+          "label": "OpenSearch Username",
+          "description": "Username for HTTP basic authentication. Leave blank when using AWS IAM auth, mTLS, or connecting to a cluster with no auth.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "admin"
+        },
+        {
+          "id": "OPENSEARCH_PASSWORD",
+          "label": "OpenSearch Password",
+          "description": "Password for HTTP basic authentication. Leave blank when using AWS IAM auth, mTLS, or connecting to a cluster with no auth.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "For basic auth, set OPENSEARCH_USERNAME and OPENSEARCH_PASSWORD. For Amazon OpenSearch Service, use AWS IAM credentials from your environment (AWS_REGION, AWS_PROFILE/AWS_IAM_ARN) instead. The server can also start with no credentials and accept connection details per tool call."
+  },
+  "contributor": {
+    "name": "OpenSearch",
+    "github": "opensearch-project",
+    "url": "https://opensearch.org"
+  },
+  "links": {
+    "repository": "https://github.com/opensearch-project/opensearch-mcp-server-py",
+    "homepage": "https://opensearch.org",
+    "documentation": "https://docs.opensearch.org/latest/ai-agent-integrations/mcp-server/index/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/opensearch-project/opensearch-mcp-server-py/releases"
+}
