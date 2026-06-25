@@ -1,0 +1,105 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.coinbase-mcp-npx",
+  "name": "Coinbase CDP (npx)",
+  "alias": "coinbase",
+  "description": "Official Coinbase Developer Platform MCP server (from @coinbase/cdp-cli). Gives agents typed tool access to every CDP API endpoint - EVM/Solana accounts, onchain data, faucets, swaps, and the encode-sign-send pipeline. Tools are generated from the CDP OpenAPI spec, so new endpoints appear automatically.",
+  "logo": "https://avatars.githubusercontent.com/u/1885080?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "coinbase",
+    "crypto",
+    "web3",
+    "payments",
+    "wallet",
+    "blockchain",
+    "evm"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@coinbase/cdp-cli",
+      "mcp"
+    ],
+    "env": {
+      "CDP_KEY_ID": "${input:CDP_KEY_ID}",
+      "CDP_KEY_SECRET": "${input:CDP_KEY_SECRET}",
+      "CDP_WALLET_SECRET": "${input:CDP_WALLET_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CDP_KEY_ID",
+          "label": "CDP API Key ID",
+          "description": "Coinbase Developer Platform API key ID (the 'key id' / name portion). Create an API key in the CDP Portal under API keys.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "00000000-0000-0000-0000-000000000000",
+          "obtain": {
+            "url": "https://portal.cdp.coinbase.com/projects/api-keys",
+            "instructions": "1. Sign in at portal.cdp.coinbase.com\n2. Open your project and go to API keys\n3. Click 'Create API key'\n4. Copy the Key ID (and the Key Secret shown only once)",
+            "button_label": "Create API Key"
+          }
+        },
+        {
+          "id": "CDP_KEY_SECRET",
+          "label": "CDP API Key Secret",
+          "description": "Secret for your CDP API key. Used to sign short-lived JWTs for every request. Shown only once at key creation time - store it securely.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************************************",
+          "obtain": {
+            "url": "https://portal.cdp.coinbase.com/projects/api-keys",
+            "instructions": "1. Sign in at portal.cdp.coinbase.com\n2. Open your project and go to API keys\n3. Click 'Create API key'\n4. Copy the Key Secret (displayed only once)",
+            "button_label": "Create API Key"
+          }
+        },
+        {
+          "id": "CDP_WALLET_SECRET",
+          "label": "CDP Wallet Secret (optional)",
+          "description": "Wallet secret required only for account WRITE operations (create account, sign, send). Read-only API and onchain-data tools work without it. Generate it in the CDP Portal Server Wallet section.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "****************************************",
+          "obtain": {
+            "url": "https://portal.cdp.coinbase.com/products/server-wallet/accounts",
+            "instructions": "1. Sign in at portal.cdp.coinbase.com\n2. Go to Server Wallet > Accounts\n3. Click 'Generate Wallet Secret'\n4. Copy / download the wallet secret (needed only for write/sign/send operations)",
+            "button_label": "Generate Wallet Secret"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a CDP API key at portal.cdp.coinbase.com (API keys) to get CDP_KEY_ID and CDP_KEY_SECRET. For account write/sign/send operations, also generate a Wallet Secret (CDP_WALLET_SECRET) under Server Wallet."
+  },
+  "contributor": {
+    "name": "Coinbase",
+    "github": "coinbase",
+    "url": "https://www.coinbase.com/developer-platform"
+  },
+  "links": {
+    "repository": "https://github.com/coinbase/cdp-cli",
+    "homepage": "https://www.coinbase.com/developer-platform",
+    "documentation": "https://docs.cdp.coinbase.com/get-started/build-with-ai/cdp-for-agents"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://www.npmjs.com/package/@coinbase/cdp-cli?activeTab=versions"
+}
