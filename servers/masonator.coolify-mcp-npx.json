@@ -1,0 +1,82 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "masonator.coolify-mcp-npx",
+  "name": "Coolify (npx)",
+  "alias": "coolify",
+  "description": "Manage your self-hosted Coolify instance from your AI client: deploy applications, manage servers, projects, services, databases, and environments via the Coolify API.",
+  "logo": "https://avatars.githubusercontent.com/u/81351?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud"
+  ],
+  "tags": [
+    "coolify",
+    "deployment",
+    "self-hosted",
+    "paas",
+    "devops",
+    "infrastructure"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@masonator/coolify-mcp"
+    ],
+    "env": {
+      "COOLIFY_BASE_URL": "${input:COOLIFY_BASE_URL}",
+      "COOLIFY_ACCESS_TOKEN": "${input:COOLIFY_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "COOLIFY_BASE_URL",
+          "label": "Coolify Base URL",
+          "description": "The base URL of your self-hosted Coolify instance (no trailing slash). Example: https://coolify.yourdomain.com",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://coolify.yourdomain.com"
+        },
+        {
+          "id": "COOLIFY_ACCESS_TOKEN",
+          "label": "Coolify API Token",
+          "description": "API token for your Coolify instance. Create one in Coolify under Keys & Tokens > API tokens, granting the permissions you need (read/write/deploy).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://coolify.io/docs/api-reference/authorization",
+            "instructions": "1. Open your Coolify dashboard\n2. Go to Keys & Tokens > API tokens\n3. Create a new token and select the required permissions (read/write/deploy)\n4. Copy the generated token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API token in Coolify under Keys & Tokens > API tokens, then set COOLIFY_BASE_URL to your instance URL and COOLIFY_ACCESS_TOKEN to the token."
+  },
+  "contributor": {
+    "name": "StuMason",
+    "github": "masonator",
+    "url": "https://github.com/StuMason/coolify-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/StuMason/coolify-mcp",
+    "homepage": "https://coolify.io",
+    "documentation": "https://github.com/StuMason/coolify-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/StuMason/coolify-mcp/releases"
+}
