@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.doppler-mcp-npx",
+  "name": "Doppler (npx)",
+  "alias": "doppler",
+  "description": "Manage Doppler secrets, projects, configs, and environments through the Doppler API. Tools are auto-generated from the Doppler OpenAPI spec and support read-only and project/config scoping.",
+  "logo": "https://avatars.githubusercontent.com/u/34022344?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "doppler",
+    "secrets",
+    "secrets-management",
+    "configuration",
+    "environment-variables",
+    "security"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@dopplerhq/mcp-server"
+    ],
+    "env": {
+      "DOPPLER_TOKEN": "${input:DOPPLER_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DOPPLER_TOKEN",
+          "label": "Doppler Token",
+          "description": "A Doppler service token or personal token used to authenticate with the Doppler API. Scope the token to only the projects, configs, and actions you intend to allow. Service tokens (dp.st.*) work out of the box and auto-detect scope.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "dp.st.****************",
+          "obtain": {
+            "url": "https://docs.doppler.com/docs/service-tokens",
+            "instructions": "1. Open the Doppler dashboard and select your project and config\n2. Go to the 'Access' tab\n3. Under 'Service Tokens', click 'Generate'\n4. Choose Read or Read/Write access and the config to scope it to\n5. Copy the generated token (starts with dp.st.)\n\nAlternatively, create a personal token under Settings > Tokens (Account) for broader access.",
+            "button_label": "Create Service Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a scoped service token at Doppler (project > Access > Service Tokens) or a personal token under Account settings, then provide it as DOPPLER_TOKEN. Use a read-only token where possible."
+  },
+  "contributor": {
+    "name": "Doppler",
+    "github": "DopplerHQ",
+    "url": "https://www.doppler.com"
+  },
+  "links": {
+    "repository": "https://github.com/DopplerHQ/mcp-server",
+    "homepage": "https://www.doppler.com",
+    "documentation": "https://docs.doppler.com/reference/api"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/DopplerHQ/mcp-server/releases"
+}
