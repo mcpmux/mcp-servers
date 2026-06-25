@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.dropbox-mcp",
+  "name": "Dropbox",
+  "alias": "dropbox",
+  "description": "Access, search, and manage your Dropbox files and folders through Dropbox's official hosted remote MCP server. Authenticates via Dropbox OAuth in your browser, no local setup or tokens required.",
+  "logo": "https://avatars.githubusercontent.com/u/559357?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "file-system",
+    "productivity"
+  ],
+  "tags": [
+    "dropbox",
+    "files",
+    "storage",
+    "cloud-storage",
+    "documents",
+    "file-sharing"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.dropbox.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via Dropbox OAuth 2.1 in your browser using your Dropbox account. No tokens or app keys to enter; McpMux completes the OAuth flow for you."
+  },
+  "contributor": {
+    "name": "Dropbox",
+    "github": "dropbox",
+    "url": "https://www.dropbox.com"
+  },
+  "links": {
+    "homepage": "https://www.dropbox.com",
+    "documentation": "https://help.dropbox.com/integrations/connect-dropbox-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
