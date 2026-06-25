@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "harismusa.excel-mcp-uvx",
+  "name": "Excel (uvx)",
+  "alias": "excel",
+  "description": "Create, read, and modify Excel workbooks without Microsoft Excel installed. Supports formulas, formatting, charts, pivot tables, Excel tables, and data validation.",
+  "logo": "https://avatars.githubusercontent.com/u/79357181?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "file-system"
+  ],
+  "tags": [
+    "excel",
+    "spreadsheet",
+    "xlsx",
+    "openpyxl",
+    "office",
+    "files"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "excel-mcp-server",
+      "stdio"
+    ],
+    "env": {
+      "EXCEL_FILES_PATH": "${input:EXCEL_FILES_PATH}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "EXCEL_FILES_PATH",
+          "label": "Excel Files Directory",
+          "description": "Working directory where the server reads and writes Excel files. Optional for the stdio transport; if omitted, files are resolved relative to the server's working directory.",
+          "type": "directory_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "C:\\Users\\me\\Documents\\excel_files"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Optionally set a working directory for your Excel files."
+  },
+  "contributor": {
+    "name": "haris-musa",
+    "github": "haris-musa",
+    "url": "https://github.com/haris-musa/excel-mcp-server"
+  },
+  "links": {
+    "repository": "https://github.com/haris-musa/excel-mcp-server",
+    "homepage": "https://github.com/haris-musa/excel-mcp-server",
+    "documentation": "https://github.com/haris-musa/excel-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/haris-musa/excel-mcp-server/releases"
+}
