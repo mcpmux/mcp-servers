@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.betterstack-mcp",
+  "name": "Better Stack",
+  "alias": "betterstack",
+  "description": "Monitor uptime, manage incidents and on-call schedules, query logs and metrics, and analyze errors through Better Stack's hosted remote MCP server. Authenticates via OAuth in your browser, no local setup or token required.",
+  "logo": "https://avatars.githubusercontent.com/u/85562337?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "betterstack",
+    "monitoring",
+    "uptime",
+    "incidents",
+    "on-call",
+    "logs",
+    "metrics",
+    "observability"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.betterstack.com",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your Better Stack account. No token setup needed."
+  },
+  "contributor": {
+    "name": "Better Stack",
+    "github": "BetterStackHQ",
+    "url": "https://betterstack.com"
+  },
+  "links": {
+    "homepage": "https://betterstack.com",
+    "documentation": "https://betterstack.com/docs/getting-started/integrations/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
