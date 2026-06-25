@@ -1,0 +1,111 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.tidb-mcp-uvx",
+  "name": "TiDB (uvx)",
+  "alias": "tidb",
+  "description": "Connect to a TiDB or TiDB Cloud database. List databases and tables, run read-only queries, execute data-modifying SQL, and manage database users.",
+  "logo": "https://avatars.githubusercontent.com/u/11855343?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "tidb",
+    "tidb-cloud",
+    "database",
+    "sql",
+    "mysql",
+    "pingcap"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "--from",
+      "pytidb[mcp]",
+      "tidb-mcp-server"
+    ],
+    "env": {
+      "TIDB_HOST": "${input:TIDB_HOST}",
+      "TIDB_PORT": "${input:TIDB_PORT}",
+      "TIDB_USERNAME": "${input:TIDB_USERNAME}",
+      "TIDB_PASSWORD": "${input:TIDB_PASSWORD}",
+      "TIDB_DATABASE": "${input:TIDB_DATABASE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TIDB_HOST",
+          "label": "TiDB Host",
+          "description": "Hostname of your TiDB server. For TiDB Cloud, use the gateway host shown in the connection dialog.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "gateway01.xxx.prod.aws.tidbcloud.com"
+        },
+        {
+          "id": "TIDB_PORT",
+          "label": "TiDB Port",
+          "description": "Port of your TiDB server. Defaults to 4000.",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": "4000",
+          "placeholder": "4000"
+        },
+        {
+          "id": "TIDB_USERNAME",
+          "label": "TiDB Username",
+          "description": "Database username. For TiDB Cloud this looks like '<prefix>.root'.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "xxxxxxxx.root"
+        },
+        {
+          "id": "TIDB_PASSWORD",
+          "label": "TiDB Password",
+          "description": "Password for the TiDB user.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************"
+        },
+        {
+          "id": "TIDB_DATABASE",
+          "label": "TiDB Database",
+          "description": "Default database to connect to. Defaults to 'test'.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "test",
+          "placeholder": "test"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide your TiDB connection details (host, port, username, password, database). For TiDB Cloud, create a cluster and copy the connection parameters from the cluster's Connect dialog."
+  },
+  "contributor": {
+    "name": "PingCAP",
+    "github": "pingcap",
+    "url": "https://www.pingcap.com"
+  },
+  "links": {
+    "repository": "https://github.com/pingcap/pytidb",
+    "homepage": "https://www.pingcap.com",
+    "documentation": "https://pingcap.github.io/ai/integrations/tidb-mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/pingcap/pytidb/releases"
+}
