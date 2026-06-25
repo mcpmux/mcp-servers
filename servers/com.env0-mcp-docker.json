@@ -1,0 +1,114 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.env0-mcp-docker",
+  "name": "env0 (Docker)",
+  "alias": "env0",
+  "description": "Manage env0 Infrastructure as Code workflows via Docker. Deploy, abort, approve, and cancel environments; inspect projects, plan logs, and cloud resources; analyze deployment errors; and generate IaC in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/46656519?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "env0",
+    "iac",
+    "terraform",
+    "opentofu",
+    "infrastructure",
+    "deployment",
+    "cloud",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "ENV0_API_KEY",
+      "-e",
+      "ENV0_API_SECRET",
+      "-e",
+      "ENV0_ORGANIZATION_ID",
+      "env0/mcp-server"
+    ],
+    "env": {
+      "ENV0_API_KEY": "${input:ENV0_API_KEY}",
+      "ENV0_API_SECRET": "${input:ENV0_API_SECRET}",
+      "ENV0_ORGANIZATION_ID": "${input:ENV0_ORGANIZATION_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ENV0_API_KEY",
+          "label": "API Key ID",
+          "description": "Your env0 API Key ID. Created in Organization Settings > API Keys. Used as the username for Basic Authentication against the env0 API.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://docs.env0.com/docs/api-keys",
+            "instructions": "1. Open env0 and go to Organization Settings\n2. Open the API Keys tab\n3. Click Add API Key and enter a name\n4. Choose Organization Admin or User permissions\n5. Copy the API Key ID and Secret immediately (the secret is shown only once)",
+            "button_label": "Create API Key"
+          }
+        },
+        {
+          "id": "ENV0_API_SECRET",
+          "label": "API Key Secret",
+          "description": "Your env0 API Key Secret. Shown only once when the API key is created. Used as the password for Basic Authentication against the env0 API.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://docs.env0.com/docs/api-keys",
+            "instructions": "1. Open env0 and go to Organization Settings\n2. Open the API Keys tab\n3. Click Add API Key and enter a name\n4. Copy the API Key Secret immediately (it cannot be retrieved later)",
+            "button_label": "Create API Key"
+          }
+        },
+        {
+          "id": "ENV0_ORGANIZATION_ID",
+          "label": "Organization ID",
+          "description": "Your env0 organization ID. Required to target a specific organization, especially when your account belongs to multiple organizations.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your-organization-id",
+          "obtain": {
+            "url": "https://docs.env0.com/docs/api-keys",
+            "instructions": "1. Open env0 and go to Organization Settings\n2. Copy your Organization ID from the organization details",
+            "button_label": "Open env0"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API Key in env0 Organization Settings > API Keys. You'll need the API Key ID, the API Key Secret (shown only once), and your Organization ID."
+  },
+  "contributor": {
+    "name": "env0",
+    "github": "env0",
+    "url": "https://www.env0.com"
+  },
+  "links": {
+    "repository": "https://github.com/env0/mcp-server",
+    "homepage": "https://www.env0.com",
+    "documentation": "https://docs.env0.com"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/env0/mcp-server/releases"
+}
