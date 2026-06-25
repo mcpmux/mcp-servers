@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.codacy-mcp-npx",
+  "name": "Codacy (npx)",
+  "alias": "codacy",
+  "description": "Connect to Codacy to analyze code quality and security, run static analysis (SAST, secrets, dependency, and IaC scans), browse repositories, list issues, and surface coverage data from your Codacy account via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/1834093?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "security"
+  ],
+  "tags": [
+    "codacy",
+    "code-quality",
+    "static-analysis",
+    "security",
+    "sast",
+    "code-review"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@codacy/codacy-mcp"
+    ],
+    "env": {
+      "CODACY_ACCOUNT_TOKEN": "${input:CODACY_ACCOUNT_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CODACY_ACCOUNT_TOKEN",
+          "label": "Codacy Account API Token",
+          "description": "Account API Token from your Codacy account. Used to authenticate requests to the Codacy API for code analysis, repositories, issues, and coverage.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://app.codacy.com/account/access-management",
+            "instructions": "1. Sign in to Codacy at https://app.codacy.com\n2. Go to your Account > Access Management (Account API Tokens)\n3. Click 'Create API Token'\n4. Copy the generated Account API Token",
+            "button_label": "Create API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an Account API Token in your Codacy account at https://app.codacy.com/account/access-management and set it as CODACY_ACCOUNT_TOKEN."
+  },
+  "contributor": {
+    "name": "Codacy",
+    "github": "codacy",
+    "url": "https://www.codacy.com"
+  },
+  "links": {
+    "repository": "https://github.com/codacy/codacy-mcp-server",
+    "homepage": "https://www.codacy.com",
+    "documentation": "https://github.com/codacy/codacy-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/codacy/codacy-mcp-server/releases"
+}
