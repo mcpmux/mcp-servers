@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.aiven-mcp",
+  "name": "Aiven",
+  "alias": "aiven",
+  "description": "Manage Aiven cloud data services (PostgreSQL, Apache Kafka, Valkey, ClickHouse, OpenSearch, and more) through Aiven's hosted remote MCP server. List, create, update, and delete services, projects, and integrations. Authenticates via OAuth in your browser, no local setup or token required.",
+  "logo": "https://avatars.githubusercontent.com/u/137087830?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database",
+    "cloud"
+  ],
+  "tags": [
+    "aiven",
+    "database",
+    "cloud",
+    "postgres",
+    "kafka",
+    "valkey",
+    "clickhouse",
+    "opensearch"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.aiven.live/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.0 with PKCE in your browser using your Aiven account. On first connect a browser window opens so you can sign in and select your organization. No API token setup needed; tokens refresh automatically."
+  },
+  "contributor": {
+    "name": "Aiven",
+    "github": "Aiven-Open",
+    "url": "https://aiven.io"
+  },
+  "links": {
+    "repository": "https://github.com/Aiven-Open/mcp-aiven",
+    "homepage": "https://aiven.io",
+    "documentation": "https://aiven.io/docs/tools/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
