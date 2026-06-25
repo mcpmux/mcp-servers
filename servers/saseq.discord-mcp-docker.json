@@ -1,0 +1,78 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "saseq.discord-mcp-docker",
+  "name": "Discord (Docker)",
+  "alias": "discord",
+  "description": "Control a Discord bot via Docker. Send and manage messages, administer channels, categories, roles, webhooks, forums, invites, scheduled events, and emojis, plus moderation actions across your servers — all in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/68428394?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "discord",
+    "communication",
+    "chat",
+    "bot",
+    "messaging",
+    "moderation",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "DISCORD_TOKEN",
+      "saseq/discord-mcp"
+    ],
+    "env": {
+      "DISCORD_TOKEN": "${input:DISCORD_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DISCORD_TOKEN",
+          "label": "Discord Bot Token",
+          "description": "Bot token used to authenticate the Discord bot. The bot must be invited to your server with the permissions required for the actions you want to perform.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************************",
+          "obtain": {
+            "url": "https://discord.com/developers/applications",
+            "instructions": "1. Open the Discord Developer Portal\n2. Create a new Application (or select an existing one)\n3. Go to the Bot tab and add a bot\n4. Click Reset Token and copy the bot token\n5. Enable the Message Content and Server Members privileged intents if needed\n6. Invite the bot to your server via OAuth2 > URL Generator with the required scopes and permissions",
+            "button_label": "Open Developer Portal"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Discord application and bot in the Discord Developer Portal, then copy the bot token. Invite the bot to your server with the permissions needed for the actions you intend to perform."
+  },
+  "contributor": {
+    "name": "SaseQ",
+    "github": "SaseQ",
+    "url": "https://github.com/SaseQ/discord-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/SaseQ/discord-mcp",
+    "homepage": "https://github.com/SaseQ/discord-mcp",
+    "documentation": "https://github.com/SaseQ/discord-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/SaseQ/discord-mcp/releases"
+}
