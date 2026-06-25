@@ -1,0 +1,169 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "inditextech.teams-mcp-docker",
+  "name": "Microsoft Teams (Docker)",
+  "alias": "ms-teams",
+  "description": "Connect to Microsoft Teams via Docker. Read channel messages, start and reply to threads, mention members, and list team members through an Azure AD (MS Entra ID) bot application.",
+  "logo": "https://avatars.githubusercontent.com/u/128586778?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "microsoft-teams",
+    "teams",
+    "communication",
+    "messaging",
+    "azure",
+    "entra-id",
+    "docker",
+    "chat"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "TEAMS_APP_ID",
+      "-e",
+      "TEAMS_APP_PASSWORD",
+      "-e",
+      "TEAMS_APP_TYPE",
+      "-e",
+      "TEAMS_APP_TENANT_ID",
+      "-e",
+      "TEAM_ID",
+      "-e",
+      "TEAMS_CHANNEL_ID",
+      "ghcr.io/inditextech/mcp-teams-server:latest"
+    ],
+    "env": {
+      "TEAMS_APP_ID": "${input:TEAMS_APP_ID}",
+      "TEAMS_APP_PASSWORD": "${input:TEAMS_APP_PASSWORD}",
+      "TEAMS_APP_TYPE": "${input:TEAMS_APP_TYPE}",
+      "TEAMS_APP_TENANT_ID": "${input:TEAMS_APP_TENANT_ID}",
+      "TEAM_ID": "${input:TEAM_ID}",
+      "TEAMS_CHANNEL_ID": "${input:TEAMS_CHANNEL_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TEAMS_APP_ID",
+          "label": "Teams App ID",
+          "description": "UUID for your MS Entra ID (Azure AD) application (client) ID used by the Teams bot.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "00000000-0000-0000-0000-000000000000",
+          "obtain": {
+            "url": "https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade",
+            "instructions": "1. Open the Azure Portal > Microsoft Entra ID > App registrations\n2. Register (or open) your bot application\n3. Copy the Application (client) ID from the Overview page",
+            "button_label": "Open Azure Portal"
+          }
+        },
+        {
+          "id": "TEAMS_APP_PASSWORD",
+          "label": "Teams App Password (Client Secret)",
+          "description": "Client secret generated for your MS Entra ID application registration.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************************************",
+          "obtain": {
+            "url": "https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade",
+            "instructions": "1. Open the Azure Portal > Microsoft Entra ID > App registrations > your app\n2. Go to Certificates & secrets > Client secrets\n3. Create a new client secret and copy its Value (shown only once)",
+            "button_label": "Open Azure Portal"
+          }
+        },
+        {
+          "id": "TEAMS_APP_TYPE",
+          "label": "Teams App Type",
+          "description": "Tenancy model of the Entra ID application: SingleTenant or MultiTenant.",
+          "type": "select",
+          "required": true,
+          "secret": false,
+          "default": "SingleTenant",
+          "options": [
+            {
+              "value": "SingleTenant",
+              "label": "SingleTenant"
+            },
+            {
+              "value": "MultiTenant",
+              "label": "MultiTenant"
+            }
+          ]
+        },
+        {
+          "id": "TEAMS_APP_TENANT_ID",
+          "label": "Teams App Tenant ID",
+          "description": "Tenant UUID for your Microsoft Entra ID directory. Required when using a SingleTenant app type.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "00000000-0000-0000-0000-000000000000",
+          "obtain": {
+            "url": "https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade",
+            "instructions": "1. Open the Azure Portal > Microsoft Entra ID > Overview\n2. Copy the Tenant ID (Directory ID)",
+            "button_label": "Open Azure Portal"
+          }
+        },
+        {
+          "id": "TEAM_ID",
+          "label": "Team ID",
+          "description": "MS Teams Group ID or Team ID. Found in the channel URL as the groupId parameter (https://teams.microsoft.com/l/channel/<TEAMS_CHANNEL_ID>/<name>?groupId=<TEAM_ID>&tenantId=<TEAMS_APP_TENANT_ID>).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "00000000-0000-0000-0000-000000000000",
+          "obtain": {
+            "url": "https://github.com/InditexTech/mcp-teams-server/blob/master/doc/MS-Teams-setup.md",
+            "instructions": "1. Open the target channel in Microsoft Teams\n2. Click the channel ... menu > Get link to channel\n3. Copy the groupId value from the URL",
+            "button_label": "Setup Guide"
+          }
+        },
+        {
+          "id": "TEAMS_CHANNEL_ID",
+          "label": "Teams Channel ID",
+          "description": "MS Teams Channel ID with URL-escaped characters. Found in the channel link URL.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "19%3a...%40thread.tacv2",
+          "obtain": {
+            "url": "https://github.com/InditexTech/mcp-teams-server/blob/master/doc/MS-Teams-setup.md",
+            "instructions": "1. Open the target channel in Microsoft Teams\n2. Click the channel ... menu > Get link to channel\n3. Copy the channel ID segment from the URL (keep the URL-escaped characters)",
+            "button_label": "Setup Guide"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Register an Azure AD (Microsoft Entra ID) application, create a client secret, and add the bot to your Teams channel. See https://github.com/InditexTech/mcp-teams-server/blob/master/doc/MS-Teams-setup.md"
+  },
+  "contributor": {
+    "name": "InditexTech",
+    "github": "InditexTech",
+    "url": "https://github.com/InditexTech/mcp-teams-server"
+  },
+  "links": {
+    "repository": "https://github.com/InditexTech/mcp-teams-server",
+    "homepage": "https://github.com/InditexTech/mcp-teams-server",
+    "documentation": "https://github.com/InditexTech/mcp-teams-server/blob/master/doc/MS-Teams-setup.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/InditexTech/mcp-teams-server/releases"
+}
