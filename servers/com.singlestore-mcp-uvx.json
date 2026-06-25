@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.singlestore-mcp-uvx",
+  "name": "SingleStore (uvx)",
+  "alias": "singlestore",
+  "description": "Interact with the SingleStore Management API and services through natural language - run SQL, manage workspaces, schedule jobs, and work with notebooks and stage files. Runs locally via uvx.",
+  "logo": "https://avatars.githubusercontent.com/u/79943160?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "singlestore",
+    "database",
+    "sql",
+    "analytics",
+    "data"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "singlestore-mcp-server",
+      "start"
+    ],
+    "env": {
+      "MCP_API_KEY": "${input:MCP_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MCP_API_KEY",
+          "label": "SingleStore API Key",
+          "description": "SingleStore Management API key. Setting this enables API-key authentication and skips the browser OAuth flow (required for headless/container use, optional locally where browser OAuth is the default). Create one in the SingleStore Cloud Portal under Configuration > API keys.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************",
+          "obtain": {
+            "url": "https://portal.singlestore.com/",
+            "instructions": "1. Log in to the SingleStore Cloud Portal\n2. Select your organization in the navigation pane\n3. Go to Configuration > API keys > Active Keys\n4. Click 'Create API key'\n5. Specify a name and expiration date, then click 'Create'\n6. Copy the API key (it is shown only once)",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Management API key in the SingleStore Cloud Portal under Configuration > API keys and set it as MCP_API_KEY. Without it, the server falls back to interactive browser OAuth on start."
+  },
+  "contributor": {
+    "name": "SingleStore",
+    "github": "singlestore-labs",
+    "url": "https://www.singlestore.com"
+  },
+  "links": {
+    "repository": "https://github.com/singlestore-labs/mcp-server-singlestore",
+    "homepage": "https://www.singlestore.com",
+    "documentation": "https://docs.singlestore.com/cloud/ai/singlestore-mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/singlestore-labs/mcp-server-singlestore/releases"
+}
