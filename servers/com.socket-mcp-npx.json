@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.socket-mcp-npx",
+  "name": "Socket (npx)",
+  "alias": "socket",
+  "description": "Query Socket.dev for dependency security scores, supply-chain risk, malware/typosquat threat feeds, and package metadata across npm, PyPI, Cargo, Maven, NuGet, RubyGems, Go, and more. Runs locally via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/69326764?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security",
+    "developer-tools"
+  ],
+  "tags": [
+    "socket",
+    "security",
+    "dependencies",
+    "supply-chain",
+    "vulnerabilities",
+    "sca"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@socketsecurity/mcp"
+    ],
+    "env": {
+      "SOCKET_API_TOKEN": "${input:SOCKET_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SOCKET_API_TOKEN",
+          "label": "Socket API Token",
+          "description": "Socket.dev API token used to query dependency scores and security data. Only the 'packages:list' permission scope is required.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "sktsec_****************************",
+          "obtain": {
+            "url": "https://socket.dev/dashboard/org/gh/settings/api-tokens",
+            "instructions": "1. Sign in at https://socket.dev\n2. Go to your organization Settings > API Tokens\n3. Click 'New API Token'\n4. Grant the 'packages:list' scope\n5. Create and copy the token",
+            "button_label": "Create API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Socket API token at https://socket.dev (Settings > API Tokens) with the 'packages:list' scope and set it as SOCKET_API_TOKEN."
+  },
+  "contributor": {
+    "name": "Socket",
+    "github": "SocketDev",
+    "url": "https://socket.dev"
+  },
+  "links": {
+    "repository": "https://github.com/SocketDev/socket-mcp",
+    "homepage": "https://socket.dev",
+    "documentation": "https://docs.socket.dev/docs/local-socket-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/SocketDev/socket-mcp/releases"
+}
