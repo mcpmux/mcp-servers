@@ -1,0 +1,92 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.elasticsearch-mcp-docker",
+  "name": "Elasticsearch (Docker)",
+  "alias": "elasticsearch",
+  "description": "Connect to Elasticsearch clusters via Docker. List indices, inspect field mappings, and run full-text and query-DSL searches over your data, in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/6764390?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database",
+    "search"
+  ],
+  "tags": [
+    "elasticsearch",
+    "elastic",
+    "search",
+    "database",
+    "query-dsl",
+    "indices",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "ES_URL",
+      "-e",
+      "ES_API_KEY",
+      "docker.elastic.co/mcp/elasticsearch",
+      "stdio"
+    ],
+    "env": {
+      "ES_URL": "${input:ES_URL}",
+      "ES_API_KEY": "${input:ES_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ES_URL",
+          "label": "Elasticsearch URL",
+          "description": "The URL of your Elasticsearch cluster. Use host.docker.internal instead of localhost to reach a local cluster from inside the container (e.g., https://host.docker.internal:9200).",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://your-deployment.es.region.cloud.es.io"
+        },
+        {
+          "id": "ES_API_KEY",
+          "label": "Elasticsearch API Key",
+          "description": "An Elasticsearch API key used to authenticate to the cluster. Create one in Kibana under Stack Management > Security > API keys, or via the Elastic Cloud console.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "<your-elasticsearch-api-key>",
+          "obtain": {
+            "url": "https://www.elastic.co/guide/en/kibana/current/api-keys.html",
+            "instructions": "1. Open Kibana for your deployment\n2. Go to Stack Management > Security > API keys\n3. Click Create API key and set the name and privileges\n4. Copy the encoded API key value\n\nElastic Cloud: open your deployment in the Elastic Cloud console to find Kibana and the Elasticsearch endpoint URL.",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Authenticate with an Elasticsearch API key (ES_API_KEY). Basic auth (ES_USERNAME + ES_PASSWORD) is also supported by the server as an alternative. Create an API key in Kibana under Stack Management > Security > API keys."
+  },
+  "contributor": {
+    "name": "Elastic",
+    "github": "elastic",
+    "url": "https://www.elastic.co"
+  },
+  "links": {
+    "repository": "https://github.com/elastic/mcp-server-elasticsearch",
+    "homepage": "https://www.elastic.co",
+    "documentation": "https://github.com/elastic/mcp-server-elasticsearch#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/elastic/mcp-server-elasticsearch/releases"
+}
