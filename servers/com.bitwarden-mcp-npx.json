@@ -1,0 +1,103 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.bitwarden-mcp-npx",
+  "name": "Bitwarden (npx)",
+  "alias": "bitwarden",
+  "description": "Securely access your Bitwarden vault and administer your organization through the Bitwarden CLI and Public API. Manage vault items, folders, collections, Sends, and password generation, plus organization members, groups, policies, and audit logs.",
+  "logo": "https://avatars.githubusercontent.com/u/15990069?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "bitwarden",
+    "password-manager",
+    "vault",
+    "secrets",
+    "credentials",
+    "security"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@bitwarden/mcp-server"
+    ],
+    "env": {
+      "BW_SESSION": "${input:BW_SESSION}",
+      "BW_CLIENT_ID": "${input:BW_CLIENT_ID}",
+      "BW_CLIENT_SECRET": "${input:BW_CLIENT_SECRET}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BW_SESSION",
+          "label": "Bitwarden Session Token",
+          "description": "Session token that authenticates vault operations through the Bitwarden CLI. Required for vault management tools (items, folders, attachments, Sends, password generation). Obtain it by running 'bw login' then 'bw unlock --raw'.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************************************************",
+          "obtain": {
+            "url": "https://bitwarden.com/help/cli/#unlock",
+            "instructions": "1. Install the Bitwarden CLI (npm install -g @bitwarden/cli)\n2. Run 'bw login' and authenticate\n3. Run 'bw unlock --raw' to print a session token\n4. Copy the printed session token",
+            "button_label": "CLI Unlock Docs"
+          }
+        },
+        {
+          "id": "BW_CLIENT_ID",
+          "label": "Organization API Client ID",
+          "description": "Bitwarden Public API client ID (starts with 'organization.'). Required for organization administration tools (members, groups, collections, policies, audit logs, subscriptions). Note: the MCP server uses BW_CLIENT_ID with an underscore, distinct from the CLI's BW_CLIENTID.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "organization.****************************************",
+          "obtain": {
+            "url": "https://bitwarden.com/help/public-api/",
+            "instructions": "1. Open the Bitwarden Web Vault\n2. Switch to your organization\n3. Go to Settings > My Organization\n4. In the 'API Key' section click 'View API Key'\n5. Copy the client_id value",
+            "button_label": "Get Organization API Key"
+          }
+        },
+        {
+          "id": "BW_CLIENT_SECRET",
+          "label": "Organization API Client Secret",
+          "description": "Bitwarden Public API client secret paired with the client ID. Required for organization administration tools. Note: the MCP server uses BW_CLIENT_SECRET with an underscore, distinct from the CLI's BW_CLIENTSECRET.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://bitwarden.com/help/public-api/",
+            "instructions": "1. Open the Bitwarden Web Vault\n2. Switch to your organization\n3. Go to Settings > My Organization\n4. In the 'API Key' section click 'View API Key'\n5. Copy the client_secret value",
+            "button_label": "Get Organization API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Vault tools need a BW_SESSION token from 'bw login' then 'bw unlock --raw'. Organization administration tools additionally need a Public API key (BW_CLIENT_ID + BW_CLIENT_SECRET) from the Web Vault under Organization Settings > My Organization > API Key."
+  },
+  "contributor": {
+    "name": "Bitwarden",
+    "github": "bitwarden",
+    "url": "https://bitwarden.com"
+  },
+  "links": {
+    "repository": "https://github.com/bitwarden/mcp-server",
+    "homepage": "https://bitwarden.com",
+    "documentation": "https://github.com/bitwarden/mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/bitwarden/mcp-server/releases"
+}
