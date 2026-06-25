@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.pulumi-mcp-npx",
+  "name": "Pulumi (npx)",
+  "alias": "pulumi",
+  "description": "Infrastructure as Code agent tooling for Pulumi: browse the Pulumi Registry, preview and deploy stacks, refresh state, read stack outputs, and search deployed resources via the Pulumi CLI. Most operations run locally; a Pulumi access token unlocks Pulumi Cloud features.",
+  "logo": "https://avatars.githubusercontent.com/u/21992475?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "pulumi",
+    "infrastructure-as-code",
+    "iac",
+    "devops",
+    "cloud",
+    "deployment"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@pulumi/mcp-server@latest",
+      "stdio"
+    ],
+    "env": {
+      "PULUMI_ACCESS_TOKEN": "${input:PULUMI_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PULUMI_ACCESS_TOKEN",
+          "label": "Pulumi Access Token",
+          "description": "Optional. Most operations work against the local Pulumi CLI without it. Provide a Pulumi access token to enable Pulumi Cloud features such as managed state, organization stacks, and resource search.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "pul-************************",
+          "obtain": {
+            "url": "https://app.pulumi.com/account/tokens",
+            "instructions": "1. Sign in at app.pulumi.com\n2. Open the account menu and go to Settings > Access Tokens (app.pulumi.com/account/tokens)\n3. Click 'Create token'\n4. Give it a description and create it\n5. Copy the generated token",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Optional. Pulumi MCP works against the local Pulumi CLI without credentials. Set a PULUMI_ACCESS_TOKEN (create one at https://app.pulumi.com/account/tokens) to enable Pulumi Cloud features."
+  },
+  "contributor": {
+    "name": "Pulumi",
+    "github": "pulumi",
+    "url": "https://www.pulumi.com"
+  },
+  "links": {
+    "repository": "https://github.com/pulumi/mcp-server",
+    "homepage": "https://www.pulumi.com",
+    "documentation": "https://www.pulumi.com/docs/iac/using-pulumi/mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/pulumi/mcp-server/releases"
+}
