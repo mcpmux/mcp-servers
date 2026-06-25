@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.attio-mcp",
+  "name": "Attio",
+  "alias": "attio",
+  "description": "Connect AI assistants to your Attio CRM through Attio's official hosted remote MCP server. Search, read, create, and update records across people, companies, deals, tasks, lists, and notes. Authenticates via browser OAuth using your Attio account, no API keys or local setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/50366930?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "attio",
+    "crm",
+    "sales",
+    "contacts",
+    "deals",
+    "records",
+    "productivity"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.attio.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your Attio account. No API keys or token setup needed. Read operations are auto-approved; write operations request confirmation."
+  },
+  "contributor": {
+    "name": "Attio",
+    "github": "attio",
+    "url": "https://attio.com"
+  },
+  "links": {
+    "homepage": "https://attio.com",
+    "documentation": "https://docs.attio.com/mcp/overview"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
