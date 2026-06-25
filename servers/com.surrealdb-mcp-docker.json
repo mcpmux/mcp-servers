@@ -1,0 +1,138 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.surrealdb-mcp-docker",
+  "name": "SurrealDB (Docker)",
+  "alias": "surrealdb",
+  "description": "Connect to a SurrealDB instance or Surreal Cloud via Docker. Run SurrealQL queries, manage records, inspect namespaces and databases, and explore schemas through the official SurrealDB MCP server in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/10982346?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "surrealdb",
+    "database",
+    "surrealql",
+    "multi-model",
+    "graph",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "SURREALDB_URL",
+      "-e",
+      "SURREALDB_NS",
+      "-e",
+      "SURREALDB_DB",
+      "-e",
+      "SURREALDB_USER",
+      "-e",
+      "SURREALDB_PASS",
+      "-e",
+      "SURREAL_MCP_CLOUD_ACCESS_TOKEN",
+      "surrealdb/surrealmcp:latest",
+      "start"
+    ],
+    "env": {
+      "SURREALDB_URL": "${input:SURREALDB_URL}",
+      "SURREALDB_NS": "${input:SURREALDB_NS}",
+      "SURREALDB_DB": "${input:SURREALDB_DB}",
+      "SURREALDB_USER": "${input:SURREALDB_USER}",
+      "SURREALDB_PASS": "${input:SURREALDB_PASS}",
+      "SURREAL_MCP_CLOUD_ACCESS_TOKEN": "${input:SURREAL_MCP_CLOUD_ACCESS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SURREALDB_URL",
+          "label": "SurrealDB Endpoint URL",
+          "description": "SurrealDB connection endpoint. Use host.docker.internal instead of localhost to reach a SurrealDB instance running on the host from inside Docker (e.g., ws://host.docker.internal:8000/rpc).",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "ws://host.docker.internal:8000/rpc"
+        },
+        {
+          "id": "SURREALDB_NS",
+          "label": "Namespace",
+          "description": "The SurrealDB namespace to connect to.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "mynamespace"
+        },
+        {
+          "id": "SURREALDB_DB",
+          "label": "Database",
+          "description": "The SurrealDB database to connect to.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "mydatabase"
+        },
+        {
+          "id": "SURREALDB_USER",
+          "label": "Username",
+          "description": "The SurrealDB username to authenticate with.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "root"
+        },
+        {
+          "id": "SURREALDB_PASS",
+          "label": "Password",
+          "description": "The SurrealDB password to authenticate with.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********"
+        },
+        {
+          "id": "SURREAL_MCP_CLOUD_ACCESS_TOKEN",
+          "label": "Surreal Cloud Access Token",
+          "description": "Surreal Cloud access token, used instead of username/password to connect to a Surreal Cloud instance. Leave empty for a self-hosted SurrealDB instance.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********",
+          "obtain": {
+            "url": "https://surrealdb.com/cloud",
+            "instructions": "1. Sign in to Surreal Cloud\n2. Open your instance settings\n3. Generate or copy an access token\n4. Paste it here",
+            "button_label": "Open Surreal Cloud"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide endpoint, namespace, database and username/password for a self-hosted SurrealDB instance, or a Surreal Cloud access token for Surreal Cloud. All connection values are optional and can also be supplied per-session through the MCP connection tools."
+  },
+  "contributor": {
+    "name": "SurrealDB",
+    "github": "surrealdb",
+    "url": "https://surrealdb.com"
+  },
+  "links": {
+    "repository": "https://github.com/surrealdb/surrealmcp",
+    "homepage": "https://surrealdb.com",
+    "documentation": "https://surrealdb.com/docs/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/surrealdb/surrealmcp/releases"
+}
