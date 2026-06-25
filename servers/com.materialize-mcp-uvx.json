@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.materialize-mcp-uvx",
+  "name": "Materialize (uvx)",
+  "alias": "materialize",
+  "description": "Expose Materialize indexed views as real-time, typed tools over MCP. Connects to a Materialize instance and turns documented, indexed views into live callable tools for LLM applications.",
+  "logo": "https://avatars.githubusercontent.com/u/47674186?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "materialize",
+    "database",
+    "sql",
+    "streaming",
+    "postgres",
+    "real-time"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-materialize"
+    ],
+    "env": {
+      "MZ_DSN": "${input:MZ_DSN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MZ_DSN",
+          "label": "Materialize DSN",
+          "description": "PostgreSQL-style connection string for your Materialize instance, including credentials. Materialize's default SQL port is 6875. Example: postgresql://materialize@localhost:6875/materialize",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "postgres://USER:PASSWORD@HOST:6875/materialize",
+          "obtain": {
+            "url": "https://console.materialize.com",
+            "instructions": "1. Open the Materialize Console\n2. Go to Connect / App Passwords\n3. Create an app password for your user\n4. Build the DSN: postgres://USER:PASSWORD@HOST:6875/materialize",
+            "button_label": "Open Materialize Console"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide a PostgreSQL-style connection string (MZ_DSN) for your Materialize instance, including username and password. Materialize listens for SQL on port 6875."
+  },
+  "contributor": {
+    "name": "Materialize",
+    "github": "MaterializeInc",
+    "url": "https://materialize.com"
+  },
+  "links": {
+    "repository": "https://github.com/MaterializeInc/materialize-mcp-server",
+    "homepage": "https://materialize.com",
+    "documentation": "https://github.com/MaterializeInc/materialize-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/MaterializeInc/materialize-mcp-server/releases"
+}
