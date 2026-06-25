@@ -1,0 +1,119 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "tuannvm.trino-mcp-docker",
+  "name": "Trino (Docker)",
+  "alias": "trino",
+  "description": "Connect to a Trino distributed SQL query engine via Docker. Run queries, explore catalogs, schemas, and tables, and inspect query results across federated data sources in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/1461216?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "trino",
+    "presto",
+    "database",
+    "sql",
+    "query-engine",
+    "analytics",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "TRINO_HOST",
+      "-e",
+      "TRINO_PORT",
+      "-e",
+      "TRINO_USER",
+      "-e",
+      "TRINO_PASSWORD",
+      "-e",
+      "TRINO_SCHEME",
+      "ghcr.io/tuannvm/mcp-trino:latest"
+    ],
+    "env": {
+      "TRINO_HOST": "${input:TRINO_HOST}",
+      "TRINO_PORT": "${input:TRINO_PORT}",
+      "TRINO_USER": "${input:TRINO_USER}",
+      "TRINO_PASSWORD": "${input:TRINO_PASSWORD}",
+      "TRINO_SCHEME": "${input:TRINO_SCHEME}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TRINO_HOST",
+          "label": "Trino Host",
+          "description": "Hostname or IP of the Trino coordinator. Use host.docker.internal instead of localhost to reach a Trino instance running on the host machine.",
+          "type": "text",
+          "required": true,
+          "placeholder": "trino.example.com"
+        },
+        {
+          "id": "TRINO_PORT",
+          "label": "Trino Port",
+          "description": "Port of the Trino coordinator HTTP(S) endpoint.",
+          "type": "number",
+          "required": false,
+          "default": "8080",
+          "placeholder": "8080"
+        },
+        {
+          "id": "TRINO_USER",
+          "label": "Trino User",
+          "description": "Username to authenticate to Trino.",
+          "type": "text",
+          "required": false,
+          "placeholder": "trino"
+        },
+        {
+          "id": "TRINO_PASSWORD",
+          "label": "Trino Password",
+          "description": "Password for the Trino user. Optional — leave empty for clusters that do not require password authentication.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "************"
+        },
+        {
+          "id": "TRINO_SCHEME",
+          "label": "Trino Scheme",
+          "description": "Connection scheme for the Trino endpoint. Use http for unsecured local clusters or https for TLS-enabled clusters.",
+          "type": "text",
+          "required": false,
+          "default": "http",
+          "placeholder": "http"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Trino host and user identify the connection. A password is optional and only required for clusters configured with password authentication."
+  },
+  "contributor": {
+    "name": "tuannvm",
+    "github": "tuannvm",
+    "url": "https://github.com/tuannvm/mcp-trino"
+  },
+  "links": {
+    "repository": "https://github.com/tuannvm/mcp-trino",
+    "homepage": "https://github.com/tuannvm/mcp-trino",
+    "documentation": "https://github.com/tuannvm/mcp-trino#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/tuannvm/mcp-trino/releases"
+}
