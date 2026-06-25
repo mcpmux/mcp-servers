@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.mercury-mcp",
+  "name": "Mercury",
+  "alias": "mercury",
+  "description": "Connect AI tools to your Mercury business banking account through Mercury's hosted remote MCP server. Provides read-only access to accounts, balances, transactions, recipients, cards, and statements. Authenticates via OAuth in your browser, no API key setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/139356468?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "mercury",
+    "banking",
+    "fintech",
+    "finance",
+    "accounts",
+    "transactions",
+    "read-only"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.mercury.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.0 in your browser using your Mercury account. Mercury's hosted server supports Dynamic Client Registration (RFC 7591), so no client ID, API key, or manual setup is needed. Access is read-only. Note: Mercury MCP is currently in beta."
+  },
+  "contributor": {
+    "name": "Mercury",
+    "github": "mercury-technologies",
+    "url": "https://mercury.com"
+  },
+  "links": {
+    "homepage": "https://mercury.com",
+    "documentation": "https://docs.mercury.com/docs/what-is-mercury-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
