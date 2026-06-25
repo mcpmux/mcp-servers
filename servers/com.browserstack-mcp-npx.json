@@ -1,0 +1,90 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.browserstack-mcp-npx",
+  "name": "BrowserStack (npx)",
+  "alias": "browserstack",
+  "description": "BrowserStack's official MCP server for cross-browser and mobile testing: run automated and manual tests on real devices, debug test failures, manage test runs, and access the App Live, Live, and Automate platforms.",
+  "logo": "https://avatars.githubusercontent.com/u/1119453?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "browserstack",
+    "testing",
+    "automation",
+    "cross-browser",
+    "mobile-testing",
+    "selenium",
+    "playwright",
+    "debugging"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@browserstack/mcp-server"
+    ],
+    "env": {
+      "BROWSERSTACK_USERNAME": "${input:BROWSERSTACK_USERNAME}",
+      "BROWSERSTACK_ACCESS_KEY": "${input:BROWSERSTACK_ACCESS_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BROWSERSTACK_USERNAME",
+          "label": "BrowserStack Username",
+          "description": "Your BrowserStack account username, found on the Account & Profile settings page.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your-username",
+          "obtain": {
+            "url": "https://www.browserstack.com/accounts/profile/details",
+            "instructions": "1. Sign in to BrowserStack\n2. Open Account & Profile > Profile (Account Settings)\n3. Copy your Username",
+            "button_label": "Open Account Settings"
+          }
+        },
+        {
+          "id": "BROWSERSTACK_ACCESS_KEY",
+          "label": "BrowserStack Access Key",
+          "description": "Your BrowserStack access key, found alongside your username on the Account & Profile settings page.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************",
+          "obtain": {
+            "url": "https://www.browserstack.com/accounts/profile/details",
+            "instructions": "1. Sign in to BrowserStack\n2. Open Account & Profile > Profile (Account Settings)\n3. Copy your Access Key",
+            "button_label": "Open Account Settings"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Use your BrowserStack Username and Access Key from Account & Profile > Profile at https://www.browserstack.com/accounts/profile/details"
+  },
+  "contributor": {
+    "name": "BrowserStack",
+    "github": "browserstack",
+    "url": "https://www.browserstack.com"
+  },
+  "links": {
+    "repository": "https://github.com/browserstack/mcp-server",
+    "homepage": "https://www.browserstack.com",
+    "documentation": "https://github.com/browserstack/mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/browserstack/mcp-server/releases"
+}
