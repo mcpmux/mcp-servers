@@ -1,0 +1,83 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.milvus-mcp-uvx",
+  "name": "Milvus (uvx)",
+  "alias": "milvus",
+  "description": "Connect to a Milvus vector database. Search and query vectors, manage collections, run full-text and hybrid search, and inspect schema across self-hosted Milvus or Zilliz Cloud.",
+  "logo": "https://avatars.githubusercontent.com/u/18416694?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "milvus",
+    "zilliz",
+    "vector-database",
+    "vector-search",
+    "embeddings",
+    "database",
+    "ai-ml"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-server-milvus"
+    ],
+    "env": {
+      "MILVUS_URI": "${input:MILVUS_URI}",
+      "MILVUS_TOKEN": "${input:MILVUS_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MILVUS_URI",
+          "label": "Milvus URI",
+          "description": "Connection URI for your Milvus server or Zilliz Cloud cluster. Use http://localhost:19530 for a local instance, or the public endpoint of your Zilliz Cloud cluster.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "http://localhost:19530"
+        },
+        {
+          "id": "MILVUS_TOKEN",
+          "label": "Milvus Token",
+          "description": "Authentication token for Milvus. For Zilliz Cloud this is the cluster's API key or user:password token. Leave empty for a local Milvus instance without authentication.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://cloud.zilliz.com",
+            "instructions": "1. Sign in to Zilliz Cloud\n2. Open your cluster\n3. Go to the Connect / Cluster Details panel\n4. Copy the Public Endpoint into Milvus URI\n5. Copy the API Key (token) into Milvus Token",
+            "button_label": "Open Zilliz Cloud"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Provide your Milvus URI. A token is optional for local Milvus without auth, and required for Zilliz Cloud (use the cluster API key)."
+  },
+  "contributor": {
+    "name": "Zilliz",
+    "github": "zilliztech",
+    "url": "https://milvus.io"
+  },
+  "links": {
+    "repository": "https://github.com/zilliztech/mcp-server-milvus",
+    "homepage": "https://milvus.io",
+    "documentation": "https://github.com/zilliztech/mcp-server-milvus#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/zilliztech/mcp-server-milvus/releases"
+}
