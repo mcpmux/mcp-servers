@@ -1,0 +1,99 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.infisical-mcp-npx",
+  "name": "Infisical (npx)",
+  "alias": "infisical",
+  "description": "Manage Infisical secrets, projects, environments, and folders through the Infisical API. Authenticates with a machine identity using Infisical Universal Auth.",
+  "logo": "https://avatars.githubusercontent.com/u/107880645?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "infisical",
+    "secrets",
+    "secrets-management",
+    "security",
+    "credentials",
+    "vault"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@infisical/mcp"
+    ],
+    "env": {
+      "INFISICAL_UNIVERSAL_AUTH_CLIENT_ID": "${input:INFISICAL_UNIVERSAL_AUTH_CLIENT_ID}",
+      "INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET": "${input:INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET}",
+      "INFISICAL_HOST_URL": "${input:INFISICAL_HOST_URL}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "INFISICAL_UNIVERSAL_AUTH_CLIENT_ID",
+          "label": "Universal Auth Client ID",
+          "description": "The Client ID of an Infisical machine identity configured with Universal Auth. Find it on the machine identity's Universal Auth settings.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.infisical.com",
+            "instructions": "1. Open your Infisical organization\n2. Go to Access Control > Identities\n3. Create (or open) a machine identity and add the Universal Auth method\n4. Grant it access to the project(s) you need\n5. Copy the Client ID from the Universal Auth configuration",
+            "button_label": "Open Infisical"
+          }
+        },
+        {
+          "id": "INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET",
+          "label": "Universal Auth Client Secret",
+          "description": "The Client Secret of the Infisical machine identity's Universal Auth. Generated once when you create a client secret on the identity - copy it immediately.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************",
+          "obtain": {
+            "url": "https://app.infisical.com",
+            "instructions": "1. Open the same machine identity in Access Control > Identities\n2. Under Universal Auth, click 'Create Client Secret'\n3. Copy the generated Client Secret immediately (it is shown only once)",
+            "button_label": "Open Infisical"
+          }
+        },
+        {
+          "id": "INFISICAL_HOST_URL",
+          "label": "Infisical Host URL",
+          "description": "Base URL of your Infisical instance. Leave as the default for Infisical Cloud, or set it to your self-hosted instance URL.",
+          "type": "url",
+          "required": false,
+          "secret": false,
+          "default": "https://app.infisical.com",
+          "placeholder": "https://app.infisical.com"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a machine identity in Infisical (Access Control > Identities), add the Universal Auth method, and use its Client ID and Client Secret. For self-hosted instances also set INFISICAL_HOST_URL."
+  },
+  "contributor": {
+    "name": "Infisical",
+    "github": "Infisical",
+    "url": "https://infisical.com"
+  },
+  "links": {
+    "repository": "https://github.com/Infisical/infisical-mcp-server",
+    "homepage": "https://infisical.com",
+    "documentation": "https://infisical.com/docs/documentation/platform/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/Infisical/infisical-mcp-server/releases"
+}
