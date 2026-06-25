@@ -1,0 +1,89 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "koundinya.zendesk-mcp-npx",
+  "name": "Zendesk (npx)",
+  "alias": "zendesk",
+  "description": "Manage Zendesk Support tickets through natural language: retrieve, search, create, and update tickets, add public or private comments, handle tags, and inspect linked incidents.",
+  "logo": "https://avatars.githubusercontent.com/u/1456182?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "zendesk",
+    "support",
+    "tickets",
+    "customer-support",
+    "helpdesk"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "zd-mcp-server"
+    ],
+    "env": {
+      "ZENDESK_SUBDOMAIN": "${input:ZENDESK_SUBDOMAIN}",
+      "ZENDESK_EMAIL": "${input:ZENDESK_EMAIL}",
+      "ZENDESK_TOKEN": "${input:ZENDESK_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ZENDESK_SUBDOMAIN",
+          "label": "Zendesk Subdomain",
+          "description": "Your Zendesk subdomain - the part before .zendesk.com in your account URL (e.g. for https://yourcompany.zendesk.com, enter 'yourcompany').",
+          "type": "text",
+          "required": true,
+          "placeholder": "yourcompany"
+        },
+        {
+          "id": "ZENDESK_EMAIL",
+          "label": "Zendesk Email",
+          "description": "The email address of the Zendesk agent account used to authenticate. The API token is appended to this account via token auth.",
+          "type": "text",
+          "required": true,
+          "placeholder": "agent@yourcompany.com"
+        },
+        {
+          "id": "ZENDESK_TOKEN",
+          "label": "Zendesk API Token",
+          "description": "A Zendesk API token used together with your agent email for token-based authentication.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://support.zendesk.com/hc/en-us/articles/4408889192858",
+            "instructions": "1. Sign in to Zendesk as an admin\n2. Go to Admin Center > Apps and integrations > APIs > Zendesk API\n3. Open the Settings tab and enable Token access\n4. Click 'Add API token'\n5. Optionally add a description, then copy the generated token (it is shown only once)",
+            "button_label": "Create API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Zendesk API token in Admin Center > Apps and integrations > APIs > Zendesk API token, and authenticate with your agent email plus the token."
+  },
+  "contributor": {
+    "name": "koundinya",
+    "github": "koundinya",
+    "url": "https://github.com/koundinya/zd-mcp-server"
+  },
+  "links": {
+    "repository": "https://github.com/koundinya/zd-mcp-server",
+    "homepage": "https://github.com/koundinya/zd-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/koundinya/zd-mcp-server/releases"
+}
