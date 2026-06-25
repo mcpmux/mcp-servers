@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "codingsolo.godot-mcp-npx",
+  "name": "Godot (npx)",
+  "alias": "godot",
+  "description": "Interface with the Godot game engine: launch the editor, run projects, capture debug output, inspect project structure, and manage scenes, nodes, sprites, MeshLibrary exports, and Godot 4.4+ UIDs.",
+  "logo": "https://avatars.githubusercontent.com/u/60202842?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "design"
+  ],
+  "tags": [
+    "godot",
+    "game-engine",
+    "game-development",
+    "gamedev",
+    "godot-engine",
+    "scenes"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@coding-solo/godot-mcp"
+    ],
+    "env": {
+      "GODOT_PATH": "${input:GODOT_PATH}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "GODOT_PATH",
+          "label": "Godot Executable Path",
+          "description": "Optional path to the Godot executable. Overrides the server's automatic detection. Leave empty to let the server locate Godot on its own.",
+          "type": "file_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "C:\\Program Files\\Godot\\Godot.exe  or  /usr/local/bin/godot"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Coding-Solo",
+    "github": "Coding-Solo",
+    "url": "https://github.com/Coding-Solo/godot-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/Coding-Solo/godot-mcp",
+    "homepage": "https://github.com/Coding-Solo/godot-mcp",
+    "documentation": "https://github.com/Coding-Solo/godot-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/Coding-Solo/godot-mcp/releases"
+}
