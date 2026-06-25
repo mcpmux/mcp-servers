@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.logfire-mcp-uvx",
+  "name": "Logfire (uvx)",
+  "alias": "logfire",
+  "description": "Connect to Pydantic Logfire observability data. Query traces, metrics, and exceptions, run arbitrary SQL against your project, and inspect OpenTelemetry telemetry from your applications.",
+  "logo": "https://avatars.githubusercontent.com/u/110818415?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "logfire",
+    "pydantic",
+    "observability",
+    "monitoring",
+    "tracing",
+    "opentelemetry",
+    "metrics"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "logfire-mcp@latest"
+    ],
+    "env": {
+      "LOGFIRE_READ_TOKEN": "${input:LOGFIRE_READ_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "LOGFIRE_READ_TOKEN",
+          "label": "Logfire Read Token",
+          "description": "A Logfire read token scoped to the project whose telemetry you want to query. Create one under your Logfire project's Settings > Read Tokens.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "pylf_v1_****************************",
+          "obtain": {
+            "url": "https://logfire.pydantic.dev/",
+            "instructions": "1. Open your project in Logfire\n2. Go to Settings > Read Tokens\n3. Click 'Create read token'\n4. Copy the generated token (starts with pylf_v1_)",
+            "button_label": "Create Read Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a read token in your Logfire project under Settings > Read Tokens, then provide it as LOGFIRE_READ_TOKEN."
+  },
+  "contributor": {
+    "name": "Pydantic",
+    "github": "pydantic",
+    "url": "https://pydantic.dev/logfire"
+  },
+  "links": {
+    "repository": "https://github.com/pydantic/logfire-mcp",
+    "homepage": "https://pydantic.dev/logfire",
+    "documentation": "https://logfire.pydantic.dev/docs/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/pydantic/logfire-mcp/releases"
+}
