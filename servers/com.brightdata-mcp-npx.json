@@ -1,0 +1,94 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.brightdata-mcp-npx",
+  "name": "Bright Data (npx)",
+  "alias": "brightdata",
+  "description": "Access the open web through Bright Data's infrastructure: search engines, scrape pages as markdown/HTML, bypass bot detection with Web Unlocker, drive a remote browser, and extract structured data. Runs locally via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/213028976?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "developer-tools"
+  ],
+  "tags": [
+    "brightdata",
+    "web-scraping",
+    "search",
+    "browser-automation",
+    "web-unlocker",
+    "data-extraction"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@brightdata/mcp"
+    ],
+    "env": {
+      "API_TOKEN": "${input:API_TOKEN}",
+      "WEB_UNLOCKER_ZONE": "${input:WEB_UNLOCKER_ZONE}",
+      "BROWSER_ZONE": "${input:BROWSER_ZONE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "API_TOKEN",
+          "label": "Bright Data API Token",
+          "description": "Your Bright Data API token. Found in your Bright Data account under Account Settings > API tokens. The free tier includes 5,000 requests/month for the rapid-mode tools (search_engine, scrape_as_markdown).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-bright-data-api-token-****",
+          "obtain": {
+            "url": "https://brightdata.com/cp/setting/users",
+            "instructions": "1. Sign in to your Bright Data account\n2. Open Account Settings > API tokens\n3. Click 'Add token' (or copy an existing one)\n4. Copy the token value",
+            "button_label": "Get API Token"
+          }
+        },
+        {
+          "id": "WEB_UNLOCKER_ZONE",
+          "label": "Web Unlocker Zone (optional)",
+          "description": "Name of the Web Unlocker zone to use for scraping. Leave blank to use the default 'mcp_unlocker' zone, which is created automatically.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "mcp_unlocker"
+        },
+        {
+          "id": "BROWSER_ZONE",
+          "label": "Browser Zone (optional)",
+          "description": "Name of the Browser API zone to use for browser-automation tools. Leave blank to use the default 'mcp_browser' zone.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "mcp_browser"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API token in your Bright Data account under Account Settings > API tokens, then provide it as API_TOKEN."
+  },
+  "contributor": {
+    "name": "Bright Data",
+    "github": "brightdata",
+    "url": "https://brightdata.com"
+  },
+  "links": {
+    "repository": "https://github.com/brightdata/brightdata-mcp",
+    "homepage": "https://brightdata.com/ai/mcp-server",
+    "documentation": "https://github.com/brightdata/brightdata-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/brightdata/brightdata-mcp/releases"
+}
