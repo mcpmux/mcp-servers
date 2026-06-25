@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.monday-mcp-npx",
+  "name": "monday.com (npx)",
+  "alias": "monday",
+  "description": "Interact with the monday.com Work OS via its API: query and manage boards, items, columns, updates, users, and workspaces. Runs locally through npx with read-only and dynamic API tool modes available.",
+  "logo": "https://avatars.githubusercontent.com/u/61420283?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "monday",
+    "monday.com",
+    "project-management",
+    "work-os",
+    "boards",
+    "productivity"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mondaydotcomorg/monday-api-mcp@latest",
+      "-t",
+      "${input:MONDAY_TOKEN}"
+    ],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MONDAY_TOKEN",
+          "label": "monday.com API Token",
+          "description": "Personal API token for your monday.com account. Found under your avatar > Developers > My Access Tokens, or in the Developer Center. Grants access scoped to your user's permissions.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "eyJhbGciOi****************************",
+          "obtain": {
+            "url": "https://developer.monday.com/api-reference/docs/authentication",
+            "instructions": "1. Log in to your monday.com account\n2. Click your avatar (bottom-left) > Developers\n3. Open 'My Access Tokens' (or Admin > API for the account token)\n4. Copy your personal API token",
+            "button_label": "Get API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a personal API token in monday.com under your avatar > Developers > My Access Tokens (see https://developer.monday.com/api-reference/docs/authentication)."
+  },
+  "contributor": {
+    "name": "monday.com",
+    "github": "mondaycom",
+    "url": "https://monday.com"
+  },
+  "links": {
+    "repository": "https://github.com/mondaycom/mcp",
+    "homepage": "https://monday.com",
+    "documentation": "https://developer.monday.com/api-reference/docs"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/mondaycom/mcp/releases"
+}
