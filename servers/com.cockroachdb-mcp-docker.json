@@ -1,0 +1,145 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.cockroachdb-mcp-docker",
+  "name": "CockroachDB (Docker)",
+  "alias": "cockroachdb",
+  "description": "Connect to CockroachDB clusters via Docker. Run SQL queries and transactions, manage databases, tables, indexes, users and privileges, monitor cluster health and jobs, and perform vector search, backups, changefeeds, and multi-region operations.",
+  "logo": "https://avatars.githubusercontent.com/u/105490765?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "cockroachdb",
+    "crdb",
+    "database",
+    "sql",
+    "distributed",
+    "postgres",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "CRDB_HOST",
+      "-e",
+      "CRDB_PORT",
+      "-e",
+      "CRDB_DATABASE",
+      "-e",
+      "CRDB_USERNAME",
+      "-e",
+      "CRDB_PWD",
+      "-e",
+      "CRDB_SSL_MODE",
+      "mcp/cockroachdb:latest"
+    ],
+    "env": {
+      "CRDB_HOST": "${input:CRDB_HOST}",
+      "CRDB_PORT": "${input:CRDB_PORT}",
+      "CRDB_DATABASE": "${input:CRDB_DATABASE}",
+      "CRDB_USERNAME": "${input:CRDB_USERNAME}",
+      "CRDB_PWD": "${input:CRDB_PWD}",
+      "CRDB_SSL_MODE": "${input:CRDB_SSL_MODE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CRDB_HOST",
+          "label": "CockroachDB Host",
+          "description": "Host name or address of a CockroachDB node or load balancer. Use host.docker.internal instead of localhost/127.0.0.1 to reach a CockroachDB instance running on the host machine.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "127.0.0.1",
+          "placeholder": "host.docker.internal"
+        },
+        {
+          "id": "CRDB_PORT",
+          "label": "CockroachDB Port",
+          "description": "Port number of the SQL interface of the CockroachDB node or load balancer.",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": "26257",
+          "placeholder": "26257"
+        },
+        {
+          "id": "CRDB_DATABASE",
+          "label": "Database",
+          "description": "Database name to use as the current database.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "defaultdb",
+          "placeholder": "defaultdb"
+        },
+        {
+          "id": "CRDB_USERNAME",
+          "label": "Username",
+          "description": "The SQL user that will own the client session.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "default": "root",
+          "placeholder": "root"
+        },
+        {
+          "id": "CRDB_PWD",
+          "label": "Password",
+          "description": "The SQL user's password. Leave empty for insecure clusters that do not require a password.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********"
+        },
+        {
+          "id": "CRDB_SSL_MODE",
+          "label": "SSL Mode",
+          "description": "Which type of secure connection to use. Set to verify-full and provide certificate paths for CockroachDB Cloud or secure clusters.",
+          "type": "select",
+          "required": false,
+          "secret": false,
+          "default": "disable",
+          "options": [
+            { "value": "disable", "label": "disable" },
+            { "value": "allow", "label": "allow" },
+            { "value": "prefer", "label": "prefer" },
+            { "value": "require", "label": "require" },
+            { "value": "verify-ca", "label": "verify-ca" },
+            { "value": "verify-full", "label": "verify-full" }
+          ]
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide CockroachDB connection details (host, port, database, username, password). For CockroachDB Cloud or secure clusters, set CRDB_SSL_MODE to verify-full and supply the CA/cert/key paths."
+  },
+  "contributor": {
+    "name": "amineelkouhen",
+    "github": "amineelkouhen",
+    "url": "https://github.com/amineelkouhen/mcp-cockroachdb"
+  },
+  "links": {
+    "repository": "https://github.com/amineelkouhen/mcp-cockroachdb",
+    "homepage": "https://www.cockroachlabs.com",
+    "documentation": "https://github.com/amineelkouhen/mcp-cockroachdb#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/amineelkouhen/mcp-cockroachdb/releases"
+}
