@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.auth0-mcp-npx",
+  "name": "Auth0 (npx)",
+  "alias": "auth0",
+  "description": "Manage your Auth0 tenant through natural language: applications, APIs (resource servers), actions, forms, and logs via the Auth0 Management API. Authentication uses an OAuth 2.0 device-authorization browser flow handled by the server; tokens are stored in your OS keychain.",
+  "logo": "https://avatars.githubusercontent.com/u/2824157?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "auth0",
+    "identity",
+    "authentication",
+    "authorization",
+    "oauth",
+    "security",
+    "iam"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@auth0/auth0-mcp-server",
+      "run"
+    ]
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Run `npx @auth0/auth0-mcp-server init` once to authorize via your browser (device flow); tokens are stored locally. No static secret needed."
+  },
+  "contributor": {
+    "name": "Auth0",
+    "github": "auth0",
+    "url": "https://auth0.com"
+  },
+  "links": {
+    "repository": "https://github.com/auth0/auth0-mcp-server",
+    "homepage": "https://auth0.com",
+    "documentation": "https://github.com/auth0/auth0-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/auth0/auth0-mcp-server/releases"
+}
