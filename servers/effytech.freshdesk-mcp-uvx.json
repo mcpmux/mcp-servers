@@ -1,0 +1,82 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "effytech.freshdesk-mcp-uvx",
+  "name": "Freshdesk (uvx)",
+  "alias": "freshdesk",
+  "description": "Interact with Freshdesk customer support. Manage tickets, conversations, contacts, companies, agents, and ticket fields through the Freshdesk API.",
+  "logo": "https://avatars.githubusercontent.com/u/61860985?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "freshdesk",
+    "support",
+    "helpdesk",
+    "tickets",
+    "customer-service",
+    "crm"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "freshdesk-mcp"
+    ],
+    "env": {
+      "FRESHDESK_API_KEY": "${input:FRESHDESK_API_KEY}",
+      "FRESHDESK_DOMAIN": "${input:FRESHDESK_DOMAIN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "FRESHDESK_API_KEY",
+          "label": "Freshdesk API Key",
+          "description": "Your Freshdesk API key, used to authenticate requests to the Freshdesk API.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************",
+          "obtain": {
+            "url": "https://support.freshdesk.com/support/solutions/articles/215517",
+            "instructions": "1. Log in to your Freshdesk account\n2. Click your profile picture (top right) and open Profile Settings\n3. Find Your API Key in the right-hand sidebar\n4. Copy the API key",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "FRESHDESK_DOMAIN",
+          "label": "Freshdesk Domain",
+          "description": "Your Freshdesk instance domain, e.g. yourcompany.freshdesk.com.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "yourcompany.freshdesk.com"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate your Freshdesk API key from your Freshdesk Profile Settings (look for 'Your API Key' in the right sidebar) and provide your Freshdesk domain (e.g. yourcompany.freshdesk.com)."
+  },
+  "contributor": {
+    "name": "effytech",
+    "github": "effytech",
+    "url": "https://github.com/effytech/freshdesk_mcp"
+  },
+  "links": {
+    "repository": "https://github.com/effytech/freshdesk_mcp",
+    "homepage": "https://github.com/effytech/freshdesk_mcp",
+    "documentation": "https://github.com/effytech/freshdesk_mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/effytech/freshdesk_mcp/releases"
+}
