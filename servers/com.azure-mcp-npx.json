@@ -1,0 +1,56 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.azure-mcp-npx",
+  "name": "Azure (npx)",
+  "alias": "azure",
+  "description": "Connect AI agents to Azure services. Manage and query resources across compute, storage, databases, AI, and monitoring using natural language. Uses your local Azure credentials (DefaultAzureCredential) - no static secrets stored.",
+  "logo": "https://avatars.githubusercontent.com/u/6154722?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud"
+  ],
+  "tags": [
+    "azure",
+    "microsoft",
+    "cloud",
+    "storage",
+    "compute",
+    "databases",
+    "monitoring",
+    "ai"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@azure/mcp@latest",
+      "server",
+      "start"
+    ]
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Sign in first with `az login`; the server uses your local Azure credentials (DefaultAzureCredential)."
+  },
+  "contributor": {
+    "name": "Microsoft",
+    "github": "microsoft",
+    "url": "https://azure.microsoft.com"
+  },
+  "links": {
+    "repository": "https://github.com/microsoft/mcp",
+    "homepage": "https://azure.microsoft.com",
+    "documentation": "https://learn.microsoft.com/azure/developer/azure-mcp-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server/CHANGELOG.md"
+}
