@@ -1,0 +1,83 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "kocierik.nomad-mcp-npx",
+  "name": "Nomad (npx)",
+  "alias": "nomad",
+  "description": "Manage HashiCorp Nomad clusters via the MCP protocol: inspect and operate jobs, deployments, allocations, nodes, namespaces, variables, ACL tokens, and Sentinel policies through the Nomad HTTP API.",
+  "logo": "https://avatars.githubusercontent.com/u/41591336?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "nomad",
+    "hashicorp",
+    "orchestration",
+    "scheduler",
+    "devops",
+    "infrastructure"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@kocierik/mcp-nomad"
+    ],
+    "env": {
+      "NOMAD_ADDR": "${input:NOMAD_ADDR}",
+      "NOMAD_TOKEN": "${input:NOMAD_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NOMAD_ADDR",
+          "label": "Nomad Address",
+          "description": "Base URL of your Nomad server's HTTP API (the value of NOMAD_ADDR). Defaults to http://localhost:4646 when running Nomad locally.",
+          "type": "url",
+          "required": true,
+          "placeholder": "http://localhost:4646"
+        },
+        {
+          "id": "NOMAD_TOKEN",
+          "label": "Nomad ACL Token",
+          "description": "Optional Nomad ACL token (NOMAD_TOKEN). Required only if your cluster has ACLs enabled; leave empty for an unsecured cluster.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "****************************",
+          "obtain": {
+            "url": "https://developer.hashicorp.com/nomad/docs/secure/acl",
+            "instructions": "1. Ensure ACLs are enabled on your Nomad cluster\n2. Run `nomad acl token create` (or use the UI) to mint a token with the needed policies\n3. Copy the Secret ID and use it as the token",
+            "button_label": "Nomad ACL Docs"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Set NOMAD_ADDR to your Nomad server URL. A NOMAD_TOKEN is only required if ACLs are enabled on the cluster; create one with `nomad acl token create`."
+  },
+  "contributor": {
+    "name": "kocierik",
+    "github": "kocierik",
+    "url": "https://github.com/kocierik/mcp-nomad"
+  },
+  "links": {
+    "repository": "https://github.com/kocierik/mcp-nomad",
+    "homepage": "https://github.com/kocierik/mcp-nomad#readme",
+    "documentation": "https://github.com/kocierik/mcp-nomad#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/kocierik/mcp-nomad/releases"
+}
