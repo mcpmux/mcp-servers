@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.wordpress-mcp-npx",
+  "name": "WordPress (npx)",
+  "alias": "wordpress",
+  "description": "Connect to a WordPress site through its remote MCP endpoint to read and manage posts, pages, users, media, and more. Authenticate with a WordPress application password (username + application password) against a self-hosted or Jetpack-connected site.",
+  "logo": "https://avatars.githubusercontent.com/u/887802?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "wordpress",
+    "automattic",
+    "cms",
+    "blogging",
+    "content",
+    "publishing"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@automattic/mcp-wordpress-remote"
+    ],
+    "env": {
+      "WP_API_URL": "${input:WP_API_URL}",
+      "WP_API_USERNAME": "${input:WP_API_USERNAME}",
+      "WP_API_PASSWORD": "${input:WP_API_PASSWORD}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "WP_API_URL",
+          "label": "WordPress Site URL",
+          "description": "Full WordPress MCP endpoint URL, e.g. https://your-site.com/wp-json/mcp/mcp-adapter-default-server. A bare site root URL (https://your-site.com) is also accepted and resolves to the legacy /wp-json/wp/v2/wpmcp endpoint for backwards compatibility.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://your-site.com/wp-json/mcp/mcp-adapter-default-server"
+        },
+        {
+          "id": "WP_API_USERNAME",
+          "label": "WordPress Username",
+          "description": "The WordPress account username that owns the application password used for authentication.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your-username"
+        },
+        {
+          "id": "WP_API_PASSWORD",
+          "label": "Application Password",
+          "description": "A WordPress application password generated for this account. This is not your normal login password.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "xxxx xxxx xxxx xxxx xxxx xxxx",
+          "obtain": {
+            "url": "https://wordpress.com",
+            "instructions": "1. Log in to your WordPress admin dashboard\n2. Go to Users > Profile (or your account's profile page)\n3. Scroll to the 'Application Passwords' section\n4. Enter a name (e.g. 'McpMux') and click 'Add New Application Password'\n5. Copy the generated password (you'll see it only once)\n\nNote: Application Passwords are a self-hosted WordPress feature. On WordPress.com sites you may instead need a WordPress.com API token or OAuth.",
+            "button_label": "Open WordPress Profile"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Authenticate with your WordPress username plus an application password. Create the application password under Users > Profile > Application Passwords in your WordPress admin dashboard. On WordPress.com sites, a WordPress.com API token or OAuth may be required instead."
+  },
+  "contributor": {
+    "name": "Automattic",
+    "github": "Automattic",
+    "url": "https://wordpress.com"
+  },
+  "links": {
+    "repository": "https://github.com/Automattic/mcp-wordpress-remote",
+    "homepage": "https://wordpress.com",
+    "documentation": "https://github.com/Automattic/mcp-wordpress-remote#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/Automattic/mcp-wordpress-remote/releases"
+}
