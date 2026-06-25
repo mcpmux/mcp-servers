@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.antv-chart-mcp-npx",
+  "name": "AntV Chart (npx)",
+  "alias": "antv-chart",
+  "description": "Generate charts and graphs from data using AntV. Provides 25+ visualization tools (area, bar, line, pie, scatter, radar, sankey, treemap, word cloud, and more) plus diagrams (flowchart, mind-map, fishbone, network graph) and maps, returning rendered chart images/URLs. No API key required for the default free chart service.",
+  "logo": "https://avatars.githubusercontent.com/u/19199542?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "design"
+  ],
+  "tags": [
+    "charts",
+    "visualization",
+    "data-visualization",
+    "graphs",
+    "diagrams",
+    "antv"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@antv/mcp-server-chart"
+    ]
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. The default stdio mode uses AntV's free chart generation service to render charts."
+  },
+  "contributor": {
+    "name": "AntV",
+    "github": "antvis",
+    "url": "https://antv.antgroup.com"
+  },
+  "links": {
+    "repository": "https://github.com/antvis/mcp-server-chart",
+    "homepage": "https://antv.antgroup.com",
+    "documentation": "https://github.com/antvis/mcp-server-chart#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/antvis/mcp-server-chart/releases"
+}
