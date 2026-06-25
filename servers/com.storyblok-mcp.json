@@ -1,0 +1,67 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.storyblok-mcp",
+  "name": "Storyblok",
+  "alias": "storyblok",
+  "description": "Manage Storyblok CMS content from AI chat via Storyblok's hosted MCP endpoint. Search, describe, and execute Management API operations across spaces, stories, components, assets, and workflows. No local install needed.",
+  "logo": "https://avatars.githubusercontent.com/u/13880908?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "documentation"
+  ],
+  "tags": [
+    "storyblok",
+    "cms",
+    "content-management",
+    "documentation",
+    "headless-cms"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.labs.storyblok.com/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:STORYBLOK_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "STORYBLOK_TOKEN",
+          "label": "Storyblok Personal Access Token",
+          "description": "Personal access token (PAT) for the Storyblok Management API. Used as a Bearer token in the Authorization header.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "***************************",
+          "obtain": {
+            "url": "https://app.storyblok.com/#/me/account?tab=token",
+            "instructions": "1. Sign in to Storyblok\n2. Open My account > Account settings > Personal access tokens\n3. Generate a new personal access token\n4. Copy the token",
+            "button_label": "Get Personal Access Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Requires a Storyblok personal access token (PAT). Create one under My account > Account settings > Personal access tokens, then provide it as a Bearer token."
+  },
+  "contributor": {
+    "name": "Storyblok",
+    "github": "storyblok",
+    "url": "https://www.storyblok.com"
+  },
+  "links": {
+    "repository": "https://github.com/storyblok/mcp-server",
+    "homepage": "https://www.storyblok.com",
+    "documentation": "https://www.storyblok.com/lp/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
