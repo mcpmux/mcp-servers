@@ -1,0 +1,83 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "tadasant.stability-ai-mcp-npx",
+  "name": "Stability AI (npx)",
+  "alias": "stability-ai",
+  "description": "Generate, edit, upscale, and manipulate images with Stability AI models (Stable Diffusion) directly from your AI client via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/3900899?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "design"
+  ],
+  "tags": [
+    "stability-ai",
+    "stable-diffusion",
+    "image-generation",
+    "image-editing",
+    "ai-ml",
+    "design"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-stability-ai"
+    ],
+    "env": {
+      "STABILITY_AI_API_KEY": "${input:STABILITY_AI_API_KEY}",
+      "IMAGE_STORAGE_DIRECTORY": "${input:IMAGE_STORAGE_DIRECTORY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "STABILITY_AI_API_KEY",
+          "label": "Stability AI API Key",
+          "description": "Your Stability AI API key, used to authenticate requests to the Stability AI platform.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "sk-****************",
+          "obtain": {
+            "url": "https://platform.stability.ai/account/keys",
+            "instructions": "1. Sign in to the Stability AI platform at https://platform.stability.ai\n2. Open Account > API Keys\n3. Create a new API key\n4. Copy the key and paste it here",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "IMAGE_STORAGE_DIRECTORY",
+          "label": "Image Storage Directory",
+          "description": "Directory where generated and edited images will be saved. Optional - defaults to a platform-specific location (e.g. ~/Desktop) when left blank.",
+          "type": "directory_path",
+          "required": false,
+          "secret": false
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key from your Stability AI platform account at https://platform.stability.ai/account/keys"
+  },
+  "contributor": {
+    "name": "tadasant",
+    "github": "tadasant",
+    "url": "https://github.com/tadasant/mcp-server-stability-ai"
+  },
+  "links": {
+    "repository": "https://github.com/tadasant/mcp-server-stability-ai",
+    "homepage": "https://platform.stability.ai",
+    "documentation": "https://github.com/tadasant/mcp-server-stability-ai#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/tadasant/mcp-server-stability-ai/releases"
+}
