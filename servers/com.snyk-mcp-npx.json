@@ -1,0 +1,78 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.snyk-mcp-npx",
+  "name": "Snyk (npx)",
+  "alias": "snyk",
+  "description": "Official Snyk MCP server, shipped inside the Snyk CLI. Scans code, open-source dependencies, containers, and IaC for vulnerabilities directly from your AI agent, surfacing security issues and fix guidance during development.",
+  "logo": "https://avatars.githubusercontent.com/u/12959162?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "snyk",
+    "security",
+    "vulnerabilities",
+    "sca",
+    "sast",
+    "dependencies",
+    "code-scanning"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "snyk",
+      "mcp",
+      "-t",
+      "stdio",
+      "--experimental"
+    ],
+    "env": {
+      "SNYK_TOKEN": "${input:SNYK_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SNYK_TOKEN",
+          "label": "Snyk API Token",
+          "description": "Snyk account API token used to authenticate the CLI. Find it in your Snyk Account Settings under 'API Token'. Alternatively you can authenticate the CLI interactively with 'snyk auth'.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********-****-****-****-************",
+          "obtain": {
+            "url": "https://app.snyk.io/account",
+            "instructions": "1. Sign in to Snyk at https://app.snyk.io\n2. Click your name (top right) and choose 'Account Settings'\n3. Under 'API Token', click 'Show' (or 'Click to show')\n4. Copy the token value",
+            "button_label": "Get API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Set SNYK_TOKEN to your Snyk account API token (Snyk > Account Settings > API Token), or authenticate the CLI interactively with 'snyk auth'."
+  },
+  "contributor": {
+    "name": "Snyk",
+    "github": "snyk",
+    "url": "https://snyk.io"
+  },
+  "links": {
+    "repository": "https://github.com/snyk/cli",
+    "homepage": "https://snyk.io",
+    "documentation": "https://docs.snyk.io/developer-tools/snyk-cli/developer-guardrails-for-agentic-workflows/snyk-mcp-experimental"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/snyk/cli/releases"
+}
