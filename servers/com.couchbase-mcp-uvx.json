@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.couchbase-mcp-uvx",
+  "name": "Couchbase (uvx)",
+  "alias": "couchbase",
+  "description": "Interact with Couchbase clusters. Explore buckets, scopes, and collections, run SQL++ queries, perform document CRUD, and manage indexes through natural language.",
+  "logo": "https://avatars.githubusercontent.com/u/605755?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "couchbase",
+    "database",
+    "nosql",
+    "document-database",
+    "sql++",
+    "n1ql",
+    "capella"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "couchbase-mcp-server"
+    ],
+    "env": {
+      "CB_CONNECTION_STRING": "${input:CB_CONNECTION_STRING}",
+      "CB_USERNAME": "${input:CB_USERNAME}",
+      "CB_PASSWORD": "${input:CB_PASSWORD}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CB_CONNECTION_STRING",
+          "label": "Connection String",
+          "description": "Connection string to the Couchbase cluster. Use the couchbases:// scheme for TLS (required for Capella).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "couchbases://cb.xxxx.cloud.couchbase.com",
+          "obtain": {
+            "url": "https://cloud.couchbase.com/",
+            "instructions": "1. Sign in to Couchbase Capella\n2. Open your cluster\n3. Go to Connect\n4. Copy the connection string (couchbases://...)",
+            "button_label": "Open Capella"
+          }
+        },
+        {
+          "id": "CB_USERNAME",
+          "label": "Username",
+          "description": "Database access username with access to the required buckets (basic authentication).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "username"
+        },
+        {
+          "id": "CB_PASSWORD",
+          "label": "Password",
+          "description": "Password for basic authentication.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "****************"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a database access credential (username and password) in Couchbase Capella, then provide the cluster connection string."
+  },
+  "contributor": {
+    "name": "Couchbase",
+    "github": "Couchbase-Ecosystem",
+    "url": "https://www.couchbase.com"
+  },
+  "links": {
+    "repository": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase",
+    "homepage": "https://www.couchbase.com",
+    "documentation": "https://mcp-server.couchbase.com/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase/releases"
+}
