@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.clickup-mcp",
+  "name": "ClickUp",
+  "alias": "clickup",
+  "description": "Manage ClickUp tasks, lists, docs, and projects through ClickUp's official hosted remote MCP server. Authenticates via OAuth in your browser, no API key or local setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/27873294?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "clickup",
+    "project-management",
+    "tasks",
+    "productivity",
+    "docs",
+    "collaboration"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.clickup.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your ClickUp account. ClickUp's MCP server only supports OAuth - API keys and personal access tokens are not accepted. No token setup needed."
+  },
+  "contributor": {
+    "name": "ClickUp",
+    "github": "clickup",
+    "url": "https://clickup.com"
+  },
+  "links": {
+    "homepage": "https://clickup.com",
+    "documentation": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
