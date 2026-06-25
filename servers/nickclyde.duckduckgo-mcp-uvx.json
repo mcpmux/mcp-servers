@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "nickclyde.duckduckgo-mcp-uvx",
+  "name": "DuckDuckGo (uvx)",
+  "alias": "duckduckgo",
+  "description": "Web search and content fetching via DuckDuckGo. Performs DuckDuckGo searches with LLM-optimized results and fetches/parses webpage content, with built-in rate limiting.",
+  "logo": "https://avatars.githubusercontent.com/u/9121162?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "search",
+    "duckduckgo",
+    "web",
+    "web-search",
+    "fetch",
+    "scraping"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "duckduckgo-mcp-server"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Searches DuckDuckGo and fetches public web content without an API key."
+  },
+  "contributor": {
+    "name": "nickclyde",
+    "github": "nickclyde",
+    "url": "https://github.com/nickclyde/duckduckgo-mcp-server"
+  },
+  "links": {
+    "repository": "https://github.com/nickclyde/duckduckgo-mcp-server",
+    "homepage": "https://github.com/nickclyde/duckduckgo-mcp-server",
+    "documentation": "https://github.com/nickclyde/duckduckgo-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/nickclyde/duckduckgo-mcp-server/releases"
+}
