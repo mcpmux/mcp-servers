@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.consul-mcp-docker",
+  "name": "Consul (Docker)",
+  "alias": "consul",
+  "description": "Connect to HashiCorp Consul via Docker for service discovery, health checks, key-value configuration, and service mesh operations. Query the catalog, inspect node and service health, read and write KV data, and manage ACLs in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/761456?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "consul",
+    "hashicorp",
+    "service-discovery",
+    "service-mesh",
+    "key-value",
+    "health-checks",
+    "acl",
+    "devops",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "CONSUL_HTTP_ADDR",
+      "-e",
+      "CONSUL_HTTP_TOKEN",
+      "hashicorp/consul-mcp-server:latest"
+    ],
+    "env": {
+      "CONSUL_HTTP_ADDR": "${input:CONSUL_HTTP_ADDR}",
+      "CONSUL_HTTP_TOKEN": "${input:CONSUL_HTTP_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CONSUL_HTTP_ADDR",
+          "label": "Consul HTTP Address",
+          "description": "Base URL of your Consul HTTP API. Use host.docker.internal instead of localhost to reach a Consul agent running on the host machine (e.g., http://host.docker.internal:8500). Defaults to http://127.0.0.1:8500.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "http://localhost:8500",
+          "default": "http://localhost:8500"
+        },
+        {
+          "id": "CONSUL_HTTP_TOKEN",
+          "label": "Consul ACL Token",
+          "description": "Consul ACL token used to authenticate with the HTTP API. Only required when ACLs are enabled on your Consul cluster; the token's policies determine which operations are permitted. Leave empty if ACLs are disabled.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "********-****-****-****-************",
+          "obtain": {
+            "url": "https://developer.hashicorp.com/consul/commands/acl/token/create",
+            "instructions": "1. Ensure ACLs are enabled on your Consul cluster\n2. Create a token scoped to the policies you need: consul acl token create -policy-name=<policy>\n3. Copy the SecretID value from the output",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "No token is required when Consul ACLs are disabled. When ACLs are enabled, provide a CONSUL_HTTP_TOKEN whose policies grant access to the operations you want to perform. Create one with `consul acl token create`."
+  },
+  "contributor": {
+    "name": "HashiCorp",
+    "github": "hashicorp",
+    "url": "https://www.consul.io"
+  },
+  "links": {
+    "repository": "https://github.com/hashicorp/consul-mcp-server",
+    "homepage": "https://www.consul.io",
+    "documentation": "https://github.com/hashicorp/consul-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/hashicorp/consul-mcp-server/releases"
+}
