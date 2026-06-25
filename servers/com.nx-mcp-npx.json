@@ -1,0 +1,67 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.nx-mcp-npx",
+  "name": "Nx (npx)",
+  "alias": "nx",
+  "description": "Connects AI assistants to your Nx monorepo. Exposes the workspace project graph, project and task details, file-to-project mappings, Nx generators, and up-to-date Nx documentation so the assistant understands your monorepo structure.",
+  "logo": "https://avatars.githubusercontent.com/u/23692104?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "nx",
+    "monorepo",
+    "nrwl",
+    "project-graph",
+    "build",
+    "generators",
+    "developer-tools"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "nx-mcp",
+      "${input:WORKSPACE_PATH}"
+    ],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "WORKSPACE_PATH",
+          "label": "Nx Workspace Path",
+          "description": "Absolute path to the root of your Nx workspace (the folder containing nx.json). Optional: if left blank, the server falls back to the current working directory. When no workspace can be resolved, only the nx_docs and nx_available_plugins tools are available.",
+          "type": "directory_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "C:\\Users\\you\\my-nx-workspace  or  /home/you/my-nx-workspace"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication or API key required. The Nx MCP server reads your local Nx workspace; point it at the workspace root."
+  },
+  "contributor": {
+    "name": "Nx (Nrwl)",
+    "github": "nrwl",
+    "url": "https://nx.dev"
+  },
+  "links": {
+    "repository": "https://github.com/nrwl/nx-console",
+    "homepage": "https://nx.dev",
+    "documentation": "https://nx.dev/docs/reference/nx-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/nrwl/nx-console/releases"
+}
