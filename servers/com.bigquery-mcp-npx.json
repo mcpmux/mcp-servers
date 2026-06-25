@@ -1,0 +1,76 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.bigquery-mcp-npx",
+  "name": "BigQuery (npx)",
+  "alias": "bigquery",
+  "description": "Query and explore Google BigQuery datasets via the MCP Toolbox for Databases prebuilt BigQuery tools. Exposes tools to list datasets and tables, inspect schemas, and execute SQL. Runs locally via npx and authenticates with your Google Cloud Application Default Credentials.",
+  "logo": "https://avatars.githubusercontent.com/u/16785467?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "bigquery",
+    "google-cloud",
+    "gcp",
+    "database",
+    "sql",
+    "analytics",
+    "data-warehouse"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@toolbox-sdk/server",
+      "--prebuilt",
+      "bigquery",
+      "--stdio"
+    ],
+    "env": {
+      "BIGQUERY_PROJECT": "${input:BIGQUERY_PROJECT}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BIGQUERY_PROJECT",
+          "label": "BigQuery Project ID",
+          "description": "Your Google Cloud project ID that contains the BigQuery datasets you want to query. Billing and queries run against this project.",
+          "type": "text",
+          "required": true,
+          "placeholder": "my-gcp-project",
+          "obtain": {
+            "url": "https://console.cloud.google.com/projectselector2/home/dashboard",
+            "instructions": "1. Open the Google Cloud Console\n2. Select or create a project\n3. Copy the Project ID (not the project name)",
+            "button_label": "Open Cloud Console"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Authenticate with `gcloud auth application-default login`; the server uses your local Google Cloud credentials."
+  },
+  "contributor": {
+    "name": "Google",
+    "github": "googleapis",
+    "url": "https://cloud.google.com/bigquery"
+  },
+  "links": {
+    "repository": "https://github.com/googleapis/genai-toolbox",
+    "homepage": "https://cloud.google.com/bigquery",
+    "documentation": "https://googleapis.github.io/genai-toolbox/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/googleapis/genai-toolbox/releases"
+}
