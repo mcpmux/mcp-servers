@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.kong-mcp",
+  "name": "Kong Konnect",
+  "alias": "kong",
+  "description": "Official remote MCP server for Kong Konnect. Query and manage your API platform, debug performance, and search Konnect documentation via search, get_schema, and execute tools covering the full GA Konnect product. Connect to the regional endpoint matching your Konnect region.",
+  "logo": "https://avatars.githubusercontent.com/u/962416?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "kong",
+    "konnect",
+    "api-gateway",
+    "api-management",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://us.mcp.konghq.com/",
+    "headers": {
+      "Authorization": "Bearer ${input:KONNECT_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "KONNECT_TOKEN",
+          "label": "Konnect Personal Access Token",
+          "description": "Konnect personal access token (PAT) used to authenticate to the Kong Konnect MCP server. A system account access token (SPAT) also works for automated workflows. The US regional endpoint is preconfigured; connect to the endpoint matching the region where your Konnect resources are deployed (us / eu / au / in).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "kpat_********************************",
+          "obtain": {
+            "url": "https://cloud.konghq.com/global/account/tokens",
+            "instructions": "1. Sign in to Kong Konnect (cloud.konghq.com)\n2. Open your account's Personal Access Tokens page\n3. Generate a new token and copy it (you will not see it again)\n4. Paste it here",
+            "button_label": "Create Personal Access Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Konnect personal access token (PAT) at https://cloud.konghq.com/global/account/tokens and provide it as a Bearer token. A system account access token (SPAT) can be used for automated workflows."
+  },
+  "contributor": {
+    "name": "Kong",
+    "github": "Kong",
+    "url": "https://konghq.com"
+  },
+  "links": {
+    "repository": "https://github.com/Kong/mcp-konnect",
+    "homepage": "https://konghq.com/products/kong-konnect/agents",
+    "documentation": "https://developer.konghq.com/konnect-platform/konnect-mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
