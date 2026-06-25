@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "tools.ref-mcp-npx",
+  "name": "Ref (npx)",
+  "alias": "ref",
+  "description": "Token-efficient documentation search for coding agents. Searches public and private technical docs, APIs, and libraries, and reads URLs as markdown to keep the context window lean.",
+  "logo": "https://avatars.githubusercontent.com/u/210568548?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "documentation"
+  ],
+  "tags": [
+    "documentation",
+    "docs",
+    "search",
+    "api-reference",
+    "context",
+    "coding-agent"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "ref-tools-mcp"
+    ],
+    "env": {
+      "REF_API_KEY": "${input:REF_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "REF_API_KEY",
+          "label": "Ref API Key",
+          "description": "API key for your Ref account. Used to authenticate documentation search and URL-read requests.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "ref-****************",
+          "obtain": {
+            "url": "https://ref.tools/keys",
+            "instructions": "1. Sign in to your Ref account at https://ref.tools\n2. Open the API keys page at https://ref.tools/keys\n3. Create or copy an API key\n4. Paste it here",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key in your Ref account at https://ref.tools/keys and provide it as REF_API_KEY."
+  },
+  "contributor": {
+    "name": "Ref",
+    "github": "ref-tools",
+    "url": "https://ref.tools"
+  },
+  "links": {
+    "repository": "https://github.com/ref-tools/ref-tools-mcp",
+    "homepage": "https://ref.tools",
+    "documentation": "https://docs.ref.tools"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/ref-tools/ref-tools-mcp/releases"
+}
