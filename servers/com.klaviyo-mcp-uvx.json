@@ -1,0 +1,71 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.klaviyo-mcp-uvx",
+  "name": "Klaviyo (uvx)",
+  "alias": "klaviyo",
+  "description": "Connect to Klaviyo's marketing platform to manage profiles, lists, segments, events, campaigns, flows, and catalogs through natural language. Official Klaviyo MCP server run locally via uvx.",
+  "logo": "https://avatars.githubusercontent.com/u/1947230?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "klaviyo",
+    "email",
+    "sms",
+    "marketing",
+    "crm",
+    "automation"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "klaviyo-mcp-server"
+    ],
+    "env": {
+      "PRIVATE_API_KEY": "${input:PRIVATE_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PRIVATE_API_KEY",
+          "label": "Klaviyo Private API Key",
+          "description": "Klaviyo private API key used to authenticate API requests. Grant the scopes the server needs (e.g. Profiles Full, Lists Full, Segments Read, Events Full, Catalogs Read, Campaigns Read, Flows Read).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "pk_****************",
+          "obtain": {
+            "url": "https://www.klaviyo.com/settings/account/api-keys",
+            "instructions": "1. Log in to Klaviyo\n2. Click your organization name (bottom left) and open Settings\n3. Go to API keys\n4. Click 'Create Private API Key'\n5. Name the key and select the required scopes (Profiles Full, Lists Full, Segments Read, Events Full, Catalogs Read, Campaigns Read, Flows Read)\n6. Click 'Create' and copy the key (it cannot be viewed again)",
+            "button_label": "Create Private API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Private API Key in Klaviyo at Settings > API keys with the required scopes, then provide it as PRIVATE_API_KEY."
+  },
+  "contributor": {
+    "name": "Klaviyo",
+    "github": "klaviyo",
+    "url": "https://www.klaviyo.com"
+  },
+  "links": {
+    "homepage": "https://www.klaviyo.com",
+    "documentation": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://pypi.org/project/klaviyo-mcp-server/#history"
+}
