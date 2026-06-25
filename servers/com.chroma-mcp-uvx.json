@@ -1,0 +1,100 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.chroma-mcp-uvx",
+  "name": "Chroma (uvx)",
+  "alias": "chroma",
+  "description": "Connect to Chroma vector databases for retrieval, embeddings, and collection management. Works with Chroma Cloud, self-hosted HTTP servers, or local ephemeral/persistent stores.",
+  "logo": "https://avatars.githubusercontent.com/u/105881770?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "chroma",
+    "chromadb",
+    "vector-database",
+    "embeddings",
+    "rag",
+    "ai-ml",
+    "retrieval"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "chroma-mcp",
+      "--client-type",
+      "cloud"
+    ],
+    "env": {
+      "CHROMA_TENANT": "${input:CHROMA_TENANT}",
+      "CHROMA_DATABASE": "${input:CHROMA_DATABASE}",
+      "CHROMA_API_KEY": "${input:CHROMA_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CHROMA_TENANT",
+          "label": "Chroma Cloud Tenant ID",
+          "description": "Your Chroma Cloud tenant identifier. Required for a Chroma Cloud connection; leave empty to run a local ephemeral store.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "your-tenant-id",
+          "obtain": {
+            "url": "https://trychroma.com",
+            "instructions": "1. Sign in to Chroma Cloud\n2. Open your team/workspace settings\n3. Copy the Tenant ID",
+            "button_label": "Open Chroma Cloud"
+          }
+        },
+        {
+          "id": "CHROMA_DATABASE",
+          "label": "Chroma Cloud Database",
+          "description": "The name of the Chroma Cloud database to connect to. Required for a Chroma Cloud connection.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "your-database-name"
+        },
+        {
+          "id": "CHROMA_API_KEY",
+          "label": "Chroma Cloud API Key",
+          "description": "API key for Chroma Cloud authentication. Optional: required only for a Chroma Cloud connection, not for local ephemeral or persistent stores.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "ck-****************************",
+          "obtain": {
+            "url": "https://trychroma.com",
+            "instructions": "1. Sign in to Chroma Cloud\n2. Open Settings > API Keys\n3. Create a new API key\n4. Copy it",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "An API key is required only for Chroma Cloud (with tenant and database). Local ephemeral and persistent stores need no credentials."
+  },
+  "contributor": {
+    "name": "Chroma",
+    "github": "chroma-core",
+    "url": "https://www.trychroma.com"
+  },
+  "links": {
+    "repository": "https://github.com/chroma-core/chroma-mcp",
+    "homepage": "https://www.trychroma.com",
+    "documentation": "https://github.com/chroma-core/chroma-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/chroma-core/chroma-mcp/releases"
+}
