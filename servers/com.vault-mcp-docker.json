@@ -1,0 +1,91 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.vault-mcp-docker",
+  "name": "Vault (Docker)",
+  "alias": "vault",
+  "description": "Connect to HashiCorp Vault via Docker to manage secrets and secrets engines. Read, write, list, and delete key-value secrets, create and manage mounts, and handle PKI certificates (issuers, roles, certificate issuance) in an isolated container.",
+  "logo": "https://avatars.githubusercontent.com/u/761456?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "vault",
+    "hashicorp",
+    "secrets",
+    "secrets-management",
+    "pki",
+    "key-value",
+    "security",
+    "docker"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "VAULT_ADDR",
+      "-e",
+      "VAULT_TOKEN",
+      "hashicorp/vault-mcp-server:latest"
+    ],
+    "env": {
+      "VAULT_ADDR": "${input:VAULT_ADDR}",
+      "VAULT_TOKEN": "${input:VAULT_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "VAULT_ADDR",
+          "label": "Vault Address",
+          "description": "Base URL of your HashiCorp Vault server. Use host.docker.internal instead of localhost to reach a Vault instance running on the host machine (e.g., https://host.docker.internal:8200).",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "placeholder": "https://vault.example.com:8200"
+        },
+        {
+          "id": "VAULT_TOKEN",
+          "label": "Vault Token",
+          "description": "Vault authentication token used to access secrets and secrets engines. The token's policies determine which paths and operations are permitted.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "hvs.****************************",
+          "obtain": {
+            "url": "https://developer.hashicorp.com/vault/docs/commands/token/create",
+            "instructions": "1. Authenticate to your Vault server (e.g., vault login)\n2. Create a token scoped to the policies you need: vault token create -policy=<policy>\n3. Copy the token value from the output (token field)",
+            "button_label": "Create Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide a Vault token (VAULT_TOKEN) with policies granting access to the paths you want to manage. Create one with `vault token create`."
+  },
+  "contributor": {
+    "name": "HashiCorp",
+    "github": "hashicorp",
+    "url": "https://www.vaultproject.io"
+  },
+  "links": {
+    "repository": "https://github.com/hashicorp/vault-mcp-server",
+    "homepage": "https://www.vaultproject.io",
+    "documentation": "https://github.com/hashicorp/vault-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/hashicorp/vault-mcp-server/releases"
+}
