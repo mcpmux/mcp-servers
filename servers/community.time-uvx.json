@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.time-uvx",
+  "name": "Time (uvx)",
+  "alias": "time",
+  "description": "Time and timezone conversion tools for LLMs. Get the current time in any IANA timezone and convert times between timezones. Automatically detects the system timezone, or override it with the optional --local-timezone flag (e.g. add \"--local-timezone\", \"America/New_York\" to the args).",
+  "logo": "https://avatars.githubusercontent.com/u/182288589?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "time",
+    "timezone",
+    "datetime",
+    "clock",
+    "conversion"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-server-time"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. Provides local time and timezone conversion."
+  },
+  "contributor": {
+    "name": "Model Context Protocol",
+    "github": "modelcontextprotocol",
+    "url": "https://github.com/modelcontextprotocol/servers"
+  },
+  "links": {
+    "repository": "https://github.com/modelcontextprotocol/servers",
+    "homepage": "https://modelcontextprotocol.io",
+    "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/time#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/modelcontextprotocol/servers/releases"
+}
