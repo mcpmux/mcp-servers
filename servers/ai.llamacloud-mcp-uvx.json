@@ -1,0 +1,84 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.llamacloud-mcp-uvx",
+  "name": "LlamaCloud (uvx)",
+  "alias": "llamacloud",
+  "description": "Query your LlamaCloud managed indexes and run extraction agents over your documents. Connects AI clients to LlamaCloud retrieval and structured data extraction.",
+  "logo": "https://avatars.githubusercontent.com/u/130722866?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml"
+  ],
+  "tags": [
+    "llamacloud",
+    "llamaindex",
+    "rag",
+    "retrieval",
+    "vector-search",
+    "document-extraction",
+    "knowledge-base"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "llamacloud-mcp@latest",
+      "--index",
+      "${input:LLAMA_CLOUD_INDEX}"
+    ],
+    "env": {
+      "LLAMA_CLOUD_API_KEY": "${input:LLAMA_CLOUD_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "LLAMA_CLOUD_API_KEY",
+          "label": "LlamaCloud API Key",
+          "description": "API key for your LlamaCloud account. Read by the server from the LLAMA_CLOUD_API_KEY environment variable (used as the fallback when --api-key is not passed).",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "llx-****************************",
+          "obtain": {
+            "url": "https://cloud.llamaindex.ai/api-key",
+            "instructions": "1. Sign in at https://cloud.llamaindex.ai\n2. Open the API Key page (Settings > API Keys)\n3. Generate a new API key\n4. Copy the key (starts with llx-)",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "LLAMA_CLOUD_INDEX",
+          "label": "Index (name:description)",
+          "description": "The LlamaCloud index to expose, in the format name:description (e.g. my-docs:Product documentation). The description is required and tells the model when to query this index. Passed to the server as --index.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "my-index:Description of what this index contains"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a LlamaCloud API key at https://cloud.llamaindex.ai/api-key and provide it as the LLAMA_CLOUD_API_KEY value."
+  },
+  "contributor": {
+    "name": "LlamaIndex",
+    "github": "run-llama",
+    "url": "https://www.llamaindex.ai"
+  },
+  "links": {
+    "repository": "https://github.com/run-llama/llamacloud-mcp",
+    "homepage": "https://www.llamaindex.ai",
+    "documentation": "https://github.com/run-llama/llamacloud-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/run-llama/llamacloud-mcp/releases"
+}
