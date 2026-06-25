@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.calcom-mcp-npx",
+  "name": "Cal.com (npx)",
+  "alias": "calcom",
+  "description": "Manage Cal.com bookings and event types with natural language. Create, reschedule, and cancel bookings, list and update event types, and query availability through the official Cal.com MCP server.",
+  "logo": "https://avatars.githubusercontent.com/u/79145102?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "calcom",
+    "calendar",
+    "scheduling",
+    "bookings",
+    "events",
+    "meetings"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@calcom/cal-mcp"
+    ],
+    "env": {
+      "CAL_API_KEY": "${input:CAL_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CAL_API_KEY",
+          "label": "Cal.com API Key",
+          "description": "Your Cal.com API key. Used to authenticate against the Cal.com API for managing bookings and event types.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "cal_live_****************",
+          "obtain": {
+            "url": "https://app.cal.com/settings/developer/api-keys",
+            "instructions": "1. Open Cal.com Settings > Developer > API keys\n2. Click 'Add' to create a new API key\n3. (Optional) Set an expiration date\n4. Copy the generated key (starts with cal_live_)",
+            "button_label": "Create API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key at Cal.com Settings > Developer > API keys and provide it as CAL_API_KEY."
+  },
+  "contributor": {
+    "name": "Cal.com",
+    "github": "calcom",
+    "url": "https://cal.com"
+  },
+  "links": {
+    "repository": "https://github.com/calcom/cal-mcp",
+    "homepage": "https://cal.com",
+    "documentation": "https://cal.com/docs/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/calcom/cal-mcp/releases"
+}
