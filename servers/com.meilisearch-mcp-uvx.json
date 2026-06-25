@@ -1,0 +1,84 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.meilisearch-mcp-uvx",
+  "name": "Meilisearch (uvx)",
+  "alias": "meilisearch",
+  "description": "Interact with Meilisearch search engine instances. Manage indexes, documents, and settings; run searches with filtering and sorting; administer API keys and monitor tasks, health, and stats.",
+  "logo": "https://avatars.githubusercontent.com/u/43250847?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "database"
+  ],
+  "tags": [
+    "meilisearch",
+    "search",
+    "search-engine",
+    "full-text-search",
+    "indexing",
+    "database"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "meilisearch-mcp"
+    ],
+    "env": {
+      "MEILI_HTTP_ADDR": "${input:MEILI_HTTP_ADDR}",
+      "MEILI_MASTER_KEY": "${input:MEILI_MASTER_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MEILI_HTTP_ADDR",
+          "label": "Meilisearch URL",
+          "description": "The HTTP address of your Meilisearch instance, including scheme and port.",
+          "type": "url",
+          "required": true,
+          "secret": false,
+          "default": "http://localhost:7700",
+          "placeholder": "https://your-instance.meilisearch.io"
+        },
+        {
+          "id": "MEILI_MASTER_KEY",
+          "label": "Master Key",
+          "description": "Master key or API key for authenticating with your Meilisearch instance. Required for Meilisearch Cloud and any instance started with a master key.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://cloud.meilisearch.com",
+            "instructions": "Meilisearch Cloud:\n1. Open https://cloud.meilisearch.com and select your project\n2. Go to Settings > API keys\n3. Copy the Master key (or a key with the scopes you need)\n\nSelf-hosted:\nUse the value passed to --master-key (or the MEILI_MASTER_KEY env var) when you started the meilisearch binary.",
+            "button_label": "Open Meilisearch Cloud"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide your Meilisearch instance URL and a master/API key. Get a key from Meilisearch Cloud (Settings > API keys) or use the master key configured on your self-hosted instance."
+  },
+  "contributor": {
+    "name": "Meilisearch",
+    "github": "meilisearch",
+    "url": "https://www.meilisearch.com"
+  },
+  "links": {
+    "repository": "https://github.com/meilisearch/meilisearch-mcp",
+    "homepage": "https://www.meilisearch.com",
+    "documentation": "https://github.com/meilisearch/meilisearch-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/meilisearch/meilisearch-mcp/releases"
+}
