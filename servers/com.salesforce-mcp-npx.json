@@ -1,0 +1,57 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.salesforce-mcp-npx",
+  "name": "Salesforce (npx)",
+  "alias": "salesforce",
+  "description": "Official Salesforce DX MCP server. Interact with your authorized Salesforce orgs from AI clients: deploy and retrieve metadata, run SOQL queries, manage data and users, run Apex tests, and more. Reuses orgs you've already authenticated with the Salesforce CLI.",
+  "logo": "https://avatars.githubusercontent.com/u/60192002?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "salesforce",
+    "crm",
+    "salesforce-dx",
+    "metadata",
+    "soql",
+    "apex",
+    "sfdx"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@salesforce/mcp",
+      "--orgs",
+      "DEFAULT_TARGET_ORG",
+      "--toolsets",
+      "all"
+    ]
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Authenticate an org first with the Salesforce CLI (`sf org login web`); the server uses your locally authorized orgs."
+  },
+  "contributor": {
+    "name": "Salesforce",
+    "github": "salesforcecli",
+    "url": "https://www.salesforce.com"
+  },
+  "links": {
+    "repository": "https://github.com/salesforcecli/mcp",
+    "homepage": "https://www.salesforce.com",
+    "documentation": "https://github.com/salesforcecli/mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/salesforcecli/mcp/releases"
+}
