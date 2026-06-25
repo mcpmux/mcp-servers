@@ -1,0 +1,56 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "blazickjp.arxiv-mcp-uvx",
+  "name": "arXiv (uvx)",
+  "alias": "arxiv",
+  "description": "Search, download, and read arXiv research papers. Query arXiv with category/date filters, fetch papers as markdown, run citation-graph lookups, and watch topics for new publications. Downloaded papers are cached locally (default ~/.arxiv-mcp-server/papers; override with the --storage-path flag).",
+  "logo": "https://avatars.githubusercontent.com/u/15390319?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "documentation",
+    "search"
+  ],
+  "tags": [
+    "arxiv",
+    "research",
+    "papers",
+    "academic",
+    "science",
+    "search",
+    "citations"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "arxiv-mcp-server"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required. arXiv is queried over its public API. Papers are stored locally at ~/.arxiv-mcp-server/papers by default; to change the location, add \"--storage-path\" and a directory to the command arguments (e.g. args: [\"arxiv-mcp-server\", \"--storage-path\", \"/path/to/papers\"])."
+  },
+  "contributor": {
+    "name": "blazickjp",
+    "github": "blazickjp",
+    "url": "https://github.com/blazickjp/arxiv-mcp-server"
+  },
+  "links": {
+    "repository": "https://github.com/blazickjp/arxiv-mcp-server",
+    "homepage": "https://github.com/blazickjp/arxiv-mcp-server",
+    "documentation": "https://github.com/blazickjp/arxiv-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/blazickjp/arxiv-mcp-server/releases"
+}
