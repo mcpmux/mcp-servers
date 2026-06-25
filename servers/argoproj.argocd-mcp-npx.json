@@ -1,0 +1,84 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "argoproj.argocd-mcp-npx",
+  "name": "Argo CD (npx)",
+  "alias": "argocd",
+  "description": "Interact with Argo CD applications through natural language: list and inspect applications, sync deployments, view managed resources, events, and logs. Connects to your Argo CD instance via API token.",
+  "logo": "https://avatars.githubusercontent.com/u/49503628?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "argocd",
+    "argo-cd",
+    "gitops",
+    "kubernetes",
+    "cicd",
+    "deployment",
+    "devops"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "argocd-mcp@latest",
+      "stdio"
+    ],
+    "env": {
+      "ARGOCD_BASE_URL": "${input:ARGOCD_BASE_URL}",
+      "ARGOCD_API_TOKEN": "${input:ARGOCD_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ARGOCD_BASE_URL",
+          "label": "Argo CD Base URL",
+          "description": "The base URL of your Argo CD instance (e.g. https://argocd.example.com). The server connects to this endpoint's API.",
+          "type": "url",
+          "required": true,
+          "placeholder": "https://argocd.example.com"
+        },
+        {
+          "id": "ARGOCD_API_TOKEN",
+          "label": "Argo CD API Token",
+          "description": "API token for an Argo CD account with apiKey capability. Generate it under Settings > Accounts for a local account that has the apiKey capability enabled.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "eyJ****************************************",
+          "obtain": {
+            "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/",
+            "instructions": "1. Ensure the target account has the 'apiKey' capability (set 'accounts.<name>: apiKey' in the argocd-cm ConfigMap)\n2. In the Argo CD UI, go to Settings > Accounts\n3. Select your account and click 'Generate New' under Tokens\n4. (Optional) Set an expiration\n5. Click 'Generate' and copy the token\nAlternatively, run: argocd account generate-token --account <name>",
+            "button_label": "Generate Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an Argo CD API token under Settings > Accounts for an account that has the apiKey capability, or run 'argocd account generate-token'."
+  },
+  "contributor": {
+    "name": "Argo Project (argoproj-labs)",
+    "github": "argoproj-labs",
+    "url": "https://github.com/argoproj-labs/mcp-for-argocd"
+  },
+  "links": {
+    "repository": "https://github.com/argoproj-labs/mcp-for-argocd",
+    "homepage": "https://argoproj.github.io/cd/",
+    "documentation": "https://github.com/argoproj-labs/mcp-for-argocd#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/argoproj-labs/mcp-for-argocd/releases"
+}
