@@ -1,0 +1,92 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.paddle-mcp-npx",
+  "name": "Paddle (npx)",
+  "alias": "paddle",
+  "description": "Interact with the Paddle Billing API to manage products, prices, customers, subscriptions, transactions, and reporting. Runs locally via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/6573820?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "paddle",
+    "billing",
+    "payments",
+    "subscriptions",
+    "saas",
+    "commerce"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@paddle/paddle-mcp",
+      "--api-key=${input:PADDLE_API_KEY}",
+      "--environment=${input:PADDLE_ENVIRONMENT}"
+    ],
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PADDLE_API_KEY",
+          "label": "Paddle API Key",
+          "description": "Paddle Billing API key used to authenticate requests. Create one from your Paddle dashboard under Developer tools > Authentication. Use a sandbox key for the sandbox environment and a live key for production.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "pdl_live_****************************",
+          "obtain": {
+            "url": "https://vendors.paddle.com/authentication-v2",
+            "instructions": "1. Sign in to your Paddle dashboard\n2. Go to Developer tools > Authentication\n3. Click 'New API key' (or use an existing key)\n4. Copy the generated API key\n\nLive keys: https://vendors.paddle.com/authentication-v2\nSandbox keys: https://sandbox-vendors.paddle.com/authentication-v2",
+            "button_label": "Create API Key"
+          }
+        },
+        {
+          "id": "PADDLE_ENVIRONMENT",
+          "label": "Paddle Environment",
+          "description": "Which Paddle environment to target. Must match the type of API key you provide.",
+          "type": "select",
+          "required": true,
+          "default": "production",
+          "options": [
+            {
+              "value": "production",
+              "label": "Production",
+              "description": "Live Paddle environment (real billing)"
+            },
+            {
+              "value": "sandbox",
+              "label": "Sandbox",
+              "description": "Paddle sandbox environment for testing"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Paddle API key in your dashboard under Developer tools > Authentication (https://vendors.paddle.com/authentication-v2 for live, https://sandbox-vendors.paddle.com/authentication-v2 for sandbox)."
+  },
+  "contributor": {
+    "name": "Paddle",
+    "github": "PaddleHQ",
+    "url": "https://www.paddle.com"
+  },
+  "links": {
+    "repository": "https://github.com/PaddleHQ/paddle-mcp-server",
+    "homepage": "https://www.paddle.com",
+    "documentation": "https://developer.paddle.com"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/PaddleHQ/paddle-mcp-server/releases"
+}
