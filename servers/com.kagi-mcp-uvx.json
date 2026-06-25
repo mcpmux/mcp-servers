@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.kagi-mcp-uvx",
+  "name": "Kagi (uvx)",
+  "alias": "kagi",
+  "description": "Search the web with Kagi and extract page content as markdown. Provides web, news, video, podcast, and image search with optional page extracts, filters, and Kagi lenses.",
+  "logo": "https://avatars.githubusercontent.com/u/92134518?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "kagi",
+    "search",
+    "web-search",
+    "news",
+    "extract",
+    "markdown"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "kagimcp"
+    ],
+    "env": {
+      "KAGI_API_KEY": "${input:KAGI_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "KAGI_API_KEY",
+          "label": "Kagi API Key",
+          "description": "API key for the Kagi Search API. Generate one in the Kagi API portal under Settings. API access uses a pay-per-use model once beta credits are exhausted.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************",
+          "obtain": {
+            "url": "https://kagi.com/settings?p=api",
+            "instructions": "1. Sign in to your Kagi account\n2. Open Settings > API (the API portal)\n3. Click Generate Key to create an API key\n4. Copy the key and paste it here",
+            "button_label": "Generate API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a Kagi API key in the API portal at https://kagi.com/settings?p=api and set it as KAGI_API_KEY."
+  },
+  "contributor": {
+    "name": "Kagi",
+    "github": "kagisearch",
+    "url": "https://kagi.com"
+  },
+  "links": {
+    "repository": "https://github.com/kagisearch/kagimcp",
+    "homepage": "https://kagi.com",
+    "documentation": "https://help.kagi.com/kagi/api/overview.html"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/kagisearch/kagimcp/releases"
+}
