@@ -1,0 +1,104 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.ramp-mcp-uvx",
+  "name": "Ramp (uvx)",
+  "alias": "ramp",
+  "description": "Connect to the Ramp Developer API to retrieve and analyze corporate card transactions, reimbursements, bills, vendors, departments, limits, and spend programs. Loads Ramp financial data into an in-memory SQLite database for analysis by an LLM.",
+  "logo": "https://avatars.githubusercontent.com/u/149106637?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "ramp",
+    "finance",
+    "corporate-cards",
+    "spend-management",
+    "transactions",
+    "accounting"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "ramp-mcp",
+      "-s",
+      "transactions:read,reimbursements:read,bills:read,vendors:read,departments:read,locations:read,entities:read,limits:read,spend_programs:read,users:read"
+    ],
+    "env": {
+      "RAMP_CLIENT_ID": "${input:RAMP_CLIENT_ID}",
+      "RAMP_CLIENT_SECRET": "${input:RAMP_CLIENT_SECRET}",
+      "RAMP_ENV": "${input:RAMP_ENV}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "RAMP_CLIENT_ID",
+          "label": "Ramp Client ID",
+          "description": "Client ID of your Ramp developer app. Used with the client secret for the client-credentials OAuth flow against the Ramp Developer API.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "ramp_id_xxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://app.ramp.com/developer",
+            "instructions": "1. Sign in to Ramp\n2. Go to Profile (top right) > Developer\n3. Click 'Create app'\n4. Select the client-credentials grant and the scopes you need (e.g. transactions:read, reimbursements:read)\n5. Copy the Client ID",
+            "button_label": "Open Ramp Developer"
+          }
+        },
+        {
+          "id": "RAMP_CLIENT_SECRET",
+          "label": "Ramp Client Secret",
+          "description": "Client secret of your Ramp developer app, paired with the client ID for the client-credentials OAuth flow. Keep this secret.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "ramp_sec_************************",
+          "obtain": {
+            "url": "https://app.ramp.com/developer",
+            "instructions": "1. Sign in to Ramp\n2. Go to Profile (top right) > Developer\n3. Open (or create) your app\n4. Copy the Client Secret (shown once at creation)",
+            "button_label": "Open Ramp Developer"
+          }
+        },
+        {
+          "id": "RAMP_ENV",
+          "label": "Ramp Environment",
+          "description": "Which Ramp API environment to target.",
+          "type": "select",
+          "required": false,
+          "secret": false,
+          "default": "demo",
+          "options": [
+            { "value": "demo", "label": "Demo", "description": "Ramp demo/sandbox environment" },
+            { "value": "qa", "label": "QA", "description": "Ramp QA environment" },
+            { "value": "prd", "label": "Production", "description": "Ramp production environment (live data)" }
+          ]
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an app in the Ramp developer portal (Profile > Developer > Create app) using the client-credentials grant, then provide its Client ID and Client Secret."
+  },
+  "contributor": {
+    "name": "Ramp",
+    "github": "ramp-public",
+    "url": "https://ramp.com"
+  },
+  "links": {
+    "repository": "https://github.com/ramp-public/ramp-mcp",
+    "homepage": "https://ramp.com",
+    "documentation": "https://docs.ramp.com"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/ramp-public/ramp-mcp/releases"
+}
