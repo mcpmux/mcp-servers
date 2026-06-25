@@ -1,0 +1,98 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "isaacphi.gdrive-mcp-npx",
+  "name": "Google Drive (npx)",
+  "alias": "gdrive",
+  "description": "Search and read Google Drive files and read/update Google Sheets via OAuth. Provides gdrive_search, gdrive_read_file, gsheets_read, and gsheets_update_cell tools, plus gdrive:/// file resources.",
+  "logo": "https://avatars.githubusercontent.com/u/3385849?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "file-system",
+    "productivity"
+  ],
+  "tags": [
+    "google-drive",
+    "google-sheets",
+    "google",
+    "files",
+    "spreadsheets",
+    "oauth"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@isaacphi/mcp-gdrive"
+    ],
+    "env": {
+      "CLIENT_ID": "${input:CLIENT_ID}",
+      "CLIENT_SECRET": "${input:CLIENT_SECRET}",
+      "GDRIVE_CREDS_DIR": "${input:GDRIVE_CREDS_DIR}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CLIENT_ID",
+          "label": "Google OAuth Client ID",
+          "description": "OAuth 2.0 Client ID from a Google Cloud 'Desktop App' OAuth client. Enable the Google Drive API, Google Sheets API, and Google Docs API, then create OAuth credentials. Found in the Google Cloud Console under APIs & Services > Credentials.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. Open the Google Cloud Console and create or select a project\n2. Under APIs & Services > Library, enable the Google Drive API, Google Sheets API, and Google Docs API\n3. Configure the OAuth consent screen\n4. Under APIs & Services > Credentials, click 'Create Credentials' > 'OAuth client ID'\n5. Choose application type 'Desktop App'\n6. Copy the Client ID shown after creation",
+            "button_label": "Open Google Cloud Console"
+          }
+        },
+        {
+          "id": "CLIENT_SECRET",
+          "label": "Google OAuth Client Secret",
+          "description": "OAuth 2.0 Client Secret paired with the Client ID from your Google Cloud 'Desktop App' OAuth client. Found alongside the Client ID under APIs & Services > Credentials.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "GOCSPX-********************",
+          "obtain": {
+            "url": "https://console.cloud.google.com/apis/credentials",
+            "instructions": "1. Open the Google Cloud Console and select your project\n2. Go to APIs & Services > Credentials\n3. Open the OAuth 2.0 Client ID you created ('Desktop App')\n4. Copy the Client Secret value",
+            "button_label": "Open Google Cloud Console"
+          }
+        },
+        {
+          "id": "GDRIVE_CREDS_DIR",
+          "label": "Credentials Directory",
+          "description": "Absolute path to a writable directory where the server stores OAuth tokens and credentials. On first run a browser OAuth flow saves the token here. Place your downloaded OAuth keys file (renamed to gcp-oauth.keys.json) in this directory.",
+          "type": "directory_path",
+          "required": true,
+          "placeholder": "/path/to/config/directory"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Create a Google Cloud project, enable the Google Drive API, Google Sheets API, and Google Docs API, then create a 'Desktop App' OAuth 2.0 Client ID at https://console.cloud.google.com/apis/credentials. Provide the Client ID and Client Secret, and set a credentials directory. The first run opens a browser to authorize the drive.readonly and spreadsheets scopes and caches the token in that directory."
+  },
+  "contributor": {
+    "name": "isaacphi",
+    "github": "isaacphi",
+    "url": "https://github.com/isaacphi/mcp-gdrive"
+  },
+  "links": {
+    "repository": "https://github.com/isaacphi/mcp-gdrive",
+    "homepage": "https://github.com/isaacphi/mcp-gdrive",
+    "documentation": "https://github.com/isaacphi/mcp-gdrive#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/isaacphi/mcp-gdrive/releases"
+}
