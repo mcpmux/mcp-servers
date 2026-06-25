@@ -1,0 +1,88 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.oxylabs-mcp-uvx",
+  "name": "Oxylabs (uvx)",
+  "alias": "oxylabs",
+  "description": "Scrape any website with Oxylabs Web Scraper API. Extract clean, structured data from search engines, e-commerce sites, and any URL, bypassing geo-restrictions, CAPTCHAs, and anti-bot systems.",
+  "logo": "https://avatars.githubusercontent.com/u/43960873?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "web-scraping",
+    "scraper",
+    "search",
+    "serp",
+    "data-extraction",
+    "e-commerce",
+    "proxy"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "oxylabs-mcp"
+    ],
+    "env": {
+      "OXYLABS_USERNAME": "${input:OXYLABS_USERNAME}",
+      "OXYLABS_PASSWORD": "${input:OXYLABS_PASSWORD}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "OXYLABS_USERNAME",
+          "label": "Oxylabs Username",
+          "description": "Your Oxylabs Web Scraper API username (the API user, not your dashboard login).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "your_api_username",
+          "obtain": {
+            "url": "https://dashboard.oxylabs.io/",
+            "instructions": "1. Sign up or log in at the Oxylabs dashboard\n2. Open the Web Scraper API product\n3. Create or open an API user under that product\n4. Copy the API user's username",
+            "button_label": "Open Oxylabs Dashboard"
+          }
+        },
+        {
+          "id": "OXYLABS_PASSWORD",
+          "label": "Oxylabs Password",
+          "description": "Your Oxylabs Web Scraper API password for the API user.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************",
+          "obtain": {
+            "url": "https://dashboard.oxylabs.io/",
+            "instructions": "1. Sign up or log in at the Oxylabs dashboard\n2. Open the Web Scraper API product\n3. Create or open an API user under that product\n4. Copy the API user's password",
+            "button_label": "Open Oxylabs Dashboard"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create Web Scraper API user credentials in the Oxylabs dashboard (https://dashboard.oxylabs.io/) and provide the API username and password."
+  },
+  "contributor": {
+    "name": "Oxylabs",
+    "github": "oxylabs",
+    "url": "https://oxylabs.io"
+  },
+  "links": {
+    "repository": "https://github.com/oxylabs/oxylabs-mcp",
+    "homepage": "https://oxylabs.io",
+    "documentation": "https://github.com/oxylabs/oxylabs-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/oxylabs/oxylabs-mcp/releases"
+}
