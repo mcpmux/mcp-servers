@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.fal-mcp",
+  "name": "fal.ai",
+  "alias": "fal",
+  "description": "Search, run, and chain 1,000+ generative AI models (image, video, audio, music) from fal.ai's hosted MCP endpoint. Exposes model discovery, schema/pricing lookup, job execution, and file upload tools.",
+  "logo": "https://avatars.githubusercontent.com/u/74778219?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml"
+  ],
+  "tags": [
+    "fal",
+    "fal-ai",
+    "generative-ai",
+    "image-generation",
+    "video-generation",
+    "audio",
+    "models"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.fal.ai/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:FAL_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "FAL_KEY",
+          "label": "fal API Key",
+          "description": "Your fal.ai API key. Sent per request in the Authorization header; used to authenticate and bill model runs against your account.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********",
+          "obtain": {
+            "url": "https://fal.ai/dashboard/keys",
+            "instructions": "1. Go to fal.ai/dashboard/keys\n2. Sign up or log in\n3. Create a new API key\n4. Copy the key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a fal API key at https://fal.ai/dashboard/keys and provide it as FAL_KEY. It is sent as 'Authorization: Bearer <FAL_KEY>'."
+  },
+  "contributor": {
+    "name": "fal.ai",
+    "github": "fal-ai",
+    "url": "https://fal.ai"
+  },
+  "links": {
+    "homepage": "https://fal.ai",
+    "documentation": "https://fal.ai/docs/documentation/setting-up/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
