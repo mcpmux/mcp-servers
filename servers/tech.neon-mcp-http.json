@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "tech.neon-mcp-http",
+  "name": "Neon (Remote)",
+  "alias": "neon",
+  "description": "Manage Neon serverless Postgres projects, branches, schemas, and run SQL queries and migrations through Neon's official hosted remote MCP server. Authenticates via OAuth in your browser, no API key or local setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/77690634?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "neon",
+    "postgres",
+    "postgresql",
+    "serverless",
+    "database",
+    "sql",
+    "branches",
+    "migrations"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.neon.tech/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your Neon account. No API key setup needed."
+  },
+  "contributor": {
+    "name": "Neon",
+    "github": "neondatabase",
+    "url": "https://neon.tech"
+  },
+  "links": {
+    "repository": "https://github.com/neondatabase/mcp-server-neon",
+    "homepage": "https://neon.tech",
+    "documentation": "https://neon.com/docs/ai/neon-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/neondatabase/mcp-server-neon/releases"
+}
