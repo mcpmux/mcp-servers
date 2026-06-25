@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.deepgram-mcp-uvx",
+  "name": "Deepgram (uvx)",
+  "alias": "deepgram",
+  "description": "Connect to Deepgram's speech-to-text, text-to-speech, and audio intelligence APIs. Tools are fetched from Deepgram's API at runtime, so new capabilities appear without a package upgrade.",
+  "logo": "https://avatars.githubusercontent.com/u/17422641?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml"
+  ],
+  "tags": [
+    "deepgram",
+    "speech-to-text",
+    "text-to-speech",
+    "transcription",
+    "voice",
+    "audio",
+    "ai-ml"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "deepgram-mcp"
+    ],
+    "env": {
+      "DEEPGRAM_API_KEY": "${input:DEEPGRAM_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DEEPGRAM_API_KEY",
+          "label": "Deepgram API Key",
+          "description": "API key used to authenticate with the Deepgram API. Create one in the Deepgram console.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://console.deepgram.com",
+            "instructions": "1. Sign in to the Deepgram console at https://console.deepgram.com\n2. Open the API Keys section\n3. Create a new API key\n4. Copy the key and paste it here",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a Deepgram API key in the console at https://console.deepgram.com and provide it as DEEPGRAM_API_KEY."
+  },
+  "contributor": {
+    "name": "Deepgram",
+    "github": "deepgram",
+    "url": "https://deepgram.com"
+  },
+  "links": {
+    "repository": "https://github.com/deepgram/mcp",
+    "homepage": "https://deepgram.com",
+    "documentation": "https://github.com/deepgram/mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/deepgram/mcp/releases"
+}
