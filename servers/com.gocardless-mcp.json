@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.gocardless-mcp",
+  "name": "GoCardless",
+  "alias": "gocardless",
+  "description": "Connect to GoCardless's official hosted MCP server to manage payments, customers, mandates, and payouts. Authenticates via a browser OAuth sign-in where you pick your environment (Sandbox or Live) and the permissions to grant - no API keys are shared with the LLM.",
+  "logo": "https://avatars.githubusercontent.com/u/790629?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "gocardless",
+    "payments",
+    "fintech",
+    "bank-payments",
+    "direct-debit",
+    "billing"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.gocardless.com",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser. A GoCardless sign-in journey opens where you choose your environment (Sandbox or Live), sign in, and select the permissions to authorise. No API keys or tokens are shared with the LLM. To switch environments, disconnect and reconnect."
+  },
+  "contributor": {
+    "name": "GoCardless",
+    "github": "gocardless",
+    "url": "https://gocardless.com"
+  },
+  "links": {
+    "homepage": "https://gocardless.com",
+    "documentation": "https://developer.gocardless.com/developer-tools/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
