@@ -1,0 +1,98 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "delorenj.trello-mcp-npx",
+  "name": "Trello (npx)",
+  "alias": "trello",
+  "description": "Manage Trello boards, lists, cards, comments, attachments, checklists, and custom fields via the Trello REST API. Provides 40+ tools with built-in rate limiting and workspace navigation.",
+  "logo": "https://avatars.githubusercontent.com/u/242611?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "trello",
+    "kanban",
+    "boards",
+    "cards",
+    "project-management",
+    "productivity"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@delorenj/mcp-server-trello"
+    ],
+    "env": {
+      "TRELLO_API_KEY": "${input:TRELLO_API_KEY}",
+      "TRELLO_TOKEN": "${input:TRELLO_TOKEN}",
+      "TRELLO_BOARD_ID": "${input:TRELLO_BOARD_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TRELLO_API_KEY",
+          "label": "Trello API Key",
+          "description": "Your Trello API key. Obtain it from the Trello Power-Ups admin / app-key page while logged in.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************",
+          "obtain": {
+            "url": "https://trello.com/app-key",
+            "instructions": "1. Log in to Trello\n2. Open https://trello.com/app-key\n3. Copy the API Key shown at the top of the page",
+            "button_label": "Get API Key"
+          }
+        },
+        {
+          "id": "TRELLO_TOKEN",
+          "label": "Trello Token",
+          "description": "Trello API token generated from your API key. Grants the server access to act on your behalf.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "********************************************************************",
+          "obtain": {
+            "url": "https://trello.com/app-key",
+            "instructions": "1. Open https://trello.com/app-key\n2. Under the API Key, click the 'Token' link (Manually generate a Token)\n3. Approve the requested permissions\n4. Copy the generated token",
+            "button_label": "Generate Token"
+          }
+        },
+        {
+          "id": "TRELLO_BOARD_ID",
+          "label": "Default Board ID",
+          "description": "Optional default Trello board ID (deprecated). Can be omitted and changed at runtime via the set_active_board tool.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "5f1d2c3b4a5e6f7a8b9c0d1e"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get your API key at https://trello.com/app-key, then generate a token from that page (Manually generate a Token) and approve the requested permissions."
+  },
+  "contributor": {
+    "name": "delorenj",
+    "github": "delorenj",
+    "url": "https://github.com/delorenj/mcp-server-trello"
+  },
+  "links": {
+    "repository": "https://github.com/delorenj/mcp-server-trello",
+    "homepage": "https://github.com/delorenj/mcp-server-trello",
+    "documentation": "https://github.com/delorenj/mcp-server-trello#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/delorenj/mcp-server-trello/releases"
+}
