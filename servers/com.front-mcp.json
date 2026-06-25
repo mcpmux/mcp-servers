@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.front-mcp",
+  "name": "Front",
+  "alias": "front",
+  "description": "Connect to Front's customer communication platform through its official hosted remote MCP server. Read and act on conversations, inboxes, contacts, tags, and teammates: search and read conversations, add comments and tags, and draft replies. Authenticates via OAuth in your browser, no local setup required.",
+  "logo": "https://avatars.githubusercontent.com/u/3025797?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "front",
+    "customer-communication",
+    "support",
+    "email",
+    "inbox",
+    "helpdesk",
+    "conversations"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.frontapp.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 + PKCE in your browser using your Front account. The agent acts with exactly your teammate permissions. No token setup needed."
+  },
+  "contributor": {
+    "name": "Front",
+    "github": "frontapp",
+    "url": "https://front.com"
+  },
+  "links": {
+    "homepage": "https://front.com",
+    "documentation": "https://dev.frontapp.com/docs/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
