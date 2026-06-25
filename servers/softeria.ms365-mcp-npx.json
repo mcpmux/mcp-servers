@@ -1,0 +1,88 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "softeria.ms365-mcp-npx",
+  "name": "Microsoft 365 (npx)",
+  "alias": "ms365",
+  "description": "Connects to Microsoft 365 and Office services (Outlook mail, calendar, OneDrive, Excel, OneNote, To Do, Teams, SharePoint) through the Microsoft Graph API. Signs in with an interactive device-code login using the built-in app; no static secret required.",
+  "logo": "https://avatars.githubusercontent.com/u/33659169?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "communication"
+  ],
+  "tags": [
+    "microsoft-365",
+    "outlook",
+    "office",
+    "microsoft-graph",
+    "email",
+    "calendar",
+    "onedrive",
+    "excel",
+    "teams",
+    "sharepoint"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@softeria/ms-365-mcp-server"
+    ],
+    "env": {
+      "MS365_MCP_CLIENT_ID": "${input:MS365_MCP_CLIENT_ID}",
+      "MS365_MCP_TENANT_ID": "${input:MS365_MCP_TENANT_ID}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MS365_MCP_CLIENT_ID",
+          "label": "Azure App Client ID (optional)",
+          "description": "Optional. Leave blank to use the built-in Softeria app with interactive device-code login. Set this only if you want to use your own custom Azure App Registration (Application/client ID).",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "00000000-0000-0000-0000-000000000000",
+          "obtain": {
+            "url": "https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade",
+            "instructions": "Optional - only for a custom Azure app:\n1. Open Azure Portal > Microsoft Entra ID > App registrations\n2. Register (or open) an application\n3. Copy the Application (client) ID\n4. Paste it here",
+            "button_label": "Open Azure Portal"
+          }
+        },
+        {
+          "id": "MS365_MCP_TENANT_ID",
+          "label": "Azure Tenant ID (optional)",
+          "description": "Optional. Defaults to 'common'. Only set if using a custom Azure app. Use your directory (tenant) ID, or 'consumers' for personal Microsoft accounts, or 'organizations' for work/school accounts.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "common"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates with Microsoft Graph via OAuth device-code flow. Works out of the box: call the 'login' tool to get a URL and code, sign in at https://microsoft.com/devicelogin, then confirm with the 'verify-login' tool. Tokens are cached in the OS credential store. No static secret is required; optionally supply your own Azure app via MS365_MCP_CLIENT_ID / MS365_MCP_TENANT_ID."
+  },
+  "contributor": {
+    "name": "Softeria",
+    "github": "Softeria",
+    "url": "https://github.com/Softeria/ms-365-mcp-server"
+  },
+  "links": {
+    "repository": "https://github.com/Softeria/ms-365-mcp-server",
+    "homepage": "https://github.com/Softeria/ms-365-mcp-server",
+    "documentation": "https://github.com/Softeria/ms-365-mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/Softeria/ms-365-mcp-server/releases"
+}
