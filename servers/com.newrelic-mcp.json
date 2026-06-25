@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.newrelic-mcp",
+  "name": "New Relic",
+  "alias": "newrelic",
+  "description": "Query and analyze your New Relic observability data through New Relic's official hosted remote MCP server. Run NRQL queries, inspect dashboards, alerts, APM, and entity data. Authenticates with a New Relic User API key sent via the Api-Key header.",
+  "logo": "https://avatars.githubusercontent.com/u/31739?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "new-relic",
+    "observability",
+    "monitoring",
+    "apm",
+    "nrql",
+    "telemetry"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.newrelic.com/mcp/",
+    "headers": {
+      "Api-Key": "${input:NEW_RELIC_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "NEW_RELIC_API_KEY",
+          "label": "New Relic User API Key",
+          "description": "A New Relic User API key (starts with NRAK-). The MCP server inherits this user's role-based permissions and account context. If your account is in the EU region, use the EU endpoint https://mcp.eu.newrelic.com/mcp/ instead.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "NRAK-****************************",
+          "obtain": {
+            "url": "https://one.newrelic.com/admin-portal/api-keys/home",
+            "instructions": "1. Log in to New Relic\n2. Open the user menu and choose API keys\n3. Create a new User key (or copy an existing one)\n4. Copy the key (format NRAK-...)",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a New Relic User API key (NRAK-...) from API keys in your New Relic account and provide it as the Api-Key header. The server inherits your user's permissions."
+  },
+  "contributor": {
+    "name": "New Relic",
+    "github": "newrelic",
+    "url": "https://newrelic.com"
+  },
+  "links": {
+    "repository": "https://github.com/newrelic/mcp-server",
+    "homepage": "https://newrelic.com",
+    "documentation": "https://docs.newrelic.com/docs/agentic-ai/mcp/overview/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
