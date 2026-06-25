@@ -1,0 +1,100 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.starrocks-mcp-uvx",
+  "name": "StarRocks (uvx)",
+  "alias": "starrocks",
+  "description": "Query and explore StarRocks databases. Run read and write SQL, inspect query plans, generate Plotly charts, and browse table and database overviews.",
+  "logo": "https://avatars.githubusercontent.com/u/88238841?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "database"
+  ],
+  "tags": [
+    "starrocks",
+    "database",
+    "sql",
+    "analytics",
+    "olap",
+    "data-warehouse"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-server-starrocks"
+    ],
+    "env": {
+      "STARROCKS_HOST": "${input:STARROCKS_HOST}",
+      "STARROCKS_PORT": "${input:STARROCKS_PORT}",
+      "STARROCKS_USER": "${input:STARROCKS_USER}",
+      "STARROCKS_PASSWORD": "${input:STARROCKS_PASSWORD}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "STARROCKS_HOST",
+          "label": "StarRocks Host",
+          "description": "Hostname or IP of your StarRocks FE (frontend) node.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "localhost",
+          "placeholder": "localhost"
+        },
+        {
+          "id": "STARROCKS_PORT",
+          "label": "StarRocks Port",
+          "description": "MySQL protocol query port of the StarRocks FE node.",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": "9030",
+          "placeholder": "9030"
+        },
+        {
+          "id": "STARROCKS_USER",
+          "label": "StarRocks User",
+          "description": "Username for connecting to StarRocks.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "default": "root",
+          "placeholder": "root"
+        },
+        {
+          "id": "STARROCKS_PASSWORD",
+          "label": "StarRocks Password",
+          "description": "Password for the StarRocks user. Leave empty for instances without a password.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "*************"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Provide your StarRocks FE connection details (host, port, user, password). Password may be empty for local instances configured without authentication."
+  },
+  "contributor": {
+    "name": "StarRocks",
+    "github": "StarRocks",
+    "url": "https://www.starrocks.io"
+  },
+  "links": {
+    "repository": "https://github.com/StarRocks/mcp-server-starrocks",
+    "homepage": "https://www.starrocks.io",
+    "documentation": "https://github.com/StarRocks/mcp-server-starrocks#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/StarRocks/mcp-server-starrocks/releases"
+}
