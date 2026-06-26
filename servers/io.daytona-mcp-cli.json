@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.daytona-mcp-cli",
+  "name": "Daytona (CLI)",
+  "alias": "daytona",
+  "description": "Manage Daytona sandboxes from AI agents: create and control sandboxes, run commands and code in isolated environments, perform file and git operations, and generate preview links. Runs via the official MCP server shipped in the Daytona CLI.",
+  "logo": "https://avatars.githubusercontent.com/u/130513197?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "daytona",
+    "sandbox",
+    "cli",
+    "code-execution",
+    "developer-tools",
+    "cloud-development"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "daytona",
+    "args": [
+      "mcp",
+      "start"
+    ]
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Install the Daytona CLI and authenticate (`daytona login`); the MCP server uses your local Daytona credentials."
+  },
+  "contributor": {
+    "name": "Daytona",
+    "github": "daytonaio",
+    "url": "https://www.daytona.io"
+  },
+  "links": {
+    "repository": "https://github.com/daytonaio/daytona",
+    "homepage": "https://www.daytona.io",
+    "documentation": "https://www.daytona.io/docs/en/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/daytonaio/daytona/releases"
+}
