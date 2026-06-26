@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.fly-mcp-cli",
+  "name": "Fly.io (CLI)",
+  "alias": "flyio",
+  "description": "Official Fly.io MCP server shipped in the flyctl CLI. Exposes flyctl commands as MCP tools to provision and manage Fly.io apps, machines, volumes, secrets, certificates, and organizations using your local Fly.io login.",
+  "logo": "https://avatars.githubusercontent.com/u/22525303?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud"
+  ],
+  "tags": [
+    "fly.io",
+    "flyctl",
+    "cloud",
+    "deployment",
+    "infrastructure",
+    "cli"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "fly",
+    "args": [
+      "mcp",
+      "server"
+    ]
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Install the flyctl CLI and run `fly auth login` first; the MCP server uses your local Fly.io credentials. No API key needed."
+  },
+  "contributor": {
+    "name": "Fly.io",
+    "github": "superfly",
+    "url": "https://fly.io"
+  },
+  "links": {
+    "repository": "https://github.com/superfly/flyctl",
+    "homepage": "https://fly.io",
+    "documentation": "https://fly.io/docs/mcp/flyctl-server/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/superfly/flyctl/releases"
+}
