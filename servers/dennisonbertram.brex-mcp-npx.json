@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dennisonbertram.brex-mcp-npx",
+  "name": "Brex (npx)",
+  "alias": "brex",
+  "description": "Connect to the Brex API to query accounts, transactions, expenses, budgets, spend limits, and statements, plus write operations like uploading and matching receipts. Runs locally via npx.",
+  "logo": "https://avatars.githubusercontent.com/u/228482372?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "brex",
+    "finance",
+    "expenses",
+    "transactions",
+    "budgets",
+    "accounting"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-brex"
+    ],
+    "env": {
+      "BREX_API_KEY": "${input:BREX_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BREX_API_KEY",
+          "label": "Brex API Token",
+          "description": "Developer API token from your Brex dashboard, used to authenticate against the Brex API.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "************************************",
+          "obtain": {
+            "url": "https://dashboard.brex.com/",
+            "instructions": "1. Sign in to the Brex dashboard\n2. Open Settings > Developer (Developer API)\n3. Create a new API token\n4. Copy the generated token",
+            "button_label": "Open Brex Dashboard"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a developer API token in the Brex dashboard under Settings > Developer and provide it as BREX_API_KEY."
+  },
+  "contributor": {
+    "name": "dennisonbertram",
+    "github": "dennisonbertram",
+    "url": "https://github.com/dennisonbertram/mcp-brex"
+  },
+  "links": {
+    "repository": "https://github.com/dennisonbertram/mcp-brex",
+    "homepage": "https://github.com/dennisonbertram/mcp-brex"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/dennisonbertram/mcp-brex/releases"
+}
