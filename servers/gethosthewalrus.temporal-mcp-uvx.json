@@ -1,0 +1,124 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "gethosthewalrus.temporal-mcp-uvx",
+  "name": "Temporal (uvx)",
+  "alias": "temporal",
+  "description": "Manage Temporal workflows through natural language. Start, query, signal, cancel and inspect workflow executions, run batch operations, and manage schedules on a self-hosted Temporal cluster or Temporal Cloud.",
+  "logo": "https://avatars.githubusercontent.com/u/7661715?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "temporal",
+    "workflow",
+    "orchestration",
+    "durable-execution",
+    "workflow-engine",
+    "schedules"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "temporal-mcp-server"
+    ],
+    "env": {
+      "TEMPORAL_HOST": "${input:TEMPORAL_HOST}",
+      "TEMPORAL_NAMESPACE": "${input:TEMPORAL_NAMESPACE}",
+      "TEMPORAL_API_KEY": "${input:TEMPORAL_API_KEY}",
+      "TEMPORAL_TLS_ENABLED": "${input:TEMPORAL_TLS_ENABLED}",
+      "TEMPORAL_TLS_CLIENT_CERT_PATH": "${input:TEMPORAL_TLS_CLIENT_CERT_PATH}",
+      "TEMPORAL_TLS_CLIENT_KEY_PATH": "${input:TEMPORAL_TLS_CLIENT_KEY_PATH}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "TEMPORAL_HOST",
+          "label": "Temporal Host",
+          "description": "Temporal frontend address as host:port. Use localhost:7233 for a local cluster, or your Temporal Cloud gRPC endpoint such as <namespace>.<account>.tmprl.cloud:7233.",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "localhost:7233",
+          "default": "localhost:7233"
+        },
+        {
+          "id": "TEMPORAL_NAMESPACE",
+          "label": "Temporal Namespace",
+          "description": "Namespace to connect to. Defaults to 'default' for local clusters; on Temporal Cloud use your namespace id (e.g. my-namespace.a1b2c).",
+          "type": "text",
+          "required": true,
+          "secret": false,
+          "placeholder": "default",
+          "default": "default"
+        },
+        {
+          "id": "TEMPORAL_API_KEY",
+          "label": "Temporal Cloud API Key",
+          "description": "Temporal Cloud API key. Leave empty for a local/self-hosted cluster without auth. When set, TLS is enabled automatically.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "tmprl_*********************************",
+          "obtain": {
+            "url": "https://cloud.temporal.io/settings/api-keys",
+            "instructions": "1. Sign in to Temporal Cloud\n2. Go to Settings > API Keys\n3. Generate a new API key\n4. Copy the key value (shown only once)",
+            "button_label": "Create API Key"
+          }
+        },
+        {
+          "id": "TEMPORAL_TLS_ENABLED",
+          "label": "Enable TLS",
+          "description": "Set to true to force TLS. Leave empty to auto-detect (TLS turns on automatically when an API key or mTLS cert/key is provided).",
+          "type": "boolean",
+          "required": false,
+          "secret": false,
+          "placeholder": "false"
+        },
+        {
+          "id": "TEMPORAL_TLS_CLIENT_CERT_PATH",
+          "label": "mTLS Client Certificate Path",
+          "description": "Path to the client certificate (PEM) for mTLS authentication. Use this instead of an API key when connecting with client certificates. Leave empty if not using mTLS.",
+          "type": "file_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "/path/to/client.pem"
+        },
+        {
+          "id": "TEMPORAL_TLS_CLIENT_KEY_PATH",
+          "label": "mTLS Client Key Path",
+          "description": "Path to the client private key (PEM) for mTLS authentication. Pair with the client certificate. Leave empty if not using mTLS.",
+          "type": "file_path",
+          "required": false,
+          "secret": false,
+          "placeholder": "/path/to/client.key"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "No auth is needed for a local Temporal cluster. For Temporal Cloud, provide a Temporal Cloud API key (TLS enables automatically), or use mTLS by providing the client certificate and key paths."
+  },
+  "contributor": {
+    "name": "Michael Toscano",
+    "github": "GethosTheWalrus",
+    "url": "https://github.com/GethosTheWalrus/temporal-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/GethosTheWalrus/temporal-mcp",
+    "homepage": "https://temporal.io",
+    "documentation": "https://github.com/GethosTheWalrus/temporal-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/GethosTheWalrus/temporal-mcp/releases"
+}
