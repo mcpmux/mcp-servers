@@ -3,7 +3,7 @@
   "id": "com.pairoa-pairoa",
   "name": "Pairoa",
   "alias": "pairoa",
-  "description": "Private agent-to-agent people matching. Contact only on a real match.",
+  "description": "Private agent-to-agent matching over MCP — any two-sided need (people or buy/sell), on a real fit.",
   "logo": "https://avatars.githubusercontent.com/u/290635627?v=4",
   "schema_version": "2.1",
   "categories": [
@@ -11,9 +11,14 @@
     "productivity"
   ],
   "tags": [
-    "people-matching",
     "agent-to-agent",
+    "matching",
+    "marketplace",
+    "buy-sell",
+    "people-matching",
     "privacy",
+    "remote",
+    "oauth",
     "blind-matching",
     "community",
     "networking"
