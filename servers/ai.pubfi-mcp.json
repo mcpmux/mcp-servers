@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.pubfi-mcp",
+  "name": "PubFi MCP",
+  "alias": "pubfi",
+  "description": "Route crypto data needs through PubFi capability and gateway tools.",
+  "logo": "https://avatars.githubusercontent.com/u/184483802?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "developer-tools"
+  ],
+  "tags": [
+    "pubfi",
+    "crypto",
+    "web3",
+    "data-api",
+    "agents",
+    "routing",
+    "streamable-http"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.pubfi.ai",
+    "headers": {
+      "Authorization": "Bearer ${input:PUBFI_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "PUBFI_API_KEY",
+          "label": "PubFi API Key",
+          "description": "PubFi API key used to authenticate hosted MCP tool calls.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "PUBFI_API_KEY",
+          "obtain": {
+            "url": "https://pubfi.ai/#plans",
+            "instructions": "1. Open the PubFi plans or contact section\n2. Request API access for your workspace\n3. Copy the PubFi API key after access is provisioned",
+            "button_label": "Request Access"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "PubFi MCP requires a PubFi API key sent as an Authorization: Bearer header. Request API access from PubFi if your workspace is not provisioned yet."
+  },
+  "contributor": {
+    "name": "PubFi",
+    "github": "helixbox",
+    "url": "https://pubfi.ai"
+  },
+  "links": {
+    "repository": "https://github.com/helixbox/pubfi-docs",
+    "homepage": "https://pubfi.ai",
+    "documentation": "https://pubfi.ai/agents.md"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
