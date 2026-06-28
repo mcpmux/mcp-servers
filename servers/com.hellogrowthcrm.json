@@ -1,0 +1,60 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.hellogrowthcrm",
+  "name": "HelloGrowthCRM",
+  "alias": "hellogrowthcrm",
+  "description": "Connects to HelloGrowthCRM, an AI-powered CRM for small business sales teams with lead scoring, built-in dialer, WhatsApp/SMS, email automation, and forecasting.",
+  "logo": "https://hellogrowthcrm.com/HelloGrowthCRM_LIGHT_560.webp",
+  "schema_version": "2.1",
+  "categories": ["productivity", "communication"],
+  "tags": ["crm", "sales", "lead-scoring", "dialer", "email-automation", "revops", "forecasting"],
+
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.hellogrowthcrm.com/mcp",
+    "metadata": {
+      "inputs": [
+        {
+          "id": "HELLOGROWTHCRM_API_KEY",
+          "label": "HelloGrowthCRM API Key",
+          "description": "API key from your HelloGrowthCRM workspace settings.",
+          "type": "password",
+          "required": true,
+          "secret": true,
+          "placeholder": "hgc_xxxxxxxx",
+          "obtain": {
+            "url": "https://hellogrowthcrm.com",
+            "instructions": "1. Sign in to HelloGrowthCRM\n2. Open Settings > API Keys\n3. Generate a key and copy it",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate an API key in your HelloGrowthCRM workspace settings."
+  },
+
+  "contributor": {
+    "name": "HelloGrowthCRM",
+    "github": "hellogrowthcrm",
+    "url": "https://hellogrowthcrm.com"
+  },
+
+  "links": {
+    "repository": "https://github.com/hellogrowthcrm",
+    "homepage": "https://hellogrowthcrm.com",
+    "documentation": "https://hellogrowthcrm.com"
+  },
+
+  "platforms": ["all"],
+
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
