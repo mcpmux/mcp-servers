@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+    "id": "com.propfirmdealfinder-mcp-npx",
+      "name": "Prop Firm Deal Finder",
+        "alias": "propfirmdealfinder",
+          "description": "Query live discount codes across 20+ prop trading firms, compare challenges, and find the cheapest funded trading evaluations. Free, no API key needed.",
+            "icon": "💰",
+              "schema_version": "2.1",
+                "categories": ["finance"],
+                  "tags": ["prop-firm", "trading", "discount-codes", "futures", "forex", "funded-trading", "prop-trading"],
+
+                    "transport": {
+                        "type": "stdio",
+                            "command": "npx",
+                                "args": ["propfirmdealfinder-mcp-server"],
+                                    "metadata": {
+                                          "inputs": []
+                                              }
+                                                },
+
+                                                  "auth": {
+                                                      "type": "none"
+                                                        },
+
+                                                          "contributor": {
+                                                              "name": "KOJI",
+                                                                  "github": "chrisbusbin-pixel",
+                                                                      "url": "https://propfirmdealfinder.com"
+                                                                        },
+
+                                                                          "links": {
+                                                                              "repository": "https://github.com/chrisbusbin-pixel/propfirmdealfinder-mcp-server",
+                                                                                  "homepage": "https://propfirmdealfinder.com",
+                                                                                      "documentation": "https://github.com/chrisbusbin-pixel/propfirmdealfinder-mcp-server#readme"
+                                                                                        },
+
+                                                                                          "platforms": ["all"],
+
+                                                                                            "capabilities": {
+                                                                                                "tools": true,
+                                                                                                    "resources": false,
+                                                                                                        "prompts": false,
+                                                                                                            "read_only_mode": true
+                                                                                                              }
+                                                                                                              }
