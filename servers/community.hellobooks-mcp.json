@@ -1,0 +1,47 @@
+{
+    "$schema": "../schemas/server-definition.schema.json",
+    "id": "community.hellobooks-mcp",
+    "name": "HelloBooks MCP",
+    "alias": "hellobooks",
+    "description": "Accounting and bookkeeping agent for syncing clients, hours, invoices, and payroll.",
+    "logo": "https://avatars.githubusercontent.com/u/7734982?v=4",
+    "schema_version": "2.1",
+    "categories": [
+          "productivity"
+    ],
+    "tags": [
+          "accounting",
+          "bookkeeping",
+          "invoices",
+          "payroll",
+          "finance"
+    ],
+    "transport": {
+          "type": "http",
+          "url": "https://agents.hellobooks.ai/",
+          "metadata": {
+                  "inputs": []
+          }
+    },
+    "auth": {
+          "type": "api_key",
+          "instructions": "Sign in at https://hellobooks.ai to obtain your API key."
+    },
+    "contributor": {
+          "name": "HelloBooks",
+          "github": "hellobooks",
+          "url": "https://hellobooks.ai"
+    },
+    "links": {
+          "homepage": "https://hellobooks.ai"
+    },
+    "platforms": [
+          "all"
+    ],
+    "capabilities": {
+          "tools": true,
+          "resources": false,
+          "prompts": false,
+          "read_only_mode": false
+    }
+}
