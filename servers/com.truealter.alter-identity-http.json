@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.truealter.alter-identity-http",
+  "name": "ALTER Identity",
+  "alias": "alter-identity",
+  "description": "Identity infrastructure for the AI economy. 33-trait psychometric engine delivering verified human identity via MCP — belonging probability, trait vectors, attunement depth, and privacy-gated inference. Free tier: 16 tools, 10 req/min, 100 req/day.",
+  "icon": "https://truealter.com/favicon.ico",
+  "schema_version": "2.1",
+  "categories": [
+    "security",
+    "ai-ml"
+  ],
+  "tags": [
+    "identity",
+    "psychometrics",
+    "assessment",
+    "belonging",
+    "privacy",
+    "remote",
+    "streamable-http"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.truealter.com/api/v1/mcp",
+    "headers": {
+      "X-ALTER-API-Key": "${input:ALTER_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ALTER_API_KEY",
+          "label": "ALTER API Key (optional)",
+          "description": "Optional API key for premium tier access. Free tier (16 tools, 10 req/min, 100 req/day) works without any API key.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "ak_...",
+          "obtain": {
+            "url": "https://truealter.com",
+            "instructions": "Sign up at truealter.com to get a premium API key. Free tier requires no credentials.",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Free tier requires no API key. For premium access, obtain a key at https://truealter.com"
+  },
+  "contributor": {
+    "name": "ALTER",
+    "github": "true-alter",
+    "url": "https://truealter.com"
+  },
+  "links": {
+    "repository": "https://github.com/true-alter/alter-identity",
+    "homepage": "https://truealter.com",
+    "documentation": "https://github.com/true-alter/alter-identity#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
