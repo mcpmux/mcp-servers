@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.taskade-mcp",
+  "name": "Taskade",
+  "alias": "taskade",
+  "description": "Connect AI clients to Taskade workspaces, projects, and tasks through Taskade's hosted MCP server.",
+  "logo": "https://avatars.githubusercontent.com/u/25668295?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "taskade",
+    "project-management",
+    "tasks",
+    "workspace",
+    "productivity",
+    "collaboration"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://www.taskade.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth 2.0 with PKCE. Your MCP host will open a browser to authorize access to your Taskade account. An unauthenticated initialize request returns 401 until OAuth completes, which is expected."
+  },
+  "contributor": {
+    "name": "Taskade",
+    "github": "taskade",
+    "url": "https://www.taskade.com"
+  },
+  "links": {
+    "repository": "https://github.com/taskade/mcp",
+    "homepage": "https://www.taskade.com/mcp",
+    "documentation": "https://www.taskade.com/docs/mcp/hosted-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
