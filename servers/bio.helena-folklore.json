@@ -3,7 +3,7 @@
   "id": "bio.helena-folklore",
   "name": "Folklore Clinical Variant Interpretation MCP",
   "alias": "folklore",
-  "description": "Retrieve public clinical variant evidence, ACMG and AMP evidence, and supporting biomedical literature",
+  "description": "Bioinformatics MCP for genomic variant interpretation, gene-disease evidence and literature.",
   "schema_version": "2.1",
   "categories": [
     "search",
