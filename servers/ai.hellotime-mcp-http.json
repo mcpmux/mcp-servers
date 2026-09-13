@@ -1,0 +1,49 @@
+{
+    "$schema": "../schemas/server-definition.schema.json",
+    "id": "ai.hellotime-mcp-http",
+    "name": "HelloTime MCP",
+    "alias": "hellotime",
+    "description": "HelloTime MCP server for workforce management — time tracking, attendance, productivity, payroll and timesheets.",
+    "logo": "https://hellotime.ai/favicon.ico",
+    "schema_version": "2.1",
+    "categories": [
+          "productivity"
+    ],
+    "tags": [
+          "time-tracking",
+          "attendance",
+          "workforce-management",
+          "payroll",
+          "timesheets",
+          "productivity"
+    ],
+    "transport": {
+          "type": "http",
+          "url": "https://mcp.hellotime.ai/",
+          "metadata": {
+                  "inputs": []
+          }
+    },
+    "auth": {
+          "type": "api_key",
+          "instructions": "Provide your HelloTime API key to authenticate."
+    },
+    "contributor": {
+          "name": "Meru-Fin-Tech",
+          "github": "Meru-Fin-Tech",
+          "url": "https://hellotime.ai"
+    },
+    "links": {
+          "repository": "https://github.com/Meru-Fin-Tech/HelloTime-MCP-Public",
+          "homepage": "https://hellotime.ai"
+    },
+    "platforms": [
+          "all"
+    ],
+    "capabilities": {
+          "tools": true,
+          "resources": false,
+          "prompts": false,
+          "read_only_mode": false
+    }
+}
