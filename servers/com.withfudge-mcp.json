@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.withfudge-mcp",
+  "name": "Fudge",
+  "alias": "fudge",
+  "description": "Fudge is a hosted design-research MCP that gives AI coding agents real websites to study; instead of guessing from screenshots, they can inspect typography, colors, spacing, layout, and motion before building.",
+  "logo": "https://design.withfudge.com/favicon.svg",
+  "schema_version": "2.1",
+  "categories": [
+    "design",
+    "search"
+  ],
+  "tags": [
+    "design",
+    "ui",
+    "inspiration",
+    "website-analysis",
+    "search",
+    "frontend",
+    "typography"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://api.withfudge.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Fudge uses OAuth 2.1 with PKCE (S256). Hosted MCP access is included with Fudge Standard, Pro, and Studio plans."
+  },
+  "contributor": {
+    "name": "Fudge",
+    "github": "scroobius-pip",
+    "url": "https://design.withfudge.com"
+  },
+  "links": {
+    "homepage": "https://design.withfudge.com",
+    "documentation": "https://design.withfudge.com/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
