@@ -1,0 +1,48 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "one.zovo-invoice",
+  "name": "Invoice Generator",
+  "alias": "zovoinvoice",
+  "description": "Generate numbered, VAT-aware PDF invoices from a client, hours and rate. Runs locally over stdio with all data on your machine, and is also reachable as a no-install hosted endpoint at https://mcp.zovo.one/mcp/invoice.",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "file-system"
+  ],
+  "tags": [
+    "invoice",
+    "pdf",
+    "billing",
+    "accounting",
+    "vat",
+    "freelance"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.zovo.one/mcp/invoice",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "theluckystrike",
+    "github": "theluckystrike",
+    "url": "https://mcp.zovo.one"
+  },
+  "links": {
+    "repository": "https://github.com/theluckystrike/mcp-servers",
+    "documentation": "https://mcp.zovo.one/s/invoice"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
