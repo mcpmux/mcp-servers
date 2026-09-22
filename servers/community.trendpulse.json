@@ -1,0 +1,56 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.trendpulse",
+  "name": "Google News & Trends MCP",
+  "alias": "trendpulse",
+  "description": "Query Google News RSS feeds and search interest over time via Google Trends.",
+  "logo": "https://raw.githubusercontent.com/AKzar1el/mcp-trendpulse/main/assets/logo-400.png",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "ai-ml"
+  ],
+  "tags": [
+    "google-news",
+    "google-trends",
+    "keyword-research",
+    "market-research",
+    "seo",
+    "trends",
+    "news"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-trendpulse"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required for the local Community MCP server."
+  },
+  "contributor": {
+    "name": "AKzar1el",
+    "github": "AKzar1el",
+    "url": "https://tomiseregi.si/"
+  },
+  "links": {
+    "repository": "https://github.com/AKzar1el/mcp-trendpulse",
+    "homepage": "https://akzar1el.github.io/mcp-trendpulse/",
+    "documentation": "https://github.com/AKzar1el/mcp-trendpulse#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/AKzar1el/mcp-trendpulse/releases"
+}
