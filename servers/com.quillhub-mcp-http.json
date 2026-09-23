@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.quillhub-mcp-http",
+  "name": "QuillHub (Remote)",
+  "alias": "quillhub",
+  "description": "Search meeting transcripts, read who said what, pull decisions and action items, and transcribe files and links through the hosted QuillHub MCP server.",
+  "logo": "https://raw.githubusercontent.com/Tim-nocode/quillhub-mcp/main/logo.png",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "communication"
+  ],
+  "tags": [
+    "quillhub",
+    "meetings",
+    "transcription",
+    "meeting-notes",
+    "speech-to-text",
+    "knowledge",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.quillhub.ai/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth 2.1 with dynamic client registration; sign in with your QuillHub account. Alternatively, pass an API key as a Bearer token in the Authorization header."
+  },
+  "contributor": {
+    "name": "QuillHub",
+    "github": "Tim-nocode",
+    "url": "https://quillhub.ai"
+  },
+  "links": {
+    "repository": "https://github.com/Tim-nocode/quillhub-mcp",
+    "homepage": "https://quillhub.ai/en/help/mcp-claude-cursor",
+    "documentation": "https://quillhub.ai/en/docs/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
