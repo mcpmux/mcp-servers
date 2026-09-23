@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.robot-speed-mcp-http",
+  "name": "Robot Speed (Remote)",
+  "alias": "robot-speed-remote",
+  "description": "AI SEO platform MCP: content calendar, keyword research, site audits, backlinks, and CMS publishing over a hosted Streamable HTTP endpoint. Connects via OAuth.",
+  "logo": "https://avatars.githubusercontent.com/u/214651487?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "productivity"
+  ],
+  "tags": [
+    "robot-speed",
+    "seo",
+    "content",
+    "keywords",
+    "audit",
+    "remote",
+    "oauth"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://www.robot-speed.com/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Robot Speed OAuth flow."
+  },
+  "contributor": {
+    "name": "Robot Speed",
+    "github": "robot-speed",
+    "url": "https://www.robot-speed.com"
+  },
+  "links": {
+    "repository": "https://github.com/robot-speed/mcp",
+    "homepage": "https://www.robot-speed.com/mcp",
+    "documentation": "https://www.robot-speed.com/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

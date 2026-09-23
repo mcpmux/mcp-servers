@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.kleap-mcp-http",
+  "name": "Kleap (Remote)",
+  "alias": "kleap-remote",
+  "description": "AI website builder MCP: create apps, edit files, connect domains, and publish over a hosted Streamable HTTP endpoint. Connects via OAuth.",
+  "logo": "https://avatars.githubusercontent.com/u/178949960?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "productivity"
+  ],
+  "tags": [
+    "kleap",
+    "website",
+    "builder",
+    "publish",
+    "remote",
+    "oauth"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://kleap.co/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth. Your MCP host will initiate the Kleap OAuth flow."
+  },
+  "contributor": {
+    "name": "Kleap",
+    "github": "kleaphq",
+    "url": "https://kleap.co"
+  },
+  "links": {
+    "repository": "https://github.com/kleaphq/cli",
+    "homepage": "https://kleap.co/mcp",
+    "documentation": "https://kleap.co/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
