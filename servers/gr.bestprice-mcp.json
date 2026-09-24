@@ -3,7 +3,7 @@
   "id": "gr.bestprice-mcp",
   "name": "BestPrice Shopping",
   "alias": "bestprice",
-  "description": "Search products, compare current merchant offers by delivered cost, and inspect price history on BestPrice.gr for the Greek market.",
+  "description": "Get evidence-backed shopping decisions, search products, compare current Greek merchant offers by delivered cost, and inspect price history on BestPrice.gr.",
   "logo": "https://www.bestprice.gr/images/logo.svg",
   "schema_version": "2.1",
   "categories": [
@@ -12,8 +12,11 @@
   "tags": [
     "bestprice",
     "shopping",
+    "shopping-decisions",
+    "product-recommendations",
     "products",
     "price-comparison",
+    "delivered-price",
     "price-history",
     "greece",
     "remote"
