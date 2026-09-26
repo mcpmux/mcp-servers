@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.github.usenetstate.statsnet",
+  "name": "Statsnet",
+  "alias": "statsnet",
+  "description": "Background check any company in the world: registration, executives, courts and finances.",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "productivity"
+  ],
+  "tags": [
+    "company-data",
+    "osint",
+    "background-check",
+    "registration",
+    "courts",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://statsnet.co/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "api_key"
+  },
+  "contributor": {
+    "name": "Statsnet",
+    "github": "usenetstate",
+    "url": "https://statsnet.co"
+  },
+  "links": {
+    "homepage": "https://statsnet.co",
+    "documentation": "https://statsnet.co/mcp",
+    "repository": "https://github.com/usenetstate/statsnet-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "resources": false,
+    "read_only_mode": true
+  }
+}
