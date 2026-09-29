@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "schema_version": "2.1",
+  "id": "io.webask-mcp",
+  "name": "WebAsk MCP",
+  "alias": "webask",
+  "description": "Create and manage WebAsk surveys, forms and quizzes, read responses, and prepare analytics reports through a hosted MCP server.",
+  "logo": "https://raw.githubusercontent.com/WebAskio/webask-mcp/main/assets/logo-512.png",
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.webask.io/mcp/v1",
+    "headers": {
+      "Authorization": "Bearer ${input:WEBASK_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "WEBASK_API_KEY",
+          "label": "WebAsk API key",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "description": "Your WebAsk API key. Access is limited by the permissions of the WebAsk account that created it.",
+          "obtain": {
+            "url": "https://webask.io",
+            "instructions": "1. Sign in to your WebAsk account.\n2. Open Settings > API / MCP.\n3. Click Create API key.\n4. Save the key when it is displayed and enter it here.",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key in your WebAsk account under Settings > API / MCP. The server requires an Authorization: Bearer header; requests without a key return HTTP 401."
+  },
+  "categories": ["productivity"],
+  "tags": ["webask", "surveys", "forms", "quizzes", "research", "analytics", "reports"],
+  "contributor": {
+    "name": "WebAsk",
+    "github": "WebAskio",
+    "url": "https://webask.io"
+  },
+  "links": {
+    "repository": "https://github.com/WebAskio/webask-mcp",
+    "homepage": "https://webask.io/skills",
+    "documentation": "https://github.com/WebAskio/webask-mcp/blob/main/en/README.md"
+  },
+  "platforms": ["all"],
+  "capabilities": {
+    "tools": true,
+    "read_only_mode": false
+  }
+}
