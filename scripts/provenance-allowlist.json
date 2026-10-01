@@ -1,0 +1,3 @@
+{
+  "$comment": "Waive a specific provenance error for a specific server: { \"<server id>\": { \"<error code>\": \"why it is legitimate\" } }. Code-owned: changes need maintainer review."
+}

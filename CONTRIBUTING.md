@@ -491,6 +491,7 @@ Run locally before pushing — CI runs the same commands and will fail the PR ot
 pnpm validate servers/community.my-server.json   # Validate a specific file
 pnpm validate:all                                 # Validate every server
 pnpm check-conflicts                              # ID / alias collision detection
+pnpm check-provenance servers/community.my-server.json  # Install source, publisher, logo, endpoint (needs network)
 pnpm test                                         # Full vitest suite (schema, consistency, categories, bundle)
 pnpm build                                        # Generate bundle/bundle.json (optional locally)
 ```
@@ -506,6 +507,22 @@ pnpm build                                        # Generate bundle/bundle.json 
 - `CONFLICT  Duplicate ID "..."` — same `id` in two files.
 - `CONFLICT  Duplicate alias "..."` — same `alias` in two files.
 - `CONFLICT  ID "..." collides with alias in ...` — your ID matches an existing alias (or vice versa).
+
+### Provenance Checks
+
+Schema validation proves a definition is well-formed. `check-provenance` proves it points at something real, published by the project it links to. CI runs it on every changed server file.
+
+| Check | Fails when |
+|-------|------------|
+| Install source | The npm / PyPI package, version, Docker image or tag, or `--from` git repo doesn't exist; or the package has no executable matching the command (`uvx <pkg>` needs a `<pkg>` console script; `npx` needs a single `bin` or one named after the package) |
+| Publisher | The package's own metadata (npm `repository`, PyPI project URLs, `--from` git owner) points to a different GitHub owner than `links.repository` |
+| Logo | A GitHub-avatar logo belongs to a personal or bot account that doesn't own `links.repository` |
+| Repository | `links.repository` doesn't exist |
+| Endpoint | The host doesn't resolve, the URL redirects (MCP clients don't follow redirects on POST — use the final URL), or it returns 404 |
+
+Trust is anchored on the owner of `links.repository` (and its fork parent). `contributor` never vouches for a package or logo. Timeouts, rate limits and hosts that block CI runners only produce warnings.
+
+If a legitimate definition trips an error — say, a publisher whose package metadata still names an old org — say so in the PR. A maintainer can waive that specific error for that server in `scripts/provenance-allowlist.json`.
 
 ---
 

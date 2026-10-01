@@ -40,6 +40,7 @@ full contributor guide.
 - [ ] `pnpm validate servers/<id>.json` passes
 - [ ] `pnpm check-conflicts` passes (no duplicate IDs or aliases)
 - [ ] `pnpm test` passes
+- [ ] `pnpm check-provenance servers/<id>.json` passes (install source, publisher, logo, endpoint)
 - [ ] Every commit is signed off — `git commit -s` (DCO)
 
 ### Reviewer quality bar

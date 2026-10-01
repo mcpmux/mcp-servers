@@ -8,6 +8,7 @@
     "validate:all": "node scripts/validate.js --all",
     "build": "node scripts/build-bundle.js",
     "check-conflicts": "node scripts/validate.js --check-conflicts",
+    "check-provenance": "node scripts/check-provenance.js",
     "test": "vitest run",
     "test:watch": "vitest"
   },
