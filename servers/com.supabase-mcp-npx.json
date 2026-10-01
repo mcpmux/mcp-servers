@@ -24,7 +24,7 @@
     "command": "npx",
     "args": [
       "-y",
-      "@supabase/mcp-server"
+      "@supabase/mcp-server-supabase"
     ],
     "env": {
       "SUPABASE_ACCESS_TOKEN": "${input:SUPABASE_ACCESS_TOKEN}"
@@ -58,7 +58,7 @@
     "url": "https://supabase.com"
   },
   "links": {
-    "repository": "https://github.com/supabase/mcp-server",
+    "repository": "https://github.com/supabase/mcp",
     "homepage": "https://supabase.com",
     "documentation": "https://supabase.com/docs"
   },
