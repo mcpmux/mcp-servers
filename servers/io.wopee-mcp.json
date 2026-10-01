@@ -4,7 +4,7 @@
   "name": "Wopee MCP",
   "alias": "wopee",
   "description": "MCP server for autonomous end-to-end testing with Wopee.io. Analyzes web applications, generates and executes Playwright-based functional tests, and validates results.",
-  "logo": "https://avatars.githubusercontent.com/u/105428871?v=4",
+  "logo": "https://avatars.githubusercontent.com/u/124098588?v=4",
   "schema_version": "2.1",
   "categories": [
     "developer-tools"

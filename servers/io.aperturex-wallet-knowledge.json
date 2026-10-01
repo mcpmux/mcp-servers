@@ -21,7 +21,7 @@
   ],
   "transport": {
     "type": "http",
-    "url": "https://aperturex.io/mcp/",
+    "url": "https://oathwallet.org/mcp/",
     "metadata": {
       "inputs": []
     }

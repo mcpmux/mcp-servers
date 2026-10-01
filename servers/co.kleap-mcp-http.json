@@ -4,7 +4,7 @@
   "name": "Kleap (Remote)",
   "alias": "kleap-remote",
   "description": "AI website builder MCP: create apps, edit files, connect domains, and publish over a hosted Streamable HTTP endpoint. Connects via OAuth.",
-  "logo": "https://avatars.githubusercontent.com/u/178949960?v=4",
+  "logo": "https://avatars.githubusercontent.com/u/29578415?v=4",
   "schema_version": "2.1",
   "categories": [
     "developer-tools",

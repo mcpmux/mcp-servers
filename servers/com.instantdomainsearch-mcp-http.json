@@ -19,7 +19,7 @@
   ],
   "transport": {
     "type": "http",
-    "url": "https://instantdomainsearch.com/mcp/streamable-http"
+    "url": "https://mcp.instantdomainsearch.com/mcp"
   },
   "auth": {
     "type": "none",
