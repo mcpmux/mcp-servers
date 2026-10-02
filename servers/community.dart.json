@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.dart",
+  "name": "Dart and Flutter",
+  "alias": "dart",
+  "description": "Exposes Dart and Flutter analyzer diagnostics, tests, and tooling actions to MCP clients (requires Dart 3.9+ on PATH).",
+  "logo": "https://avatars.githubusercontent.com/u/1609975?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "dart",
+    "flutter",
+    "analyzer",
+    "sdk",
+    "tooling"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "dart",
+    "args": [
+      "mcp-server"
+    ],
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Komos Solutions Ltd",
+    "github": "KomosSolutions",
+    "url": "https://github.com/KomosSolutions"
+  },
+  "links": {
+    "repository": "https://github.com/dart-lang/ai",
+    "homepage": "https://docs.flutter.dev/ai/mcp-server",
+    "documentation": "https://github.com/dart-lang/ai/tree/main/pkgs/dart_mcp_server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
