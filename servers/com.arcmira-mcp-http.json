@@ -1,14 +1,13 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
   "id": "com.arcmira-mcp-http",
-  "name": "Arcmira: YouTube Transcript Search",
+  "name": "Arcmira",
   "alias": "arcmira",
   "description": "Search indexed YouTube transcripts for timestamped quotes, speaker appearances, mentions, sponsors and recommendations, with tools for authorized monitors and research feedback.",
   "logo": "https://avatars.githubusercontent.com/u/182499056?v=4",
   "schema_version": "2.1",
   "categories": [
-    "search",
-    "monitoring"
+    "search"
   ],
   "tags": [
     "arcmira",
