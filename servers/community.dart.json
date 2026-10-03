@@ -3,7 +3,7 @@
   "id": "community.dart",
   "name": "Dart and Flutter",
   "alias": "dart",
-  "description": "Exposes Dart and Flutter analyzer diagnostics, tests, and tooling actions to MCP clients (requires Dart 3.9+ on PATH).",
+  "description": "Exposes Dart and Flutter analyzer diagnostics, tests, and tooling actions to MCP clients. Requires Dart 3.9+ on PATH; the agent registers your project directory through the server's roots tool before analyzing or testing.",
   "logo": "https://avatars.githubusercontent.com/u/1609975?v=4",
   "schema_version": "2.1",
   "categories": [
@@ -36,7 +36,7 @@
   },
   "links": {
     "repository": "https://github.com/dart-lang/ai",
-    "homepage": "https://docs.flutter.dev/ai/mcp-server",
+    "homepage": "https://docs.flutter.dev/ai/get-started",
     "documentation": "https://github.com/dart-lang/ai/tree/main/pkgs/dart_mcp_server"
   },
   "platforms": [
@@ -45,7 +45,7 @@
   "capabilities": {
     "tools": true,
     "resources": true,
-    "prompts": false,
+    "prompts": true,
     "read_only_mode": false
   }
 }
