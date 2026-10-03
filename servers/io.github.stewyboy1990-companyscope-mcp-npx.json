@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.github.stewyboy1990-companyscope-mcp-npx",
+  "name": "CompanyScope (npx)",
+  "alias": "companyscope",
+  "description": "Company intelligence aggregator — 11 tools, 12 data sources. Get full company profiles, tech stacks, funding, people, competitors, patents, news, domain intel, job postings, and social presence in a single tool call.",
+  "icon": "🏢",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "company-intelligence",
+    "lead-enrichment",
+    "sales-prospecting",
+    "company-research",
+    "business-intelligence",
+    "web-scraping"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "companyscope-mcp"
+    ]
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No API keys required for basic usage. Optional: set BRAVE_API_KEY for enhanced search results."
+  },
+  "contributor": {
+    "name": "Stewyboy1990",
+    "github": "Stewyboy1990",
+    "url": "https://github.com/Stewyboy1990/companyscope-mcp"
+  },
+  "links": {
+    "repository": "https://github.com/Stewyboy1990/companyscope-mcp",
+    "homepage": "https://stewyboy1990.github.io/companyscope-mcp/",
+    "documentation": "https://github.com/Stewyboy1990/companyscope-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
