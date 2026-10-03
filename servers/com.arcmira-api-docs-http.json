@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
   "id": "com.arcmira-api-docs-http",
-  "name": "Arcmira API Docs: YouTube Transcript Search",
+  "name": "Arcmira API Docs",
   "alias": "arcmira-docs",
   "description": "Search and read Arcmira API documentation for YouTube transcript search, timestamps, speakers, mentions, sponsors, monitors and SDKs.",
   "logo": "https://avatars.githubusercontent.com/u/182499056?v=4",
@@ -35,8 +35,8 @@
     "url": "https://arcmira.com/docs"
   },
   "links": {
-    "homepage": "https://arcmira.com/docs",
-    "documentation": "https://arcmira.com/docs/llms.txt"
+    "homepage": "https://arcmira.com",
+    "documentation": "https://arcmira.com/docs"
   },
   "platforms": [
     "all"
