@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.arcmira-api-docs-http",
+  "name": "Arcmira API Docs: YouTube Transcript Search",
+  "alias": "arcmira-docs",
+  "description": "Search and read Arcmira API documentation for YouTube transcript search, timestamps, speakers, mentions, sponsors, monitors and SDKs.",
+  "logo": "https://avatars.githubusercontent.com/u/182499056?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "documentation",
+    "developer-tools"
+  ],
+  "tags": [
+    "arcmira",
+    "api",
+    "documentation",
+    "youtube",
+    "transcript-search",
+    "sdk"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://arcmira.com/docs/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Public API documentation requires no account or API key. This server searches and reads docs and can submit documentation feedback; it does not query private accounts or indexed video content."
+  },
+  "contributor": {
+    "name": "Arcmira",
+    "github": "zealous1",
+    "url": "https://arcmira.com/docs"
+  },
+  "links": {
+    "homepage": "https://arcmira.com/docs",
+    "documentation": "https://arcmira.com/docs/llms.txt"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://arcmira.com/docs/changelog"
+}
