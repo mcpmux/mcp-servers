@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.arcmira-mcp-http",
+  "name": "Arcmira: YouTube Transcript Search",
+  "alias": "arcmira",
+  "description": "Search indexed YouTube transcripts for timestamped quotes, speaker appearances, mentions, sponsors and recommendations, with tools for authorized monitors and research feedback.",
+  "logo": "https://avatars.githubusercontent.com/u/182499056?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "monitoring"
+  ],
+  "tags": [
+    "arcmira",
+    "youtube",
+    "transcript-search",
+    "timestamps",
+    "speakers",
+    "sponsors",
+    "research"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.arcmira.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in to Arcmira through the browser OAuth flow. Account limits apply; explicit Premium transcript requests can purchase generation within the account budget, and monitor changes require authorization."
+  },
+  "contributor": {
+    "name": "Arcmira",
+    "github": "zealous1",
+    "url": "https://arcmira.com/docs"
+  },
+  "links": {
+    "repository": "https://github.com/arcmira/mcp",
+    "homepage": "https://arcmira.com/docs",
+    "documentation": "https://arcmira.com/docs/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://arcmira.com/docs/changelog"
+}
