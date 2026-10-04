@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.shipvela-mcp-http",
+  "name": "Shipvela",
+  "alias": "shipvela",
+  "description": "Create website projects, deploy supported GitHub repositories, and read deployment status, build logs and usage.",
+  "logo": "https://shipvela.com/social/premium/avatar.png",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud",
+    "developer-tools"
+  ],
+  "tags": [
+    "hosting",
+    "deployment",
+    "github",
+    "oauth",
+    "codex"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://shipvela.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Create or sign in to a Shipvela account, then authorize through the client browser flow using OAuth S256 PKCE. GitHub deployments require an existing Shipvela GitHub connection; publishing consumes allowance (Hobby starts free with 3 projects and 20 publishes/month, paid plans available)."
+  },
+  "contributor": {
+    "name": "Stefan Mitrovic",
+    "github": "stefanautomateed",
+    "url": "https://shipvela.com"
+  },
+  "links": {
+    "repository": "https://github.com/stefanautomateed/shipvela-codex",
+    "homepage": "https://shipvela.com",
+    "documentation": "https://shipvela.com/integrations/codex"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
