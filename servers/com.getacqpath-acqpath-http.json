@@ -1,0 +1,36 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.getacqpath-acqpath-http",
+  "name": "AcqPath",
+  "alias": "acqpath",
+  "description": "Check observed content-rights declarations (RSL, robots.txt, license links) before RAG, AI input, training or search indexing. Over MCP it lists coverage and prepares quotes for signed reports; paid reports are bought over HTTP x402 outside MCP. Reports are evidence, not a license or legal clearance.",
+  "logo": "https://avatars.githubusercontent.com/u/250825036?v=4",
+  "schema_version": "2.1",
+  "categories": ["ai-ml", "developer-tools"],
+  "tags": ["rights", "provenance", "rsl", "tdm", "rag", "governance", "compliance"],
+  "transport": {
+    "type": "http",
+    "url": "https://api.getacqpath.com/mcp",
+    "metadata": {"inputs": []}
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "AcqPath",
+    "github": "reflectme-source",
+    "url": "https://developers.getacqpath.com"
+  },
+  "links": {
+    "repository": "https://github.com/reflectme-source/acqpath-distribution",
+    "homepage": "https://getacqpath.com",
+    "documentation": "https://developers.getacqpath.com"
+  },
+  "platforms": ["all"],
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "resources": false,
+    "read_only_mode": true
+  }
+}
