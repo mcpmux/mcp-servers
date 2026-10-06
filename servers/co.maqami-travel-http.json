@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.maqami-travel-http",
+  "name": "MAQAMI Travel",
+  "alias": "maqami",
+  "description": "Search hotels (3M+) and flights, read hotel details and reviews, then prebook and book a chosen offer on MAQAMI through its remote MCP server; booking creates a real reservation, so confirm with the user first.",
+  "logo": "https://maqami.co/android-chrome-512x512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "search"
+  ],
+  "tags": [
+    "maqami",
+    "travel",
+    "hotels",
+    "flights",
+    "hotel-search",
+    "flight-search",
+    "booking"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.maqami.co/",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "MAQAMI",
+    "github": "negm17111995",
+    "url": "https://maqami.co"
+  },
+  "links": {
+    "repository": "https://github.com/negm17111995/mcp-server",
+    "homepage": "https://maqami.co",
+    "documentation": "https://github.com/negm17111995/mcp-server#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
