@@ -82,6 +82,26 @@ describe("Server Definition Schema", () => {
     expect(validate(data)).toBe(false);
   });
 
+  // Released McpMux clients (<= v0.6.0) reject the entire registry bundle when
+  // any server uses an auth type they don't know, leaving users with zero
+  // servers. Keep this list to what those clients parse.
+  it("only allows auth types that released McpMux clients understand", () => {
+    const schema = loadJson(SCHEMA_PATH);
+    expect(schema.$defs.auth.properties.type.enum).toEqual([
+      "none",
+      "api_key",
+      "optional_api_key",
+      "oauth",
+    ]);
+    const basic = {
+      id: "com.example",
+      name: "Example",
+      transport: { type: "stdio", command: "echo" },
+      auth: { type: "basic" },
+    };
+    expect(validate(basic)).toBe(false);
+  });
+
   it("accepts valid logo URL", () => {
     const data = {
       id: "com.example",

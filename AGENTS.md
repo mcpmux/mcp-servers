@@ -71,7 +71,7 @@ Picking `auth.type`, derived from the inputs:
 | ≥1 input with `"secret": true, "required": true`, wired via a placeholder | `api_key` |
 | Secret input(s) all `"required": false` (anonymous / free tier / passwordless works) | `optional_api_key` |
 | Hosted `http` endpoint where McpMux runs the browser OAuth flow; normally zero inputs | `oauth` |
-| Username + secret password | `basic` (rare) |
+| Username + secret password (both required) | `api_key` |
 
 OAuth behavior (verified in the McpMux gateway):
 

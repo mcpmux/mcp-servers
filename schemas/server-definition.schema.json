@@ -281,8 +281,8 @@
       "required": ["type"],
       "properties": {
         "type": {
-          "enum": ["none", "api_key", "optional_api_key", "oauth", "basic"],
-          "description": "Authentication type: none (no auth), api_key (required), optional_api_key (enhanced if provided), oauth, basic"
+          "enum": ["none", "api_key", "optional_api_key", "oauth"],
+          "description": "Authentication type: none (no auth), api_key (required credential, including username + password inputs), optional_api_key (enhanced if provided), oauth. Only add a value here once released McpMux clients can parse it: an unknown value fails the whole registry bundle on older clients."
         },
         "instructions": {
           "type": "string",

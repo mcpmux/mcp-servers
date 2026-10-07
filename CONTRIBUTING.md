@@ -345,10 +345,9 @@ The top-level `auth` field advertises what kind of credential the server expects
 | `type` | When to use |
 |--------|-------------|
 | `none` | No credentials (local filesystem, public docs, open search). |
-| `api_key` | A token is required for any useful call. |
+| `api_key` | A credential is required for any useful call: an API key/token, or a username + secret password pair. |
 | `optional_api_key` | Works without auth (rate-limited or read-only) but unlocks more with a key. |
 | `oauth` | Full OAuth 2.1 + PKCE flow. McpMux drives the redirect. |
-| `basic` | HTTP Basic auth (username + password). Rare; prefer `api_key` or `oauth`. |
 
 ```json
 "auth": {

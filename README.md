@@ -243,10 +243,9 @@ Pick it from how the **credential inputs** are set up — the label should descr
 | `auth.type` | Use when | The inputs must include |
 |---|---|---|
 | `none` | The server needs no credential. It can still have non-secret inputs (paths, options, toggles) | No secret inputs |
-| `api_key` | The server fails without a key/token | At least one input with `"secret": true, "required": true`, wired into the transport |
+| `api_key` | The server fails without a credential: a key/token, or a username + password | At least one input with `"secret": true, "required": true`, wired into the transport |
 | `optional_api_key` | It works without a key (anonymous, free tier, local instance) and a key unlocks more | The secret input has `"required": false` |
 | `oauth` | A **remote `http`** endpoint where McpMux runs the OAuth sign-in in the browser | Usually no inputs at all — McpMux handles the tokens |
-| `basic` | HTTP Basic (username + password). Rare | A username input and a `secret` password input |
 
 ### Where input values go
 
