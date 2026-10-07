@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.grokbotwiki-mcp-http",
+  "name": "Grok Bot Wiki",
+  "alias": "grok-bot-wiki",
+  "description": "Read-only search of community Grok Bot templates and practical guides from an independent wiki unaffiliated with xAI.",
+  "logo": "https://www.grokbotwiki.com/brand/curious-guide.svg",
+  "schema_version": "2.1",
+  "categories": [
+    "documentation",
+    "search"
+  ],
+  "tags": [
+    "grok",
+    "templates",
+    "wiki",
+    "guides",
+    "search"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://www.grokbotwiki.com/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No API key or sign-in is needed to search public directory and guide data."
+  },
+  "contributor": {
+    "name": "Grok Bot",
+    "github": "SeleemS",
+    "url": "https://www.grokbotwiki.com"
+  },
+  "links": {
+    "homepage": "https://www.grokbotwiki.com",
+    "documentation": "https://www.grokbotwiki.com/mcp"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
