@@ -3,7 +3,7 @@
   "id": "co.maqami-travel-http",
   "name": "MAQAMI Travel",
   "alias": "maqami",
-  "description": "Search hotels (3M+) and flights, read hotel details and reviews, then prebook and book a chosen offer on MAQAMI through its remote MCP server; booking creates a real reservation, so confirm with the user first.",
+  "description": "Search hotels (3M+) and flights, read hotel details and reviews, then send the customer a secure checkout link on book.maqami.co for the chosen offer, through MAQAMI's remote MCP server. Confirm with the user first.",
   "logo": "https://maqami.co/android-chrome-512x512.png",
   "schema_version": "2.1",
   "categories": [
