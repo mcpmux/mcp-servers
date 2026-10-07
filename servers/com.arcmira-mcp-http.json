@@ -32,11 +32,11 @@
   "contributor": {
     "name": "Arcmira",
     "github": "zealous1",
-    "url": "https://arcmira.com/docs"
+    "url": "https://arcmira.com"
   },
   "links": {
     "repository": "https://github.com/arcmira/mcp",
-    "homepage": "https://arcmira.com/docs",
+    "homepage": "https://arcmira.com",
     "documentation": "https://arcmira.com/docs/mcp-server"
   },
   "platforms": [
