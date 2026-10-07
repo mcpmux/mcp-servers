@@ -68,7 +68,7 @@
     }
   },
   "auth": {
-    "type": "basic",
+    "type": "api_key",
     "instructions": "Use the username and password of a user on your own Darkmoon Pro dashboard. The server also supports a pre-issued JWT via DARKMOON_TOKEN if you run it outside McpMux."
   },
   "contributor": {
