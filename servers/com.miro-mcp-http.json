@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.miro-mcp-http",
+  "name": "Miro",
+  "alias": "miro",
+  "description": "Search and read Miro boards, create boards, tables, images and prototypes, draw or update board content from SVG, and reply to or resolve comments. Hosted by Miro; access is limited to the team you pick when signing in.",
+  "logo": "https://avatars.githubusercontent.com/u/48276018?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "design"
+  ],
+  "tags": [
+    "miro",
+    "whiteboard",
+    "boards",
+    "diagrams",
+    "collaboration",
+    "prototypes"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.miro.com/",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in to Miro in your browser and pick the team whose boards the server may use. On Enterprise plans, an admin must enable the Miro MCP Server first."
+  },
+  "contributor": {
+    "name": "Miro",
+    "github": "miroapp",
+    "url": "https://miro.com"
+  },
+  "links": {
+    "repository": "https://github.com/miroapp/miro-ai",
+    "homepage": "https://miro.com",
+    "documentation": "https://developers.miro.com/docs/miro-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
