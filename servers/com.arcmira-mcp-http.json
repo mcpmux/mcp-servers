@@ -27,7 +27,7 @@
   },
   "auth": {
     "type": "oauth",
-    "instructions": "Sign in to Arcmira through the browser OAuth flow. Paid reads, Premium transcripts included, use credits from your plan, then your on-demand budget. Monitor changes need write access."
+    "instructions": "Sign in to Arcmira through the browser OAuth flow. Paid reads, Premium transcripts included, use credits from your plan, then any top-up credits, then your on-demand budget. Monitor changes need write access."
   },
   "contributor": {
     "name": "Arcmira",
