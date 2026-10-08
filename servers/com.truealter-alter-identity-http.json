@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.truealter-alter-identity-http",
+  "name": "~Alter",
+  "alias": "alter",
+  "description": "Remote MCP server for the ~Alter identity rail: register or look up a ~handle, check whether a person or agent is known, and read the traits they have consented to share. Many tools are free and anonymous; deeper reads are paid per call in USDC via x402.",
+  "logo": "https://truealter.com/favicon.ico",
+  "schema_version": "2.1",
+  "categories": [
+    "security",
+    "ai-ml"
+  ],
+  "tags": [
+    "identity",
+    "psychometrics",
+    "privacy",
+    "remote",
+    "streamable-http"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.truealter.com/api/v1/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "~Alter",
+    "github": "true-alter",
+    "url": "https://truealter.com"
+  },
+  "links": {
+    "repository": "https://github.com/true-alter/cli",
+    "homepage": "https://truealter.com",
+    "documentation": "https://truealter.com/docs/mcp/tools"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
