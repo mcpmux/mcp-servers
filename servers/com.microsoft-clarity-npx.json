@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.microsoft-clarity-npx",
+  "name": "Microsoft Clarity (npx)",
+  "alias": "clarity",
+  "description": "Query Microsoft Clarity analytics through the data export API. Tools cover dashboard metrics, session recording lists filtered by device, country or errors, and Clarity documentation search.",
+  "logo": "https://avatars.githubusercontent.com/u/6154722?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "clarity",
+    "microsoft",
+    "analytics",
+    "observability",
+    "heatmaps",
+    "session-recordings",
+    "insights"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@microsoft/clarity-mcp-server"
+    ],
+    "env": {
+      "CLARITY_API_TOKEN": "${input:CLARITY_API_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CLARITY_API_TOKEN",
+          "label": "Clarity API Token",
+          "description": "API token from your Clarity project under Settings -> Data Export. Required for every tool.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "obtain": {
+            "url": "https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data-export-api",
+            "instructions": "1. Open your project at https://clarity.microsoft.com\n2. Go to Settings -> Data Export\n3. Select Generate new API token\n4. Give the token a descriptive name\n5. Copy the generated token",
+            "button_label": "How to get a token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Generate a data export API token in your Clarity project under Settings -> Data Export."
+  },
+  "contributor": {
+    "name": "Leo Araya",
+    "github": "leoarayas",
+    "url": "https://clevers.dev"
+  },
+  "links": {
+    "repository": "https://github.com/microsoft/clarity-mcp-server",
+    "homepage": "https://clarity.microsoft.com/",
+    "documentation": "https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data-export-api"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/microsoft/clarity-mcp-server/releases"
+}
