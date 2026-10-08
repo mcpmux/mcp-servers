@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.truthifi-mcp",
+  "name": "Truthifi",
+  "alias": "truthifi",
+  "description": "One verified household record for your AI: accounts, activity, holdings, fees, performance, cash flow, the advisors on your accounts, financial diagnostics, and your Truthifi Score with the findings behind it. Can't move money. Authenticates via OAuth in your browser.",
+  "logo": "https://avatars.githubusercontent.com/u/89780380?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "truthifi",
+    "finance",
+    "fintech",
+    "investing",
+    "portfolio",
+    "wealth",
+    "fees"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://api.truthifi.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in to Truthifi in your browser (OAuth). The server supports Dynamic Client Registration, so no client ID or API key is needed. Free plan available; some tools need a paid plan."
+  },
+  "contributor": {
+    "name": "Truthifi",
+    "github": "Truthifi",
+    "url": "https://truthifi.com"
+  },
+  "links": {
+    "homepage": "https://truthifi.com/features/mcp",
+    "repository": "https://github.com/Truthifi/truthifi-mcp",
+    "documentation": "https://truthifi.com/mcp-tools"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
