@@ -22,6 +22,9 @@
   "transport": {
     "type": "http",
     "url": "https://search.parallel.ai/mcp",
+    "headers": {
+      "User-Agent": "McpMux"
+    },
     "metadata": {
       "inputs": []
     }
