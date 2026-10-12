@@ -1,13 +1,13 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
-  "id": "com.truthifi-mcp",
+  "id": "com.truthifi-mcp-http",
   "name": "Truthifi",
   "alias": "truthifi",
-  "description": "One verified household record for your AI: accounts, activity, holdings, fees, performance, cash flow, the advisors on your accounts, financial diagnostics, and your Truthifi Score with the findings behind it. Can't move money. Authenticates via OAuth in your browser.",
+  "description": "Read your Truthifi household data: accounts, activity, holdings, fees, performance, cash flow, the advisors on your accounts, financial diagnostics and your Truthifi Score. It cannot move money or place trades; three tools create, delete or rescan data inside Truthifi.",
   "logo": "https://avatars.githubusercontent.com/u/89780380?v=4",
   "schema_version": "2.1",
   "categories": [
-    "developer-tools"
+    "productivity"
   ],
   "tags": [
     "truthifi",
