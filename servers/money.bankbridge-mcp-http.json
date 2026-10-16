@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "money.bankbridge-mcp-http",
+  "name": "BankBridge",
+  "alias": "bankbridge",
+  "description": "Read-only access to your own US bank, credit card and investment accounts (balances, transactions, spending, recurring charges, cashflow and holdings), fetched live from 12,000+ institutions; it cannot move money, pay bills or place trades.",
+  "logo": "https://avatars.githubusercontent.com/u/277408870?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "bankbridge",
+    "finance",
+    "banking",
+    "personal-finance",
+    "transactions",
+    "budgeting",
+    "investing"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://bankbridge.money/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in to BankBridge in your browser (OAuth). The server supports Dynamic Client Registration, so no client ID or API key is needed. Paid: $5/mo per connected bank; a demo account with sample data is available."
+  },
+  "contributor": {
+    "name": "BankBridge",
+    "github": "bankbridge-money",
+    "url": "https://bankbridge.money"
+  },
+  "links": {
+    "homepage": "https://bankbridge.money",
+    "repository": "https://github.com/bankbridge-money/bankbridge-plugin",
+    "documentation": "https://bankbridge.money/docs"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": true,
+    "read_only_mode": true
+  }
+}
