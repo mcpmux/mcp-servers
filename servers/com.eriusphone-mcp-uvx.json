@@ -1,0 +1,81 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.eriusphone-mcp-uvx",
+  "name": "ERIUS PHONE (uvx)",
+  "alias": "erius-phone",
+  "description": "Drive a hosted ERIUS PHONE Android phone or tablet: read the screen as an accessibility tree or screenshot, tap, type, swipe, launch apps, install APKs, and pull crash logs.",
+  "logo": "https://avatars.githubusercontent.com/u/314170907?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "android",
+    "mobile",
+    "mobile-testing",
+    "device-control",
+    "qa",
+    "automation"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "erius-phone-mcp"
+    ],
+    "env": {
+      "ERIUS_PHONE_API_KEY": "${input:ERIUS_PHONE_API_KEY}",
+      "ERIUS_PHONE_DEFAULT_DEVICE": "${input:ERIUS_PHONE_DEFAULT_DEVICE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ERIUS_PHONE_API_KEY",
+          "label": "ERIUS PHONE API Key",
+          "description": "API key for your ERIUS PHONE account. Every request is authenticated with it and scoped to your own devices.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "your-api-key",
+          "obtain": {
+            "url": "https://eriusphone.com",
+            "instructions": "1. Request early access at https://eriusphone.com\n2. During early access the ERIUS PHONE team provisions your device by hand and sends you the API key and device id\n3. Paste the key here",
+            "button_label": "Request Access"
+          }
+        },
+        {
+          "id": "ERIUS_PHONE_DEFAULT_DEVICE",
+          "label": "Default Device ID",
+          "description": "Device id to use when a tool call does not name one. Leave empty to pass the device on each call; list_devices shows the ids.",
+          "type": "text",
+          "required": false,
+          "secret": false,
+          "placeholder": "your-device-id"
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "ERIUS PHONE is in early access. Request access at https://eriusphone.com; the API key and device id are issued by the ERIUS PHONE team."
+  },
+  "contributor": {
+    "name": "ERIUS",
+    "github": "Protremix",
+    "url": "https://eriusphone.com"
+  },
+  "links": {
+    "repository": "https://github.com/Protremix/erius-phone-mcp",
+    "homepage": "https://eriusphone.com",
+    "documentation": "https://eriusphone.com/docs.html"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
