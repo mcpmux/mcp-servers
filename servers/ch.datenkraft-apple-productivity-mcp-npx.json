@@ -3,12 +3,13 @@
   "id": "ch.datenkraft-apple-productivity-mcp-npx",
   "name": "Apple Productivity MCP (npx)",
   "alias": "apple-productivity",
-  "description": "Use Apple Mail, Calendar, and Reminders from AI assistants through a free, local macOS MCP server.",
+  "description": "133 local macOS tools across 17 groups for Apple apps, iWork documents, files, and media, plus optional allowlisted Shortcuts.",
   "logo": "https://avatars.githubusercontent.com/u/106869358?v=4",
   "schema_version": "2.1",
   "categories": [
     "productivity",
-    "communication"
+    "communication",
+    "file-system"
   ],
   "tags": [
     "apple",
@@ -16,8 +17,9 @@
     "mail",
     "calendar",
     "reminders",
-    "local",
-    "stdio"
+    "iwork",
+    "files",
+    "shortcuts"
   ],
   "transport": {
     "type": "stdio",
@@ -32,7 +34,7 @@
   },
   "auth": {
     "type": "none",
-    "instructions": "No account, API key, or cloud service is required. Grant the launching MCP client access to Mail, Calendar, and Reminders in macOS Automation settings when prompted."
+    "instructions": "Runs locally on macOS with Node.js 20+; no server account or API key is required. Install and configure the Apple apps you want to use, and grant the launching MCP client/process macOS Automation permission when prompted. Generic file tools need configured file roots; running Shortcuts requires an explicit allowlist (see documentation)."
   },
   "contributor": {
     "name": "Ricardo Kupper",
