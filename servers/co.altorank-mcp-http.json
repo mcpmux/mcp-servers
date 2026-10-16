@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.altorank-mcp-http",
+  "name": "AltoRank",
+  "alias": "altorank",
+  "description": "Hosted MCP server for AltoRank, open-source SEO content software: site readiness audits, JSON-LD proposals, Google Search Console data, keyword research, and SEO drafts written into a person's review queue. No tool approves or publishes a draft.",
+  "logo": "https://avatars.githubusercontent.com/u/322898717?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "productivity"
+  ],
+  "tags": [
+    "seo",
+    "geo",
+    "content",
+    "search-console",
+    "keyword-research",
+    "json-ld"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://app.altorank.co/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in with your AltoRank account via OAuth in your browser. Write access is opt-in on the consent screen."
+  },
+  "contributor": {
+    "name": "AltoRank",
+    "github": "mikececco",
+    "url": "https://altorank.co"
+  },
+  "links": {
+    "repository": "https://github.com/AltoRank/altorank",
+    "homepage": "https://altorank.co",
+    "documentation": "https://altorank.co/docs/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "resources": false,
+    "read_only_mode": false
+  }
+}
