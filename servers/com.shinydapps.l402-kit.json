@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.shinydapps.l402-kit",
+  "name": "l402-kit",
+  "alias": "l402-kit",
+  "description": "MCP server that lets AI agents call L402-protected APIs autonomously via Bitcoin Lightning. Pay for tools in sats — no API keys, no OAuth.",
+  "logo": "https://l402kit.com/badge/powered-by-l402kit-sm.svg",
+  "schema_version": "2.1",
+  "categories": ["developer-tools", "ai-tools"],
+  "tags": ["lightning", "bitcoin", "l402", "payments", "ai-agent"],
+  "transport": {
+    "type": "stdio",
+    "command": "npx l402-kit-mcp"
+  },
+  "auth": {
+    "type": "api_key"
+  },
+  "inputs": [
+    {
+      "id": "BLINK_API_KEY",
+      "label": "Blink API Key",
+      "type": "text",
+      "secret": true,
+      "description": "Blink wallet API key — free at blink.sv"
+    },
+    {
+      "id": "BLINK_WALLET_ID",
+      "label": "Blink Wallet ID",
+      "type": "text",
+      "secret": false,
+      "description": "Your Blink BTC wallet ID"
+    },
+    {
+      "id": "BUDGET_SATS",
+      "label": "Budget (sats)",
+      "type": "text",
+      "secret": false,
+      "description": "Max sats per session (default: 2000)"
+    }
+  ],
+  "contributor": {
+    "name": "ShinyDapps",
+    "github": "ThiagoDataEngineer",
+    "url": "https://l402kit.com"
+  },
+  "links": {
+    "repository": "https://github.com/ShinyDapps/l402-kit",
+    "documentation": "https://docs.l402kit.com/agent/mcp",
+    "homepage": "https://l402kit.com"
+  },
+  "platforms": ["all"],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
