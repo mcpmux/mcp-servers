@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.solidping-mcp-http",
+  "name": "SolidPing",
+  "alias": "solidping",
+  "description": "Create, run and diagnose uptime checks, read results and incidents, and manage status pages on SolidPing, an open-source uptime monitor.",
+  "logo": "https://www.solidping.io/img/logo.png",
+  "schema_version": "2.1",
+  "categories": [
+    "monitoring"
+  ],
+  "tags": [
+    "solidping",
+    "monitoring",
+    "uptime",
+    "incidents",
+    "status-page",
+    "synthetic-monitoring",
+    "self-hosted"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://solidping.io/api/v1/mcp?auth=required",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser using your SolidPing account (the hosted plan has a free tier)."
+  },
+  "contributor": {
+    "name": "Florent Clairambault",
+    "github": "fclairamb",
+    "url": "https://www.solidping.io"
+  },
+  "links": {
+    "repository": "https://github.com/fclairamb/solidping",
+    "homepage": "https://www.solidping.io",
+    "documentation": "https://docs.solidping.io/docs/features/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
