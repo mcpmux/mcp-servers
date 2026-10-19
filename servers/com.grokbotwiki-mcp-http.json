@@ -3,7 +3,7 @@
   "id": "com.grokbotwiki-mcp-http",
   "name": "Grok Bot Wiki",
   "alias": "grok-bot-wiki",
-  "description": "Read-only search of community Grok Bot templates and practical guides from an independent wiki unaffiliated with xAI.",
+  "description": "Search community Grok Bot templates and guides, submit public Bots for review, and optionally create paid-upgrade checkout links through an independent wiki unaffiliated with xAI.",
   "logo": "https://www.grokbotwiki.com/brand/curious-guide.svg",
   "schema_version": "2.1",
   "categories": [
@@ -41,7 +41,7 @@
     "tools": true,
     "resources": false,
     "prompts": false,
-    "read_only_mode": true
+    "read_only_mode": false
   },
   "platforms": [
     "all"
