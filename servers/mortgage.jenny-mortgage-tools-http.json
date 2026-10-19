@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "mortgage.jenny-mortgage-tools-http",
+  "name": "Mortgage Tools by Jenny",
+  "alias": "jenny-mortgage",
+  "description": "Read-only Canadian mortgage calculators in CAD: compare renewal offers, extra payments and lump sums, breaking a mortgage early, and debt consolidation, from figures the user supplies.",
+  "logo": "https://raw.githubusercontent.com/JennyTate/jenny-mortgage-tools/main/assets/icon-512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "mortgage",
+    "canada",
+    "ontario",
+    "calculator",
+    "personal-finance",
+    "mortgage-renewal",
+    "debt-consolidation"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.jenny.mortgage/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Jenny Tate",
+    "github": "JennyTate",
+    "url": "https://jenny.mortgage/mortgage-tools/"
+  },
+  "links": {
+    "repository": "https://github.com/JennyTate/jenny-mortgage-tools",
+    "homepage": "https://jenny.mortgage/mortgage-tools/",
+    "documentation": "https://github.com/JennyTate/jenny-mortgage-tools#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
