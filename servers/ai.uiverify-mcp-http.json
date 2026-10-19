@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.uiverify-mcp-http",
+  "name": "UI Verify",
+  "alias": "uiverify",
+  "description": "Review visual test results from UI Verify: list builds and a pull request's visual changes, view before/after diffs with the AI judge's verdict (intended, regression or flake), comment, and accept new baselines. Hosted by UI Verify; access covers the teams you belong to.",
+  "logo": "https://avatars.githubusercontent.com/u/301905904?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "visual-testing",
+    "screenshot-testing",
+    "visual-regression",
+    "storybook",
+    "playwright",
+    "vitest"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://uiverify.ai/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in with your UI Verify account in your browser. No API key needed."
+  },
+  "contributor": {
+    "name": "UI Verify",
+    "github": "uiverify",
+    "url": "https://uiverify.ai"
+  },
+  "links": {
+    "repository": "https://github.com/uiverify/uiverify",
+    "homepage": "https://uiverify.ai",
+    "documentation": "https://uiverify.ai/docs/mcp-tools"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
