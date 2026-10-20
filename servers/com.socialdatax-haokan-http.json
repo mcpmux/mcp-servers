@@ -1,0 +1,65 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.socialdatax-haokan-http",
+  "name": "SocialDataX for Haokan",
+  "alias": "socialdatax-haokan",
+  "description": "Search Haokan videos and creators and read video details, comments, creator posts and hot searches through SocialDataX.",
+  "logo": "https://avatars.githubusercontent.com/u/14065057?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "haokan",
+    "search",
+    "social-media",
+    "video"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.socialdatax.com/haokan/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:SOCIALDATAX_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SOCIALDATAX_API_KEY",
+          "label": "SocialDataX API Key",
+          "description": "Your SocialDataX API Key, sent only to the hosted SocialDataX service. Business tool calls consume SocialDataX credits.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "obtain": {
+            "url": "https://socialdatax.com/ai?from=mcpmux",
+            "instructions": "1. Open the SocialDataX website and sign in.\n2. Obtain your own SocialDataX API Key.\n3. Add credits before making business tool calls.\n4. Paste the API Key into this secret field.",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Use your own SocialDataX API Key as a Bearer token; business tool calls consume SocialDataX credits."
+  },
+  "contributor": {
+    "name": "SocialDataX",
+    "github": "DevinChen2014",
+    "url": "https://socialdatax.com/ai?from=mcpmux"
+  },
+  "links": {
+    "repository": "https://github.com/DevinChen2014/haokan-mcp",
+    "homepage": "https://socialdatax.com/ai?from=mcpmux",
+    "documentation": "https://github.com/DevinChen2014/haokan-mcp#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
