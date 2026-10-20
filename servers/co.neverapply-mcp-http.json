@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "co.neverapply-mcp-http",
+  "name": "NeverApply (Remote)",
+  "alias": "neverapply-remote",
+  "description": "Search and match jobs, tailor resumes, answer screening questions, prepare for interviews, and apply to jobs with your approval over a hosted Streamable HTTP endpoint. Connects via OAuth.",
+  "logo": "https://avatars.githubusercontent.com/u/119529796?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "ai-ml"
+  ],
+  "tags": [
+    "neverapply",
+    "jobs",
+    "job-search",
+    "resume",
+    "career",
+    "remote",
+    "oauth"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://neverapply.co/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connects via OAuth 2.1 with PKCE and dynamic client registration. Your MCP host will initiate the NeverApply sign-in flow."
+  },
+  "contributor": {
+    "name": "NeverApply",
+    "github": "kasovy",
+    "url": "https://neverapply.co"
+  },
+  "links": {
+    "repository": "https://github.com/kasovy/neverapply-mcp",
+    "homepage": "https://neverapply.co",
+    "documentation": "https://neverapply.co/features/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
