@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.xagi-lab-melra",
+  "name": "MELRA",
+  "alias": "melra",
+  "description": "Local MCP runtime that checks each tool call, asks before risky changes, verifies results, and pauses uncertain writes for reconciliation.",
+  "logo": "https://avatars.githubusercontent.com/u/285132456?v=4",
+  "schema_version": "2.1",
+  "auth": {
+    "type": "none",
+    "instructions": "No account, API key, or OAuth flow is required."
+  },
+  "categories": [
+    "developer-tools",
+    "security"
+  ],
+  "tags": [
+    "agent-runtime",
+    "approvals",
+    "audit",
+    "mcp",
+    "policy",
+    "recovery",
+    "verification"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@melra/cli@alpha",
+      "serve"
+    ],
+    "env": {
+      "MELRA_WORKSPACE": "${input:MELRA_WORKSPACE}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "MELRA_WORKSPACE",
+          "label": "Workspace directory",
+          "description": "Directory MELRA may operate within. Choose the project workspace you want MELRA to govern.",
+          "type": "directory_path",
+          "required": true,
+          "secret": false
+        }
+      ]
+    }
+  },
+  "contributor": {
+    "name": "XAGI Labs",
+    "github": "XAGI-Lab",
+    "url": "https://xagilab.com/"
+  },
+  "links": {
+    "repository": "https://github.com/XAGI-Lab/melra",
+    "homepage": "https://xagilab.com/",
+    "documentation": "https://github.com/XAGI-Lab/melra#readme"
+  },
+  "platforms": [
+    "macos",
+    "windows",
+    "linux"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/XAGI-Lab/melra/releases"
+}
