@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.equibles-mcp-http",
+  "name": "Equibles",
+  "alias": "equibles",
+  "description": "US stock market data for AI agents: full-text SEC filings, financial statements, earnings call transcripts, insider and congressional trades, 13F holdings, options and macro data, with links to the source documents. Hosted by Equibles; sign in with an Equibles account (free plan of 100 requests a day).",
+  "logo": "https://equibles.com/favicon/favicon/android-chrome-512x512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools"
+  ],
+  "tags": [
+    "stocks",
+    "finance",
+    "sec-filings",
+    "earnings-calls",
+    "market-data",
+    "insider-trading",
+    "13f"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.equibles.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in to Equibles in your browser and approve access. A free account works; paid plans raise the daily request limit."
+  },
+  "contributor": {
+    "name": "Equibles",
+    "github": "daniel3303",
+    "url": "https://equibles.com"
+  },
+  "links": {
+    "repository": "https://github.com/daniel3303/stock-market-mcp-server",
+    "homepage": "https://equibles.com",
+    "documentation": "https://equibles.com/docs/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
