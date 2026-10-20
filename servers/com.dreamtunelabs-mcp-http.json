@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.dreamtunelabs-mcp-http",
+  "name": "Dreamtune",
+  "alias": "dreamtune",
+  "description": "Access model requests, tool APIs, GPU jobs and request traces through a scoped workspace key; paid operations use workspace credit and the key's permissions.",
+  "logo": "https://dreamtunelabs.com/icon.svg",
+  "schema_version": "2.1",
+  "categories": ["ai-ml", "cloud"],
+  "tags": ["models", "tools", "gpu", "compute", "observability"],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.dreamtunelabs.com/mcp",
+    "headers": {
+      "X-Dreamtune-API-Key": "${input:DREAMTUNE_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DREAMTUNE_API_KEY",
+          "label": "Dreamtune workspace API key",
+          "description": "Your production workspace key with only the model, tool or compute permissions you need. Paid operations require workspace credit.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "obtain": {
+            "url": "https://dreamtunelabs.com/dashboard/api-keys/",
+            "instructions": "1. Sign in to Dreamtune and select your workspace.\n2. Create a production API key with the model, tool or compute scopes you need and appropriate spending limits.\n3. Copy the key into this protected field.\n4. Add workspace credit before paid operations.",
+            "button_label": "Create workspace key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Supply your workspace key through the X-Dreamtune-API-Key header. The hosted server does not use browser OAuth."
+  },
+  "contributor": {
+    "name": "Yash Budhia",
+    "github": "yashbudhia",
+    "url": "https://github.com/yashbudhia"
+  },
+  "links": {
+    "homepage": "https://dreamtunelabs.com",
+    "documentation": "https://docs.dreamtunelabs.com/connect/mcp"
+  },
+  "platforms": ["all"],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
