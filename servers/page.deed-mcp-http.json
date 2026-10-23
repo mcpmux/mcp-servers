@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "page.deed-mcp-http",
+  "name": "deed.page",
+  "alias": "deed",
+  "description": "Publish static files (HTML or a whole site) to a permanent HTTPS URL on a deed.page subdomain, then update, roll back, list versions, attach custom domains or delete them; the first publish needs no account and returns an owner token.",
+  "logo": "https://deed.page/icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "cloud"
+  ],
+  "tags": [
+    "static-hosting",
+    "deploy",
+    "publish",
+    "websites",
+    "html",
+    "custom-domains"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://deed.page/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:DEED_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DEED_TOKEN",
+          "label": "deed.page Owner Token",
+          "description": "Optional. Leave empty to start: the first publish_site call returns an owner token. Paste it here so later sessions can update, roll back or delete the sites it owns.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "deed_tok_...",
+          "obtain": {
+            "url": "https://deed.page/docs",
+            "instructions": "1. Connect without a token and ask the agent to publish a page (publish_site)\n2. Copy the token field from that first publish result (starts with deed_tok_)\n3. Paste it here; it controls every site published with it",
+            "button_label": "Read the Docs"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without a token: the first publish creates one. Add that owner token via the Authorization: Bearer header to manage existing sites across sessions."
+  },
+  "contributor": {
+    "name": "deed.page",
+    "github": "f-o-x11",
+    "url": "https://deed.page"
+  },
+  "links": {
+    "repository": "https://github.com/f-o-x11/deed-page-skill",
+    "homepage": "https://deed.page",
+    "documentation": "https://deed.page/docs"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
