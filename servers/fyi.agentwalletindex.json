@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "fyi.agentwalletindex",
+  "name": "Agent Wallet Index",
+  "alias": "agentwalletindex",
+  "description": "Read-only index of wallets, payment platforms, payment protocols, key-management tools and card rails for AI agents that hold or spend money. Search by text, place and category; each row cites its source. Hosted endpoint; anonymous tools are read-only.",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "ai-ml"
+  ],
+  "tags": [
+    "agentwalletindex",
+    "payments",
+    "agent-wallets",
+    "x402",
+    "directory"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://agentwalletindex.fyi/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No credentials needed for the read tools. Write tools exist for the site's own listing-review pipeline but require a service token."
+  },
+  "contributor": {
+    "name": "Agent Wallet Index",
+    "url": "https://agentwalletindex.fyi"
+  },
+  "links": {
+    "homepage": "https://agentwalletindex.fyi",
+    "documentation": "https://agentwalletindex.fyi/developers"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
