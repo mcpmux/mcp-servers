@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "fyi.creditunions",
+  "name": "CreditUnions",
+  "alias": "creditunions",
+  "description": "Read-only index of US federally insured credit unions built on NCUA call-report data. Search by text and place, fetch eligibility rules and quarterly figures for one credit union. Hosted endpoint; anonymous tools are read-only.",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "database"
+  ],
+  "tags": [
+    "creditunions",
+    "credit-unions",
+    "ncua",
+    "finance",
+    "directory"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://creditunions.fyi/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No credentials needed for the read tools. Write tools exist for the site's own listing-review pipeline but require a service token."
+  },
+  "contributor": {
+    "name": "CreditUnions",
+    "url": "https://creditunions.fyi"
+  },
+  "links": {
+    "homepage": "https://creditunions.fyi",
+    "documentation": "https://creditunions.fyi/developers"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
