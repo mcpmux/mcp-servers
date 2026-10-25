@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "fyi.agentsandboxes",
+  "name": "AgentSandboxes",
+  "alias": "agentsandboxes",
+  "description": "Read-only index of cloud sandbox providers for AI agents. Search providers by text, place and category and fetch source-linked specs (isolation, cold start, persistence, GPU, pricing, free tier). Hosted endpoint; anonymous tools are read-only.",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "search"
+  ],
+  "tags": [
+    "agentsandboxes",
+    "cloud-sandbox",
+    "ai-agents",
+    "directory",
+    "search"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://agentsandboxes.fyi/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No credentials needed for the read tools. Write tools exist for the site's own listing-review pipeline but require a service token."
+  },
+  "contributor": {
+    "name": "AgentSandboxes",
+    "url": "https://agentsandboxes.fyi"
+  },
+  "links": {
+    "homepage": "https://agentsandboxes.fyi",
+    "documentation": "https://agentsandboxes.fyi/developers"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
