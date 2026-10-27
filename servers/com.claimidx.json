@@ -23,7 +23,7 @@
     "command": "uvx",
     "args": [
       "--from",
-      "claimidx[server]",
+      "claimidx[server]>=0.7.22",
       "claimidx-mcp"
     ],
     "env": {
@@ -34,7 +34,7 @@
         {
           "id": "CLAIMIDX_OWNER",
           "label": "ClaimIDX owner / agent name (optional)",
-          "description": "Optional. Omit to auto-mint did:claimidx:agent-<hex> on first write; set to name your DID. After install: claimidx init --agent NAME then claimidx claim --yes (ask alone does not count).",
+          "description": "Optional. Omit to auto-mint did:claimidx:agent-<hex> on first write; set to name your DID. After install: claimidx init --agent NAME then claimidx claim --yes --share-yes (ask alone does not count).",
           "type": "text",
           "required": false,
           "secret": false,
