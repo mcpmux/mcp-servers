@@ -4,7 +4,7 @@
   "name": "BestPrice Shopping",
   "alias": "bestprice",
   "description": "Get evidence-backed shopping decisions, search products, compare current Greek merchant offers by delivered cost, and inspect price history on BestPrice.gr.",
-  "logo": "https://www.bestprice.gr/images/logo.svg",
+  "logo": "https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png",
   "schema_version": "2.1",
   "categories": [
     "search"
