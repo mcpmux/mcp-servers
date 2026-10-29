@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.hubspot-mcp-http",
+  "name": "HubSpot (Remote)",
+  "alias": "hubspot-remote",
+  "description": "HubSpot's hosted MCP server for reading and editing CRM records, properties, pipelines, segments, campaigns, marketing emails and website content in your HubSpot account.",
+  "logo": "https://avatars.githubusercontent.com/u/326419?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "cloud"
+  ],
+  "tags": [
+    "hubspot",
+    "crm",
+    "contacts",
+    "deals",
+    "marketing",
+    "sales",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.hubspot.com/",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Signs in with OAuth 2.0 + PKCE in your browser using your HubSpot account. A HubSpot account admin must connect first before other users in the account can connect."
+  },
+  "contributor": {
+    "name": "Leo Araya S",
+    "github": "leoarayas",
+    "url": "https://agenciaingenium.cl"
+  },
+  "links": {
+    "homepage": "https://developers.hubspot.com/mcp",
+    "documentation": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-the-remote-hubspot-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
