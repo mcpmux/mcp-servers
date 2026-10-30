@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.curlshot-mcp-http",
+  "name": "CurlShot (Remote)",
+  "alias": "curlshot",
+  "description": "Take screenshots of public web pages as PNG, JPEG, WebP or PDF through CurlShot's hosted MCP server, with full-page capture, device presets, dark mode, CSS selector capture and ad/cookie-banner blocking.",
+  "logo": "https://curlshot.com/apple-icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "search"
+  ],
+  "tags": [
+    "screenshot",
+    "web-capture",
+    "pdf",
+    "full-page",
+    "browser",
+    "remote",
+    "hosted"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://curlshot.com/api/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:CURLSHOT_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CURLSHOT_API_KEY",
+          "label": "CurlShot API Key",
+          "description": "API key sent as a Bearer token. Required by the take_screenshot tool; list_devices works without it.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "obtain": {
+            "url": "https://curlshot.com/register",
+            "instructions": "1. Create an account at curlshot.com/register (free plan, 100 screenshots/month, no card)\n2. Open the dashboard\n3. Copy your API key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create a free account at https://curlshot.com/register and copy your API key from the dashboard. It is sent as an Authorization: Bearer header."
+  },
+  "contributor": {
+    "name": "Serghei Pogor",
+    "github": "SergiuPogor",
+    "url": "https://curlshot.com"
+  },
+  "links": {
+    "repository": "https://github.com/SergiuPogor/curlshot-mcp",
+    "homepage": "https://curlshot.com",
+    "documentation": "https://curlshot.com/docs/guides/ai-agents"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
