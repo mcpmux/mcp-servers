@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/server-definition.schema.json",
   "id": "io.aperturex-wallet-knowledge",
-  "name": "Aperture Wallet Knowledge",
+  "name": "Oath Wallet Knowledge",
   "alias": "aperture-wallet-knowledge",
-  "description": "Search verified Aperture Wallet product facts, supported mainnets, security guidance, releases, app-screen semantics, and Journal articles through 12 public read-only tools.",
-  "logo": "https://aperturex.io/assets/app-tile-1024.png",
+  "description": "Read-only Oath Wallet documentation covering product features, supported networks, help, security guidance, download information and articles without wallet access, signing or transactions.",
+  "logo": "https://raw.githubusercontent.com/devdasx/oath-wallet/main/Website/public/assets/press/2026-10/oath-app-icon.png",
   "schema_version": "2.1",
   "categories": [
     "documentation",
@@ -12,7 +12,7 @@
     "security"
   ],
   "tags": [
-    "aperture-wallet",
+    "oath-wallet",
     "crypto-wallet",
     "self-custody",
     "bitcoin",
@@ -21,7 +21,7 @@
   ],
   "transport": {
     "type": "http",
-    "url": "https://oathwallet.org/mcp/",
+    "url": "https://oathwallet.org/mcp",
     "metadata": {
       "inputs": []
     }
@@ -30,22 +30,22 @@
     "type": "none"
   },
   "contributor": {
-    "name": "Aperture",
+    "name": "Oath Wallet",
     "github": "devdasx",
-    "url": "https://aperturex.io/"
+    "url": "https://oathwallet.org"
   },
   "links": {
-    "repository": "https://github.com/devdasx/aperture",
-    "homepage": "https://aperturex.io/agents/",
-    "documentation": "https://aperturex.io/llms.txt"
+    "repository": "https://github.com/devdasx/oath-wallet",
+    "homepage": "https://oathwallet.org",
+    "documentation": "https://oathwallet.org/llms.txt"
   },
   "platforms": [
     "all"
   ],
   "capabilities": {
     "tools": true,
-    "resources": false,
-    "prompts": false,
+    "resources": true,
+    "prompts": true,
     "read_only_mode": true
   }
 }
