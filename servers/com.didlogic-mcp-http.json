@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.didlogic-mcp-http",
+  "name": "didlogic MCP Server",
+  "alias": "didlogic",
+  "description": "Manage didlogic phone numbers, SIP accounts, call routing, SMS, calls and billing via AI assistants.",
+  "logo": "https://raw.githubusercontent.com/didlogic-cy/didlogic-mcp/main/icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "didlogic",
+    "telephony",
+    "voip",
+    "sip",
+    "sms",
+    "call-routing",
+    "phone-numbers",
+    "billing"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.didlogic.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in with your didlogic account using OAuth. No local installation or API key is required for this connection method."
+  },
+  "contributor": {
+    "name": "didlogic",
+    "github": "didlogic-cy",
+    "url": "https://didlogic.com"
+  },
+  "links": {
+    "repository": "https://github.com/didlogic-cy/didlogic-mcp",
+    "homepage": "https://mcp.didlogic.com",
+    "documentation": "https://docs.didlogic.com/docs/guides/apps-developer-tools/mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
