@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "cheap.doc-mcp-http",
+  "name": "doc.cheap (Remote)",
+  "alias": "doccheap",
+  "description": "Official doc.cheap remote MCP server: reads passports, national ID cards and driver's licences from a photo or scan and returns the printed fields, including the MRZ, as structured JSON. Tools scan a document, check the balance, search the API docs, and list, read or delete stored results. Works without a key on the public sandbox; add a doc.cheap API key for your own documents.",
+  "logo": "https://doc.cheap/apple-touch-icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "productivity"
+  ],
+  "tags": [
+    "ocr",
+    "passport",
+    "id-card",
+    "mrz",
+    "kyc",
+    "document-recognition"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.doc.cheap/mcp",
+    "headers": {
+      "X-Doc-Cheap-Api-Key": "${input:DOC_CHEAP_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "DOC_CHEAP_API_KEY",
+          "label": "doc.cheap API Key",
+          "description": "Optional. Without a key the server uses the public sandbox key; a live key reads your own documents and comes with 100 free recognitions every month. Starts with sk_live_.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "sk_live_************************",
+          "obtain": {
+            "url": "https://doc.cheap/register",
+            "instructions": "1. Go to doc.cheap/register\n2. Create an account\n3. Open API keys in the account menu\n4. Copy your key (starts with sk_live_)",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Optional. Works without a key on the public sandbox key. For your own documents, create a key at doc.cheap; it is sent in the X-Doc-Cheap-Api-Key header."
+  },
+  "contributor": {
+    "name": "doc.cheap",
+    "url": "https://doc.cheap"
+  },
+  "links": {
+    "repository": "https://gitlab.com/doccheap/ocr-mcp",
+    "homepage": "https://doc.cheap/mcp",
+    "documentation": "https://doc.cheap/docs/guides/use-the-mcp-server"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
