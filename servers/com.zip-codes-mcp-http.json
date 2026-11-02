@@ -3,7 +3,7 @@
   "id": "com.zip-codes-mcp-http",
   "name": "Zip-Codes.com",
   "alias": "zip-codes",
-  "description": "US street address standardization (ZIP+4) and US/Canadian postal code lookup, radius search, distance, 2010–2025 Census TIGER/Line boundaries and 2011–2024 ACS survey estimates, over stateless Streamable HTTP (keyless demo; 2,500 credits/day with a free key).",
+  "description": "US street address standardization (ZIP+4) and US/Canadian postal code lookup, radius search, distance, 2010–2026 Census TIGER/Line boundaries and 2011–2024 ACS survey estimates, over stateless Streamable HTTP (keyless demo; 2,500 credits/day with a free key).",
   "logo": "https://avatars.githubusercontent.com/u/284711723?v=4",
   "schema_version": "2.1",
   "categories": ["search"],
