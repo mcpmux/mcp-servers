@@ -1,0 +1,56 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.zip-codes-mcp-http",
+  "name": "Zip-Codes.com",
+  "alias": "zip-codes",
+  "description": "US street address standardization (ZIP+4) and US/Canadian postal code lookup, radius search, distance, 2010–2026 Census TIGER/Line boundaries and 2011–2024 ACS survey estimates, over stateless Streamable HTTP (keyless demo; 2,500 credits/day with a free key).",
+  "logo": "https://avatars.githubusercontent.com/u/284711723?v=4",
+  "schema_version": "2.1",
+  "categories": ["search"],
+  "tags": ["zip-code", "address-validation", "postal-code", "geocoding", "census", "demographics"],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.zip-codes.com/mcp",
+    "headers": {
+      "X-Api-Key": "${input:ZIP_CODES_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "ZIP_CODES_API_KEY",
+          "label": "Zip-Codes.com API Key",
+          "description": "Optional. Without a key the server runs in demo mode: real values, deeper fields withheld. A free key gives 2,500 credits a day.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "obtain": {
+            "url": "https://www.zip-codes.com/api/signup",
+            "instructions": "1. Open www.zip-codes.com/api/signup\n2. Create a free account\n3. Copy your API key",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without a key in demo mode. Add a Zip-Codes.com API key in the X-Api-Key header for full answers."
+  },
+  "contributor": {
+    "name": "Zip-Codes.com",
+    "github": "ZIP-Codes-API",
+    "url": "https://www.zip-codes.com/api/"
+  },
+  "links": {
+    "repository": "https://github.com/ZIP-Codes-API/zip-codes-mcp",
+    "homepage": "https://www.zip-codes.com/api/mcp",
+    "documentation": "https://api.zip-codes.com/docs"
+  },
+  "platforms": ["all"],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
