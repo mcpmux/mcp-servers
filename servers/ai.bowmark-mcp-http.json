@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.bowmark-mcp-http",
+  "name": "Bowmark",
+  "alias": "bowmark",
+  "description": "Search a library of typed, tested functions for live websites like LinkedIn, Amazon and YouTube, then run short scripts that call them and return structured results, through a hosted endpoint that needs a Bowmark API key (new accounts start with a free $10).",
+  "logo": "https://avatars.githubusercontent.com/u/287127998?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "developer-tools"
+  ],
+  "tags": [
+    "bowmark",
+    "web-data",
+    "web-scraping",
+    "linkedin",
+    "amazon",
+    "youtube",
+    "automation",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://api.bowmark.ai/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:BOWMARK_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "BOWMARK_API_KEY",
+          "label": "Bowmark API Key",
+          "description": "Required. Sent as an Authorization: Bearer header to the hosted endpoint.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "obtain": {
+            "url": "https://bowmark.ai/dashboard/keys",
+            "instructions": "1. Go to bowmark.ai and sign up or sign in\n2. Open Dashboard > API keys\n3. Create a key\n4. Copy it into this field",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an API key at bowmark.ai/dashboard/keys. It is sent as an Authorization: Bearer header. New accounts start with a free $10."
+  },
+  "contributor": {
+    "name": "Bowmark",
+    "github": "bowmark-ai",
+    "url": "https://bowmark.ai"
+  },
+  "links": {
+    "repository": "https://github.com/bowmark-ai/mcp",
+    "homepage": "https://bowmark.ai",
+    "documentation": "https://bowmark.ai/docs/quickstart"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
