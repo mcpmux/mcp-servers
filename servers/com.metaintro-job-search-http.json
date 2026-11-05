@@ -1,0 +1,48 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.metaintro-job-search-http",
+  "name": "Metaintro Job Search",
+  "alias": "metaintro",
+  "description": "Search live jobs pulled straight from employer career sites, read postings, and see how employers hire and pay. Free, no sign-in.",
+  "logo": "https://www.metaintro.com/icon-512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "jobs",
+    "job-search",
+    "careers",
+    "hiring",
+    "salary",
+    "labor-market"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://www.metaintro.com/api/mcp/public",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Metaintro",
+    "github": "followbl",
+    "url": "https://www.metaintro.com"
+  },
+  "links": {
+    "homepage": "https://www.metaintro.com/developers/mcp",
+    "documentation": "https://www.metaintro.com/developers/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
