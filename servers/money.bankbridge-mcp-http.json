@@ -3,7 +3,7 @@
   "id": "money.bankbridge-mcp-http",
   "name": "BankBridge",
   "alias": "bankbridge",
-  "description": "Read-only access to your own US bank, credit card and investment accounts (balances, transactions, spending, recurring charges, cashflow and holdings), fetched live from 12,000+ institutions; it cannot move money, pay bills or place trades.",
+  "description": "Works in any MCP agent, including local models. Read-only access to your own US bank, credit card and investment accounts (balances, transactions, spending, recurring charges, cashflow and holdings), fetched live from 12,000+ institutions; it cannot move money, pay bills or place trades.",
   "logo": "https://avatars.githubusercontent.com/u/277408870?v=4",
   "schema_version": "2.1",
   "categories": [
