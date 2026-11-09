@@ -1,0 +1,38 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.agentseo-mcp-http",
+  "name": "AgentSEO (Hosted MCP)",
+  "alias": "agentseo",
+  "description": "Search Google SERPs, research SEO keywords, track rankings, analyze backlinks and content gaps, audit local visibility, and inspect AI search visibility from Claude, Codex, Cursor, or other MCP clients.",
+  "schema_version": "2.1",
+  "categories": ["search", "ai-ml"],
+  "tags": ["seo", "serp", "keyword-research", "rank-tracking", "backlinks", "content-gaps", "ai-search-visibility", "local-seo"],
+  "transport": {
+    "type": "http",
+    "url": "https://www.agentseo.dev/mcp",
+    "headers": {"Authorization": "Bearer ${input:AGENTSEO_API_KEY}"},
+    "metadata": {"inputs": [{
+      "id": "AGENTSEO_API_KEY",
+      "label": "AgentSEO API Key",
+      "description": "Server-side API key for AgentSEO hosted MCP. Keep allowed domains empty; calls consume account credits.",
+      "type": "text",
+      "required": true,
+      "secret": true,
+      "obtain": {
+        "url": "https://www.agentseo.dev/docs/authentication",
+        "instructions": "Create an AgentSEO API key and leave allowed-domain restrictions empty for hosted MCP requests. Store the key only in the client credential field.",
+        "button_label": "Get API Key"
+      }
+    }]}
+  },
+  "auth": {"type": "api_key", "instructions": "Use a server-side AgentSEO API key with no allowed-domain restrictions. Hosted MCP calls consume credits."},
+  "contributor": {"name": "AgentSEO", "github": "AgentSEO-dev", "url": "https://www.agentseo.dev"},
+  "links": {
+    "repository": "https://github.com/AgentSEO-dev/agentseo-clients",
+    "homepage": "https://www.agentseo.dev",
+    "documentation": "https://www.agentseo.dev/seo-mcp-server"
+  },
+  "platforms": ["all"],
+  "capabilities": {"tools": true, "resources": false, "prompts": false, "read_only_mode": false},
+  "changelog_url": "https://github.com/AgentSEO-dev/agentseo-clients/releases"
+}
