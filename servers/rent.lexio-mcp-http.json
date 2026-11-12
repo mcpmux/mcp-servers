@@ -1,0 +1,48 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "rent.lexio-mcp-http",
+  "name": "Lexio",
+  "alias": "lexio",
+  "description": "Read-only access to a Lexio vehicle rental account (availability, rentals, customers, fleet, maintenance and pricing) through Lexio's hosted MCP endpoint.",
+  "logo": "https://lexio.rent/icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "lexio",
+    "car-rental",
+    "fleet-management",
+    "read-only",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://api.lexio.rent/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Connect via OAuth when prompted: sign in to Lexio as the owner of the organization, choose the organization and authorize the read scopes. Requires a Lexio plan that includes the API (Business)."
+  },
+  "contributor": {
+    "name": "Lexio",
+    "github": "LEXIO-RENT",
+    "url": "https://lexio.rent"
+  },
+  "links": {
+    "homepage": "https://lexio.rent/mcp",
+    "documentation": "https://docs.lexio.rent/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
