@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.webpros-dashboard-http",
+  "name": "WebPros Dashboard (Remote)",
+  "alias": "webpros-dashboard",
+  "description": "Manage servers, domains, and resources connected to your WebPros Dashboard account. Provides tools for Plesk, cPanel, and WHM management through the hosted remote MCP server. Authenticates with a scoped MCP key.",
+  "logo": "https://dashboard.webpros.com/dashboard-favicon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud",
+    "developer-tools"
+  ],
+  "tags": [
+    "webpros",
+    "plesk",
+    "cpanel",
+    "whm",
+    "hosting",
+    "server-management",
+    "domains",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.webpros.com/api/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:WEBPROS_MCP_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "WEBPROS_MCP_KEY",
+          "label": "WebPros Dashboard MCP Key",
+          "description": "Scoped MCP key generated from your WebPros Dashboard profile. Grants the AI assistant access to the servers and resources in your Dashboard account.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "obtain": {
+            "url": "https://dashboard.webpros.com/profile/mcp",
+            "instructions": "1. Log in to your WebPros Dashboard at https://dashboard.webpros.com\n2. Navigate to Profile > API and MCP\n3. Click Create MCP Key\n4. Give the key a descriptive name\n5. Copy the generated key",
+            "button_label": "Create MCP Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Create an MCP key at https://dashboard.webpros.com under Profile > API and MCP. The key is sent as a Bearer token."
+  },
+  "contributor": {
+    "name": "WebPros",
+    "github": "webpros",
+    "url": "https://www.webpros.com"
+  },
+  "links": {
+    "homepage": "https://www.webpros.com",
+    "documentation": "https://docs.dashboard.webpros.com"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
