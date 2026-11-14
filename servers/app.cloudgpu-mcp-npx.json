@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "app.cloudgpu-mcp-npx",
+  "name": "CloudGPU (npx)",
+  "alias": "cloudgpu",
+  "description": "Let an AI agent discover GPUs, get a cost quote, rent a GPU instance or run a job, upload and download files, read logs and shut it down, with spend, time and idle limits enforced server-side.",
+  "logo": "https://avatars.githubusercontent.com/u/277667270?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "cloud",
+    "ai-ml"
+  ],
+  "tags": [
+    "gpu",
+    "compute",
+    "jobs",
+    "agents",
+    "cloud"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "cloudgpu-mcp"
+    ],
+    "env": {
+      "CLOUDGPU_API_KEY": "${input:CLOUDGPU_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "CLOUDGPU_API_KEY",
+          "label": "CloudGPU API Key",
+          "description": "Optional. Without a key, the agent can call connect_account and the owner approves a key with a spending limit through a link.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "cgw-sk-...",
+          "obtain": {
+            "url": "https://cloudgpu.app/api",
+            "instructions": "1. Go to cloudgpu.app/api\n2. Sign in with Google or email\n3. Create an API key and set its spending limit",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Optional: create a key at https://cloudgpu.app/api, or let the agent request an owner-approved key with connect_account."
+  },
+  "contributor": {
+    "name": "CloudGPU",
+    "github": "cloudgpu-app",
+    "url": "https://cloudgpu.app"
+  },
+  "links": {
+    "repository": "https://github.com/cloudgpu-app/cloudgpu-mcp",
+    "homepage": "https://cloudgpu.app/agents",
+    "documentation": "https://cloudgpu.app/docs/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
