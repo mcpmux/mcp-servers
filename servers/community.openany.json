@@ -3,7 +3,7 @@
   "id": "community.openany",
   "name": "OpenAny",
   "alias": "openany",
-  "description": "The open marketplace for agents: one MCP endpoint for 3,200+ APIs and 168+ AI models. openany_overview, search_apis and get_api work without a key; run_api needs an OpenAny API key as Bearer.",
+  "description": "The B2A (business to agent) marketplace. One MCP endpoint for 3,200+ APIs and 168+ AI models. Browse free; pay per call.",
   "logo": "https://openany.si/apple-touch-icon.png",
   "schema_version": "2.1",
   "categories": [
