@@ -1,0 +1,66 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "community.openany",
+  "name": "OpenAny",
+  "alias": "openany",
+  "description": "The B2A (business to agent) marketplace. One MCP endpoint for 3,200+ APIs and 168+ AI models. Browse free; pay per call.",
+  "logo": "https://openany.si/apple-touch-icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "developer-tools"
+  ],
+  "tags": [
+    "openany",
+    "api",
+    "marketplace",
+    "ai-models",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://mcp.openany.si",
+    "headers": {
+      "Authorization": "Bearer ${input:OPENANY_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "OPENANY_API_KEY",
+          "label": "OpenAny API key",
+          "description": "Optional. Browsing, search and get_api are free. Only run_api needs a Bearer key.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "obtain": {
+            "url": "https://openany.si",
+            "instructions": "Browsing, search and price checks are free. Only run_api needs a Bearer key. Get an API key at openany.si."
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without a key for openany_overview, search_apis and get_api. Only run_api needs an OpenAny API key, sent as an Authorization: Bearer header. Get a key at https://openany.si."
+  },
+  "contributor": {
+    "name": "Pistis Wang",
+    "github": "ComunionIO",
+    "url": "https://openany.si"
+  },
+  "links": {
+    "repository": "https://github.com/openanysi/openany-mcp",
+    "homepage": "https://openany.si",
+    "documentation": "https://github.com/openanysi/openany-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
