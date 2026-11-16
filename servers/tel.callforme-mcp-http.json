@@ -1,0 +1,30 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "tel.callforme-mcp-http",
+  "name": "CallForMe",
+  "alias": "callforme",
+  "description": "Gives your AI agent a phone. It calls businesses in the US and Canada, works the phone menu, waits on hold, asks your agent mid-call when the business needs something, and returns the answers plus a transcript.",
+  "logo": "https://callforme.tel/icon-512.png",
+  "schema_version": "2.1",
+  "categories": ["communication"],
+  "tags": ["callforme", "phone-calls", "voice", "customer-service", "quotes", "reservations"],
+  "transport": { "type": "http", "url": "https://callforme.tel/mcp", "metadata": { "inputs": [] } },
+  "auth": { "type": "oauth", "instructions": "Connect over OAuth in your browser. The server supports Dynamic Client Registration and creates an account on connect, so nothing needs to be entered. Pay per call: $1 per answered call including the first 2 minutes; a demo line works with no credit." },
+  "contributor": {
+    "name": "Great Work LLC",
+    "github": "callforme-tel",
+    "url": "https://greatwork.company"
+  },
+  "links": {
+    "homepage": "https://callforme.tel",
+    "repository": "https://github.com/callforme-tel/callforme",
+    "documentation": "https://callforme.tel/docs/mcp"
+  },
+  "platforms": ["all"],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
