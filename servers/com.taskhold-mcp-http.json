@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.taskhold-mcp-http",
+  "name": "Taskhold",
+  "alias": "taskhold",
+  "description": "A hosted task list you share with your coding agents. Agents pick up the next task, split it into steps, report progress on a live board and block with a question when they need you; every change is marked human or agent.",
+  "logo": "https://taskhold.com/icons/icon-512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "taskhold",
+    "task-management",
+    "todo",
+    "coding-agents",
+    "project-management",
+    "progress"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://taskhold.com/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Sign in to Taskhold in your browser (OAuth). The server supports Dynamic Client Registration, so no client ID or API key is needed. Paid: $12/month with a 7-day trial."
+  },
+  "contributor": {
+    "name": "Taskhold",
+    "github": "gettaskhold",
+    "url": "https://taskhold.com"
+  },
+  "links": {
+    "homepage": "https://taskhold.com",
+    "repository": "https://github.com/gettaskhold/taskhold-plugin",
+    "documentation": "https://taskhold.com/docs"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
