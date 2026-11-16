@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.mambabuilt-gtm-suite-npx",
+  "name": "Mamba Labs GTM Suite (npx)",
+  "alias": "mamba-gtm",
+  "description": "Account intelligence for sales and go-to-market research: 21 tools for company identity, firmographics, social presence, hiring, tech stack, and funding signals, change monitoring, and ICP scoring, each run as a Mamba Labs actor on Apify with Clay-ready JSON output.",
+  "logo": "https://avatars.githubusercontent.com/u/289610954?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "sales",
+    "gtm",
+    "lead-generation",
+    "enrichment",
+    "apify",
+    "clay"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mambalabsdev/mcp-gtm-suite"
+    ],
+    "env": {
+      "APIFY_TOKEN": "${input:APIFY_TOKEN}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "APIFY_TOKEN",
+          "label": "Apify API Token",
+          "description": "Apify API token. Each tool call runs a Mamba Labs actor on your Apify account.",
+          "type": "text",
+          "required": true,
+          "secret": true,
+          "placeholder": "apify_api_xxxxxxxxxxxxxxxxxxxxxxxx",
+          "obtain": {
+            "url": "https://console.apify.com/account/integrations",
+            "instructions": "1. Sign in to the Apify Console\n2. Open Settings, then API & Integrations\n3. Copy your personal API token",
+            "button_label": "Get API Token"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "api_key",
+    "instructions": "Get an Apify API token at https://console.apify.com/account/integrations"
+  },
+  "contributor": {
+    "name": "Mamba Labs",
+    "github": "mambalabsdev",
+    "url": "https://mambabuilt.com"
+  },
+  "links": {
+    "repository": "https://github.com/mambalabsdev/mcp-gtm-suite",
+    "homepage": "https://mambabuilt.com",
+    "documentation": "https://github.com/mambalabsdev/mcp-gtm-suite#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
