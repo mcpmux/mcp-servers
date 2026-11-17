@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.shopsavvy-mcp-http",
+  "name": "ShopSavvy",
+  "alias": "shopsavvy",
+  "description": "Product lookup by name, barcode, ASIN or URL, current prices across tens of thousands of retailers, price history and buying guides for 30M+ products, via ShopSavvy's hosted MCP endpoint. Works without signup; add a Data API key for higher limits.",
+  "logo": "https://shopsavvy.com/assets/icon-512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "shopping",
+    "price-comparison",
+    "ecommerce",
+    "products",
+    "barcode",
+    "price-history",
+    "deals"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://api.shopsavvy.com/mcp",
+    "headers": {
+      "Authorization": "Bearer ${input:SHOPSAVVY_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "SHOPSAVVY_API_KEY",
+          "label": "ShopSavvy Data API Key",
+          "description": "Optional. Anonymous access works (10 tool calls a minute per IP); a ShopSavvy Data API key raises the limit and enables scheduled price monitoring.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "placeholder": "ss_live_********************",
+          "obtain": {
+            "url": "https://shopsavvy.com/data",
+            "instructions": "1. Open shopsavvy.com/data\n2. Choose a plan and create your account\n3. Copy your API key (starts with ss_live_)",
+            "button_label": "Get API Key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Works without a key (rate-limited per IP). Add a ShopSavvy Data API key via the Authorization: Bearer header for higher limits. Get one at shopsavvy.com/data."
+  },
+  "contributor": {
+    "name": "ShopSavvy",
+    "github": "shopsavvy",
+    "url": "https://shopsavvy.com"
+  },
+  "links": {
+    "repository": "https://github.com/shopsavvy/shopsavvy-mcp-server",
+    "homepage": "https://shopsavvy.com/agents",
+    "documentation": "https://shopsavvy.com/agents"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
