@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.verateca-http",
+  "name": "Verateca",
+  "alias": "verateca",
+  "description": "Read supplement labels down to the substance: find products, compare labels, look up a substance's forms and official upper limits by country, and add up a supplement list against those limits, with sources.",
+  "logo": "https://verateca.com/icon-512.png",
+  "schema_version": "2.1",
+  "categories": [
+    "search",
+    "database"
+  ],
+  "tags": [
+    "supplements",
+    "nutrition",
+    "health",
+    "vitamins",
+    "labels",
+    "ingredients",
+    "reference"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://verateca.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contributor": {
+    "name": "Verateca",
+    "github": "Verateca-team",
+    "url": "https://verateca.com"
+  },
+  "links": {
+    "repository": "https://github.com/Verateca/Verateca-mcp",
+    "homepage": "https://verateca.com",
+    "documentation": "https://verateca.com/ai"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  }
+}
