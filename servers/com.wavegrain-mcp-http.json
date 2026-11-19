@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.wavegrain-mcp-http",
+  "name": "Wavegrain",
+  "alias": "wavegrain",
+  "description": "Read your brands, make TikTok slideshows and Instagram carousels from your own photos, edit slides, schedule posts and export them through Wavegrain's hosted remote MCP server.",
+  "logo": "https://avatars.githubusercontent.com/u/354926915?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "design",
+    "productivity"
+  ],
+  "tags": [
+    "tiktok",
+    "instagram",
+    "carousel",
+    "slideshow",
+    "social-media",
+    "brand",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://wavegrain.com/api/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 with PKCE in your browser using your Wavegrain account. On the consent page you pick the permissions and a daily credit limit; making slideshows spends credits from your Wavegrain account (Wavegrain is a paid product)."
+  },
+  "contributor": {
+    "name": "Wavegrain",
+    "github": "wavegrain",
+    "url": "https://wavegrain.com"
+  },
+  "links": {
+    "repository": "https://github.com/wavegrain/wavegrain-mcp",
+    "homepage": "https://wavegrain.com",
+    "documentation": "https://wavegrain.com/mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
