@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "io.ipgeolocation-mcp-npx",
+  "name": "IPGeolocation.io (Local)",
+  "alias": "ipgeolocation-local",
+  "description": "Look up IP geolocation, company information, ASN and network data, abuse contacts and IP security signals (VPN, proxy, Tor, bot, hosting and spam), plus time zones, astronomy, currency data and user-agent details.",
+  "logo": "https://raw.githubusercontent.com/IPGeolocation/ipgeolocation-io-mcp/main/icon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "security"
+  ],
+  "tags": [
+    "ip-geolocation",
+    "asn",
+    "ip-security",
+    "time-zones",
+    "astronomy",
+    "currency"
+  ],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "ipgeolocation-io-mcp@latest"
+    ],
+    "env": {
+      "IPGEOLOCATION_API_KEY": "${input:IPGEOLOCATION_API_KEY}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "IPGEOLOCATION_API_KEY",
+          "label": "IPGeolocation.io API key",
+          "description": "Leave blank to use get_my_ip. The other API tools need a key, and availability depends on your plan.",
+          "type": "text",
+          "required": false,
+          "secret": true,
+          "obtain": {
+            "url": "https://app.ipgeolocation.io/signup",
+            "instructions": "1. Sign up for a free account or sign in.\n2. Copy your API key from the dashboard.",
+            "button_label": "Get API key"
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "optional_api_key",
+    "instructions": "Install Node.js 22 or later. Enter your API key for lookups, or leave it blank to check your own public IP."
+  },
+  "contributor": {
+    "name": "IPGeolocation.io",
+    "github": "IPGeolocation",
+    "url": "https://ipgeolocation.io"
+  },
+  "links": {
+    "repository": "https://github.com/IPGeolocation/ipgeolocation-io-mcp",
+    "homepage": "https://ipgeolocation.io",
+    "documentation": "https://ipgeolocation.io/integrations/ipgeolocation-io-mcp"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": true
+  },
+  "changelog_url": "https://github.com/IPGeolocation/ipgeolocation-io-mcp/releases"
+}
