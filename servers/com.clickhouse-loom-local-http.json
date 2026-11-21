@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.clickhouse-loom-local-http",
+  "name": "ClickHouse Loom (Local single-user)",
+  "alias": "loom-local",
+  "description": "Connect to a Loom server already running on this computer to save agent memory and query indexed code.",
+  "logo": "https://avatars.githubusercontent.com/u/54801242?v=4",
+  "schema_version": "2.1",
+  "categories": [
+    "developer-tools",
+    "ai-ml"
+  ],
+  "tags": [
+    "memory",
+    "coding",
+    "agents",
+    "code-search",
+    "self-hosted"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "http://localhost:7777/mcp?toolset=coding",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Install and start the stock single-user Loom stack on the same computer and network namespace as McpMux before enabling this entry; it uses localhost:7777 without a token. This entry does not install the stack or connect to remote, authenticated or custom-port deployments."
+  },
+  "contributor": {
+    "github": "zlareb1",
+    "url": "https://github.com/zlareb1"
+  },
+  "links": {
+    "repository": "https://github.com/ClickHouse/loom",
+    "homepage": "https://github.com/ClickHouse/loom",
+    "documentation": "https://github.com/ClickHouse/loom/blob/v1.3.0/docs/reference/mcp.md"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  },
+  "changelog_url": "https://github.com/ClickHouse/loom/releases",
+  "platforms": [
+    "all"
+  ]
+}
