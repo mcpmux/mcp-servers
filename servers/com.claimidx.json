@@ -23,7 +23,7 @@
     "command": "uvx",
     "args": [
       "--from",
-      "claimidx[server]>=0.7.22",
+      "claimidx[server]>=0.7.31",
       "claimidx-mcp"
     ],
     "env": {
