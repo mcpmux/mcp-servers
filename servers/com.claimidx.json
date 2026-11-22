@@ -61,8 +61,8 @@
   ],
   "capabilities": {
     "tools": true,
-    "resources": false,
-    "prompts": false,
+    "resources": true,
+    "prompts": true,
     "read_only_mode": false
   },
   "changelog_url": "https://github.com/claimidx/claimidx/releases"
