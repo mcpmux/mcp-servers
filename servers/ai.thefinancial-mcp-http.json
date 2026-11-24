@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "ai.thefinancial-mcp-http",
+  "name": "Financial AI",
+  "alias": "financial-ai",
+  "description": "Connects to Financial AI's hosted MCP server for company research, proprietary forecasts, stock screens and strategy backtests across stocks, ETFs, options, futures and crypto.",
+  "logo": "https://raw.githubusercontent.com/thefinancial-ai/financial-ai/main/assets/logo.png",
+  "schema_version": "2.1",
+  "categories": [
+    "productivity",
+    "ai-ml"
+  ],
+  "tags": [
+    "finance",
+    "stocks",
+    "market-data",
+    "backtesting",
+    "screening",
+    "forecasts",
+    "portfolio"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://thefinancial.ai/api/finai-mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser with your own thefinancial.ai account (free trial, then a paid subscription)."
+  },
+  "contributor": {
+    "name": "Global Financial AI",
+    "github": "thefinancial-ai",
+    "url": "https://thefinancial.ai"
+  },
+  "links": {
+    "repository": "https://github.com/thefinancial-ai/financial-ai",
+    "homepage": "https://thefinancial.ai",
+    "documentation": "https://github.com/thefinancial-ai/financial-ai#readme"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "prompts": true,
+    "resources": true,
+    "read_only_mode": false
+  }
+}
