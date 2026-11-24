@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.finerxfinder-mcp-http",
+  "name": "FineRx",
+  "alias": "finerx",
+  "description": "Dated US prescription prices by pharmacy chain, plus the free discount card to show at the counter.",
+  "logo": "https://www.finerxfinder.com/icon.svg",
+  "schema_version": "2.1",
+  "categories": [
+    "search"
+  ],
+  "tags": [
+    "drug-prices",
+    "prescription",
+    "pharmacy",
+    "healthcare",
+    "discount-card",
+    "price-comparison",
+    "multilingual",
+    "mcp-apps"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://www.finerxfinder.com/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No key, account or sign-in needed for the remote server."
+  },
+  "contributor": {
+    "name": "FineRx",
+    "github": "andrewfinerx",
+    "url": "https://www.finerxfinder.com"
+  },
+  "links": {
+    "repository": "https://github.com/andrewfinerx/finerx-mcp",
+    "homepage": "https://www.finerxfinder.com",
+    "documentation": "https://www.finerxfinder.com/en/connect"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true,
+    "read_only_mode": false
+  }
+}
