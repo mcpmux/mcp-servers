@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.tesseract-design-http",
+  "name": "Tesseract Decks & Designs",
+  "alias": "tesseract-design",
+  "description": "Turn what your assistant writes into slide decks, diagrams, charts and designs, kept as private pages in your Tesseract account, through Tesseract's official hosted remote MCP server. Calls no AI model and is free. Authenticates via OAuth in your browser, no local setup or API key required.",
+  "logo": "https://tesseract.dev/favicon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "design",
+    "productivity"
+  ],
+  "tags": [
+    "tesseract",
+    "slides",
+    "presentations",
+    "diagrams",
+    "charts",
+    "design",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://app.tesseract.dev/api/core/tesseract/mcp/design",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser with a free Tesseract account (email, Google or Apple). No token or API key setup needed."
+  },
+  "contributor": {
+    "name": "Eightcell Labs, Inc. (Tesseract)",
+    "github": "cmaftuleac",
+    "url": "https://tesseract.dev"
+  },
+  "links": {
+    "homepage": "https://tesseract.dev",
+    "documentation": "https://tesseract.dev/mcp/design/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

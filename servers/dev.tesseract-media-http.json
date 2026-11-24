@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "dev.tesseract-media-http",
+  "name": "Tesseract",
+  "alias": "tesseract",
+  "description": "Make pictures, picture edits, effects and short videos with sound through Tesseract's official hosted remote MCP server, charged to your own Tesseract plan; every paid call takes a price ceiling. Authenticates via OAuth in your browser, no local setup or API key required.",
+  "logo": "https://tesseract.dev/favicon.png",
+  "schema_version": "2.1",
+  "categories": [
+    "ai-ml",
+    "design"
+  ],
+  "tags": [
+    "tesseract",
+    "image-generation",
+    "video-generation",
+    "effects",
+    "media",
+    "remote"
+  ],
+  "transport": {
+    "type": "http",
+    "url": "https://app.tesseract.dev/api/core/tesseract/mcp",
+    "metadata": {
+      "inputs": []
+    }
+  },
+  "auth": {
+    "type": "oauth",
+    "instructions": "Authenticates via OAuth 2.1 in your browser with your Tesseract account (email, Google or Apple). No token or API key setup needed."
+  },
+  "contributor": {
+    "name": "Eightcell Labs, Inc. (Tesseract)",
+    "github": "cmaftuleac",
+    "url": "https://tesseract.dev"
+  },
+  "links": {
+    "homepage": "https://tesseract.dev",
+    "documentation": "https://tesseract.dev/mcp/"
+  },
+  "platforms": [
+    "all"
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
